@@ -1,8 +1,2 @@
-export default function App() {
-  return (
-    <div style={{fontFamily:'Arial',padding:'2rem'}}>
-      <h1>My Portfolio</h1>
-      <p>Portfolio website initialized successfully.</p>
-    </div>
-  );
-}
+import './styles.css';
+export default function App(){return <div className='app'><section className='hero'><div className='eyebrow'>Software Engineer • AI Builder • Cloud Architect</div><h1 className='title'>Abid Ahmed Shaikh</h1><p className='subtitle'>Building intelligent systems, cloud-native platforms and next-generation developer experiences.</p><div className='cta'><a className='btn primary'>View Projects</a><a className='btn'>Download Resume</a></div></section><section className='section'><h2>Experience Highlights</h2><div className='grid'><div className='card'><h3>Bitkraft</h3><p>AR Engineering, Platform Engineering and AI Research.</p></div><div className='card'><h3>Research</h3><p>ICSSSD publications and Best Paper recognition.</p></div><div className='card'><h3>Cloud & AI</h3><p>AWS, OCI, Generative AI and modern full-stack systems.</p></div></div></section><section className='section'><h2>Skills Constellation</h2><div className='grid'><div className='card'>React</div><div className='card'>Next.js</div><div className='card'>Node.js</div><div className='card'>AWS</div><div className='card'>OCI</div><div className='card'>Docker</div></div></section></div>}
