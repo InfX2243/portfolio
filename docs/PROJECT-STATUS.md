@@ -43,13 +43,18 @@
 8. Evaluated and removed unused Spline dependency/configuration.
 9. Added route-specific title and description metadata.
 10. Added selected achievement evidence to the homepage.
-11. Updated the authoritative execution specification with architecture/performance decisions.\n12. Made routing/navigation derive the Vite base path instead of hard-coding `/portfolio`, preserving GitHub Pages deployment while keeping local development paths coherent.\n13. Deferred Credly script loading until badges approach the viewport; the third-party embed remains non-blocking and singleton-loaded.\n14. Hardened the mobile navigation toggle/link touch targets to 44px.\n15. Added heading-level control to shared page headers so the homepage uses one h1 followed by section h2 headings; fixed the not-found home link to use the Vite base path.
+11. Updated the authoritative execution specification with architecture/performance decisions.
+12. Made routing/navigation derive the Vite base path instead of hard-coding `/portfolio`, preserving GitHub Pages deployment while keeping local development paths coherent.
+13. Deferred Credly script loading until badges approach the viewport; the third-party embed remains non-blocking and singleton-loaded.
+14. Hardened the mobile navigation toggle/link touch targets to 44px.
+15. Added heading-level control to shared page headers so the homepage uses one h1 followed by section h2 headings; fixed the not-found home link to use the Vite base path.
 
 ## Highest-priority queue
 
 ### NEXT 1 — Accessibility audit
 
-- Audit mobile navigation semantics and focus management.\n- Verify the new 44px touch targets, heading hierarchy and Vite-base-aware navigation in a browser.
+- Audit mobile navigation semantics and focus management.
+- Verify the new 44px touch targets, heading hierarchy and Vite-base-aware navigation in a browser.
 - Verify keyboard traversal through every route.
 - Verify heading hierarchy.
 - Verify reduced-motion behavior.
