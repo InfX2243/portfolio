@@ -1,4 +1,172 @@
-import './styles.css';
-const domains=[['Cloud Systems','AWS, OCI, Containers, Automation'],['AI Engineering','GenAI, RAG, Agents, MLOps'],['Research','Award-winning publications and applied innovation']];
-const projects=['CogniTrace','Green Passport','Ascend APEX','Platform Engineering @ Bitkraft'];
-export default function App(){return <main className='app'><div className='gridbg'/><div className='spotlight'/><section className='hero'><div className='terminal'>ABID.OS // SYSTEMS • AI • CLOUD</div><h1 className='title'>Building intelligent systems,<br/>developer platforms and research-driven products.</h1><p className='subtitle'>Software Engineer Intern • Research Author • Oracle Hackathon Winner</p><div className='cta'><a className='btn primary' href='#work'>Explore Work</a><a className='btn' href='/resume.pdf'>Download Resume</a></div></section><section className='section'><h2>Operating Domains</h2><div className='grid'>{domains.map(([t,d])=><article key={t} className='card'><h3>{t}</h3><p>{d}</p></article>)}</div></section><section id='work' className='section'><h2>Featured Work</h2><div className='grid'>{projects.map(p=><div key={p} className='card glow'>{p}</div>)}</div></section></main>}
+import { CanvasParticleReveal } from "./components/CanvasParticleReveal";
+import { VgpuField } from "./components/VgpuField";
+import { SpotlightCard } from "./components/SpotlightCard";
+import { certifications, domains, experience, leadership, profile, projects, stack } from "./data/portfolio";
+import "./styles.css";
+
+function SectionHeader({ index, eyebrow, title, intro }) {
+  return (
+    <div className="section-head">
+      <span className="section-index">{index}</span>
+      <div>
+        <p className="eyebrow">{eyebrow}</p>
+        <h2>{title}</h2>
+        {intro && <p className="section-intro">{intro}</p>}
+      </div>
+    </div>
+  );
+}
+
+function Nav() {
+  return (
+    <header className="nav">
+      <a className="wordmark" href="#top" aria-label="Abid Ahmed Shaikh home">AA<span>/</span>01</a>
+      <nav aria-label="Primary navigation">
+        <a href="#work">Work</a>
+        <a href="#research">Research</a>
+        <a href="#systems">Systems</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a className="nav-status" href={profile.links.linkedin} target="_blank" rel="noreferrer">
+        <span className="status-dot" /> Open to technical conversations
+      </a>
+    </header>
+  );
+}
+
+function App() {
+  return (
+    <main id="top" className="app">
+      <div className="ambient-grid" aria-hidden="true" />
+      <Nav />
+
+      <section className="hero section-shell" aria-labelledby="hero-title">
+        <VgpuField />
+        <CanvasParticleReveal className="particle-layer" />
+        <div className="hero-content">
+          <div className="hero-kicker"><span /> {profile.eyebrow}</div>
+          <h1 id="hero-title">
+            Systems that move from <em>idea</em> to infrastructure.
+          </h1>
+          <p className="hero-role">{profile.role}</p>
+          <p className="hero-summary">{profile.summary}</p>
+          <div className="hero-actions">
+            <a className="button button-primary" href="#work">Explore work <span>↘</span></a>
+            <a className="button" href={profile.links.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a>
+            <a className="text-link" href={profile.links.github} target="_blank" rel="noreferrer">GitHub ↗</a>
+          </div>
+        </div>
+        <div className="hero-meta">
+          <span>01 / Portfolio</span>
+          <span>Cloud · AI · Systems · Research</span>
+          <span>2026</span>
+        </div>
+      </section>
+
+      <section id="about" className="section-shell section about">
+        <SectionHeader index="01" eyebrow="Research direction" title="Build. Investigate. Repeat." intro="The work sits between practical software engineering and the questions that make systems worth studying." />
+        <div className="about-grid">
+          <div className="about-statement">
+            <p>{profile.summary}</p>
+            <p>Current work spans software engineering, cloud-native infrastructure, AI-integrated applications and interactive systems. The goal is not a larger technology list — it is a deeper understanding of how these pieces behave together.</p>
+          </div>
+          <div className="signal-list">
+            <div><span>EDUCATION</span><strong>{profile.education}</strong></div>
+            <div><span>CURRENT ROLE</span><strong>{experience[0].role} · {experience[0].org}</strong></div>
+            <div><span>ORIENTATION</span><strong>Engineering with a research trajectory</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-shell section">
+        <SectionHeader index="02" eyebrow="Experience" title="Engineering in the loop." intro="A compact view of the environments where ideas become working software." />
+        <div className="experience">
+          {experience.map((item) => (
+            <div className="experience-row" key={item.org}>
+              <span className="experience-period">{item.period}</span>
+              <div>
+                <p className="eyebrow">{item.org}</p>
+                <h3>{item.role}</h3>
+                <p className="muted">{item.note}</p>
+                <div className="tag-row">{item.focus.map((x) => <span key={x}>{x}</span>)}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="work" className="section-shell section">
+        <SectionHeader index="03" eyebrow="Selected work" title="Evidence over adjectives." intro="Projects are presented as technical signals: what they are, why they matter, and what recognition or context surrounds them." />
+        <div className="project-grid">
+          {projects.map((project) => (
+            <SpotlightCard key={project.id} className={project.featured ? "featured-project" : ""}>
+              <div className="project-top"><span>{project.number}</span><span>{project.type}</span></div>
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+              {project.award && <div className="award">↳ {project.award}</div>}
+              <div className="tag-row">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+            </SpotlightCard>
+          ))}
+        </div>
+      </section>
+
+      <section id="research" className="section-shell section research">
+        <div className="research-callout">
+          <span className="eyebrow">Research signal</span>
+          <div>
+            <p className="research-number">01</p>
+            <h2>Cognitrace</h2>
+            <p>ICSSSD 2026 · Best Paper Award</p>
+          </div>
+          <div className="research-copy">
+            <p>Research is treated as an extension of engineering: formulate a problem, build something testable, interrogate the result, and communicate what was learned.</p>
+            <a className="text-link" href="#work">View project evidence ↓</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="systems" className="section-shell section">
+        <SectionHeader index="04" eyebrow="Technical domains" title="A systems-oriented stack." />
+        <div className="domain-grid">
+          {domains.map((domain) => (
+            <div className="domain" key={domain.title}>
+              <span>{domain.label}</span>
+              <h3>{domain.title}</h3>
+              <p>{domain.body}</p>
+            </div>
+          ))}
+        </div>
+        <div className="stack-line"><span>Working vocabulary</span><div>{stack.map((x) => <b key={x}>{x}</b>)}</div></div>
+      </section>
+
+      <section className="section-shell section evidence-grid">
+        <div>
+          <SectionHeader index="05" eyebrow="Credentials" title="Signals of depth." />
+          <div className="credential-list">{certifications.map((item, i) => <div key={item}><span>{String(i + 1).padStart(2, "0")}</span>{item}</div>)}</div>
+        </div>
+        <div>
+          <SectionHeader index="06" eyebrow="Community" title="Learn in public." />
+          <div className="credential-list">{leadership.map(([item, role], i) => <div key={item}><span>{String(i + 1).padStart(2, "0")}</span><strong>{item}</strong><small>{role}</small></div>)}</div>
+        </div>
+      </section>
+
+      <section id="contact" className="section-shell section closing">
+        <p className="eyebrow">07 / Contact</p>
+        <h2>Have a hard problem worth exploring?</h2>
+        <p>Open to technical conversations, research communities, and engineering opportunities where curiosity and implementation can reinforce each other.</p>
+        <div className="hero-actions">
+          <a className="button button-primary" href={profile.links.linkedin} target="_blank" rel="noreferrer">Connect on LinkedIn ↗</a>
+          <a className="button" href={profile.links.github} target="_blank" rel="noreferrer">View GitHub ↗</a>
+        </div>
+      </section>
+
+      <footer className="footer section-shell">
+        <span>ABID AHMED SHAIKH</span>
+        <span>Built as a technical artifact, not a template.</span>
+        <span>© 2026</span>
+      </footer>
+    </main>
+  );
+}
+
+export default App;
