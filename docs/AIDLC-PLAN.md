@@ -778,3 +778,10 @@ The GitHub Pages workflow now passes the optional `SPLINE_SCENE_URL` repository 
 Milestone 2B now includes a dedicated native mobile navigation control with explicit ARIA state, Escape dismissal, link-selection closure, and reduced-motion handling. This closes the implementation gap around small-screen navigation while preserving the existing desktop navigation.
 
 Validation remains a Stage 5 activity and is not marked complete by this code change alone.
+
+
+### 14.1.8 Credly badge gallery checkpoint
+
+**Status: IMPLEMENTED**
+
+All eight user-supplied Credly embed identifiers are now represented in the credential data model and rendered through the reusable Credly component. The presentation changed from a single featured badge to a responsive badge gallery. Metadata remains explicitly unverified until source-backed values are available.
