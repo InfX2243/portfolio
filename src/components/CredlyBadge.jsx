@@ -1,18 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const CREDLY_SCRIPT_ID = "credly-embed-script";
 const CREDLY_SCRIPT_SRC = "https://cdn.credly.com/assets/utilities/embed.js";
 
-export function CredlyBadge({ badge }) {
-  const [embedState, setEmbedState] = useState("loading");
-
-  useEffect(() => {
-    if (!badge?.credlyBadgeId) return undefined;
-
+function loadCredlyScript() {
+  return new Promise((resolve, reject) => {
     const existing = document.getElementById(CREDLY_SCRIPT_ID);
     if (existing) {
-      setEmbedState(existing.dataset.credlyState || "loading");
-      return undefined;
+      if (existing.dataset.credlyState === "loaded") {
+        resolve();
+        return;
+      }
+      existing.addEventListener("load", resolve, { once: true });
+      existing.addEventListener("error", reject, { once: true });
+      return;
     }
 
     const script = document.createElement("script");
@@ -20,30 +21,55 @@ export function CredlyBadge({ badge }) {
     script.src = CREDLY_SCRIPT_SRC;
     script.async = true;
     script.dataset.credlyState = "loading";
-
-    const handleLoad = () => {
+    script.addEventListener("load", () => {
       script.dataset.credlyState = "loaded";
-      setEmbedState("loaded");
-    };
-    const handleError = () => {
+      resolve();
+    }, { once: true });
+    script.addEventListener("error", () => {
       script.dataset.credlyState = "error";
-      setEmbedState("error");
+      reject(new Error("Credly embed failed to load"));
+    }, { once: true });
+    document.body.appendChild(script);
+  });
+}
+
+export function CredlyBadge({ badge }) {
+  const [embedState, setEmbedState] = useState("idle");
+  const cardRef = useRef(null);
+
+  useEffect(() => {
+    if (!badge?.credlyBadgeId || !cardRef.current) return undefined;
+
+    let cancelled = false;
+    const start = () => {
+      if (cancelled) return;
+      setEmbedState("loading");
+      loadCredlyScript()
+        .then(() => !cancelled && setEmbedState("loaded"))
+        .catch(() => !cancelled && setEmbedState("error"));
     };
 
-    script.addEventListener("load", handleLoad);
-    script.addEventListener("error", handleError);
-    document.body.appendChild(script);
+    if (!("IntersectionObserver" in window)) {
+      start();
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      entries => entries.some(entry => entry.isIntersecting) && start(),
+      { rootMargin: "240px 0px" }
+    );
+    observer.observe(cardRef.current);
 
     return () => {
-      script.removeEventListener("load", handleLoad);
-      script.removeEventListener("error", handleError);
+      cancelled = true;
+      observer.disconnect();
     };
   }, [badge?.credlyBadgeId]);
 
   if (!badge?.credlyBadgeId) return null;
 
   return (
-    <article className="credential-visual-card credly-card">
+    <article ref={cardRef} className="credential-visual-card credly-card">
       <div className="credential-visual-top">
         <span>Credly badge</span>
         <span>{embedState === "error" ? "Fallback" : "Official embed"}</span>
