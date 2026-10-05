@@ -20,7 +20,13 @@ jobs:
           node-version: 20
 
       - run: npm install
-      - run: npm run build
+      - name: Build portfolio
+        env:
+          VITE_SPLINE_SCENE_URL: ${{ vars.SPLINE_SCENE_URL }}
+        run: npm run build
+
+      - name: Verify build output
+        run: test -f dist/index.html
 
       - name: Deploy dist to gh-pages
         uses: peaceiris/actions-gh-pages@v3
