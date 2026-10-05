@@ -8,7 +8,8 @@ function active(path,href){return href==="/" ? path==="/" : path===href || path.
 
 export function PortfolioLayout({children}){
  const [open,setOpen]=useState(false);
- const toggleRef=useRef(null);\n const wasOpen=useRef(false);
+ const toggleRef=useRef(null);
+ const wasOpen=useRef(false);
  const current=BASE && window.location.pathname.startsWith(BASE)?window.location.pathname.slice(BASE.length).replace(/\/+$/,"")||"/":window.location.pathname;
  useEffect(()=>{if(open){wasOpen.current=true;const fn=e=>e.key==="Escape"&&setOpen(false);document.addEventListener("keydown",fn);return()=>document.removeEventListener("keydown",fn)}if(wasOpen.current)toggleRef.current?.focus()},[open]);
  const navigate=(e,href)=>{if(e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();setOpen(false);history.pushState({}, "",BASE+href);window.dispatchEvent(new PopStateEvent("popstate"));};
