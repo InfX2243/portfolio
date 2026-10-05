@@ -18,8 +18,8 @@
 | P0 / Phase 0 — Repository Audit | DONE | Repository, dependencies, routes, data, deployment workflow and visual components inspected. | Re-run audit after major architectural changes. |
 | P0 / Phase 1 — Information Architecture | PARTIAL | Lightweight multi-page router, shared layout/navigation/footer, 404 handling, GitHub Pages fallback strategy, Vite-base-aware route normalization/navigation. | Browser/deployment verification on GitHub Pages, including nested refreshes. |
 | P0 / Phase 2 — Landing Page | PARTIAL | Hero, VGPU/Canvas enhancement, featured work, research, experience, domains, selected achievements and CTA structure exist. | Content/evidence review, final positioning copy, responsive/accessibility validation. |
-| P0 / Phase 3 — Projects | PARTIAL | Projects index, project cards, dynamic project routes, normalized evidence-aware case-study schema, featured three projects. | Populate only verified problem/context/architecture/decision/trade-off/learning fields; add verified visuals and links. |
-| P0 / Phase 4 — Research | PARTIAL | Research page, Cognitrace, Green Passport, research visuals and recognition separation. | Verify links, publication/venue metadata, methodology/contribution evidence. |
+| P0 / Phase 3 — Projects | PARTIAL | Projects index, project cards, dynamic project routes, normalized evidence-aware case-study schema, featured three projects; shared Vite base-path helper now used by Home/Projects links. | Populate only verified problem/context/architecture/decision/trade-off/learning fields; add verified visuals and links. |
+| P0 / Phase 4 — Research | PARTIAL | Research page, Cognitrace, Green Passport, research visuals and recognition separation; unsupported award/publication claims are now explicitly withheld. | Verify links, publication/venue metadata, methodology/contribution evidence. |
 | P0 / Phase 5 — Achievements | PARTIAL | Achievements page, award section, Credly component, certificate component and credential data model; Credly embeds now defer loading until near viewport; seven certification IDs and issue months verified against the owner’s public LinkedIn profile. | Add public verification URLs where available and complete gallery audit. |
 | P0 / Phase 6 — Experience | PARTIAL | Experience page and Bitkraft entry are implemented from repository data. | Verify responsibilities, technical context and evidence. |
 | P0 / Phase 7 — About | DONE* | About page, education, technical direction, research trajectory and leadership data are implemented. | Final content truth/conciseness review. |
@@ -51,3 +51,5 @@
 16. Verified the seven listed certification IDs and issue months against the owner’s public LinkedIn profile, while leaving certificate verification URLs unset until direct public URLs are available.
 17. Refined Ascend APEX recognition to the publicly corroborated nationwide first-place Xcelerate 2025 Oracle APEX Hackathon result.
 18. Hardened certificate image/link accessibility and added Twitter card metadata to the static HTML shell.
+19. Centralized Vite base-path generation for page links and removed remaining `/portfolio` assumptions from Home/Projects navigation.
+20. Tightened research content truth: Cognitrace/Green Passport award and publication metadata is now marked pending verification until authoritative public evidence is available.
