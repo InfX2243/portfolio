@@ -18,7 +18,7 @@
 | P0 / Phase 0 — Repository Audit | DONE | Repository, dependencies, routes, data, deployment workflow and visual components inspected. | Re-run audit after major architectural changes. |
 | P0 / Phase 1 — Information Architecture | PARTIAL | Lightweight multi-page router, shared layout/navigation/footer, 404 handling, GitHub Pages fallback strategy, centralized Vite-base-aware navigation, and static route entry-point generation for every public route. GitHub Pages `gh-pages` contains route-specific `index.html` files for direct nested loads. | External browser verification remains open because the live-site checker in this environment cannot access GitHub Pages; repository/deployment output verifies the required static route files. |
 | P0 / Phase 2 — Landing Page | PARTIAL | Hero, VGPU/Canvas enhancement, featured work, research, experience, domains, selected achievements and CTA structure exist. | Content/evidence review, final positioning copy, responsive/accessibility validation. |
-| P0 / Phase 3 — Projects | PARTIAL | Projects index, project cards, dynamic project routes, normalized evidence-aware case-study schema, featured three projects; shared Vite base-path helper now used by Home/Projects links. | Populate only verified problem/context/architecture/decision/trade-off/learning fields; add verified visuals and links. |
+| P0 / Phase 3 — Projects | PARTIAL | Projects index, project cards, dynamic project routes, normalized evidence-aware case-study schema, featured three projects, centralized base-path links, and case-study navigation with verified-resource/related-work slots. | Populate only verified problem/context/architecture/decision/trade-off/learning fields; add verified visuals and links.
 | P0 / Phase 4 — Research | PARTIAL | Research page, Cognitrace, Green Passport, research visuals and recognition separation; unsupported award/publication claims are now explicitly withheld. | Verify links, publication/venue metadata, methodology/contribution evidence. |
 | P0 / Phase 5 — Achievements | PARTIAL | Achievements page, award section, Credly component, certificate component and credential data model; Credly embeds now defer loading until near viewport; seven certification IDs and issue months verified against the owner’s public LinkedIn profile. | Add public verification URLs where available and complete gallery audit. |
 | P0 / Phase 6 — Experience | PARTIAL | Experience page and Bitkraft entry are implemented from repository data. | Verify responsibilities, technical context and evidence. |
@@ -33,7 +33,10 @@
 
 ## Current blocker / validation state
 
-- GitHub Actions run `37336682280` for commit `aa396fc7` completed successfully. The build generated 11 static nested route entry points and deployed them to `gh-pages`.
+- Latest implementation commit: `c6ca79b28a8cc62271ee4b7bd7e2d5c9775f7bf1` (`feat: strengthen project case-study navigation`). A new deployment run is expected from this commit; its build/browser result must be recorded after completion.
+- The case-study content gap is intentional: the repository currently does not contain verified architecture, metrics, detailed personal contribution, trade-offs, learning narratives, or public project URLs for most projects. These must be supplied or independently verified before those sections can be marked complete.
+
+- GitHub Actions run `37336976013` for commit `7a73efc6` completed successfully. The build generated 11 static nested route entry points and deployed them to `gh-pages`.
 - `gh-pages` was inspected after deployment and contains route-specific HTML for `/projects`, every project detail route, `/research`, `/achievements`, `/experience`, `/about`, and `/contact`, plus `404.html`, `robots.txt`, `sitemap.xml`, and the favicon.
 - The live-site browser checker could not access GitHub Pages from this environment, so external browser verification remains explicitly unconfirmed.
 
@@ -66,3 +69,4 @@
 24. Added static route entry-point generation so GitHub Pages serves real HTML at every public nested route, with route-specific title, description, Open Graph, Twitter and canonical metadata.
 25. Added favicon, `robots.txt`, and `sitemap.xml` and verified them on the deployed `gh-pages` branch.
 26. Recorded production bundle sizes from CI and modernized the Pages workflow to Node 24, current checkout/setup-node actions, compatible `npm install` (the repository does not currently contain a lockfile), and `peaceiris/actions-gh-pages@v4`.
+27. Strengthened project case-study routes with optional verified-resource links and related-work navigation; empty link data remains hidden, so no unverified URLs are introduced.
