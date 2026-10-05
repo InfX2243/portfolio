@@ -695,3 +695,18 @@ Next queue:
 3. Validate Credly/Spline third-party runtime behavior.
 4. Run accessibility and performance checks.
 5. Verify GitHub Pages publication.
+
+
+## Latest implementation increment — supplied Credly badge gallery
+
+**Status: IMPLEMENTED**
+
+Completed:
+- Replaced the single known Credly badge record with all 8 badge embed IDs supplied by the user.
+- Preserved the supplied Credly host and 150×270 dimensions for every badge.
+- Updated the credentials UI to render every badge from `src/data/credentials.json`.
+- Added responsive gallery behavior: 4 columns desktop, 2 tablet, 1 narrow mobile.
+- Kept title/issuer/public URL metadata unset because those values were not supplied or independently verified.
+
+Validation boundary:
+- The badge records and UI are implemented, but live Credly rendering still needs runtime/browser validation.
