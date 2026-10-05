@@ -26,7 +26,7 @@ The repository has moved beyond the original skeleton. The next work is now focu
 | Navigation | ✅ Complete | Sticky responsive navigation and anchor links |
 | Experience | ✅ Complete | Bitkraft experience presented as structured evidence |
 | Featured projects | 🟢 Evidence model complete | Projects now expose contribution, approach, outcome and evidence; verified links remain pending |
-| Research | 🟡 Core complete | Cognitrace award is prominent; publication/evidence links still needed |
+| Research | 🟢 Evidence hierarchy complete | Research records now separate context, recognition, description and source-backed evidence; publication links remain pending |
 | Technical domains | ✅ Complete | Skills organized by system/domain rather than badge wall |
 | Achievements/certifications | ✅ Complete | Verified credentials represented compactly |
 | Leadership/community | ✅ Complete | AWS Student Builder Group + ACM editorial activity |
@@ -195,7 +195,22 @@ Definition of done:
 - Kept missing metrics, repositories, demos and publication URLs out of the UI rather than fabricating them.
 
 **Next:**
-- strengthen the research evidence hierarchy;
 - add verified publication/project links when available;
 - validate mobile project layouts;
 - begin production build and accessibility/performance validation.
+
+
+## Latest implementation increment — 2A research evidence
+
+**Completed:**
+- Added a dedicated data-driven `research` model for current research records.
+- Added explicit context, recognition/signal, description and evidence fields.
+- Replaced the single Cognitrace callout with a structured research evidence grid.
+- Added a compact research-method statement to connect engineering practice with research process.
+- Preserved verified-link-only rendering; no publication URLs were invented.
+
+**Next:**
+- add verified publication/project links when source material is available;
+- validate mobile project and research layouts;
+- run production build, accessibility and performance validation;
+- complete final content truth review before delivery.
