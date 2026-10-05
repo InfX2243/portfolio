@@ -200,7 +200,7 @@ function App() {
 
       <section className="section-shell section systems-visual-section" aria-labelledby="systems-visual-title">
         <SectionHeader index="06R" eyebrow="3D systems layer" title="Make the architecture visible." intro="A progressive Spline surface is reserved for a verified scene so the 3D layer explains a system instead of becoming decoration." />
-        <SplineScene fallback="Verified Spline scene pending — the visual slot is ready without blocking the portfolio." />
+        <SplineScene sceneUrl={import.meta.env.VITE_SPLINE_SCENE_URL} fallback="Verified Spline scene pending — set VITE_SPLINE_SCENE_URL when a verified Spline export is available." />
       </section>
 
       <section id="contact" className="section-shell section closing">
