@@ -214,3 +214,24 @@ Definition of done:
 - validate mobile project and research layouts;
 - run production build, accessibility and performance validation;
 - complete final content truth review before delivery.
+
+
+## Latest implementation increment — validation readiness
+
+**Completed:**
+- Verified the research data model is present and consumed by the Research section.
+- Fixed the `App.jsx` data import so the new research records are explicitly imported before rendering.
+- Reconfirmed that verified-link-only rendering remains in place for projects and research.
+
+**Current implementation state:**
+- Milestones 1 and the core of Milestone 2 are implemented.
+- Milestone 2A is substantially implemented; remaining work is now weighted toward source verification and validation rather than adding decorative UI.
+- Stage 5 remains **NOT STARTED** until an actual production build/test run is executed.
+
+**Next implementation/validation queue:**
+1. Run the Vite production build in an executable environment and record the result.
+2. Perform responsive/mobile validation for project and research cards.
+3. Perform accessibility checks, including keyboard navigation, focus visibility, semantics and reduced-motion behavior.
+4. Perform performance checks for canvas/WebGPU effects and page-load cost.
+5. Reconcile remaining content/source gaps (publication URLs, project URLs, resume/email) without inventing data.
+6. Verify GitHub Pages deployment and published-site behavior.
