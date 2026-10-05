@@ -769,3 +769,12 @@ Added explicit focus-visible styling and reduced-motion overrides for the portfo
 **Status: IMPLEMENTED**
 
 The GitHub Pages workflow now passes the optional `SPLINE_SCENE_URL` repository variable into the Vite build and explicitly checks for `dist/index.html` before publishing. This strengthens Stage 6 delivery while keeping actual CI/deployment verification separate and pending.
+
+
+### 14.1.7 Accessible mobile navigation checkpoint
+
+**Status: IMPLEMENTED**
+
+Milestone 2B now includes a dedicated native mobile navigation control with explicit ARIA state, Escape dismissal, link-selection closure, and reduced-motion handling. This closes the implementation gap around small-screen navigation while preserving the existing desktop navigation.
+
+Validation remains a Stage 5 activity and is not marked complete by this code change alone.
