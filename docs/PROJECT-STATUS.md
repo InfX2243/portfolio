@@ -1,6 +1,6 @@
 # Portfolio Implementation Status
 
-> Last updated: 2026-10-05  
+> Last updated: 2026-10-05 (implementation loop)  
 > Branch: `portfolio-v1`  
 > Source of truth: `docs/AI-PORTFOLIO-EXECUTION.md`
 
@@ -16,7 +16,7 @@
 | Phase | Status | Completed | Next work |
 |---|---|---|---|
 | P0 / Phase 0 — Repository Audit | DONE | Repository, dependencies, routes, data, deployment workflow and visual components inspected. | Re-run audit after major architectural changes. |
-| P0 / Phase 1 — Information Architecture | PARTIAL | Lightweight multi-page router, shared layout/navigation/footer, 404 handling, GitHub Pages fallback strategy, centralized Vite-base-aware navigation across shared layout, Home/Projects/Project Detail. | Browser/deployment verification on GitHub Pages, including nested refreshes. Latest CI build failure identified and fixed in homepage route-link syntax. |
+| P0 / Phase 1 — Information Architecture | PARTIAL | Lightweight multi-page router, shared layout/navigation/footer, 404 handling, GitHub Pages fallback strategy, centralized Vite-base-aware navigation across shared layout, Home/Projects/Project Detail. | Browser/deployment verification on GitHub Pages, including nested refreshes. Latest CI build failures were traced to multiple malformed `withBasePath(...)` expressions in `HomePage.jsx`; the affected expressions have now been corrected. A fresh CI run is required before marking build/deployment validation complete. |
 | P0 / Phase 2 — Landing Page | PARTIAL | Hero, VGPU/Canvas enhancement, featured work, research, experience, domains, selected achievements and CTA structure exist. | Content/evidence review, final positioning copy, responsive/accessibility validation. |
 | P0 / Phase 3 — Projects | PARTIAL | Projects index, project cards, dynamic project routes, normalized evidence-aware case-study schema, featured three projects; shared Vite base-path helper now used by Home/Projects links. | Populate only verified problem/context/architecture/decision/trade-off/learning fields; add verified visuals and links. |
 | P0 / Phase 4 — Research | PARTIAL | Research page, Cognitrace, Green Passport, research visuals and recognition separation; unsupported award/publication claims are now explicitly withheld. | Verify links, publication/venue metadata, methodology/contribution evidence. |
@@ -33,8 +33,9 @@
 
 ## Current blocker / validation state
 
-- The latest GitHub Pages workflow failed during `npm run build` because `src/pages/HomePage.jsx` contained malformed `withBasePath(...)` JSX expressions. The syntax error has been corrected in commit `49404c5542db79683ccc66eb274980aff3e5eb40`.
-- CI must be re-run on the corrected commit before any routing/deployment requirement can be marked validated.
+- GitHub Actions runs through commit `18c7743` still failed during `npm run build`; the CI log showed additional malformed `withBasePath(...)` expressions remained in `HomePage.jsx` after the first correction.
+- Those remaining route expressions have now been corrected in commit `c8f4935e`.
+- The next CI run is the authoritative build validation. Do not mark production build, deployment, or nested-route verification as DONE until that run succeeds.
 
 ## Completed implementation increments
 
@@ -57,6 +58,7 @@
 17. Refined Ascend APEX recognition to the publicly corroborated nationwide first-place Xcelerate 2025 Oracle APEX Hackathon result.
 18. Hardened certificate image/link accessibility and added Twitter card metadata to the static HTML shell.
 19. Centralized Vite base-path generation for page links and removed remaining `/portfolio` assumptions from Home/Projects navigation.
+22. Traced repeated GitHub Pages build failures to malformed homepage base-path expressions and corrected the remaining instances; awaiting CI confirmation on the new commit.
 22. Refactored shared portfolio navigation/footer to consume the same centralized base-path helper, eliminating duplicate deployment-path logic from the layout.
 20. Tightened research content truth: Cognitrace/Green Passport award and publication metadata is now marked pending verification until authoritative public evidence is available.
 21. Removed the remaining hard-coded `/portfolio` assumption from Project Detail navigation and made project detail document titles use verified project titles when available.
