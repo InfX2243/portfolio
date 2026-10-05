@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { profile } from "../../data/portfolio";
 
-const BASE="/portfolio";
+const BASE=import.meta.env.BASE_URL.replace(/\/$/, "");
 const links=[["/","Home"],["/projects","Projects"],["/research","Research"],["/achievements","Achievements"],["/experience","Experience"],["/about","About"],["/contact","Contact"]];
 
 function active(path,href){return href==="/" ? path==="/" : path===href || path.startsWith(href+"/");}
@@ -9,7 +9,7 @@ function active(path,href){return href==="/" ? path==="/" : path===href || path.
 export function PortfolioLayout({children}){
  const [open,setOpen]=useState(false);
  const toggleRef=useRef(null);\n const wasOpen=useRef(false);
- const current=window.location.pathname.startsWith(BASE)?window.location.pathname.slice(BASE.length).replace(/\/+$/,"")||"/":window.location.pathname;
+ const current=BASE && window.location.pathname.startsWith(BASE)?window.location.pathname.slice(BASE.length).replace(/\/+$/,"")||"/":window.location.pathname;
  useEffect(()=>{if(open){wasOpen.current=true;const fn=e=>e.key==="Escape"&&setOpen(false);document.addEventListener("keydown",fn);return()=>document.removeEventListener("keydown",fn)}if(wasOpen.current)toggleRef.current?.focus()},[open]);
  const navigate=(e,href)=>{if(e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();setOpen(false);history.pushState({}, "",BASE+href);window.dispatchEvent(new PopStateEvent("popstate"));};
  return <div id="top" className="app"><a className="skip-link" href="#main-content">Skip to main content</a><div className="ambient-grid" aria-hidden="true"/>
