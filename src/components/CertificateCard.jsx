@@ -1,6 +1,6 @@
 export function CertificateCard({ certificate }) {
   const hasAsset = Boolean(certificate?.asset);
-  const hasUrl = Boolean(certificate?.certificateUrl);
+  const hasUrl = typeof certificate?.certificateUrl === "string" && /^https?:\/\//.test(certificate.certificateUrl);
   return (
     <article className="credential-visual-card certificate-card">
       <div className="certificate-preview">
@@ -11,7 +11,7 @@ export function CertificateCard({ certificate }) {
         <span className="credential-issuer">{certificate.issuer || "Issuer pending"}</span>
         <h3>{certificate.title}</h3>
         {certificate.issuedOn && <p>{certificate.issuedOn}</p>}
-        {hasUrl ? <a className="text-link" href={certificate.certificateUrl} target="_blank" rel="noopener noreferrer">Verify certificate ↗</a> : <small>Credential ID, date and verification URL pending.</small>}
+        {hasUrl ? <a className="text-link" href={certificate.certificateUrl} target="_blank" rel="noopener noreferrer">Verify certificate ↗</a> : <small>{certificate.credentialId ? `Credential ID: ${certificate.credentialId}` : "Credential ID pending."}{certificate.issuedOn ? ` · Issued ${certificate.issuedOn}` : ""}. Public verification URL pending.</small>}
       </div>
     </article>
   );
