@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: 24
 
-      - run: npm ci
+      - run: npm install
       - name: Build portfolio
         run: npm run build
 
