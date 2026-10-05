@@ -103,8 +103,15 @@ function App() {
               <div className="project-top"><span>{project.number}</span><span>{project.type}</span></div>
               <h3>{project.title}</h3>
               <p>{project.description}</p>
+              <div className="project-detail">
+                <div><span>CONTRIBUTION</span><p>{project.contribution}</p></div>
+                <div><span>APPROACH</span><div className="tag-row">{project.approach.map((tag) => <span key={tag}>{tag}</span>)}</div></div>
+                <div><span>OUTCOME</span><p>{project.outcome}</p></div>
+              </div>
               {project.award && <div className="award">↳ {project.award}</div>}
+              <div className="project-evidence"><span>Evidence</span><small>{project.evidence}</small></div>
               <div className="tag-row">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+              {Object.entries(project.links).length > 0 && <div className="project-links">{Object.entries(project.links).map(([label, href]) => <a key={label} href={href} target="_blank" rel="noreferrer">{label} ↗</a>)}</div>}
             </SpotlightCard>
           ))}
         </div>
