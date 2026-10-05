@@ -16,7 +16,7 @@
 | Phase | Status | Completed | Next work |
 |---|---|---|---|
 | P0 / Phase 0 — Repository Audit | DONE | Repository, dependencies, routes, data, deployment workflow and visual components inspected. | Re-run audit after major architectural changes. |
-| P0 / Phase 1 — Information Architecture | PARTIAL | Lightweight multi-page router, shared layout/navigation/footer, 404 handling, GitHub Pages fallback strategy, centralized Vite-base-aware navigation across shared layout, Home/Projects/Project Detail. | Browser/deployment verification on GitHub Pages, including nested refreshes. Latest CI build failures were traced to multiple malformed `withBasePath(...)` expressions in `HomePage.jsx`; the affected expressions have now been corrected. A fresh CI run is required before marking build/deployment validation complete. |
+| P0 / Phase 1 — Information Architecture | PARTIAL | Lightweight multi-page router, shared layout/navigation/footer, 404 handling, GitHub Pages fallback strategy, centralized Vite-base-aware navigation across shared layout, Home/Projects/Project Detail. GitHub Actions production build/deployment now succeeds on commit `c8f4935e`. | Browser verification of deployed nested-route navigation and refresh behavior remains open. |
 | P0 / Phase 2 — Landing Page | PARTIAL | Hero, VGPU/Canvas enhancement, featured work, research, experience, domains, selected achievements and CTA structure exist. | Content/evidence review, final positioning copy, responsive/accessibility validation. |
 | P0 / Phase 3 — Projects | PARTIAL | Projects index, project cards, dynamic project routes, normalized evidence-aware case-study schema, featured three projects; shared Vite base-path helper now used by Home/Projects links. | Populate only verified problem/context/architecture/decision/trade-off/learning fields; add verified visuals and links. |
 | P0 / Phase 4 — Research | PARTIAL | Research page, Cognitrace, Green Passport, research visuals and recognition separation; unsupported award/publication claims are now explicitly withheld. | Verify links, publication/venue metadata, methodology/contribution evidence. |
@@ -24,18 +24,18 @@
 | P0 / Phase 6 — Experience | PARTIAL | Experience page and Bitkraft entry are implemented from repository data. | Verify responsibilities, technical context and evidence. |
 | P0 / Phase 7 — About | DONE* | About page, education, technical direction, research trajectory and leadership data are implemented. | Final content truth/conciseness review. |
 | P0 / Phase 8 — Contact | PARTIAL | Contact page, LinkedIn and GitHub links, CTA structure. | Verified email and resume when supplied; final external-link verification. |
-| P0 / Phase 9 — Performance | PARTIAL | Route chunks and homepage visual effects are lazy-loaded; unused Spline dependency removed. | Production build/chunk inspection, third-party lazy loading, mobile/low-power testing. |
+| P0 / Phase 9 — Performance | PARTIAL | Route chunks and homepage visual effects are lazy-loaded; unused Spline dependency removed; GitHub Actions production build now passes. | Inspect generated production chunks and third-party loading; mobile/low-power testing. |
 | P0 / Phase 10 — Accessibility | PARTIAL | Skip link, focus-visible styles, reduced-motion rules, semantic nav labels, Escape handling, active-page semantics, focus restoration, inert closed mobile nav, main landmark, 44px mobile nav controls, single-h1 homepage hierarchy. | Full keyboard/focus/contrast/link audit and browser verification. |
 | P1 / Phase 11 — SEO / Sharing | PARTIAL | Route-specific titles/descriptions plus project-specific titles for detail routes, plus static Open Graph and Twitter card metadata on the HTML shell. | Route-specific social metadata, favicon, sitemap and robots. |
-| P0 / Phase 12 — Final Validation | NOT STARTED | No false pass claimed because production build/browser/GitHub Pages verification is still outstanding. | Execute full acceptance checklist after P0 content and accessibility work. |
+| P0 / Phase 12 — Final Validation | NOT STARTED | Production build/deployment CI is now green, but browser/GitHub Pages route validation and remaining P0 content/accessibility/performance checks are outstanding. | Execute full acceptance checklist after remaining P0 work. |
 
 \* About is structurally complete; it still needs the final truth/quality review before final portfolio sign-off.
 
 ## Current blocker / validation state
 
-- GitHub Actions runs through commit `18c7743` still failed during `npm run build`; the CI log showed additional malformed `withBasePath(...)` expressions remained in `HomePage.jsx` after the first correction.
-- Those remaining route expressions have now been corrected in commit `c8f4935e`.
-- The next CI run is the authoritative build validation. Do not mark production build, deployment, or nested-route verification as DONE until that run succeeds.
+- GitHub Actions run `37336270174` for commit `c8f4935e` completed successfully. This validates the production build and deployment workflow after the homepage base-path syntax fixes.
+- The subsequent documentation push also triggered run `37336285602`, which is still in progress; it does not invalidate the successful build/deployment result of `c8f4935e`.
+- Browser-level verification of the deployed site, especially direct nested-route loads and refreshes, remains outstanding.
 
 ## Completed implementation increments
 
@@ -58,7 +58,8 @@
 17. Refined Ascend APEX recognition to the publicly corroborated nationwide first-place Xcelerate 2025 Oracle APEX Hackathon result.
 18. Hardened certificate image/link accessibility and added Twitter card metadata to the static HTML shell.
 19. Centralized Vite base-path generation for page links and removed remaining `/portfolio` assumptions from Home/Projects navigation.
-22. Traced repeated GitHub Pages build failures to malformed homepage base-path expressions and corrected the remaining instances; awaiting CI confirmation on the new commit.
+22. Traced repeated GitHub Pages build failures to malformed homepage base-path expressions, corrected the remaining instances, and confirmed a successful GitHub Actions production build/deployment run (`37336270174`).
 22. Refactored shared portfolio navigation/footer to consume the same centralized base-path helper, eliminating duplicate deployment-path logic from the layout.
 20. Tightened research content truth: Cognitrace/Green Passport award and publication metadata is now marked pending verification until authoritative public evidence is available.
 21. Removed the remaining hard-coded `/portfolio` assumption from Project Detail navigation and made project detail document titles use verified project titles when available.
+23. Confirmed GitHub Actions production build/deployment success after the homepage route-link fixes; nested-route browser verification remains the next deployment validation task.
