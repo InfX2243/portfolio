@@ -43,26 +43,24 @@ export function AppRouter() {
     }
     descriptionTag.content = description;
 
-    const projectSlug = path.startsWith("/projects/") ? path.slice("/projects/".length) : "";
     const canonicalPath = path === "/" ? "/" : path;
     const canonicalUrl = window.location.origin + BASE_PATH + canonicalPath;
-    const projectLabel = project ? project.title : "Project";
     const socialTitle = path === "/" ? "Abid Ahmed Shaikh — Systems · AI · Cloud · Research" : title;
     const socialDescription = description;
     const setMeta = (selector, attribute, value) => {
       let tag = document.head.querySelector(selector);
       if (!tag) {
         tag = document.createElement("meta");
-        tag.setAttribute(attribute.split("=")[0], attribute.split("=")[1]);
+        tag.setAttribute(attribute, selector.match(/=(?:"([^"]+)"|'([^']+)')/)?.slice(1).find(Boolean) || "");
         document.head.appendChild(tag);
       }
       tag.content = value;
     };
-    setMeta('meta[property="og:title"]', "property=og:title", socialTitle);
-    setMeta('meta[property="og:description"]', "property=og:description", socialDescription);
-    setMeta('meta[property="og:url"]', "property=og:url", canonicalUrl);
-    setMeta('meta[name="twitter:title"]', "name=twitter:title", socialTitle);
-    setMeta('meta[name="twitter:description"]', "name=twitter:description", socialDescription);
+    setMeta('meta[property="og:title"]', "property", socialTitle);
+    setMeta('meta[property="og:description"]', "property", socialDescription);
+    setMeta('meta[property="og:url"]', "property", canonicalUrl);
+    setMeta('meta[name="twitter:title"]', "name", socialTitle);
+    setMeta('meta[name="twitter:description"]', "name", socialDescription);
     let canonical = document.head.querySelector('link[rel="canonical"]');
     if (!canonical) {
       canonical = document.createElement("link");
