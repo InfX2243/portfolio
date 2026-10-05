@@ -548,3 +548,43 @@ Truth boundary:
 4. Validate Credly third-party loading and certificate presentation.
 5. Verify external links and remaining content truth.
 6. Complete GitHub Pages verification and final ACM Winter School submission pass.
+
+
+## Latest implementation increment — credential embed resilience
+
+**Status: IMPLEMENTED**
+
+Completed:
+- Credly's third-party embed loader now tracks loading, loaded and error states.
+- Existing script instances are reused rather than injected repeatedly.
+- The credential card explicitly switches to a fallback state if the third-party script fails.
+- The portfolio remains usable when Credly is unavailable.
+
+Validation boundary:
+- This is code-level hardening only. Actual browser/network validation of the Credly embed has not yet been performed.
+
+### Current tracker
+
+| Task | Status |
+|---|---|
+| Credential data model | ✅ Complete |
+| Credly embed | ✅ Implemented + hardened |
+| Certificate cards | ✅ Implemented |
+| Project visual evidence | ✅ Complete |
+| Research visual evidence | ✅ Complete |
+| Text-density rebalance | ✅ Complete |
+| Spline viewer integration | ✅ Implemented |
+| Verified Spline scene | 🔴 Pending verified URL |
+| Verified credential metadata/assets | 🔴 Pending source material |
+| Production build | 🔴 Pending actual execution |
+| Browser/mobile validation | 🔴 Pending |
+| Accessibility audit | 🔴 Pending |
+| Performance measurement | 🔴 Pending |
+| GitHub Pages verification | 🔴 Pending |
+
+### Next queue
+1. Execute the production build and resolve real dependency/runtime failures.
+2. Browser-test Credly and Spline third-party integrations with their fallback paths.
+3. Validate mobile layouts, keyboard/focus behavior and reduced-motion behavior.
+4. Add verified credential metadata/assets and Spline scene URL when supplied.
+5. Verify all external links/content and complete GitHub Pages validation.
