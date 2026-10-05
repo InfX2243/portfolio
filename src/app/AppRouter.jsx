@@ -1,4 +1,5 @@
 import { lazy, Suspense, useEffect, useState } from "react";
+import { projects } from "../data/portfolio";
 const HomePage = lazy(() => import("../pages/HomePage").then(m => ({ default: m.HomePage })));
 const ProjectsPage = lazy(() => import("../pages/ProjectsPage").then(m => ({ default: m.ProjectsPage })));
 const ProjectDetailPage = lazy(() => import("../pages/ProjectDetailPage").then(m => ({ default: m.ProjectDetailPage })));
@@ -31,7 +32,8 @@ export function AppRouter() {
       "/about": ["About — Abid Ahmed Shaikh", "Background, technical direction, research trajectory and community involvement."],
       "/contact": ["Contact — Abid Ahmed Shaikh", "Professional contact links for engineering, research and collaboration conversations."]
     };
-    const [title, description] = metadata[path] || (path.startsWith("/projects/") ? ["Project — Abid Ahmed Shaikh", "Project case study with verified technical context, contribution and evidence."] : ["Not Found — Abid Ahmed Shaikh", "The requested portfolio route does not exist."]);
+    const project = path.startsWith("/projects/") ? projects.find(item => item.id === decodeURIComponent(path.slice("/projects/".length))) : null;
+    const [title, description] = metadata[path] || (path.startsWith("/projects/") ? [project ? `${project.title} — Abid Ahmed Shaikh` : "Project — Abid Ahmed Shaikh", "Project case study with verified technical context, contribution and evidence."] : ["Not Found — Abid Ahmed Shaikh", "The requested portfolio route does not exist."]);
     document.title = title;
     let descriptionTag = document.querySelector("meta[name=description]");
     if (!descriptionTag) {
