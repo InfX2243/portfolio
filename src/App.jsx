@@ -5,6 +5,7 @@ import { CredlyBadge } from "./components/CredlyBadge";
 import { CertificateCard } from "./components/CertificateCard";
 import { SplineScene } from "./components/SplineScene";
 import { ProjectVisual } from "./components/ProjectVisual";
+import { ResearchVisual } from "./components/ResearchVisual";
 import { certifications, domains, experience, leadership, profile, projects, research, stack } from "./data/portfolio";
 import credentials from "./data/credentials.json";
 import "./styles.css";
@@ -136,6 +137,7 @@ function App() {
               <h3>{item.title}</h3>
               <p className="research-context">{item.context} · {item.recognition}</p>
               <p>{item.description}</p>
+              <ResearchVisual research={item} />
               <div className="research-evidence">
                 <span>Evidence</span>
                 <small>{item.evidence}</small>
