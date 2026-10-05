@@ -331,3 +331,49 @@ Its title/issuer/credential metadata will remain unfilled until verified. Certif
 - [ ] third-party loading/performance measured
 - [ ] production build verified
 - [ ] GitHub Pages verified
+
+
+## Latest implementation increment — Milestone 2B credential + visual foundation
+
+**Status: IMPLEMENTED — first visual pass**
+
+Completed in this increment:
+- Added `src/data/credentials.json` as the dedicated credential source.
+- Added the supplied Credly badge UUID `1c5d5a36-a209-4858-a57d-baf3d322a1a0` without guessing its title or issuer.
+- Added a reusable `CredlyBadge` component that injects the Credly embed script once and keeps the surrounding portfolio content independent of the third-party embed.
+- Added a reusable `CertificateCard` component with preview placeholders and verification slots for supplied certificate assets/URLs.
+- Reworked the credentials area from a plain list into a visual credential wall plus compact certification evidence.
+- Added a progressive `SplineScene` wrapper and a visual 3D systems slot with a non-blocking fallback. No Spline scene URL has been fabricated.
+- Added responsive styling for credential cards and the 3D systems surface.
+
+Not yet complete:
+- Credly badge title/issuer/public verification URL still require verification.
+- Certificate IDs, dates, certificate assets and verification URLs still require supplied/verified source data.
+- A real Spline scene URL/embed is still required before the 3D surface can render an actual scene.
+- Production build, browser validation, third-party loading validation, accessibility/performance measurement and GitHub Pages verification remain pending.
+
+### Milestone 2B task tracker
+
+| Task | Status |
+|---|---|
+| Credential JSON schema | ✅ Complete |
+| First supplied badge record | ✅ Recorded, metadata intentionally pending |
+| Credly reusable embed | ✅ Implemented |
+| Certificate visual card | ✅ Implemented |
+| Visual credential wall | ✅ Implemented |
+| Project visual/architecture system | 🟡 Next |
+| Spline wrapper + fallback | ✅ Implemented |
+| Verified Spline scene | 🔴 Blocked on scene URL/embed |
+| Text-density rebalance | 🟡 In progress |
+| Mobile/reduced-motion validation | 🔴 Pending |
+| Third-party performance validation | 🔴 Pending |
+| Production build | 🔴 Pending |
+| GitHub Pages verification | 🔴 Pending |
+
+### Next implementation queue
+1. Add visual/architecture panels to featured projects.
+2. Reduce project/research paragraph density and surface evidence chips/visual hierarchy.
+3. Add the real Spline scene once a verified scene URL/embed is supplied.
+4. Validate Credly loading and fallback behavior in a browser.
+5. Run production build and accessibility/performance checks.
+6. Complete credential metadata and certificate asset verification as source material becomes available.
