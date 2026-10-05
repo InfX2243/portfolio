@@ -529,3 +529,161 @@ The implementation now includes an explicit skip-navigation path, visible keyboa
 - performance measurement;
 - link and content-truth review;
 - GitHub Pages published-site verification.
+
+
+## 14. Visual + Credential Expansion Plan — Milestone 2B
+
+**Status: PLANNED**
+
+The next iteration responds directly to visual review feedback: the current portfolio is credible but too text-heavy. Milestone 2B will shift the page toward an **evidence-rich visual portfolio** without turning it into a decorative demo.
+
+### 14.1 Core objective
+
+Reduce reading load while increasing technical signal through:
+- project visuals and architecture diagrams;
+- interactive 3D/scene composition;
+- credential/badge evidence;
+- visual research artifacts;
+- stronger project-card hierarchy;
+- more intentional whitespace and section rhythm.
+
+The page should communicate **what was built, what was recognized, and what technologies/systems are involved** before requiring the reviewer to read long paragraphs.
+
+### 14.2 Credentials data architecture
+
+Create a dedicated JSON source of truth for credentials, separate from src/data/portfolio.js:
+
+- src/data/credentials.json
+- top-level groups: badges, certificates, and optionally awards
+- badge records should contain:
+  - id
+  - title (only after verification)
+  - issuer
+  - credlyBadgeId
+  - embedHost
+  - embedWidth
+  - embedHeight
+  - publicUrl when verified
+  - featured
+- certificate records should contain:
+  - id
+  - title
+  - issuer
+  - credentialId when available
+  - issuedOn when verified
+  - certificateUrl or local asset path when supplied/verified
+  - skills only when source-backed
+  - featured
+- never infer badge titles, certificate IDs, dates, URLs, or issuer details from a badge UUID alone.
+
+The supplied Credly embed is the first known badge record, but its human-readable title remains TBD until verified.
+
+### 14.3 Credly presentation
+
+Implement a reusable CredlyBadge component that:
+- accepts the JSON record;
+- injects the Credly embed script once rather than once per badge;
+- renders a responsive badge card around the embed;
+- provides a normal link fallback when available;
+- avoids rendering duplicate scripts;
+- remains usable when the third-party embed is blocked or unavailable.
+
+Credly's official guidance requires the badge to be accepted and public before embedding. The implementation will preserve that assumption and use the official embed mechanism rather than scraping badge imagery.
+
+### 14.4 Certificate presentation
+
+Implement a reusable CertificateCard / CertificateViewer pattern:
+- certificate preview first;
+- issuer/title/credential metadata second;
+- external verification link when available;
+- optional PDF/image viewer only for assets supplied by the user;
+- modal/lightbox interaction only if it improves review speed;
+- no fake certificate thumbnails or verification URLs.
+
+### 14.5 3D / Spline direction
+
+Add Spline as a **fourth visual technology**, complementary to VGPU, Canvas UI and Aceternity.
+
+Planned use:
+1. **Hero:** one restrained interactive 3D object/scene representing systems, nodes, infrastructure, or a research instrument.
+2. **Systems section:** optional smaller 3D scene or interactive system visualization.
+3. **Project storytelling:** only use scene embeds where they explain architecture or interaction, not as decoration.
+
+Preferred integration:
+- start with Spline Viewer embed for a contained, maintainable integration;
+- evaluate React/Code API only if page-level interaction needs to drive the scene;
+- lazy-load or defer the scene;
+- provide a static/fallback visual for reduced-motion, unsupported devices, or performance pressure;
+- keep core portfolio content independent of the 3D runtime.
+
+Spline's current documentation supports Viewer embeds, React integration and Code API, and its Viewer supports lazy loading. The plan therefore favors Viewer first and deeper runtime control only when justified.
+
+### 14.6 Visual storytelling system
+
+Replace the current text-heavy project treatment with:
+- project visual / architecture panel;
+- short one-line thesis;
+- 2–4 evidence chips;
+- contribution/outcome as compact metadata;
+- expandable detail for deeper reading;
+- award/recognition as a strong visual signal;
+- project links only when verified.
+
+Research should gain:
+- visual research cards;
+- award/venue markers;
+- methodology flow;
+- optional paper/diagram preview when source material is supplied.
+
+### 14.7 Section rhythm
+
+Planned sequence:
+
+1. Hero + Spline scene
+2. Research direction / short profile
+3. Experience timeline
+4. Featured work — visual project grid
+5. Research — visual evidence
+6. Systems — interactive/3D technical visualization
+7. Credentials — Credly badge wall + certificate gallery
+8. Community / leadership
+9. Contact
+
+The goal is to make every major viewport visually distinct while retaining a coherent design language.
+
+### 14.8 Performance and accessibility guardrails
+
+- No autoplay-heavy 3D scene on mobile by default.
+- Respect prefers-reduced-motion.
+- Lazy-load Spline and credential embeds.
+- Avoid loading the Credly script once per badge.
+- Reserve layout space for third-party embeds to reduce layout shift.
+- Keep keyboard-accessible controls and visible focus.
+- Use static poster/fallback visuals for 3D scenes.
+- Measure actual bundle/load/render cost before Stage 5 closure.
+- Do not let third-party embeds block the page's core content.
+
+### 14.9 Implementation order
+
+1. Add src/data/credentials.json schema and verified badge/certificate records.
+2. Build reusable credential components.
+3. Redesign credentials section into a visual evidence wall.
+4. Add project visual/architecture slots and supporting assets.
+5. Add Spline hero scene with fallback.
+6. Refine project/research visual hierarchy.
+7. Rebalance typography, spacing and section density.
+8. Validate desktop/mobile/reduced-motion/performance.
+9. Verify all credential and external links.
+10. Run production build and GitHub Pages validation.
+
+### 14.10 Acceptance criteria for Milestone 2B
+
+- The portfolio is visibly less text-heavy without removing important evidence.
+- Credentials are data-driven and maintainable from JSON.
+- Credly badges use official embeds and have fallbacks.
+- Certificates have a visual presentation and verified metadata.
+- Spline contributes a meaningful 3D technical visual rather than a generic hero decoration.
+- Existing VGPU, Canvas UI and Aceternity roles remain coherent.
+- 3D/third-party embeds do not block or hide core content.
+- Mobile and reduced-motion experiences remain usable.
+- No credential, project, award, date, URL, or metric is invented.
