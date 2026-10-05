@@ -513,3 +513,19 @@ After this milestone, proceed to full section implementation.
 ## 13. Live Progress Tracking
 
 The detailed task tracker is maintained in `docs/PROJECT-STATUS.md`. It records completed work, current implementation scope, validation gaps, blockers, and the next implementation milestone. Update it after each meaningful implementation increment.
+
+
+## Latest implementation tracking — accessibility hardening
+
+**Status: IN PROGRESS**
+
+The implementation now includes an explicit skip-navigation path, visible keyboard focus treatment, and additional narrow-screen navigation spacing. These changes satisfy more of the planned UX hardening requirements, but they do not constitute a completed Stage 5 accessibility audit.
+
+**Still required before Stage 5 can close:**
+- executable production build;
+- keyboard/focus-order validation;
+- responsive device/breakpoint validation;
+- automated/manual accessibility review;
+- performance measurement;
+- link and content-truth review;
+- GitHub Pages published-site verification.
