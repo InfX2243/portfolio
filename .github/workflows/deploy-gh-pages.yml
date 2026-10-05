@@ -25,8 +25,11 @@ jobs:
           VITE_SPLINE_SCENE_URL: ${{ vars.SPLINE_SCENE_URL }}
         run: npm run build
 
+      - name: Prepare GitHub Pages route fallback
+        run: cp dist/index.html dist/404.html
+
       - name: Verify build output
-        run: test -f dist/index.html
+        run: test -f dist/index.html && test -f dist/404.html
 
       - name: Deploy dist to gh-pages
         uses: peaceiris/actions-gh-pages@v3
