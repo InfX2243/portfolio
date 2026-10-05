@@ -417,3 +417,46 @@ This increment improves the text-to-visual ratio while keeping the underlying pr
 3. Add a real Spline scene once its URL/embed is available.
 4. Perform the first actual browser/build validation pass.
 5. Complete accessibility/performance checks and GitHub Pages verification.
+
+
+## Latest implementation increment — Milestone 2B research visual evidence
+
+**Status: IMPLEMENTED**
+
+Completed:
+- Added `src/components/ResearchVisual.jsx` as a reusable, data-derived research evidence map.
+- Integrated the visual map into each research card without inventing publications, methodologies, metrics, or architecture.
+- Visualized existing research context, description, recognition, and evidence as a compact four-stage presentation model.
+- Added research signal/context/recognition chips using only existing source-backed fields.
+- Added responsive tablet/mobile behavior matching the project evidence visual language.
+
+Truth boundary:
+- The labels QUESTION → INVESTIGATE → RECOGNITION → EVIDENCE are presentation structure, not claims about a literal research workflow.
+- Publication links, paper previews, methodology diagrams, dates, and additional research artifacts remain blocked until verified source material is supplied.
+
+### Updated Milestone 2B tracker
+
+| Task | Status |
+|---|---|
+| Credential JSON schema | ✅ Complete |
+| Credly reusable embed | ✅ Implemented |
+| Certificate visual card | ✅ Implemented |
+| Visual credential wall | ✅ Implemented |
+| Project visual/architecture evidence system | ✅ Implemented |
+| Research visual evidence system | ✅ Implemented |
+| Verified project/research architecture or paper artifacts | 🔴 Pending source material |
+| Spline wrapper + fallback | ✅ Implemented |
+| Verified Spline scene | 🔴 Blocked on scene URL/embed |
+| Text-density rebalance | 🟡 In progress |
+| Mobile/reduced-motion validation | 🔴 Pending |
+| Third-party performance validation | 🔴 Pending |
+| Production build | 🔴 Pending |
+| GitHub Pages verification | 🔴 Pending |
+
+### Next implementation queue
+1. Rebalance typography/spacing and reduce remaining paragraph density.
+2. Add verified Credly metadata and certificate assets/IDs/dates/URLs as source material becomes available.
+3. Add a real Spline scene once its verified URL/embed is available.
+4. Perform the first actual browser/build validation pass.
+5. Complete accessibility/performance checks and GitHub Pages verification.
+6. Add verified research/project artifacts only when supplied.
