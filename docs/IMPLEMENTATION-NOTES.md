@@ -112,3 +112,10 @@ Added keyboard-visible focus treatment, disclosure-control focus treatment and r
 ## CI delivery hardening checkpoint
 
 The deployment workflow now has an explicit build step, optional Spline environment injection from the repository variable `SPLINE_SCENE_URL`, and a post-build `dist/index.html` guard. No successful workflow run is claimed yet.
+
+
+## Accessible mobile navigation checkpoint
+
+Implemented a dedicated `MobileNav` component with native state management, ARIA disclosure semantics, Escape-key dismissal, link-selection closure, and responsive styling. The desktop navigation remains unchanged. Reduced-motion users receive a non-animated panel transition.
+
+No runtime/device validation is claimed yet; the next validation pass must exercise keyboard, touch, narrow-width and production-build behavior.
