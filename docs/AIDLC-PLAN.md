@@ -333,6 +333,8 @@ Exit criteria:
 - implementation-ready design specification.
 
 ### Stage 4 — Implement
+Status: **in progress — foundation milestone implemented**.
+
 Tasks:
 - refactor app structure;
 - build reusable components;
@@ -479,15 +481,19 @@ No major architectural change should be made silently.
 
 **Milestone:** Portfolio Information Architecture + Design System Foundation
 
+**Status:** Implemented on `portfolio-v1` in commit `831d55a1d88bdadb3ca6767801842079b496faba`.
+
 Deliverables:
-- [ ] approved section structure;
-- [ ] component architecture;
-- [ ] typography/color/motion system;
-- [ ] initial Aceternity integration;
-- [ ] initial Canvas UI integration;
-- [ ] VGPU feasibility decision;
-- [ ] content schema;
-- [ ] first polished hero + navigation;
-- [ ] updated content source.
+- [x] approved section structure;
+- [x] component architecture;
+- [x] typography/color/motion system;
+- [x] initial Aceternity-inspired interaction patterns;
+- [x] initial Canvas UI-inspired canvas effect;
+- [x] VGPU feasibility decision — optional WebGPU shader field with fallback;
+- [x] content schema;
+- [x] first polished hero + navigation;
+- [x] updated content source.
+
+Validation note: GitHub Actions was not yet reporting a workflow run for the implementation commit when this milestone was recorded; local execution is unavailable through the GitHub connector. Production build verification remains a validation-stage task.
 
 After this milestone, proceed to full section implementation.
