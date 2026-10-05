@@ -235,3 +235,24 @@ Definition of done:
 4. Perform performance checks for canvas/WebGPU effects and page-load cost.
 5. Reconcile remaining content/source gaps (publication URLs, project URLs, resume/email) without inventing data.
 6. Verify GitHub Pages deployment and published-site behavior.
+
+
+## Latest implementation increment — accessibility and mobile hardening
+
+**Completed:**
+- Added a keyboard-accessible skip-navigation link that moves focus directly to the main content area.
+- Added a consistent `:focus-visible` treatment for links and buttons so keyboard users retain a visible focus indicator against the dark UI.
+- Hardened the compact mobile navigation spacing to reduce crowding at narrow widths without introducing a separate menu interaction.
+- Preserved reduced-motion behavior and the existing progressive-enhancement model for Canvas/WebGPU effects.
+
+**Validation status:**
+- These are implementation improvements, not a completed accessibility audit.
+- Production build, real-device responsive testing, automated accessibility checks, performance measurement, and GitHub Pages verification remain pending.
+
+**Next implementation queue:**
+1. Run `npm run build` in an executable environment.
+2. Test keyboard navigation and focus order against the live build.
+3. Test project/research layouts at mobile and tablet breakpoints.
+4. Measure Canvas/WebGPU and initial-load performance.
+5. Complete source-backed content/link verification.
+6. Verify the GitHub Pages deployment and published site.
