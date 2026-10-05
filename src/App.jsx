@@ -118,17 +118,35 @@ function App() {
       </section>
 
       <section id="research" className="section-shell section research">
-        <div className="research-callout">
-          <span className="eyebrow">Research signal</span>
-          <div>
-            <p className="research-number">01</p>
-            <h2>Cognitrace</h2>
-            <p>ICSSSD 2026 · Best Paper Award</p>
-          </div>
-          <div className="research-copy">
-            <p>Research is treated as an extension of engineering: formulate a problem, build something testable, interrogate the result, and communicate what was learned.</p>
-            <a className="text-link" href="#work">View project evidence ↓</a>
-          </div>
+        <SectionHeader index="03R" eyebrow="Research" title="Evidence, not just a label." intro="A compact research record that separates recognition, context and source-backed evidence." />
+        <div className="research-grid">
+          {research.map((item) => (
+            <article className="research-card" key={item.id}>
+              <div className="research-card-top">
+                <span>{item.index}</span>
+                <span>{item.signal}</span>
+              </div>
+              <h3>{item.title}</h3>
+              <p className="research-context">{item.context} · {item.recognition}</p>
+              <p>{item.description}</p>
+              <div className="research-evidence">
+                <span>Evidence</span>
+                <small>{item.evidence}</small>
+              </div>
+              {Object.entries(item.links).length > 0 && (
+                <div className="project-links">
+                  {Object.entries(item.links).map(([label, href]) => (
+                    <a key={label} href={href} target="_blank" rel="noreferrer">{label} ↗</a>
+                  ))}
+                </div>
+              )}
+            </article>
+          ))}
+        </div>
+        <div className="research-method">
+          <span className="eyebrow">Research method</span>
+          <p>Formulate a problem → build something testable → interrogate the result → communicate what was learned.</p>
+          <a className="text-link" href="#work">See project evidence ↓</a>
         </div>
       </section>
 
