@@ -111,11 +111,14 @@ function App() {
               <h3>{project.title}</h3>
               <p>{project.description}</p>
               <ProjectVisual project={project} />
-              <div className="project-detail">
-                <div><span>CONTRIBUTION</span><p>{project.contribution}</p></div>
-                <div><span>APPROACH</span><div className="tag-row">{(project.approach ?? []).map((tag) => <span key={tag}>{tag}</span>)}</div></div>
-                <div><span>OUTCOME</span><p>{project.outcome}</p></div>
-              </div>
+              <details className="evidence-details">
+                <summary>Technical detail <span>↗</span></summary>
+                <div className="project-detail">
+                  <div><span>CONTRIBUTION</span><p>{project.contribution}</p></div>
+                  <div><span>APPROACH</span><div className="tag-row">{(project.approach ?? []).map((tag) => <span key={tag}>{tag}</span>)}</div></div>
+                  <div><span>OUTCOME</span><p>{project.outcome}</p></div>
+                </div>
+              </details>
               {project.award && <div className="award">↳ {project.award}</div>}
               <div className="project-evidence"><span>Evidence</span><small>{project.evidence}</small></div>
               <div className="tag-row">{(project.tags ?? []).map((tag) => <span key={tag}>{tag}</span>)}</div>
@@ -138,10 +141,13 @@ function App() {
               <p className="research-context">{item.context} · {item.recognition}</p>
               <p>{item.description}</p>
               <ResearchVisual research={item} />
-              <div className="research-evidence">
-                <span>Evidence</span>
-                <small>{item.evidence}</small>
-              </div>
+              <details className="evidence-details research-details">
+                <summary>Source detail <span>↗</span></summary>
+                <div className="research-evidence">
+                  <span>Evidence</span>
+                  <small>{item.evidence}</small>
+                </div>
+              </details>
               {Object.entries(item.links ?? {}).length > 0 && (
                 <div className="project-links">
                   {Object.entries(item.links ?? {}).map(([label, href]) => (
