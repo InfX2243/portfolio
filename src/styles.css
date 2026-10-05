@@ -282,3 +282,14 @@ a { text-decoration: none; }
 .research-details { margin-top: 10px; }
 .research-details .research-evidence { margin-top: 0; }
 @media (prefers-reduced-motion: reduce) { .evidence-details summary span { transition: none; } }
+
+:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
+.nav a:focus-visible, .button:focus-visible, .text-link:focus-visible { border-radius: 8px; }
+.evidence-details summary:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; border-radius: 6px; }
+.credly-card .credential-fallback small { display: block; max-width: 34rem; line-height: 1.5; }
+.spline-shell spline-viewer { display: block; width: 100%; min-height: 420px; border: 0; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .button, .spot-card, .evidence-details summary { transition: none; }
+  .button:hover, .spot-card:hover { transform: none; }
+}
