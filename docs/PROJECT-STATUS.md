@@ -175,7 +175,7 @@ Once supplied or verified, they can be added without changing the architecture.
 
 ## Next implementation target
 
-**Milestone 2A — Evidence-rich project + research storytelling**
+**Milestone 2B — Visual + credential expansion**
 
 Definition of done:
 - projects expose stronger problem/approach/outcome structure;
@@ -318,14 +318,14 @@ Its title/issuer/credential metadata will remain unfilled until verified. Certif
 
 ### Definition of done
 
-- [ ] credentials JSON schema implemented
+- [x] credentials JSON schema implemented
 - [ ] verified badge records added
 - [ ] certificate records/assets added
-- [ ] Credly embed component implemented
-- [ ] certificate viewer/card implemented
-- [ ] visual credentials section implemented
-- [ ] project visual/architecture slots implemented
-- [ ] Spline scene integrated with fallback
+- [x] Credly embed component implemented
+- [x] certificate viewer/card implemented
+- [x] visual credentials section implemented
+- [x] project visual/architecture slots implemented
+- [x] Spline scene integrated with fallback
 - [ ] text density reduced
 - [ ] mobile/reduced-motion behavior validated
 - [ ] third-party loading/performance measured
