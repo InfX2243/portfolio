@@ -204,7 +204,9 @@ a { text-decoration: none; }
 
 
 .credentials-section { padding-top: 115px; }
-.credential-feature-grid { display: grid; grid-template-columns: 280px 1fr; gap: 14px; align-items: stretch; }
+.credential-feature-grid { display: grid; grid-template-columns: 1fr; gap: 18px; align-items: stretch; }
+.credly-badge-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.credly-badge-grid .credential-visual-card { min-width: 0; }
 .credential-visual-card { border: 1px solid var(--line); border-radius: 18px; background: var(--panel); overflow: hidden; }
 .credential-visual-top { display: flex; justify-content: space-between; padding: 15px 16px; border-bottom: 1px solid var(--line); font: 500 .6rem var(--mono); letter-spacing: .1em; text-transform: uppercase; color: #6c7f90; }
 .credly-embed { min-height: 270px; display: grid; place-items: center; padding: 18px; background: radial-gradient(circle at 50% 35%, rgba(125,211,252,.07), transparent 52%); }
@@ -357,4 +359,11 @@ a { text-decoration: none; }
   .mobile-nav-panel {
     transition: none;
   }
+}
+
+@media (max-width: 900px) {
+  .credly-badge-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 650px) {
+  .credly-badge-grid { grid-template-columns: 1fr; }
 }
