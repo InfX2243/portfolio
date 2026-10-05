@@ -588,3 +588,45 @@ Validation boundary:
 3. Validate mobile layouts, keyboard/focus behavior and reduced-motion behavior.
 4. Add verified credential metadata/assets and Spline scene URL when supplied.
 5. Verify all external links/content and complete GitHub Pages validation.
+
+
+## Latest implementation increment — accessibility validation prep
+
+**Status: IMPLEMENTED**
+
+Completed:
+- Added a consistent `:focus-visible` treatment for keyboard users.
+- Added explicit focus treatment for navigation, buttons, text links and native evidence disclosure controls.
+- Added reduced-motion overrides for smooth scrolling and hover/transform transitions.
+- Added explicit sizing/display rules for the Spline viewer surface.
+- Kept the actual accessibility audit and browser validation **pending**; these implementation changes are preparation, not proof of audit completion.
+
+### Current tracker
+
+| Task | Status |
+|---|---|
+| Information architecture | ✅ Complete |
+| Core portfolio sections | ✅ Complete |
+| VGPU / Canvas / Aceternity visual system | ✅ Implemented |
+| Project + research visual evidence | ✅ Complete |
+| Credential JSON + Credly + certificate UI | ✅ Implemented |
+| Credly failure fallback | ✅ Hardened |
+| Spline viewer + configuration path | ✅ Implemented |
+| Verified Spline scene | 🔴 Pending verified URL |
+| Verified credential metadata/assets | 🔴 Pending source material |
+| Keyboard focus styling | ✅ Implemented |
+| Reduced-motion styling | ✅ Implemented |
+| Formal accessibility audit | 🔴 Pending actual validation |
+| Production build | 🔴 Pending actual execution |
+| Browser/mobile validation | 🔴 Pending actual execution |
+| Performance measurement | 🔴 Pending actual measurement |
+| GitHub Pages verification | 🔴 Pending |
+
+### Next implementation / validation queue
+1. Execute the production build and resolve any real dependency/build failures.
+2. Run browser validation at desktop and mobile breakpoints.
+3. Perform the formal keyboard, semantics, focus and reduced-motion accessibility pass.
+4. Validate Credly/Spline loading and fallback behavior.
+5. Add only verified credential metadata/assets and the real Spline scene URL.
+6. Verify external links and GitHub Pages deployment.
+7. Complete ACM Winter School submission-readiness review.
