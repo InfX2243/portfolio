@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
-import { HomePage } from "../pages/HomePage";
-import { ProjectsPage } from "../pages/ProjectsPage";
-import { ProjectDetailPage } from "../pages/ProjectDetailPage";
-import { ResearchPage } from "../pages/ResearchPage";
-import { AchievementsPage } from "../pages/AchievementsPage";
-import { ExperiencePage } from "../pages/ExperiencePage";
-import { AboutPage } from "../pages/AboutPage";
-import { ContactPage } from "../pages/ContactPage";
-import { NotFoundPage } from "../pages/NotFoundPage";
+import { lazy, Suspense, useEffect, useState } from "react";
+const HomePage = lazy(() => import("../pages/HomePage").then(m => ({ default: m.HomePage })));
+const ProjectsPage = lazy(() => import("../pages/ProjectsPage").then(m => ({ default: m.ProjectsPage })));
+const ProjectDetailPage = lazy(() => import("../pages/ProjectDetailPage").then(m => ({ default: m.ProjectDetailPage })));
+const ResearchPage = lazy(() => import("../pages/ResearchPage").then(m => ({ default: m.ResearchPage })));
+const AchievementsPage = lazy(() => import("../pages/AchievementsPage").then(m => ({ default: m.AchievementsPage })));
+const ExperiencePage = lazy(() => import("../pages/ExperiencePage").then(m => ({ default: m.ExperiencePage })));
+const AboutPage = lazy(() => import("../pages/AboutPage").then(m => ({ default: m.AboutPage })));
+const ContactPage = lazy(() => import("../pages/ContactPage").then(m => ({ default: m.ContactPage })));
+const NotFoundPage = lazy(() => import("../pages/NotFoundPage").then(m => ({ default: m.NotFoundPage })));
 
 const BASE_PATH = "/portfolio";
 function normalizePath(pathname) {
@@ -26,13 +26,6 @@ export function AppRouter() {
     document.title = titles[path] || (path.startsWith("/projects/") ? "Project — Abid Ahmed Shaikh" : "Not Found — Abid Ahmed Shaikh");
     window.scrollTo(0,0);
   }, [path]);
-  if (path === "/") return <HomePage />;
-  if (path === "/projects") return <ProjectsPage />;
-  if (path.startsWith("/projects/")) return <ProjectDetailPage slug={decodeURIComponent(path.slice("/projects/".length))} />;
-  if (path === "/research") return <ResearchPage />;
-  if (path === "/achievements") return <AchievementsPage />;
-  if (path === "/experience") return <ExperiencePage />;
-  if (path === "/about") return <AboutPage />;
-  if (path === "/contact") return <ContactPage />;
-  return <NotFoundPage />;
+  const page = path === "/" ? <HomePage /> : path === "/projects" ? <ProjectsPage /> : path.startsWith("/projects/") ? <ProjectDetailPage slug={decodeURIComponent(path.slice("/projects/".length))} /> : path === "/research" ? <ResearchPage /> : path === "/achievements" ? <AchievementsPage /> : path === "/experience" ? <ExperiencePage /> : path === "/about" ? <AboutPage /> : path === "/contact" ? <ContactPage /> : <NotFoundPage />;
+  return <Suspense fallback={<div className="route-loading section-shell" role="status" aria-live="polite">Loading portfolio section…</div>}>{page}</Suspense>;
 }
