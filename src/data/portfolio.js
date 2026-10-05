@@ -59,7 +59,7 @@ export const projects = [
     number: "03",
     title: "Green Passport",
     type: "Research",
-    award: "ICSSSD 2026",
+    award: null,
     description:
       "A research-oriented project presented at ICSSSD 2026, reflecting an interest in turning practical engineering into investigation.",
     contribution: "Research-oriented engineering work represented through the ICSSSD 2026 project.",
