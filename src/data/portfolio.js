@@ -35,6 +35,7 @@ export const projects = [
     outcome: "Best Paper Award · ICSSSD 2026",
     evidence: "Award recognition is verified in the repository content source.",
     links: {},
+    caseStudy: { problem: null, context: null, role: null, architecture: null, technicalDecisions: null, implementation: null, challenge: null, tradeoffs: null, result: null, evidence: null, learning: null },
     featured: true,
   },
   {
@@ -50,6 +51,7 @@ export const projects = [
     outcome: "National Oracle APEX Hackathon Winner",
     evidence: "Hackathon recognition is verified in the repository content source.",
     links: {},
+    caseStudy: { problem: null, context: null, role: null, architecture: null, technicalDecisions: null, implementation: null, challenge: null, tradeoffs: null, result: null, evidence: null, learning: null },
     featured: true,
   },
   {
@@ -65,6 +67,7 @@ export const projects = [
     outcome: "Presented at ICSSSD 2026",
     evidence: "Conference participation is verified in the repository content source.",
     links: {},
+    caseStudy: { problem: null, context: null, role: null, architecture: null, technicalDecisions: null, implementation: null, challenge: null, tradeoffs: null, result: null, evidence: null, learning: null },
     featured: true,
   },
   {
@@ -80,6 +83,7 @@ export const projects = [
     outcome: "Engineering project / technical exploration",
     evidence: "Project exists in the portfolio source; detailed metrics are intentionally omitted until verified.",
     links: {},
+    caseStudy: { problem: null, context: null, role: null, architecture: null, technicalDecisions: null, implementation: null, challenge: null, tradeoffs: null, result: null, evidence: null, learning: null },
     featured: false,
   },
   {
@@ -95,6 +99,7 @@ export const projects = [
     outcome: "Engineering project / technical exploration",
     evidence: "Project exists in the portfolio source; detailed metrics are intentionally omitted until verified.",
     links: {},
+    caseStudy: { problem: null, context: null, role: null, architecture: null, technicalDecisions: null, implementation: null, challenge: null, tradeoffs: null, result: null, evidence: null, learning: null },
     featured: false,
   },
 ];
@@ -111,6 +116,7 @@ export const research = [
     description: "A research project positioned at the intersection of applied AI and systems thinking.",
     evidence: "Best Paper Award recognition is verified in the repository content source.",
     links: {},
+    caseStudy: { problem: null, context: null, role: null, architecture: null, technicalDecisions: null, implementation: null, challenge: null, tradeoffs: null, result: null, evidence: null, learning: null },
   },
   {
     id: "green-passport",
@@ -122,6 +128,7 @@ export const research = [
     description: "A research-oriented project reflecting an interest in turning practical engineering into investigation.",
     evidence: "ICSSSD 2026 participation is verified in the repository content source.",
     links: {},
+    caseStudy: { problem: null, context: null, role: null, architecture: null, technicalDecisions: null, implementation: null, challenge: null, tradeoffs: null, result: null, evidence: null, learning: null },
   },
 ];
 
