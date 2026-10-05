@@ -62,3 +62,45 @@ Verified focus areas from the project source:
 
 ## Verification Notes
 Do not publish unverified dates, metrics, responsibilities, paper links, project repositories, email address, or resume URL. Add those only when supplied or independently verified.
+
+
+## Credential / visual evidence additions
+
+The portfolio will support a dedicated machine-readable credential source in src/data/credentials.json.
+
+### Credly badge integration input
+
+Known embed data supplied for the first badge:
+
+- Badge ID: 1c5d5a36-a209-4858-a57d-baf3d322a1a0
+- Host: https://www.credly.com
+- Width: 150
+- Height: 270
+
+The human-readable badge title, issuer, award date and public badge URL are **not yet asserted** and must be verified before publication.
+
+### Certificate inventory
+
+The current verified certification names remain the starting inventory:
+
+- AWS Certified Cloud Practitioner.
+- Oracle APEX Cloud Developer Certified Professional.
+- Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate.
+- Oracle Cloud Infrastructure 2025 Certified Generative AI Professional.
+- Oracle AI Vector Search Certified Professional.
+- Oracle Data Platform 2025 Certified Foundations Associate.
+- Oracle Cloud Infrastructure 2025 Certified Foundations Associate.
+
+Certificate IDs, issue dates, PDF/image assets and verification URLs will be added only when supplied or verified.
+
+### Visual direction
+
+The next portfolio pass will add:
+- visual credential cards;
+- Credly embeds;
+- certificate previews;
+- project architecture/visual panels;
+- Spline 3D scene(s);
+- more visual research evidence.
+
+The portfolio should become less text-heavy while preserving the existing truth/verification policy.
