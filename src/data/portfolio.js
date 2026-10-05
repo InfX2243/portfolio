@@ -30,7 +30,11 @@ export const projects = [
     award: "ICSSSD 2026 · Best Paper Award",
     description:
       "A research project positioned at the intersection of applied AI and systems thinking, with recognition at ICSSSD 2026.",
-    tags: ["Research", "AI", "Systems"],
+    contribution: "Research and engineering work represented through the project and its award recognition.",
+    approach: ["Applied AI", "Systems thinking", "Research"],
+    outcome: "Best Paper Award · ICSSSD 2026",
+    evidence: "Award recognition is verified in the repository content source.",
+    links: {},
     featured: true,
   },
   {
@@ -41,7 +45,11 @@ export const projects = [
     award: "National Oracle APEX Hackathon Winner",
     description:
       "An Oracle APEX project that earned recognition at the national hackathon level.",
-    tags: ["Oracle APEX", "Cloud", "Product Engineering"],
+    contribution: "Project work delivered using Oracle APEX.",
+    approach: ["Oracle APEX", "Cloud application development", "Product engineering"],
+    outcome: "National Oracle APEX Hackathon Winner",
+    evidence: "Hackathon recognition is verified in the repository content source.",
+    links: {},
     featured: true,
   },
   {
@@ -52,7 +60,11 @@ export const projects = [
     award: "ICSSSD 2026",
     description:
       "A research-oriented project presented at ICSSSD 2026, reflecting an interest in turning practical engineering into investigation.",
-    tags: ["Research", "Applied Systems"],
+    contribution: "Research-oriented engineering work represented through the ICSSSD 2026 project.",
+    approach: ["Applied research", "Systems thinking"],
+    outcome: "Presented at ICSSSD 2026",
+    evidence: "Conference participation is verified in the repository content source.",
+    links: {},
     featured: true,
   },
   {
@@ -63,7 +75,11 @@ export const projects = [
     award: null,
     description:
       "A systems-focused project exploring microservices, deployment automation, containers, and continuous delivery.",
-    tags: ["Microservices", "CI/CD", "Docker", "Terraform"],
+    contribution: "Systems-oriented implementation focused on service decomposition and delivery workflows.",
+    approach: ["Microservices", "CI/CD", "Docker", "Terraform"],
+    outcome: "Engineering project / technical exploration",
+    evidence: "Project exists in the portfolio source; detailed metrics are intentionally omitted until verified.",
+    links: {},
     featured: false,
   },
   {
@@ -74,7 +90,11 @@ export const projects = [
     award: null,
     description:
       "A cloud-native application project built around modern web development and deployment workflows.",
-    tags: ["AWS", "Next.js", "Node.js", "Cloud"],
+    contribution: "Cloud-oriented web application engineering.",
+    approach: ["AWS", "Next.js", "Node.js", "Cloud"],
+    outcome: "Engineering project / technical exploration",
+    evidence: "Project exists in the portfolio source; detailed metrics are intentionally omitted until verified.",
+    links: {},
     featured: false,
   },
 ];
