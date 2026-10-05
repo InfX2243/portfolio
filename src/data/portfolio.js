@@ -61,7 +61,7 @@ export const projects = [
     type: "Research",
     award: null,
     description:
-      "A research-oriented project presented at ICSSSD 2026, reflecting an interest in turning practical engineering into investigation.",
+      "A research-oriented project reflecting an interest in turning practical engineering into investigation.",
     contribution: "Research-oriented engineering work represented through the ICSSSD 2026 project.",
     approach: ["Applied research", "Systems thinking"],
     outcome: "Presented at ICSSSD 2026",
