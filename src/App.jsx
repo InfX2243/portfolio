@@ -6,6 +6,7 @@ import { CertificateCard } from "./components/CertificateCard";
 import { SplineScene } from "./components/SplineScene";
 import { ProjectVisual } from "./components/ProjectVisual";
 import { ResearchVisual } from "./components/ResearchVisual";
+import { MobileNav } from "./components/MobileNav";
 import { certifications, domains, experience, leadership, profile, projects, research, stack } from "./data/portfolio";
 import credentials from "./data/credentials.json";
 import "./styles.css";
@@ -33,6 +34,7 @@ function Nav() {
         <a href="#systems">Systems</a>
         <a href="#contact">Contact</a>
       </nav>
+      <MobileNav profile={profile} />
       <a className="nav-status" href={profile.links.linkedin} target="_blank" rel="noreferrer">
         <span className="status-dot" /> Open to technical conversations
       </a>
