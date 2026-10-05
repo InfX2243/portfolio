@@ -84,3 +84,10 @@ Next: give research the same visual treatment, then move into actual browser/bui
 Added `ResearchVisual.jsx` and integrated it into the research cards. The component converts already-verified research fields into a compact visual evidence flow and matching signal chips. It deliberately avoids claiming a literal methodology, publication artifact, paper architecture, or metric that is not present in the source data.
 
 The next implementation focus is density rebalance and real validation. Verified research artifacts, credential metadata/assets, and a Spline scene remain source-dependent.
+
+
+## Milestone 2B text-density checkpoint
+
+Secondary project and research detail is now progressively disclosed with native `details/summary` controls. The visual evidence maps remain visible by default, shifting the first-read experience toward visual signals while preserving deeper contribution, approach, outcome and source evidence for reviewers who want it.
+
+No content claims were added in this increment. Validation remains separate and has not been marked complete.
