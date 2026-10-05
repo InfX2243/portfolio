@@ -755,3 +755,10 @@ The Spline Viewer dependency is now explicitly declared and the scene URL is con
 **Status: IMPLEMENTED**
 
 Credly integration now has explicit loading/loaded/error states and a persistent fallback so the portfolio does not depend on successful third-party script execution. Browser/network validation remains a Stage 5 task and is not marked complete by this implementation change.
+
+
+### 14.1.5 Accessibility validation-prep checkpoint
+
+**Status: IMPLEMENTED**
+
+Added explicit focus-visible styling and reduced-motion overrides for the portfolio's interactive controls and motion surfaces. Spline sizing is explicit for the interactive surface. This is implementation hardening only; Stage 5 accessibility and browser validation remain pending.
