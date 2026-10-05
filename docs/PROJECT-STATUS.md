@@ -630,3 +630,45 @@ Completed:
 5. Add only verified credential metadata/assets and the real Spline scene URL.
 6. Verify external links and GitHub Pages deployment.
 7. Complete ACM Winter School submission-readiness review.
+
+
+## Latest implementation increment — CI delivery hardening
+
+**Status: IMPLEMENTED**
+
+Completed:
+- GitHub Pages workflow now names the Vite build step explicitly.
+- CI passes the optional `SPLINE_SCENE_URL` repository variable into `VITE_SPLINE_SCENE_URL`; if unset, the existing Spline fallback remains active.
+- CI now verifies that `dist/index.html` exists immediately after the production build before deployment proceeds.
+- Existing `portfolio-v1` → `gh-pages` deployment flow is preserved.
+
+Validation boundary:
+- The workflow has been hardened, but this does **not** mean a GitHub Actions run or published deployment has been verified in this conversation. Stage 5 remains pending until an actual run/result is observed.
+
+### Current tracker
+
+| Task | Status |
+|---|---|
+| Core portfolio implementation | ✅ Complete |
+| VGPU / Canvas / Aceternity visual system | ✅ Implemented |
+| Project + research visual evidence | ✅ Complete |
+| Credential JSON / Credly / certificate UI | ✅ Implemented |
+| Spline viewer integration | ✅ Implemented |
+| Keyboard focus + reduced motion | ✅ Implemented |
+| CI build verification guard | ✅ Implemented |
+| Verified Spline scene | 🔴 Pending verified URL / repository variable |
+| Verified credential metadata/assets | 🔴 Pending source material |
+| Production build result | 🔴 Pending actual CI/local run |
+| Browser/mobile validation | 🔴 Pending |
+| Accessibility audit | 🔴 Pending |
+| Performance measurement | 🔴 Pending |
+| GitHub Pages published-site verification | 🔴 Pending |
+
+### Next queue
+1. Trigger/observe the GitHub Actions build and deployment result.
+2. If CI fails, fix the actual build/dependency issue rather than guessing.
+3. Browser-test the published site at desktop/mobile breakpoints.
+4. Validate Credly and Spline third-party behavior and fallbacks.
+5. Run accessibility and performance checks.
+6. Configure verified Spline and credential metadata only when source material is available.
+7. Complete final content truth and ACM Winter School submission review.
