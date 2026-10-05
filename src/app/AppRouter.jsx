@@ -22,9 +22,25 @@ export function AppRouter() {
     return () => window.removeEventListener("popstate", sync);
   }, []);
   useEffect(() => {
-    const titles = {"/":"Abid Ahmed Shaikh — Systems · AI · Cloud · Research","/projects":"Projects — Abid Ahmed Shaikh","/research":"Research — Abid Ahmed Shaikh","/achievements":"Achievements — Abid Ahmed Shaikh","/experience":"Experience — Abid Ahmed Shaikh","/about":"About — Abid Ahmed Shaikh","/contact":"Contact — Abid Ahmed Shaikh"};
-    document.title = titles[path] || (path.startsWith("/projects/") ? "Project — Abid Ahmed Shaikh" : "Not Found — Abid Ahmed Shaikh");
-    window.scrollTo(0,0);
+    const metadata = {
+      "/": ["Abid Ahmed Shaikh — Systems · AI · Cloud · Research", "Technical portfolio of Abid Ahmed Shaikh: cloud-native software engineering, AI-enabled systems, backend engineering and applied research."],
+      "/projects": ["Projects — Abid Ahmed Shaikh", "Selected engineering and research projects, with emphasis on contribution, technical decisions and verifiable evidence."],
+      "/research": ["Research — Abid Ahmed Shaikh", "Research work spanning applied AI, systems thinking and evidence-backed technical investigation."],
+      "/achievements": ["Achievements — Abid Ahmed Shaikh", "Awards, certifications and public credentials presented as inspectable evidence."],
+      "/experience": ["Experience — Abid Ahmed Shaikh", "Verified professional engineering experience and technical focus."],
+      "/about": ["About — Abid Ahmed Shaikh", "Background, technical direction, research trajectory and community involvement."],
+      "/contact": ["Contact — Abid Ahmed Shaikh", "Professional contact links for engineering, research and collaboration conversations."]
+    };
+    const [title, description] = metadata[path] || (path.startsWith("/projects/") ? ["Project — Abid Ahmed Shaikh", "Project case study with verified technical context, contribution and evidence."] : ["Not Found — Abid Ahmed Shaikh", "The requested portfolio route does not exist."]);
+    document.title = title;
+    let descriptionTag = document.querySelector("meta[name=description]");
+    if (!descriptionTag) {
+      descriptionTag = document.createElement("meta");
+      descriptionTag.name = "description";
+      document.head.appendChild(descriptionTag);
+    }
+    descriptionTag.content = description;
+    window.scrollTo(0, 0);
   }, [path]);
   const page = path === "/" ? <HomePage /> : path === "/projects" ? <ProjectsPage /> : path.startsWith("/projects/") ? <ProjectDetailPage slug={decodeURIComponent(path.slice("/projects/".length))} /> : path === "/research" ? <ResearchPage /> : path === "/achievements" ? <AchievementsPage /> : path === "/experience" ? <ExperiencePage /> : path === "/about" ? <AboutPage /> : path === "/contact" ? <ContactPage /> : <NotFoundPage />;
   return <Suspense fallback={<div className="route-loading section-shell" role="status" aria-live="polite">Loading portfolio section…</div>}>{page}</Suspense>;
