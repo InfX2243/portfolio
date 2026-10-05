@@ -709,3 +709,12 @@ Still required:
 - browser/build/accessibility/performance/GitHub Pages validation.
 
 This checkpoint intentionally does **not** mark the Spline integration complete because no scene URL was supplied or verified.
+
+
+## 14.2 Milestone 2B project visual checkpoint
+
+**Status: IMPLEMENTED**
+
+The selected-work cards now include a reusable data-derived evidence map. It uses only fields already present in the portfolio data model and therefore does not assert an undocumented architecture. Verified architecture diagrams remain a separate task that requires source material.
+
+The next design increment should apply the same visual-evidence principle to research while keeping publication claims and links source-backed.
