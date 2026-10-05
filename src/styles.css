@@ -379,3 +379,5 @@ a { text-decoration: none; }
 @media(max-width:850px){.project-list-card{grid-template-columns:1fr}.case-grid,.achievement-highlight,.contact-grid{grid-template-columns:1fr}}
 @media(max-width:650px){.desktop-nav,.nav-status{display:none}.nav{justify-content:space-between}.page-section{padding-top:120px}.section-head{grid-template-columns:44px 1fr}.project-list-card{padding:18px}.case-grid section,.achievement-highlight>div,.contact-card{padding:20px}.contact-card strong{font-size:1.3rem;margin-top:25px}}
 @media(prefers-reduced-motion:reduce){.contact-card{transition:none}.contact-card:hover{transform:none}}
+
+.route-loading{min-height:70vh;padding-top:160px;color:var(--muted);font:500 .72rem var(--mono);letter-spacing:.08em;text-transform:uppercase}
