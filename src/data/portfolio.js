@@ -99,6 +99,32 @@ export const projects = [
   },
 ];
 
+
+export const research = [
+  {
+    id: "cognitrace",
+    index: "01",
+    title: "Cognitrace",
+    context: "ICSSSD 2026",
+    recognition: "Best Paper Award",
+    signal: "Award-recognized research",
+    description: "A research project positioned at the intersection of applied AI and systems thinking.",
+    evidence: "Best Paper Award recognition is verified in the repository content source.",
+    links: {},
+  },
+  {
+    id: "green-passport",
+    index: "02",
+    title: "Green Passport",
+    context: "ICSSSD 2026",
+    recognition: "Conference project",
+    signal: "Research-oriented engineering",
+    description: "A research-oriented project reflecting an interest in turning practical engineering into investigation.",
+    evidence: "ICSSSD 2026 participation is verified in the repository content source.",
+    links: {},
+  },
+];
+
 export const domains = [
   {
     label: "01",
