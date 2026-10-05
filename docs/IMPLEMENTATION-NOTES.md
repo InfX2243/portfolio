@@ -119,3 +119,8 @@ The deployment workflow now has an explicit build step, optional Spline environm
 Implemented a dedicated `MobileNav` component with native state management, ARIA disclosure semantics, Escape-key dismissal, link-selection closure, and responsive styling. The desktop navigation remains unchanged. Reduced-motion users receive a non-animated panel transition.
 
 No runtime/device validation is claimed yet; the next validation pass must exercise keyboard, touch, narrow-width and production-build behavior.
+
+
+## Credly badge gallery checkpoint
+
+Added the eight user-supplied Credly badge IDs to the JSON credential source and updated the credentials section to render the complete set. The gallery is responsive across desktop, tablet and mobile widths. The existing one-time Credly script loader and fallback behavior are reused; no badge title or issuer was inferred from UUIDs.
