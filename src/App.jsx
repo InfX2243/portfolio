@@ -1,7 +1,7 @@
 import { CanvasParticleReveal } from "./components/CanvasParticleReveal";
 import { VgpuField } from "./components/VgpuField";
 import { SpotlightCard } from "./components/SpotlightCard";
-import { certifications, domains, experience, leadership, profile, projects, stack } from "./data/portfolio";
+import { certifications, domains, experience, leadership, profile, projects, research, stack } from "./data/portfolio";
 import "./styles.css";
 
 function SectionHeader({ index, eyebrow, title, intro }) {
