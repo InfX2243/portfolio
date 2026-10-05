@@ -102,3 +102,8 @@ Next: configure a verified Spline export, then run real dependency/build/browser
 ## Credential embed resilience checkpoint
 
 The Credly component now reuses a single script element, tracks loading/loaded/error state, and exposes a user-visible fallback when the external embed fails. No credential metadata was inferred or added. Runtime validation remains pending.
+
+
+## Accessibility validation-prep checkpoint
+
+Added keyboard-visible focus treatment, disclosure-control focus treatment and reduced-motion overrides. No audit result is being claimed; these changes prepare the implementation for the actual Stage 5 validation pass.
