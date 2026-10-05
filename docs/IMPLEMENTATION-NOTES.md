@@ -70,3 +70,10 @@ The first visual implementation increment is now in the branch:
 Truth boundary: the first supplied Credly badge UUID is recorded, but its human-readable metadata is not guessed. Likewise, no certificate IDs/dates/URLs/assets or Spline scene URL have been invented.
 
 The next coding increment should focus on project architecture visuals and then browser validation.
+
+
+## Milestone 2B project visual evidence checkpoint
+
+Added `ProjectVisual.jsx` and integrated it into the work cards. The component turns existing project fields into a compact visual flow rather than introducing invented architecture. It deliberately uses the labels INPUT, BUILD, SIGNAL and OUTCOME as a presentation model, not as a claim about a project's literal runtime topology.
+
+Next: give research the same visual treatment, then move into actual browser/build validation.
