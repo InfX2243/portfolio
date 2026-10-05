@@ -10,7 +10,7 @@ function CaseSection({label,title,value,children}) {
 }
 
 function ProjectLinks({links = {}}) {
-  const entries = Object.entries(links).filter(([, url]) => typeof url === "string" && /^https?:\\/\\//.test(url));
+  const entries = Object.entries(links).filter(([, url]) => typeof url === "string" && /^https?:\/\//.test(url));
   if (!entries.length) return null;
   return (
     <section className="case-resources" aria-labelledby="case-resources-title">
