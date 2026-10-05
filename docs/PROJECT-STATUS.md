@@ -16,7 +16,7 @@
 | Phase | Status | Completed | Next work |
 |---|---|---|---|
 | P0 / Phase 0 — Repository Audit | DONE | Repository, dependencies, routes, data, deployment workflow and visual components inspected. | Re-run audit after major architectural changes. |
-| P0 / Phase 1 — Information Architecture | PARTIAL | Lightweight multi-page router, shared layout/navigation/footer, 404 handling, GitHub Pages fallback strategy, centralized Vite-base-aware navigation across shared layout, Home/Projects/Project Detail. | Browser/deployment verification on GitHub Pages, including nested refreshes. |
+| P0 / Phase 1 — Information Architecture | PARTIAL | Lightweight multi-page router, shared layout/navigation/footer, 404 handling, GitHub Pages fallback strategy, centralized Vite-base-aware navigation across shared layout, Home/Projects/Project Detail. | Browser/deployment verification on GitHub Pages, including nested refreshes. Latest CI build failure identified and fixed in homepage route-link syntax. |
 | P0 / Phase 2 — Landing Page | PARTIAL | Hero, VGPU/Canvas enhancement, featured work, research, experience, domains, selected achievements and CTA structure exist. | Content/evidence review, final positioning copy, responsive/accessibility validation. |
 | P0 / Phase 3 — Projects | PARTIAL | Projects index, project cards, dynamic project routes, normalized evidence-aware case-study schema, featured three projects; shared Vite base-path helper now used by Home/Projects links. | Populate only verified problem/context/architecture/decision/trade-off/learning fields; add verified visuals and links. |
 | P0 / Phase 4 — Research | PARTIAL | Research page, Cognitrace, Green Passport, research visuals and recognition separation; unsupported award/publication claims are now explicitly withheld. | Verify links, publication/venue metadata, methodology/contribution evidence. |
@@ -30,6 +30,11 @@
 | P0 / Phase 12 — Final Validation | NOT STARTED | No false pass claimed because production build/browser/GitHub Pages verification is still outstanding. | Execute full acceptance checklist after P0 content and accessibility work. |
 
 \* About is structurally complete; it still needs the final truth/quality review before final portfolio sign-off.
+
+## Current blocker / validation state
+
+- The latest GitHub Pages workflow failed during `npm run build` because `src/pages/HomePage.jsx` contained malformed `withBasePath(...)` JSX expressions. The syntax error has been corrected in commit `49404c5542db79683ccc66eb274980aff3e5eb40`.
+- CI must be re-run on the corrected commit before any routing/deployment requirement can be marked validated.
 
 ## Completed implementation increments
 
