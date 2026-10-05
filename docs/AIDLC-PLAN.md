@@ -741,3 +741,10 @@ The next design increment should apply the same visual-evidence principle to res
 **Status: IMPLEMENTED**
 
 The visual storytelling pass now keeps project/research evidence maps visible while progressively disclosing secondary detail through native accessible disclosure controls. This completes the planned density-rebalance implementation step. Runtime validation remains a separate Stage 5 activity.
+
+
+### 14.1.3 Spline integration hardening checkpoint
+
+**Status: IMPLEMENTED**
+
+The Spline Viewer dependency is now explicitly declared and the scene URL is configuration-driven via `VITE_SPLINE_SCENE_URL`. The component only initializes the viewer when a scene URL exists and retains a static fallback otherwise. This closes the implementation-side integration gap while keeping the actual verified scene and runtime validation as separate tasks.
