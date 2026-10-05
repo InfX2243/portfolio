@@ -1,7 +1,11 @@
 import { CanvasParticleReveal } from "./components/CanvasParticleReveal";
 import { VgpuField } from "./components/VgpuField";
 import { SpotlightCard } from "./components/SpotlightCard";
+import { CredlyBadge } from "./components/CredlyBadge";
+import { CertificateCard } from "./components/CertificateCard";
+import { SplineScene } from "./components/SplineScene";
 import { certifications, domains, experience, leadership, profile, projects, research, stack } from "./data/portfolio";
+import credentials from "./data/credentials.json";
 import "./styles.css";
 
 function SectionHeader({ index, eyebrow, title, intro }) {
@@ -165,15 +169,28 @@ function App() {
         <div className="stack-line"><span>Working vocabulary</span><div>{stack.map((x) => <b key={x}>{x}</b>)}</div></div>
       </section>
 
-      <section className="section-shell section evidence-grid">
-        <div>
-          <SectionHeader index="05" eyebrow="Credentials" title="Signals of depth." />
-          <div className="credential-list">{certifications.map((item, i) => <div key={item}><span>{String(i + 1).padStart(2, "0")}</span>{item}</div>)}</div>
+      <section className="section-shell section credentials-section">
+        <SectionHeader index="05" eyebrow="Credentials" title="Proof you can inspect." intro="Badges and certificates are treated as visual evidence, with metadata added only when it is verified." />
+        <div className="credential-feature-grid">
+          {(credentials.badges ?? []).filter((badge) => badge.featured).map((badge) => <CredlyBadge key={badge.id} badge={badge} />)}
+          <div className="certificate-stack">
+            {(credentials.certificates ?? []).filter((certificate) => certificate.featured).map((certificate) => <CertificateCard key={certificate.id} certificate={certificate} />)}
+          </div>
         </div>
-        <div>
-          <SectionHeader index="06" eyebrow="Community" title="Learn in public." />
-          <div className="credential-list">{(leadership ?? []).map(([item, role], i) => <div key={item}><span>{String(i + 1).padStart(2, "0")}</span><strong>{item}</strong><small>{role}</small></div>)}</div>
+        <div className="certificate-grid">
+          {(credentials.certificates ?? []).filter((certificate) => !certificate.featured).map((certificate) => <CertificateCard key={certificate.id} certificate={certificate} />)}
         </div>
+        <div className="credential-list compact-credential-list">{certifications.map((item, i) => <div key={item}><span>{String(i + 1).padStart(2, "0")}</span>{item}</div>)}</div>
+      </section>
+
+      <section className="section-shell section community-section">
+        <SectionHeader index="06" eyebrow="Community" title="Learn in public." />
+        <div className="credential-list">{(leadership ?? []).map(([item, role], i) => <div key={item}><span>{String(i + 1).padStart(2, "0")}</span><strong>{item}</strong><small>{role}</small></div>)}</div>
+      </section>
+
+      <section className="section-shell section systems-visual-section" aria-labelledby="systems-visual-title">
+        <SectionHeader index="06R" eyebrow="3D systems layer" title="Make the architecture visible." intro="A progressive Spline surface is reserved for a verified scene so the 3D layer explains a system instead of becoming decoration." />
+        <SplineScene fallback="Verified Spline scene pending — the visual slot is ready without blocking the portfolio." />
       </section>
 
       <section id="contact" className="section-shell section closing">
