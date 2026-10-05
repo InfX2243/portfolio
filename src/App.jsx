@@ -4,6 +4,7 @@ import { SpotlightCard } from "./components/SpotlightCard";
 import { CredlyBadge } from "./components/CredlyBadge";
 import { CertificateCard } from "./components/CertificateCard";
 import { SplineScene } from "./components/SplineScene";
+import { ProjectVisual } from "./components/ProjectVisual";
 import { certifications, domains, experience, leadership, profile, projects, research, stack } from "./data/portfolio";
 import credentials from "./data/credentials.json";
 import "./styles.css";
@@ -108,6 +109,7 @@ function App() {
               <div className="project-top"><span>{project.number}</span><span>{project.type}</span></div>
               <h3>{project.title}</h3>
               <p>{project.description}</p>
+              <ProjectVisual project={project} />
               <div className="project-detail">
                 <div><span>CONTRIBUTION</span><p>{project.contribution}</p></div>
                 <div><span>APPROACH</span><div className="tag-row">{(project.approach ?? []).map((tag) => <span key={tag}>{tag}</span>)}</div></div>
