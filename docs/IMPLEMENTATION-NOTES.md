@@ -98,3 +98,7 @@ No content claims were added in this increment. Validation remains separate and 
 The Spline surface now uses the official `@splinetool/viewer` package and is configured through `VITE_SPLINE_SCENE_URL`. The viewer is conditionally initialized only when a scene URL exists, preserving the lightweight fallback path. No scene URL has been fabricated.
 
 Next: configure a verified Spline export, then run real dependency/build/browser validation.
+
+## Credential embed resilience checkpoint
+
+The Credly component now reuses a single script element, tracks loading/loaded/error state, and exposes a user-visible fallback when the external embed fails. No credential metadata was inferred or added. Runtime validation remains pending.
