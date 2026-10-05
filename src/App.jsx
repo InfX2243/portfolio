@@ -89,7 +89,7 @@ function App() {
                 <p className="eyebrow">{item.org}</p>
                 <h3>{item.role}</h3>
                 <p className="muted">{item.note}</p>
-                <div className="tag-row">{item.focus.map((x) => <span key={x}>{x}</span>)}</div>
+                <div className="tag-row">{(item.focus ?? []).map((x) => <span key={x}>{x}</span>)}</div>
               </div>
             </div>
           ))}
@@ -106,13 +106,13 @@ function App() {
               <p>{project.description}</p>
               <div className="project-detail">
                 <div><span>CONTRIBUTION</span><p>{project.contribution}</p></div>
-                <div><span>APPROACH</span><div className="tag-row">{project.approach.map((tag) => <span key={tag}>{tag}</span>)}</div></div>
+                <div><span>APPROACH</span><div className="tag-row">{(project.approach ?? []).map((tag) => <span key={tag}>{tag}</span>)}</div></div>
                 <div><span>OUTCOME</span><p>{project.outcome}</p></div>
               </div>
               {project.award && <div className="award">↳ {project.award}</div>}
               <div className="project-evidence"><span>Evidence</span><small>{project.evidence}</small></div>
-              <div className="tag-row">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-              {Object.entries(project.links).length > 0 && <div className="project-links">{Object.entries(project.links).map(([label, href]) => <a key={label} href={href} target="_blank" rel="noreferrer">{label} ↗</a>)}</div>}
+              <div className="tag-row">{(project.tags ?? []).map((tag) => <span key={tag}>{tag}</span>)}</div>
+              {Object.entries(project.links ?? {}).length > 0 && <div className="project-links">{Object.entries(project.links ?? {}).map(([label, href]) => <a key={label} href={href} target="_blank" rel="noreferrer">{label} ↗</a>)}</div>}
             </SpotlightCard>
           ))}
         </div>
@@ -121,7 +121,7 @@ function App() {
       <section id="research" className="section-shell section research">
         <SectionHeader index="03R" eyebrow="Research" title="Evidence, not just a label." intro="A compact research record that separates recognition, context and source-backed evidence." />
         <div className="research-grid">
-          {research.map((item) => (
+          {(research ?? []).map((item) => (
             <article className="research-card" key={item.id}>
               <div className="research-card-top">
                 <span>{item.index}</span>
@@ -134,9 +134,9 @@ function App() {
                 <span>Evidence</span>
                 <small>{item.evidence}</small>
               </div>
-              {Object.entries(item.links).length > 0 && (
+              {Object.entries(item.links ?? {}).length > 0 && (
                 <div className="project-links">
-                  {Object.entries(item.links).map(([label, href]) => (
+                  {Object.entries(item.links ?? {}).map(([label, href]) => (
                     <a key={label} href={href} target="_blank" rel="noreferrer">{label} ↗</a>
                   ))}
                 </div>
@@ -172,7 +172,7 @@ function App() {
         </div>
         <div>
           <SectionHeader index="06" eyebrow="Community" title="Learn in public." />
-          <div className="credential-list">{leadership.map(([item, role], i) => <div key={item}><span>{String(i + 1).padStart(2, "0")}</span><strong>{item}</strong><small>{role}</small></div>)}</div>
+          <div className="credential-list">{(leadership ?? []).map(([item, role], i) => <div key={item}><span>{String(i + 1).padStart(2, "0")}</span><strong>{item}</strong><small>{role}</small></div>)}</div>
         </div>
       </section>
 
