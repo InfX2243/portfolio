@@ -502,3 +502,49 @@ This is a presentation-density improvement, not a content removal: the underlyin
 5. Verify external links and content truth.
 6. Add verified project/research artifacts where source material exists.
 7. Verify GitHub Pages deployment and prepare the ACM Winter School submission-ready pass.
+
+
+## Latest implementation increment — Spline integration hardening
+
+**Status: IMPLEMENTED**
+
+Completed:
+- Added the official `@splinetool/viewer` package dependency, pinned to the current 2.x major line used for this implementation.
+- Hardened `SplineScene` so the viewer runtime is loaded only when a scene URL is present.
+- Made the scene URL configuration-driven through Vite's `VITE_SPLINE_SCENE_URL` environment variable.
+- Preserved the existing static fallback when no verified scene URL is configured.
+- Added an accessible label to the interactive 3D surface.
+
+Truth boundary:
+- No Spline scene URL has been invented or committed. The real-scene task remains blocked until a verified exported Spline Viewer URL is supplied/configured.
+- This code change is implementation work only; dependency installation, production build and browser runtime validation remain pending.
+
+### Current implementation tracker
+
+| Task | Status |
+|---|---|
+| Credential JSON schema | ✅ Complete |
+| Credly reusable embed | ✅ Implemented |
+| Certificate visual card | ✅ Implemented |
+| Visual credential wall | ✅ Implemented |
+| Project visual evidence system | ✅ Implemented |
+| Research visual evidence system | ✅ Implemented |
+| Text-density rebalance | ✅ Complete |
+| Spline viewer integration | ✅ Implemented |
+| Spline scene configuration path | ✅ Implemented |
+| Verified Spline scene | 🔴 Pending verified scene URL |
+| Verified credential metadata/assets | 🔴 Pending source material |
+| Verified project/research artifacts | 🔴 Pending source material |
+| Production dependency/build validation | 🔴 Pending |
+| Browser/responsive validation | 🔴 Pending |
+| Accessibility audit | 🔴 Pending |
+| Performance measurement | 🔴 Pending |
+| GitHub Pages verification | 🔴 Pending |
+
+### Next implementation queue
+1. Supply/configure a verified Spline export URL and validate the scene in-browser.
+2. Run the production dependency install/build and resolve any build/runtime issues.
+3. Perform desktop/mobile/reduced-motion/accessibility validation.
+4. Validate Credly third-party loading and certificate presentation.
+5. Verify external links and remaining content truth.
+6. Complete GitHub Pages verification and final ACM Winter School submission pass.
