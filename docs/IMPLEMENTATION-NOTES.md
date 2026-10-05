@@ -77,3 +77,10 @@ The next coding increment should focus on project architecture visuals and then 
 Added `ProjectVisual.jsx` and integrated it into the work cards. The component turns existing project fields into a compact visual flow rather than introducing invented architecture. It deliberately uses the labels INPUT, BUILD, SIGNAL and OUTCOME as a presentation model, not as a claim about a project's literal runtime topology.
 
 Next: give research the same visual treatment, then move into actual browser/build validation.
+
+
+## Milestone 2B research visual evidence checkpoint
+
+Added `ResearchVisual.jsx` and integrated it into the research cards. The component converts already-verified research fields into a compact visual evidence flow and matching signal chips. It deliberately avoids claiming a literal methodology, publication artifact, paper architecture, or metric that is not present in the source data.
+
+The next implementation focus is density rebalance and real validation. Verified research artifacts, credential metadata/assets, and a Spline scene remain source-dependent.
