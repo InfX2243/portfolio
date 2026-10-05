@@ -42,6 +42,34 @@ export function AppRouter() {
       document.head.appendChild(descriptionTag);
     }
     descriptionTag.content = description;
+
+    const projectSlug = path.startsWith("/projects/") ? path.slice("/projects/".length) : "";
+    const canonicalPath = path === "/" ? "/" : path;
+    const canonicalUrl = window.location.origin + BASE_PATH + canonicalPath;
+    const projectLabel = project ? project.title : "Project";
+    const socialTitle = path === "/" ? "Abid Ahmed Shaikh — Systems · AI · Cloud · Research" : title;
+    const socialDescription = description;
+    const setMeta = (selector, attribute, value) => {
+      let tag = document.head.querySelector(selector);
+      if (!tag) {
+        tag = document.createElement("meta");
+        tag.setAttribute(attribute.split("=")[0], attribute.split("=")[1]);
+        document.head.appendChild(tag);
+      }
+      tag.content = value;
+    };
+    setMeta('meta[property="og:title"]', "property=og:title", socialTitle);
+    setMeta('meta[property="og:description"]', "property=og:description", socialDescription);
+    setMeta('meta[property="og:url"]', "property=og:url", canonicalUrl);
+    setMeta('meta[name="twitter:title"]', "name=twitter:title", socialTitle);
+    setMeta('meta[name="twitter:description"]', "name=twitter:description", socialDescription);
+    let canonical = document.head.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.rel = "canonical";
+      document.head.appendChild(canonical);
+    }
+    canonical.href = canonicalUrl;
     window.scrollTo(0, 0);
   }, [path]);
   const page = path === "/" ? <HomePage /> : path === "/projects" ? <ProjectsPage /> : path.startsWith("/projects/") ? <ProjectDetailPage slug={decodeURIComponent(path.slice("/projects/".length))} /> : path === "/research" ? <ResearchPage /> : path === "/achievements" ? <AchievementsPage /> : path === "/experience" ? <ExperiencePage /> : path === "/about" ? <AboutPage /> : path === "/contact" ? <ContactPage /> : <NotFoundPage />;
