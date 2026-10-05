@@ -460,3 +460,45 @@ Truth boundary:
 4. Perform the first actual browser/build validation pass.
 5. Complete accessibility/performance checks and GitHub Pages verification.
 6. Add verified research/project artifacts only when supplied.
+
+
+## Latest implementation increment — Milestone 2B text-density rebalance
+
+**Status: IMPLEMENTED**
+
+Completed:
+- Converted secondary project contribution/approach/outcome content into native accessible `<details>` panels.
+- Converted secondary research evidence into an expandable source-detail panel.
+- Kept the project/research visual evidence maps visible by default so the first scan remains visual and evidence-led.
+- Added keyboard-friendly disclosure styling and reduced-motion handling for the disclosure affordance.
+
+This is a presentation-density improvement, not a content removal: the underlying evidence remains available to reviewers while reducing the amount of prose visible in the initial scan.
+
+### Current Milestone 2B tracker
+
+| Task | Status |
+|---|---|
+| Credential JSON schema | ✅ Complete |
+| Credly reusable embed | ✅ Implemented |
+| Certificate visual card | ✅ Implemented |
+| Visual credential wall | ✅ Implemented |
+| Project visual evidence system | ✅ Implemented |
+| Research visual evidence system | ✅ Implemented |
+| Text-density rebalance | ✅ Implemented |
+| Verified project/research architecture or paper artifacts | 🔴 Pending source material |
+| Verified credential metadata/assets | 🔴 Pending source material |
+| Spline wrapper + fallback | ✅ Implemented |
+| Verified Spline scene | 🔴 Blocked on scene URL/embed |
+| Mobile/reduced-motion validation | 🔴 Pending |
+| Third-party performance validation | 🔴 Pending |
+| Production build | 🔴 Pending |
+| GitHub Pages verification | 🔴 Pending |
+
+### Next implementation queue
+1. Add verified credential metadata/assets as they become available.
+2. Add a real Spline scene once its verified URL/embed is available.
+3. Perform the first actual browser/build validation pass.
+4. Complete accessibility, responsive, reduced-motion and performance checks.
+5. Verify external links and content truth.
+6. Add verified project/research artifacts where source material exists.
+7. Verify GitHub Pages deployment and prepare the ACM Winter School submission-ready pass.
