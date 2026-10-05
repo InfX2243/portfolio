@@ -55,3 +55,18 @@ Every major section should answer at least one of:
 - What can the reviewer see?
 
 The redesign should remove unnecessary prose before adding more prose.
+
+
+## Milestone 2B implementation checkpoint
+
+The first visual implementation increment is now in the branch:
+
+- Credentials are sourced from `src/data/credentials.json`.
+- Credly badges use a reusable component with one-time script injection.
+- Certificates use reusable visual cards that can accept verified assets and links later.
+- The credentials section now has a visual wall rather than only a text list.
+- A Spline wrapper and dedicated 3D systems slot exist with a static fallback.
+
+Truth boundary: the first supplied Credly badge UUID is recorded, but its human-readable metadata is not guessed. Likewise, no certificate IDs/dates/URLs/assets or Spline scene URL have been invented.
+
+The next coding increment should focus on project architecture visuals and then browser validation.
