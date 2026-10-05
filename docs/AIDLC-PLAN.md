@@ -762,3 +762,10 @@ Credly integration now has explicit loading/loaded/error states and a persistent
 **Status: IMPLEMENTED**
 
 Added explicit focus-visible styling and reduced-motion overrides for the portfolio's interactive controls and motion surfaces. Spline sizing is explicit for the interactive surface. This is implementation hardening only; Stage 5 accessibility and browser validation remain pending.
+
+
+### 14.1.6 CI delivery hardening checkpoint
+
+**Status: IMPLEMENTED**
+
+The GitHub Pages workflow now passes the optional `SPLINE_SCENE_URL` repository variable into the Vite build and explicitly checks for `dist/index.html` before publishing. This strengthens Stage 6 delivery while keeping actual CI/deployment verification separate and pending.
