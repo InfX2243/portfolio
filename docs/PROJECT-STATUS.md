@@ -26,7 +26,7 @@
 | P0 / Phase 8 — Contact | PARTIAL | Contact page, LinkedIn and GitHub links, CTA structure. | Verified email and resume when supplied; final external-link verification. |
 | P0 / Phase 9 — Performance | PARTIAL | Route chunks and homepage visual effects are lazy-loaded; unused Spline dependency removed. | Production build/chunk inspection, third-party lazy loading, mobile/low-power testing. |
 | P0 / Phase 10 — Accessibility | PARTIAL | Skip link, focus-visible styles, reduced-motion rules, semantic nav labels, Escape handling, active-page semantics, focus restoration, inert closed mobile nav, main landmark, 44px mobile nav controls, single-h1 homepage hierarchy. | Full keyboard/focus/contrast/link audit and browser verification. |
-| P1 / Phase 11 — SEO / Sharing | PARTIAL | Route-specific titles and descriptions implemented. | Open Graph, social preview, favicon, sitemap and robots. |
+| P1 / Phase 11 — SEO / Sharing | PARTIAL | Route-specific titles/descriptions plus static Open Graph and Twitter card metadata on the HTML shell. | Route-specific social metadata, favicon, sitemap and robots. |
 | P0 / Phase 12 — Final Validation | NOT STARTED | No false pass claimed because production build/browser/GitHub Pages verification is still outstanding. | Execute full acceptance checklist after P0 content and accessibility work. |
 
 \* About is structurally complete; it still needs the final truth/quality review before final portfolio sign-off.
@@ -49,7 +49,10 @@
 14. Hardened the mobile navigation toggle/link touch targets to 44px.
 15. Added heading-level control to shared page headers so the homepage uses one h1 followed by section h2 headings; fixed the not-found home link to use the Vite base path.
 16. Verified the seven listed certification IDs and issue months against the owner’s public LinkedIn profile, while leaving certificate verification URLs unset until direct public URLs are available.
-17. Refined Ascend APEX recognition to the publicly corroborated nationwide first-place Xcelerate 2025 Oracle APEX Hackathon result.\n16. Verified the seven listed certification IDs and issue months against the owner’s public LinkedIn profile, while leaving certificate verification URLs unset until direct public URLs are available.\n17. Refined Ascend APEX recognition to the publicly corroborated nationwide first-place Xcelerate 2025 Oracle APEX Hackathon result.
+17. Refined Ascend APEX recognition to the publicly corroborated nationwide first-place Xcelerate 2025 Oracle APEX Hackathon result.
+18. Hardened certificate image/link accessibility and added Twitter card metadata to the static HTML shell.
+16. Verified the seven listed certification IDs and issue months against the owner’s public LinkedIn profile, while leaving certificate verification URLs unset until direct public URLs are available.
+17. Refined Ascend APEX recognition to the publicly corroborated nationwide first-place Xcelerate 2025 Oracle APEX Hackathon result.
 
 ## Highest-priority queue
 
@@ -72,9 +75,10 @@
 
 ### NEXT 3 — Research and achievement verification
 
-- Verify publication/award/credential metadata.\n- Add direct public verification URLs for the certifications where available.
+- Verify publication/award/credential metadata.
+- Add direct public verification URLs for the certifications where available.
 - Add public source links where available.
-- Lazy-load Credly/other third-party embeds.
+- Add direct public verification URLs for credentials where available; Credly embeds are already viewport-deferred.
 
 ### NEXT 4 — Production validation
 
