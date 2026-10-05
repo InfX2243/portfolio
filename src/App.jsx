@@ -184,7 +184,9 @@ function App() {
       <section className="section-shell section credentials-section">
         <SectionHeader index="05" eyebrow="Credentials" title="Proof you can inspect." intro="Badges and certificates are treated as visual evidence, with metadata added only when it is verified." />
         <div className="credential-feature-grid">
-          {(credentials.badges ?? []).filter((badge) => badge.featured).map((badge) => <CredlyBadge key={badge.id} badge={badge} />)}
+          <div className="credly-badge-grid">
+            {(credentials.badges ?? []).map((badge) => <CredlyBadge key={badge.id} badge={badge} />)}
+          </div>
           <div className="certificate-stack">
             {(credentials.certificates ?? []).filter((certificate) => certificate.featured).map((certificate) => <CertificateCard key={certificate.id} certificate={certificate} />)}
           </div>
