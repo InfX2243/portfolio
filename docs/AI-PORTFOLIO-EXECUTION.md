@@ -1345,8 +1345,8 @@ Update this specification only when:
 - [ ] Run production build.
 - [ ] Inspect chunk sizes.
 - [ ] Identify heavy dependencies.
-- [ ] Route-split heavy pages/components.
-- [ ] Lazy-load Spline.
+- [x] Route-split pages/components with lightweight lazy imports.
+- [x] Remove unused Spline dependency after evaluation.
 - [ ] Lazy-load third-party embeds.
 - [ ] Pause off-screen effects where practical.
 - [ ] Test reduced motion.
@@ -1647,7 +1647,7 @@ The current repository already contains meaningful implementation work, includin
 - spotlight card interaction;
 - Credly badge component;
 - certificate cards;
-- Spline wrapper;
+- Spline wrapper (removed after evaluation because no current route requires it);
 - project visual evidence;
 - research visual evidence;
 - mobile navigation;
@@ -1669,16 +1669,17 @@ First determine:
 
 # 39. Important Current Performance Risk
 
-The current implementation includes heavy visual dependencies.
+The current implementation includes a VGPU visual dependency, canvas effects and third-party credential embeds.
 
 The AI must explicitly investigate the production bundle before final delivery.
 
 Particular attention:
 
-- Spline viewer;
-- WASM assets;
-- WebGPU-related assets;
-- third-party credential embeds.
+- VGPU/WASM or WebGPU-related assets;
+- third-party credential embeds;
+- route chunks and homepage visual chunks.
+
+Spline was evaluated during the multi-page migration and removed because no current route provides enough verified visual value to justify the dependency.
 
 Do not assume conditional initialization means conditional download.
 
