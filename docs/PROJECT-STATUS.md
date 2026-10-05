@@ -273,3 +273,61 @@ The reported stack trace occurs when a nested collection is undefined even thoug
 - Refresh/restart the local Vite dev server and confirm the reported exception no longer occurs.
 - Run the production build.
 - Continue responsive, accessibility, performance, and GitHub Pages validation.
+
+
+## Latest planning increment — Milestone 2B visual + credential expansion
+
+**Status: PLANNED**
+
+User review identified a clear presentation gap: the current implementation is too text-heavy and does not provide enough visual evidence. The next increment is therefore a visual storytelling pass rather than adding more prose.
+
+### Planned changes
+
+- Add a dedicated src/data/credentials.json source for Credly badges and certificates.
+- Build reusable Credly badge embeds using the supplied badge embed model.
+- Build certificate cards/viewers driven by JSON.
+- Redesign credentials into a visual evidence wall rather than a text list.
+- Add project visual/architecture panels and compact evidence chips.
+- Add Spline as the 3D layer, starting with a contained Spline Viewer scene and a static fallback.
+- Use Spline selectively for hero/system visualization, not as decoration everywhere.
+- Preserve and refine the existing VGPU + Canvas UI + Aceternity visual system.
+- Reduce paragraph density and move secondary detail behind compact/expandable interactions where appropriate.
+- Validate third-party embed loading, responsive behavior, accessibility, reduced motion, and performance.
+
+### Credential truth policy
+
+The first Credly badge embed supplied by the user is recorded as a known integration input:
+
+- Credly badge UUID: 1c5d5a36-a209-4858-a57d-baf3d322a1a0
+- Host: https://www.credly.com
+- Embed dimensions: 150 × 270
+
+Its title/issuer/credential metadata will remain unfilled until verified. Certificate metadata will likewise come only from supplied files or verifiable source material.
+
+### Planned visual architecture
+
+**Hero:** Spline 3D scene + existing Canvas/VGPU enhancement layers, with a non-3D fallback.
+
+**Work:** visual project cards with architecture/diagram slots, concise evidence, awards, and expandable detail.
+
+**Research:** visual evidence cards + methodology flow + publication artifact when verified.
+
+**Credentials:** Credly badge wall + certificate gallery.
+
+**Systems:** interactive technical visualization where it communicates architecture.
+
+### Definition of done
+
+- [ ] credentials JSON schema implemented
+- [ ] verified badge records added
+- [ ] certificate records/assets added
+- [ ] Credly embed component implemented
+- [ ] certificate viewer/card implemented
+- [ ] visual credentials section implemented
+- [ ] project visual/architecture slots implemented
+- [ ] Spline scene integrated with fallback
+- [ ] text density reduced
+- [ ] mobile/reduced-motion behavior validated
+- [ ] third-party loading/performance measured
+- [ ] production build verified
+- [ ] GitHub Pages verified
