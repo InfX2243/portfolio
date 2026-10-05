@@ -381,3 +381,9 @@ a { text-decoration: none; }
 @media(prefers-reduced-motion:reduce){.contact-card{transition:none}.contact-card:hover{transform:none}}
 
 .route-loading{min-height:70vh;padding-top:160px;color:var(--muted);font:500 .72rem var(--mono);letter-spacing:.08em;text-transform:uppercase}
+
+
+/* Accessibility: preserve readable focus targets and prevent keyboard-only users from losing context. */
+@media (max-width: 650px) {
+  .mobile-nav-panel a { min-height: 44px; display: flex; align-items: center; }
+}
