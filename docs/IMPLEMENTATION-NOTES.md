@@ -107,3 +107,8 @@ The Credly component now reuses a single script element, tracks loading/loaded/e
 ## Accessibility validation-prep checkpoint
 
 Added keyboard-visible focus treatment, disclosure-control focus treatment and reduced-motion overrides. No audit result is being claimed; these changes prepare the implementation for the actual Stage 5 validation pass.
+
+
+## CI delivery hardening checkpoint
+
+The deployment workflow now has an explicit build step, optional Spline environment injection from the repository variable `SPLINE_SCENE_URL`, and a post-build `dist/index.html` guard. No successful workflow run is claimed yet.
