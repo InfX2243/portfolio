@@ -30,7 +30,7 @@ export const projects = [
     award: null,
     description:
       "A research project positioned at the intersection of applied AI and systems thinking.",
-    contribution: "Research and engineering work represented through the project and its award recognition.",
+    contribution: "Research and engineering work represented through the project.",
     approach: ["Applied AI", "Systems thinking", "Research"],
     outcome: "Best Paper Award · ICSSSD 2026",
     evidence: "Award recognition is verified in the repository content source.",
