@@ -533,7 +533,7 @@ The implementation now includes an explicit skip-navigation path, visible keyboa
 
 ## 14. Visual + Credential Expansion Plan — Milestone 2B
 
-**Status: PLANNED**
+**Status: IN PROGRESS — credentials, project visuals, research visuals and Spline fallback implemented; validation and source-dependent assets remain**
 
 The next iteration responds directly to visual review feedback: the current portfolio is credible but too text-heavy. Milestone 2B will shift the page toward an **evidence-rich visual portfolio** without turning it into a decorative demo.
 
@@ -548,6 +548,22 @@ Reduce reading load while increasing technical signal through:
 - more intentional whitespace and section rhythm.
 
 The page should communicate **what was built, what was recognized, and what technologies/systems are involved** before requiring the reviewer to read long paragraphs.
+
+### 14.1.1 Current implementation checkpoint
+
+Implemented so far:
+- credential JSON source and reusable Credly/certificate presentation;
+- project visual evidence maps;
+- research visual evidence maps;
+- progressive Spline wrapper with non-blocking fallback;
+- responsive visual treatments for project/research evidence.
+
+Still open:
+- verified credential metadata/assets;
+- verified project/research artifacts;
+- real Spline scene URL/embed;
+- density rebalance;
+- browser, build, accessibility, performance and GitHub Pages validation.
 
 ### 14.2 Credentials data architecture
 
