@@ -339,7 +339,7 @@ Exit criteria:
 - implementation-ready design specification.
 
 ### Stage 4 — Implement
-Status: **IN PROGRESS — core portfolio implemented; evidence-rich storytelling is next**.
+Status: **IN PROGRESS — core portfolio implemented; evidence-rich project and research storytelling underway**.
 
 Tasks:
 - refactor app structure;
@@ -347,7 +347,8 @@ Tasks:
 - integrate selected UI resources;
 - implement content model;
 - add responsive behavior;
-- implement GPU/canvas enhancements.
+- implement GPU/canvas enhancements;
+- strengthen project and research evidence hierarchy.
 
 Exit criteria:
 - complete portfolio running locally and in production mode.
