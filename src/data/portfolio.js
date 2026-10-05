@@ -33,7 +33,7 @@ export const projects = [
     contribution: "Research and engineering work represented through the project.",
     approach: ["Applied AI", "Systems thinking", "Research"],
     outcome: "Recognition metadata pending verification",
-    evidence: "Award recognition is verified in the repository content source.",
+    evidence: "Award/publication metadata requires an authoritative public source before being presented as verified."
     links: {},
     caseStudy: { problem: null, context: null, role: null, architecture: null, technicalDecisions: null, implementation: null, challenge: null, tradeoffs: null, result: null, evidence: null, learning: null },
     featured: true,
