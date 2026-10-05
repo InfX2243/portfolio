@@ -8,9 +8,9 @@ function active(path,href){return href==="/" ? path==="/" : path===href || path.
 
 export function PortfolioLayout({children}){
  const [open,setOpen]=useState(false);
- const toggleRef=useRef(null);
+ const toggleRef=useRef(null);\n const wasOpen=useRef(false);
  const current=window.location.pathname.startsWith(BASE)?window.location.pathname.slice(BASE.length).replace(/\/+$/,"")||"/":window.location.pathname;
- useEffect(()=>{if(!open){toggleRef.current?.focus();return}const fn=e=>e.key==="Escape"&&setOpen(false);document.addEventListener("keydown",fn);return()=>document.removeEventListener("keydown",fn)},[open]);
+ useEffect(()=>{if(open){wasOpen.current=true;const fn=e=>e.key==="Escape"&&setOpen(false);document.addEventListener("keydown",fn);return()=>document.removeEventListener("keydown",fn)}if(wasOpen.current)toggleRef.current?.focus()},[open]);
  const navigate=(e,href)=>{if(e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();setOpen(false);history.pushState({}, "",BASE+href);window.dispatchEvent(new PopStateEvent("popstate"));};
  return <div id="top" className="app"><a className="skip-link" href="#main-content">Skip to main content</a><div className="ambient-grid" aria-hidden="true"/>
  <header className="nav"><a className="wordmark" href={BASE+"/"} onClick={e=>navigate(e,"/")} aria-label="Abid Ahmed Shaikh home">AA<span>/</span>01</a>
