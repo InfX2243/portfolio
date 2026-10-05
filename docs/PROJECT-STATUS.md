@@ -672,3 +672,26 @@ Validation boundary:
 5. Run accessibility and performance checks.
 6. Configure verified Spline and credential metadata only when source material is available.
 7. Complete final content truth and ACM Winter School submission review.
+
+
+## Latest implementation increment — accessible mobile navigation
+
+**Status: IMPLEMENTED**
+
+Completed:
+- Added a native mobile navigation toggle for narrow screens.
+- Added `aria-expanded`, `aria-controls`, and an accessible toggle label.
+- Added Escape-key dismissal.
+- Added automatic closure when a section/link is selected.
+- Kept the desktop navigation unchanged.
+- Added reduced-motion handling for the mobile panel transition.
+
+Validation boundary:
+- This is an implementation checkpoint, not a completed device/accessibility audit. Actual keyboard, touch, responsive, and production-build validation remain pending.
+
+Next queue:
+1. Run the production build and observe the real result.
+2. Test mobile navigation at narrow breakpoints and keyboard focus order.
+3. Validate Credly/Spline third-party runtime behavior.
+4. Run accessibility and performance checks.
+5. Verify GitHub Pages publication.
