@@ -9,9 +9,9 @@ Branch: `portfolio-v1`
 
 **Milestone 2 — Core portfolio experience: IN PROGRESS**
 
-Current sub-milestone: **2A — Evidence-rich project + research storytelling** (in progress).
+Current sub-milestone: **2B — Visual + credential expansion** (in progress).
 
-The repository has moved beyond the original skeleton. The next work is now focused on evidence-rich project storytelling, deeper research presentation, validation, and delivery.
+The repository has moved beyond the original skeleton. Milestone 2A established evidence-rich project/research storytelling; Milestone 2B is now focused on visual evidence, credentials, 3D storytelling, validation, and delivery.
 
 ## Overall progress
 
@@ -28,7 +28,7 @@ The repository has moved beyond the original skeleton. The next work is now focu
 | Featured projects | 🟢 Evidence model complete | Projects now expose contribution, approach, outcome and evidence; verified links remain pending |
 | Research | 🟢 Evidence hierarchy complete | Research records now separate context, recognition, description and source-backed evidence; publication links remain pending |
 | Technical domains | ✅ Complete | Skills organized by system/domain rather than badge wall |
-| Achievements/certifications | ✅ Complete | Verified credentials represented compactly |
+| Achievements/certifications | 🟢 Visual credential foundation | JSON source, Credly embed and certificate cards implemented; metadata/assets still pending |
 | Leadership/community | ✅ Complete | AWS Student Builder Group + ACM editorial activity |
 | Contact/closing | 🟡 Partial | GitHub/LinkedIn complete; resume/email intentionally pending verification |
 | Aceternity integration | 🟡 Pattern integration | Spotlight/bento-style interaction patterns implemented; no unnecessary library copy |
