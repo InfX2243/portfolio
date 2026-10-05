@@ -32,7 +32,7 @@ export const projects = [
       "A research project positioned at the intersection of applied AI and systems thinking.",
     contribution: "Research and engineering work represented through the project.",
     approach: ["Applied AI", "Systems thinking", "Research"],
-    outcome: "Best Paper Award · ICSSSD 2026",
+    outcome: "Recognition metadata pending verification",
     evidence: "Award recognition is verified in the repository content source.",
     links: {},
     caseStudy: { problem: null, context: null, role: null, architecture: null, technicalDecisions: null, implementation: null, challenge: null, tradeoffs: null, result: null, evidence: null, learning: null },
