@@ -299,6 +299,8 @@ Targets:
 We will execute the work in these stages and keep this document as the source of truth.
 
 ### Stage 1 — Discover
+**Status: COMPLETE**
+
 Tasks:
 - audit current branch;
 - audit public LinkedIn/profile data;
@@ -311,6 +313,8 @@ Exit criteria:
 - uncertain claims explicitly flagged.
 
 ### Stage 2 — Define
+**Status: COMPLETE**
+
 Tasks:
 - finalize target audience and ACM Winter School positioning;
 - define information architecture;
@@ -322,6 +326,8 @@ Exit criteria:
 - approved design/content blueprint.
 
 ### Stage 3 — Design
+**Status: COMPLETE**
+
 Tasks:
 - create component map;
 - define page sections;
@@ -333,7 +339,7 @@ Exit criteria:
 - implementation-ready design specification.
 
 ### Stage 4 — Implement
-Status: **in progress — foundation milestone implemented**.
+Status: **IN PROGRESS — core portfolio implemented; evidence-rich storytelling is next**.
 
 Tasks:
 - refactor app structure;
@@ -347,6 +353,8 @@ Exit criteria:
 - complete portfolio running locally and in production mode.
 
 ### Stage 5 — Validate
+**Status: NOT STARTED**
+
 Tasks:
 - production build;
 - functional link checks;
@@ -361,6 +369,8 @@ Exit criteria:
 - no critical UX, build, accessibility or content issues.
 
 ### Stage 6 — Deliver
+**Status: NOT STARTED**
+
 Tasks:
 - update documentation;
 - commit changes;
@@ -497,3 +507,8 @@ Deliverables:
 Validation note: GitHub Actions was not yet reporting a workflow run for the implementation commit when this milestone was recorded; local execution is unavailable through the GitHub connector. Production build verification remains a validation-stage task.
 
 After this milestone, proceed to full section implementation.
+
+
+## 13. Live Progress Tracking
+
+The detailed task tracker is maintained in `docs/PROJECT-STATUS.md`. It records completed work, current implementation scope, validation gaps, blockers, and the next implementation milestone. Update it after each meaningful implementation increment.
