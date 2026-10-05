@@ -1,6 +1,6 @@
 # Portfolio Implementation Status
 
-> Last updated: 2026-10-05 (implementation loop)  
+Last updated: 2026-10-05 (implementation loop)  
 > Branch: `portfolio-v1`  
 > Source of truth: `docs/AI-PORTFOLIO-EXECUTION.md`
 
@@ -33,7 +33,7 @@
 
 ## Current blocker / validation state
 
-- Latest implementation commits include `ce03e68453e0f2decb33eed50208a7429ab8aa6f` (semantic mobile navigation), `cda61beed6982e58c9b84b8621ff550b59b9de30` (serialized Pages deployments), and the social-preview increment (`4bcf09a4…`, `83684e93…`, `a0524b9a…`). The social-preview build completed successfully through the route-generation/output-verification stages; one deployment run failed only because concurrent publishers raced on the `gh-pages` ref. The workflow now cancels superseded deployment runs.
+- Latest implementation commits include `ce03e68453e0f2decb33eed50208a7429ab8aa6f` (semantic mobile navigation), `cda61beed6982e58c9b84b8621ff550b59b9de30` (serialized Pages deployments), and the social-preview increment (`4bcf09a4…`, `83684e93…`, `a0524b9a…`). The social-preview build completed successfully through the route-generation/output-verification stages; one deployment run failed only because concurrent publishers raced on the `gh-pages` ref. The workflow now cancels superseded deployment runs. The first concurrency-enabled run (`37345010099`) exposed a JSX regression in the navigation change before deployment; that source error has been corrected in `c2e4679775734552e93f4037d6c18a59f3e41aaf` and a fresh CI validation is pending.
 - The case-study content gap is intentional: the repository currently does not contain verified architecture, metrics, detailed personal contribution, trade-offs, learning narratives, or public project URLs for most projects. These must be supplied or independently verified before those sections can be marked complete.
 
 - GitHub Actions run `37340152916` completed successfully for the project case-study navigation fix, including build, route generation, output verification and deployment. Accessibility/credential runs `37344674404` and `37344679055` completed successfully. Social-preview run `37344841012` built and verified the full production output successfully but lost the final `gh-pages` push to a concurrent publisher; the follow-up metadata run `37344847171` completed successfully. The deployment workflow now serializes/cancels superseded runs to prevent this race.
@@ -75,3 +75,4 @@
 30. Added a dedicated technical social-preview artwork asset and wired `og:image` / large Twitter-card metadata into the static shell and generated nested route entry points, so route-specific pages share a consistent preview image without inventing project-specific imagery.
 31. Hardened navigation semantics by exposing the mobile menu as a labelled `<nav>` landmark while preserving `aria-expanded`, `aria-controls`, Escape handling, focus restoration and inert closed-state behavior.
 32. Serialized GitHub Pages deployments with workflow concurrency cancellation after diagnosing a non-code deployment race: the social-preview build passed, but two concurrent `gh-pages` publishers raced on the branch ref.
+33. Corrected the mobile-navigation semantic landmark increment after CI caught an invalid JSX closing tag; the mobile menu now closes with `</nav>` and the build is awaiting fresh CI validation.
