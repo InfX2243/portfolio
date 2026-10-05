@@ -1791,6 +1791,9 @@ The portfolio is DONE only when all of the following are true:
 
 > **Implementation milestone — 2026-10-05:** Phase 0 audit and Phase 1 information architecture are implemented on `portfolio-v1`. The app now uses a lightweight pathname router and shared layout without adding React Router. GitHub Pages deployment copies the built `index.html` to `dist/404.html` so direct nested-route requests can boot the same application shell. Route-specific titles/descriptions are applied client-side. Local production build execution was attempted but the execution environment could not resolve GitHub's network host; repository-side Actions remains the deployment validation path.
 
+
+> **Implementation milestone — 2026-10-05 (continued):** Added `docs/PROJECT-STATUS.md` as the implementation progress tracker. The project data model now has an evidence-aware case-study schema with explicit nulls for unavailable facts, and project detail routes render optional sections only when verified data exists. Shared navigation was audited for accessibility semantics: active-page state, focus restoration after Escape/close, inert closed mobile navigation, and a proper main landmark are now implemented. Remaining work is tracked explicitly in `docs/PROJECT-STATUS.md`, with accessibility validation, evidence verification, production-build inspection, and GitHub Pages/browser validation still open.
+
 # 42. Final Principle
 
 When forced to choose between:
