@@ -124,3 +124,8 @@ No runtime/device validation is claimed yet; the next validation pass must exerc
 ## Credly badge gallery checkpoint
 
 Added the eight user-supplied Credly badge IDs to the JSON credential source and updated the credentials section to render the complete set. The gallery is responsive across desktop, tablet and mobile widths. The existing one-time Credly script loader and fallback behavior are reused; no badge title or issuer was inferred from UUIDs.
+
+
+## Credly 16-badge gallery checkpoint
+
+Appended the eight newly supplied Credly badge IDs to src/data/credentials.json, bringing the total to 16. The credentials UI already maps over the full badge collection, so no component duplication was required. Each new record retains the supplied 150×270 embed dimensions and Credly host; title/issuer/public URL remain unset pending verification.
