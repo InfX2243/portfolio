@@ -256,3 +256,20 @@ Definition of done:
 4. Measure Canvas/WebGPU and initial-load performance.
 5. Complete source-backed content/link verification.
 6. Verify the GitHub Pages deployment and published site.
+
+
+## Latest implementation increment — runtime crash fix
+
+**Completed:**
+- Fixed the runtime failure reported at `App.jsx:114` by making nested project/experience/research collection rendering null-safe.
+- Added defensive defaults for `focus`, `approach`, `tags`, `links`, `research`, and `leadership` before calling `.map()` or `Object.entries()`.
+- Preserved the existing data-driven architecture; no content was fabricated or changed.
+- Commit: `48cdd7fa7877f41e00b04ad6103527a0c560566d` (`fix: guard portfolio collection rendering`).
+
+**Why:**
+The reported stack trace occurs when a nested collection is undefined even though the parent array exists. The render boundary now fails safely instead of taking down the entire `App` component.
+
+**Validation still required:**
+- Refresh/restart the local Vite dev server and confirm the reported exception no longer occurs.
+- Run the production build.
+- Continue responsive, accessibility, performance, and GitHub Pages validation.
