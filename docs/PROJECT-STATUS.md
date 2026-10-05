@@ -25,7 +25,7 @@
 | P0 / Phase 7 — About | DONE* | About page, education, technical direction, research trajectory and leadership data are implemented. | Final content truth/conciseness review. |
 | P0 / Phase 8 — Contact | PARTIAL | Contact page, LinkedIn and GitHub links, CTA structure. | Verified email and resume when supplied; final external-link verification. |
 | P0 / Phase 9 — Performance | PARTIAL | Route chunks and homepage visual effects are lazy-loaded; unused Spline dependency removed. | Production build/chunk inspection, third-party lazy loading, mobile/low-power testing. |
-| P0 / Phase 10 — Accessibility | PARTIAL | Skip link, focus-visible styles, reduced-motion rules, semantic nav labels, Escape handling, active-page semantics, focus restoration, inert closed mobile nav, main landmark, 44px mobile nav controls. | Full keyboard/focus/heading/contrast/link audit and browser verification. |
+| P0 / Phase 10 — Accessibility | PARTIAL | Skip link, focus-visible styles, reduced-motion rules, semantic nav labels, Escape handling, active-page semantics, focus restoration, inert closed mobile nav, main landmark, 44px mobile nav controls, single-h1 homepage hierarchy. | Full keyboard/focus/contrast/link audit and browser verification. |
 | P1 / Phase 11 — SEO / Sharing | PARTIAL | Route-specific titles and descriptions implemented. | Open Graph, social preview, favicon, sitemap and robots. |
 | P0 / Phase 12 — Final Validation | NOT STARTED | No false pass claimed because production build/browser/GitHub Pages verification is still outstanding. | Execute full acceptance checklist after P0 content and accessibility work. |
 
@@ -43,13 +43,13 @@
 8. Evaluated and removed unused Spline dependency/configuration.
 9. Added route-specific title and description metadata.
 10. Added selected achievement evidence to the homepage.
-11. Updated the authoritative execution specification with architecture/performance decisions.\n12. Made routing/navigation derive the Vite base path instead of hard-coding `/portfolio`, preserving GitHub Pages deployment while keeping local development paths coherent.\n13. Deferred Credly script loading until badges approach the viewport; the third-party embed remains non-blocking and singleton-loaded.\n14. Hardened the mobile navigation toggle/link touch targets to 44px.
+11. Updated the authoritative execution specification with architecture/performance decisions.\n12. Made routing/navigation derive the Vite base path instead of hard-coding `/portfolio`, preserving GitHub Pages deployment while keeping local development paths coherent.\n13. Deferred Credly script loading until badges approach the viewport; the third-party embed remains non-blocking and singleton-loaded.\n14. Hardened the mobile navigation toggle/link touch targets to 44px.\n15. Added heading-level control to shared page headers so the homepage uses one h1 followed by section h2 headings; fixed the not-found home link to use the Vite base path.
 
 ## Highest-priority queue
 
 ### NEXT 1 — Accessibility audit
 
-- Audit mobile navigation semantics and focus management.\n- Verify the new 44px touch targets and Vite-base-aware navigation in a browser.
+- Audit mobile navigation semantics and focus management.\n- Verify the new 44px touch targets, heading hierarchy and Vite-base-aware navigation in a browser.
 - Verify keyboard traversal through every route.
 - Verify heading hierarchy.
 - Verify reduced-motion behavior.
