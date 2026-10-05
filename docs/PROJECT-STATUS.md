@@ -33,7 +33,7 @@
 
 ## Current blocker / validation state
 
-- Latest implementation commit: `c6ca79b28a8cc62271ee4b7bd7e2d5c9775f7bf1` (`feat: strengthen project case-study navigation`). A new deployment run is expected from this commit; its build/browser result must be recorded after completion.
+- Latest implementation commit: `618c3f09ae25c740ad440746d5d833db7885bb05` (`fix: correct project resource URL validation`). The deployment run for `c6ca79b` failed during Vite parsing because the URL regex in `ProjectDetailPage.jsx` was over-escaped; the regression was corrected in this commit and a fresh deployment run is expected.
 - The case-study content gap is intentional: the repository currently does not contain verified architecture, metrics, detailed personal contribution, trade-offs, learning narratives, or public project URLs for most projects. These must be supplied or independently verified before those sections can be marked complete.
 
 - GitHub Actions run `37336976013` for commit `7a73efc6` completed successfully. The build generated 11 static nested route entry points and deployed them to `gh-pages`.
@@ -70,3 +70,4 @@
 25. Added favicon, `robots.txt`, and `sitemap.xml` and verified them on the deployed `gh-pages` branch.
 26. Recorded production bundle sizes from CI and modernized the Pages workflow to Node 24, current checkout/setup-node actions, compatible `npm install` (the repository does not currently contain a lockfile), and `peaceiris/actions-gh-pages@v4`.
 27. Strengthened project case-study routes with optional verified-resource links and related-work navigation; empty link data remains hidden, so no unverified URLs are introduced.
+28. Diagnosed and corrected the first deployment regression in the case-study navigation increment: an over-escaped external-URL regex caused the Vite build to fail; corrected the regex and queued a fresh CI validation.
