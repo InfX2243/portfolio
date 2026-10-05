@@ -748,3 +748,10 @@ The visual storytelling pass now keeps project/research evidence maps visible wh
 **Status: IMPLEMENTED**
 
 The Spline Viewer dependency is now explicitly declared and the scene URL is configuration-driven via `VITE_SPLINE_SCENE_URL`. The component only initializes the viewer when a scene URL exists and retains a static fallback otherwise. This closes the implementation-side integration gap while keeping the actual verified scene and runtime validation as separate tasks.
+
+
+### 14.1.4 Credential embed resilience checkpoint
+
+**Status: IMPLEMENTED**
+
+Credly integration now has explicit loading/loaded/error states and a persistent fallback so the portfolio does not depend on successful third-party script execution. Browser/network validation remains a Stage 5 task and is not marked complete by this implementation change.
