@@ -687,3 +687,25 @@ The goal is to make every major viewport visually distinct while retaining a coh
 - 3D/third-party embeds do not block or hide core content.
 - Mobile and reduced-motion experiences remain usable.
 - No credential, project, award, date, URL, or metric is invented.
+
+
+## 14.1 Milestone 2B implementation checkpoint
+
+**Status: IN PROGRESS**
+
+Implemented:
+- Dedicated `src/data/credentials.json` with badge/certificate records.
+- Reusable Credly embed component with one-time script injection.
+- Reusable certificate visual card with asset and verification-link slots.
+- Visual credential wall replacing the previous credentials-only text list.
+- Progressive Spline wrapper and reserved 3D systems surface with a static fallback.
+
+Still required:
+- verified Credly metadata;
+- supplied/verified certificate assets, IDs, dates and URLs;
+- actual Spline scene URL/embed;
+- project architecture visuals;
+- visual density rebalance;
+- browser/build/accessibility/performance/GitHub Pages validation.
+
+This checkpoint intentionally does **not** mark the Spline integration complete because no scene URL was supplied or verified.
