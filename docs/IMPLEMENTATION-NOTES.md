@@ -91,3 +91,10 @@ The next implementation focus is density rebalance and real validation. Verified
 Secondary project and research detail is now progressively disclosed with native `details/summary` controls. The visual evidence maps remain visible by default, shifting the first-read experience toward visual signals while preserving deeper contribution, approach, outcome and source evidence for reviewers who want it.
 
 No content claims were added in this increment. Validation remains separate and has not been marked complete.
+
+
+## Milestone 2B Spline integration hardening checkpoint
+
+The Spline surface now uses the official `@splinetool/viewer` package and is configured through `VITE_SPLINE_SCENE_URL`. The viewer is conditionally initialized only when a scene URL exists, preserving the lightweight fallback path. No scene URL has been fabricated.
+
+Next: configure a verified Spline export, then run real dependency/build/browser validation.
