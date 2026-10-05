@@ -259,3 +259,16 @@ a { text-decoration: none; }
 @media (max-width: 850px) { .project-flow { grid-template-columns: repeat(2, 1fr); } .project-flow-line { display: none; } }
 @media (max-width: 520px) { .project-flow { grid-template-columns: 1fr; } .project-node { min-height: 72px; } .project-visual-head { align-items: flex-start; flex-direction: column; } }
 @media (prefers-reduced-motion: reduce) { .spot-card:hover { transform: none; } }
+
+.research-visual { margin: 18px 0 16px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,255,255,.018); overflow: hidden; }
+.research-visual-head { display: flex; justify-content: space-between; gap: 12px; padding: 11px 13px; border-bottom: 1px solid var(--line); font: 500 .57rem var(--mono); letter-spacing: .1em; text-transform: uppercase; color: #65788a; }
+.research-flow { display: grid; grid-template-columns: repeat(4, 1fr); padding: 13px; gap: 6px; }
+.research-node-wrap { display: flex; align-items: center; min-width: 0; }
+.research-node { min-height: 92px; width: 100%; padding: 11px; border: 1px solid var(--line); border-radius: 10px; display: grid; align-content: space-between; gap: 9px; background: rgba(255,255,255,.018); }
+.research-node span { font: 500 .53rem var(--mono); letter-spacing: .1em; color: var(--violet); }
+.research-node strong { font-size: .66rem; line-height: 1.45; color: var(--soft); font-weight: 600; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.research-flow-line { flex: 0 0 16px; text-align: center; color: #3c566b; font-family: var(--mono); }
+.research-signal-strip { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 13px 13px; }
+.research-signal-strip span { font: 400 .55rem var(--mono); color: #8da2b3; padding: 5px 7px; border: 1px solid var(--line); border-radius: 999px; }
+@media (max-width: 850px) { .research-flow { grid-template-columns: repeat(2, 1fr); } .research-flow-line { display: none; } }
+@media (max-width: 520px) { .research-flow { grid-template-columns: 1fr; } .research-node { min-height: 72px; } .research-visual-head { align-items: flex-start; flex-direction: column; } }
