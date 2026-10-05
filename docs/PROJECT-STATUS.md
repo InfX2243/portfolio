@@ -377,3 +377,43 @@ Not yet complete:
 4. Validate Credly loading and fallback behavior in a browser.
 5. Run production build and accessibility/performance checks.
 6. Complete credential metadata and certificate asset verification as source material becomes available.
+
+
+## Latest implementation increment — Milestone 2B project visual evidence
+
+**Status: IMPLEMENTED**
+
+Completed:
+- Added `src/components/ProjectVisual.jsx` as a reusable, data-derived project evidence map.
+- Integrated the evidence map into every selected-work card without inventing system architecture.
+- Visualized four existing evidence dimensions — input/type, contribution, evidence signal and outcome — as a compact flow.
+- Surfaced a limited set of existing approach/tag signals as visual chips.
+- Added responsive layouts so the visual map collapses cleanly on tablet/mobile widths.
+- Preserved the existing Spotlight/Aceternity-inspired interaction rather than replacing it.
+
+This increment improves the text-to-visual ratio while keeping the underlying project copy accessible and source-backed.
+
+### Updated Milestone 2B tracker
+
+| Task | Status |
+|---|---|
+| Credential JSON schema | ✅ Complete |
+| Credly reusable embed | ✅ Implemented |
+| Certificate visual card | ✅ Implemented |
+| Visual credential wall | ✅ Implemented |
+| Project visual/architecture evidence system | ✅ Implemented |
+| Verified project architecture diagrams | 🔴 Pending source material |
+| Spline wrapper + fallback | ✅ Implemented |
+| Verified Spline scene | 🔴 Blocked on scene URL/embed |
+| Text-density rebalance | 🟡 In progress |
+| Mobile/reduced-motion validation | 🔴 Pending |
+| Third-party performance validation | 🔴 Pending |
+| Production build | 🔴 Pending |
+| GitHub Pages verification | 🔴 Pending |
+
+### Next implementation queue
+1. Rework research into a similarly visual evidence format.
+2. Add verified credential metadata/assets as supplied.
+3. Add a real Spline scene once its URL/embed is available.
+4. Perform the first actual browser/build validation pass.
+5. Complete accessibility/performance checks and GitHub Pages verification.
