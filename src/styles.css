@@ -132,3 +132,16 @@ a { text-decoration: none; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .gpu-field, .particle-layer { display: none; }
 }
+
+.project-detail { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--line); }
+.project-detail > div { display: grid; grid-template-columns: 92px 1fr; gap: 12px; }
+.project-detail span, .project-evidence > span { font: 500 .58rem var(--mono); letter-spacing: .1em; color: #65788a; text-transform: uppercase; padding-top: 2px; }
+.project-detail p { margin: 0; color: #aebdca; font-size: .76rem; line-height: 1.55; }
+.project-detail .tag-row { margin: 0; }
+.project-evidence { display: grid; grid-template-columns: 92px 1fr; gap: 12px; margin-top: 18px; padding-top: 13px; border-top: 1px dashed rgba(155,184,207,.1); }
+.project-evidence small { color: #697b8b; line-height: 1.5; }
+.project-links { display: flex; gap: 14px; margin-top: 17px; }
+.project-links a { font: 500 .62rem var(--mono); color: var(--cyan); }
+@media (max-width: 650px) {
+  .project-detail > div, .project-evidence { grid-template-columns: 1fr; gap: 5px; }
+}
