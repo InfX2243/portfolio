@@ -1231,26 +1231,26 @@ Update this specification only when:
 
 ## Phase 0 — Repository Audit
 
-- [ ] Inspect current repository.
-- [ ] Inspect `portfolio-v1`.
-- [ ] Inspect package/dependencies.
-- [ ] Inspect current routes.
-- [ ] Inspect data model.
-- [ ] Inspect deployment workflow.
-- [ ] Inspect existing visual components.
-- [ ] Record current performance risks.
+- [x] Inspect current repository.
+- [x] Inspect `portfolio-v1`.
+- [x] Inspect package/dependencies.
+- [x] Inspect current routes.
+- [x] Inspect data model.
+- [x] Inspect deployment workflow.
+- [x] Inspect existing visual components.
+- [x] Record current performance risks.
 
 ---
 
 ## Phase 1 — Information Architecture
 
-- [ ] Introduce route architecture.
-- [ ] Build shared layout.
-- [ ] Build global navigation.
-- [ ] Build footer.
-- [ ] Build 404 page.
-- [ ] Ensure GitHub Pages compatibility.
-- [ ] Preserve existing landing-page functionality.
+- [x] Introduce route architecture.
+- [x] Build shared layout.
+- [x] Build global navigation.
+- [x] Build footer.
+- [x] Build 404 page.
+- [x] Ensure GitHub Pages compatibility.
+- [x] Preserve existing landing-page functionality.
 
 ---
 
@@ -1786,6 +1786,9 @@ The portfolio is DONE only when all of the following are true:
 - [ ] Claims are proportional to experience.
 
 ---
+
+
+> **Implementation milestone — 2026-10-05:** Phase 0 audit and Phase 1 information architecture are implemented on `portfolio-v1`. The app now uses a lightweight pathname router and shared layout without adding React Router. GitHub Pages deployment copies the built `index.html` to `dist/404.html` so direct nested-route requests can boot the same application shell. Route-specific titles/descriptions are applied client-side. Local production build execution was attempted but the execution environment could not resolve GitHub's network host; repository-side Actions remains the deployment validation path.
 
 # 42. Final Principle
 
