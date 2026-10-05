@@ -37,6 +37,7 @@ function Nav() {
 function App() {
   return (
     <main id="top" className="app">
+      <a className="skip-link" href="#about">Skip to main content</a>
       <div className="ambient-grid" aria-hidden="true" />
       <Nav />
 
