@@ -9,6 +9,8 @@ Branch: `portfolio-v1`
 
 **Milestone 2 — Core portfolio experience: IN PROGRESS**
 
+Current sub-milestone: **2A — Evidence-rich project + research storytelling** (in progress).
+
 The repository has moved beyond the original skeleton. The next work is now focused on evidence-rich project storytelling, deeper research presentation, validation, and delivery.
 
 ## Overall progress
@@ -23,7 +25,7 @@ The repository has moved beyond the original skeleton. The next work is now focu
 | Hero | ✅ Complete | Interactive HTML + Canvas + optional WebGPU layers |
 | Navigation | ✅ Complete | Sticky responsive navigation and anchor links |
 | Experience | ✅ Complete | Bitkraft experience presented as structured evidence |
-| Featured projects | 🟡 Core complete | Showcase exists; deeper project storytelling is next |
+| Featured projects | 🟢 Evidence model complete | Projects now expose contribution, approach, outcome and evidence; verified links remain pending |
 | Research | 🟡 Core complete | Cognitrace award is prominent; publication/evidence links still needed |
 | Technical domains | ✅ Complete | Skills organized by system/domain rather than badge wall |
 | Achievements/certifications | ✅ Complete | Verified credentials represented compactly |
@@ -77,6 +79,8 @@ Completed:
 Completed:
 - app refactor;
 - data model;
+- evidence-rich project data model;
+- project contribution/approach/outcome/evidence presentation;
 - navigation;
 - hero;
 - experience;
@@ -180,3 +184,18 @@ Definition of done:
 - links are data-driven and only shown when verified;
 - no invented technical claims;
 - implementation remains accessible and performant.
+
+
+## Latest implementation increment — 2A
+
+**Completed:**
+- Added structured evidence fields to all current project records.
+- Added contribution, approach, outcome and evidence presentation to project cards.
+- Added a data-driven project-links slot that renders only verified links.
+- Kept missing metrics, repositories, demos and publication URLs out of the UI rather than fabricating them.
+
+**Next:**
+- strengthen the research evidence hierarchy;
+- add verified publication/project links when available;
+- validate mobile project layouts;
+- begin production build and accessibility/performance validation.
