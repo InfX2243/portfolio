@@ -1,0 +1,1 @@
+export function PageHeader({index,eyebrow,title,intro}){return <div className="section-head page-head"><span className="section-index">{index}</span><div><p className="eyebrow">{eyebrow}</p><h1>{title}</h1>{intro&&<p className="section-intro">{intro}</p>}</div></div>;}
