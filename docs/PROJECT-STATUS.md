@@ -710,3 +710,17 @@ Completed:
 
 Validation boundary:
 - The badge records and UI are implemented, but live Credly rendering still needs runtime/browser validation.
+
+
+## Latest implementation increment — expanded 16-badge Credly gallery
+
+**Status: IMPLEMENTED**
+
+Completed:
+- Appended the 8 newly supplied Credly badge IDs to the existing 8, bringing the credential data source to exactly 16 badges.
+- Preserved the supplied Credly host and 150×270 dimensions for all new records.
+- Reused the existing data-driven credentials gallery; no duplicate embed component or script tags were introduced.
+- Kept title, issuer, and public URL metadata unset for the new badges because those values were not supplied or independently verified.
+
+Validation boundary:
+- The repository data/UI integration is updated, but live Credly rendering and production-build validation remain pending.
