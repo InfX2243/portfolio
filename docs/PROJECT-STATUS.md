@@ -33,10 +33,10 @@
 
 ## Current blocker / validation state
 
-- Latest implementation commit: `618c3f09ae25c740ad440746d5d833db7885bb05` (`fix: correct project resource URL validation`). The deployment run for `c6ca79b` failed during Vite parsing because the URL regex in `ProjectDetailPage.jsx` was over-escaped; the regression was corrected in this commit and a fresh deployment run is expected.
+- Latest implementation commits: `50a5d00d84be1b98e7cba4ce4a1c7276c5286a7d` (`fix: expose verified certificate metadata accurately`) and `b251d4f6fad5fd204d29ffe24b2f16eb62a4b190` (`fix: enforce accessible mobile navigation target`). Both changes are queued through the GitHub Pages deployment workflow; the earlier routing/case-study deployment run `37340152916` completed successfully.
 - The case-study content gap is intentional: the repository currently does not contain verified architecture, metrics, detailed personal contribution, trade-offs, learning narratives, or public project URLs for most projects. These must be supplied or independently verified before those sections can be marked complete.
 
-- GitHub Actions run `37336976013` for commit `7a73efc6` completed successfully. The build generated 11 static nested route entry points and deployed them to `gh-pages`.
+- GitHub Actions run `37340152916` completed successfully for the project case-study navigation fix, including build, route generation, output verification and deployment. The latest accessibility/credential refinements have new workflow runs `37344674404` and `37344679055`; at the time of this status update the first was in progress and the second was queued.
 - `gh-pages` was inspected after deployment and contains route-specific HTML for `/projects`, every project detail route, `/research`, `/achievements`, `/experience`, `/about`, and `/contact`, plus `404.html`, `robots.txt`, `sitemap.xml`, and the favicon.
 - The live-site browser checker could not access GitHub Pages from this environment, so external browser verification remains explicitly unconfirmed.
 
@@ -71,3 +71,4 @@
 26. Recorded production bundle sizes from CI and modernized the Pages workflow to Node 24, current checkout/setup-node actions, compatible `npm install` (the repository does not currently contain a lockfile), and `peaceiris/actions-gh-pages@v4`.
 27. Strengthened project case-study routes with optional verified-resource links and related-work navigation; empty link data remains hidden, so no unverified URLs are introduced.
 28. Diagnosed and corrected the first deployment regression in the case-study navigation increment: an over-escaped external-URL regex caused the Vite build to fail; corrected the regex and queued a fresh CI validation.
+29. Hardened accessibility and evidence presentation: increased the mobile navigation toggle to a 44px touch target, restricted certificate verification links to valid HTTP(S) URLs, and made certificate cards display verified credential IDs/issue dates instead of incorrectly labeling them as pending.
