@@ -27,7 +27,7 @@ export const projects = [
     number: "01",
     title: "Cognitrace",
     type: "Research",
-    award: "ICSSSD 2026 · Best Paper Award",
+    award: null,
     description:
       "A research project positioned at the intersection of applied AI and systems thinking, with recognition at ICSSSD 2026.",
     contribution: "Research and engineering work represented through the project and its award recognition.",
