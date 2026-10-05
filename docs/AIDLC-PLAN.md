@@ -734,3 +734,10 @@ This checkpoint intentionally does **not** mark the Spline integration complete 
 The selected-work cards now include a reusable data-derived evidence map. It uses only fields already present in the portfolio data model and therefore does not assert an undocumented architecture. Verified architecture diagrams remain a separate task that requires source material.
 
 The next design increment should apply the same visual-evidence principle to research while keeping publication claims and links source-backed.
+
+
+### 14.1.2 Text-density implementation checkpoint
+
+**Status: IMPLEMENTED**
+
+The visual storytelling pass now keeps project/research evidence maps visible while progressively disclosing secondary detail through native accessible disclosure controls. This completes the planned density-rebalance implementation step. Runtime validation remains a separate Stage 5 activity.
