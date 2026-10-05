@@ -18,14 +18,14 @@
 | P0 / Phase 0 — Repository Audit | DONE | Repository, dependencies, routes, data, deployment workflow and visual components inspected. | Re-run audit after major architectural changes. |
 | P0 / Phase 1 — Information Architecture | DONE | Lightweight multi-page router, shared layout/navigation/footer, 404 handling, GitHub Pages fallback strategy. | Browser/deployment verification. |
 | P0 / Phase 2 — Landing Page | PARTIAL | Hero, VGPU/Canvas enhancement, featured work, research, experience, domains, selected achievements and CTA structure exist. | Content/evidence review, final positioning copy, responsive/accessibility validation. |
-| P0 / Phase 3 — Projects | PARTIAL | Projects index, project cards, dynamic project routes, data-driven project model, featured three projects. | Expand evidence hierarchy/case studies, add verified visuals and links. |
+| P0 / Phase 3 — Projects | PARTIAL | Projects index, project cards, dynamic project routes, normalized evidence-aware case-study schema, featured three projects. | Populate only verified problem/context/architecture/decision/trade-off/learning fields; add verified visuals and links. |
 | P0 / Phase 4 — Research | PARTIAL | Research page, Cognitrace, Green Passport, research visuals and recognition separation. | Verify links, publication/venue metadata, methodology/contribution evidence. |
 | P0 / Phase 5 — Achievements | PARTIAL | Achievements page, award section, Credly component, certificate component and credential data model. | Verify credential metadata/links, lazy-load third-party embeds, complete gallery audit. |
 | P0 / Phase 6 — Experience | PARTIAL | Experience page and Bitkraft entry are implemented from repository data. | Verify responsibilities, technical context and evidence. |
 | P0 / Phase 7 — About | DONE* | About page, education, technical direction, research trajectory and leadership data are implemented. | Final content truth/conciseness review. |
 | P0 / Phase 8 — Contact | PARTIAL | Contact page, LinkedIn and GitHub links, CTA structure. | Verified email and resume when supplied; final external-link verification. |
 | P0 / Phase 9 — Performance | PARTIAL | Route chunks and homepage visual effects are lazy-loaded; unused Spline dependency removed. | Production build/chunk inspection, third-party lazy loading, mobile/low-power testing. |
-| P0 / Phase 10 — Accessibility | PARTIAL | Skip link, focus-visible styles, reduced-motion rules, semantic nav labels, Escape handling. | Full keyboard/focus/mobile-nav/heading/contrast/link audit. |
+| P0 / Phase 10 — Accessibility | PARTIAL | Skip link, focus-visible styles, reduced-motion rules, semantic nav labels, Escape handling, active-page semantics, focus restoration, inert closed mobile nav, main landmark. | Full keyboard/focus/mobile-nav/heading/contrast/link audit. |
 | P1 / Phase 11 — SEO / Sharing | PARTIAL | Route-specific titles and descriptions implemented. | Open Graph, social preview, favicon, sitemap and robots. |
 | P0 / Phase 12 — Final Validation | NOT STARTED | No false pass claimed because production build/browser/GitHub Pages verification is still outstanding. | Execute full acceptance checklist after P0 content and accessibility work. |
 
