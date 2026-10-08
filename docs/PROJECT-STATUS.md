@@ -267,15 +267,15 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 - Deployed gh-pages inspection confirms the expected nested route HTML files exist.
 
 ### Outstanding:
-- The three final external-link hardening commits are currently running through GitHub Actions; the latest link commit must be rechecked before this Sprint F increment is marked fully CI-validated.
+- The three external-link hardening commits completed successfully: workflows 37771291284, 37771299338 and 37771306145.
 - Browser/device visual validation remains unavailable in this environment.
 - Keyboard-only focus, contrast, reduced-motion runtime behavior, Credly third-party fallback, and live external-link verification still need browser-level validation.
 - Verified public research/award/certificate URLs remain outstanding where authoritative sources are not yet present.
 
 ### Next:
-1. Confirm the latest external-link hardening workflow is green and update this status record with the final run ID.
+1. Final Sprint F CI confirmation is complete; external-link hardening is validated by workflows 37771291284, 37771299338 and 37771306145.
 2. Perform final browser/device acceptance when a reliable live-site browser is available.
-3. Complete content/evidence verification and issue the final V1 release sign-off only after those checks pass.
+3. Complete content/evidence verification and issue the final V1 release sign-off only after browser/device checks and evidence verification pass.
 
 ## Sprint E — Routing / Style Audit (2026-10-08)
 
