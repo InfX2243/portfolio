@@ -3,34 +3,54 @@ import { useEffect, useRef, useState } from "react";
 const CREDLY_SCRIPT_ID = "credly-embed-script";
 const CREDLY_SCRIPT_SRC = "https://cdn.credly.com/assets/utilities/embed.js";
 
+let credlyLoadPromise = null;
+
 function loadCredlyScript() {
-  return new Promise((resolve, reject) => {
-    const existing = document.getElementById(CREDLY_SCRIPT_ID);
-    if (existing) {
-      if (existing.dataset.credlyState === "loaded") {
-        resolve();
-        return;
-      }
+  if (credlyLoadPromise) return credlyLoadPromise;
+
+  const existing = document.getElementById(CREDLY_SCRIPT_ID);
+  if (existing?.dataset.credlyState === "loaded") return Promise.resolve();
+  if (existing?.dataset.credlyState === "loading") {
+    credlyLoadPromise = new Promise((resolve, reject) => {
       existing.addEventListener("load", resolve, { once: true });
       existing.addEventListener("error", reject, { once: true });
-      return;
-    }
+    }).catch((error) => {
+      credlyLoadPromise = null;
+      throw error;
+    });
+    return credlyLoadPromise;
+  }
 
-    const script = document.createElement("script");
+  credlyLoadPromise = new Promise((resolve, reject) => {
+    const script = existing || document.createElement("script");
     script.id = CREDLY_SCRIPT_ID;
     script.src = CREDLY_SCRIPT_SRC;
     script.async = true;
     script.dataset.credlyState = "loading";
-    script.addEventListener("load", () => {
+
+    const cleanup = () => {
+      script.removeEventListener("load", handleLoad);
+      script.removeEventListener("error", handleError);
+    };
+    const handleLoad = () => {
+      cleanup();
       script.dataset.credlyState = "loaded";
       resolve();
-    }, { once: true });
-    script.addEventListener("error", () => {
+    };
+    const handleError = () => {
+      cleanup();
       script.dataset.credlyState = "error";
+      credlyLoadPromise = null;
       reject(new Error("Credly embed failed to load"));
-    }, { once: true });
-    document.body.appendChild(script);
+    };
+
+    script.addEventListener("load", handleLoad, { once: true });
+    script.addEventListener("error", handleError, { once: true });
+
+    if (!existing) document.body.appendChild(script);
   });
+
+  return credlyLoadPromise;
 }
 
 export function CredlyBadge({ badge }) {
