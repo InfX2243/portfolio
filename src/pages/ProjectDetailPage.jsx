@@ -29,7 +29,7 @@ function ProjectLinks({ links = {} }) {
       <h2 id="case-resources-title">Inspect the source material.</h2>
       <div className="case-study-links">
         {entries.map(([label, url]) => (
-          <a className="text-link" key={label} href={url} target="_blank" rel="noreferrer">
+          <a className="text-link" key={label} href={url} target="_blank" rel="noopener noreferrer">
             {label} ↗
           </a>
         ))}
