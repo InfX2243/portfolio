@@ -12,18 +12,6 @@ const AboutPage = lazy(() => import("../pages/AboutPage").then(m => ({ default: 
 const ContactPage = lazy(() => import("../pages/ContactPage").then(m => ({ default: m.ContactPage })));
 const NotFoundPage = lazy(() => import("../pages/NotFoundPage").then(m => ({ default: m.NotFoundPage })));
 
-const BASE_PATH = import.meta.env.BASE_URL.replace(/\/$/, "");
-
-function normalizePath(pathname) {
-  if (!BASE_PATH) return pathname.replace(/\/+$/, "") || "/";
-  const basePrefix = BASE_PATH + "/";
-  const withoutBase = pathname === BASE_PATH
-    ? "/"
-    : pathname.startsWith(basePrefix)
-      ? pathname.slice(BASE_PATH.length)
-      : pathname;
-  return withoutBase.replace(/\/+$/, "") || "/";
-}
 
 export function AppRouter() {
   const [path, setPath] = useState(() => normalizePath(window.location.pathname));
