@@ -1,6 +1,6 @@
 # Portfolio Implementation Status
 
-Last updated: 2026-10-08 (Sprint A visual reset)  
+Last updated: 2026-10-08 (Sprint C research/achievements + implementation audit)  
 > Branch: `portfolio-v1`  
 > Source of truth: `docs/AI-PORTFOLIO-EXECUTION.md`
 
@@ -17,10 +17,10 @@ Last updated: 2026-10-08 (Sprint A visual reset)
 |---|---|---|---|
 | P0 / Phase 0 — Repository Audit | DONE | Repository, dependencies, routes, data, deployment workflow and visual components inspected. | Re-run audit after major architectural changes. |
 | P0 / Phase 1 — Information Architecture | PARTIAL | Lightweight multi-page router, shared layout/navigation/footer, 404 handling, GitHub Pages fallback strategy, centralized Vite-base-aware navigation, and static route entry-point generation for every public route. GitHub Pages `gh-pages` contains route-specific `index.html` files for direct nested loads. | External browser verification remains open because the live-site checker in this environment cannot access GitHub Pages; repository/deployment output verifies the required static route files. |
-| P0 / Phase 2 — Landing Page | IN PROGRESS | Sprint A reset started: homepage moved from dashboard/card composition to editorial identity → context → experience → selected work → research → direction → contact hierarchy. | Validate production build, mobile behavior, accessibility and visual consistency; then continue with Sprint B experience/project refinement. |
+| P0 / Phase 2 — Landing Page | PARTIAL | Sprint A editorial hierarchy is implemented and the homepage deployment has repeatedly passed production build/deploy validation. | Final browser/device, accessibility and content-truth review. |
 | P0 / Phase 3 — Projects | PARTIAL | Projects index, project cards, dynamic project routes, normalized evidence-aware case-study schema, featured three projects, centralized base-path links, and case-study navigation with verified-resource/related-work slots. | Populate only verified problem/context/architecture/decision/trade-off/learning fields; add verified visuals and links.
-| P0 / Phase 4 — Research | PARTIAL | Research page, Cognitrace, Green Passport, research visuals and recognition separation; unsupported award/publication claims are now explicitly withheld. | Verify links, publication/venue metadata, methodology/contribution evidence; the UI now has optional research-question, methodology, contribution and result slots that stay hidden until verified data is added. |
-| P0 / Phase 5 — Achievements | PARTIAL | Achievements page, award section, Credly component, certificate component and credential data model; Credly embeds now defer loading until near viewport; seven certification IDs and issue months verified against the owner’s public LinkedIn profile. | Add public verification URLs where available and complete gallery audit. |
+| P0 / Phase 4 — Research | PARTIAL | Research page is now an editorial evidence archive; Cognitrace and Green Passport remain data-driven; unsupported award/publication claims are explicitly withheld; research visual no longer presents a fabricated evidence map. | Verify links, publication/venue metadata, methodology/contribution evidence; optional evidence fields remain hidden until verified. |
+| P0 / Phase 5 — Achievements | PARTIAL | Achievements is now an editorial evidence archive with separated recognition, selected certifications, Credly embeds and credential inventory. Credly remains near-viewport lazy-loaded; seven certification IDs and issue months remain repository-verified. | Add public verification URLs where available and complete browser/third-party embed audit. |
 | P0 / Phase 6 — Experience | PARTIAL | Experience page and Bitkraft entry are implemented from repository data. | Verify responsibilities, technical context and evidence. |
 | P0 / Phase 7 — About | DONE* | About page, education, technical direction, research trajectory and leadership data are implemented. | Final content truth/conciseness review. |
 | P0 / Phase 8 — Contact | PARTIAL | Contact page, LinkedIn and GitHub links, CTA structure. | Verified email and resume when supplied; final external-link verification. |
@@ -190,11 +190,31 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 - Responsive styling was added for tablet and mobile layouts.
 
 ### Outstanding:
-- Production build validation for Sprint B: package.json exposes the build command, but the current GitHub integration reports no CI status checks for the latest branch commit, so a passing build cannot yet be claimed.
+- The latest pre-Sprint-C branch commit (`de5e85b14f671ba0aec60f8899d892c753774286`) passed the GitHub Pages production build/deployment workflow (`37767449590`). The current Sprint-C audit changes are running through the same workflow; status must be rechecked before marking them validated.
 - Direct route/refresh validation on GitHub Pages.
 - Browser-level visual, keyboard, contrast and reduced-motion review.
 - Research and Achievements remain to be refined.
 
+## Sprint C — Research / Achievements + Audit (2026-10-08)
+
+### Completed:
+- Reworked Research into an editorial archive with explicit evidence boundaries and conditional research-question, methodology, contribution and result fields.
+- Reworked Achievements into separated recognition, selected certifications, Credly badges and complete credential inventory sections.
+- Restored Achievements to primary desktop/mobile navigation to match the authoritative information architecture.
+- Replaced the Research "Evidence map" visual with a restrained research-signal panel so the page does not imply unsupported methodology or relationships.
+- Fixed Credly singleton-loader recovery after a failed third-party script load; subsequent badge mounts can retry instead of waiting indefinitely.
+- Audited the current implementation against the authoritative execution specification and corrected the stale CI-status statement in this document.
+
+### Validated:
+- Individual Research, Achievements, ResearchVisual and Credly changes have each produced successful GitHub Actions deployment runs.
+- The branch's previous complete implementation state had a successful production build/deployment.
+- Current combined Sprint C styling/build validation is in progress on the latest branch commit.
+
+### Outstanding:
+- Final combined Sprint C CI result and deployment confirmation.
+- Browser/device visual review, keyboard/focus audit, contrast audit, reduced-motion review and third-party Credly runtime verification.
+- Verified public research/award/certificate URLs remain outstanding where the repository does not contain them.
+
 ### Next:
-- Run the production build and route validation when an executable repository environment/CI run is available.
-- Then begin Sprint C: Research/Achievements editorial refinement.
+- Confirm the latest combined CI run.
+- Then perform release-hardening audit across Home, Projects, Research, Achievements, Experience, About and Contact before final V1 acceptance.
