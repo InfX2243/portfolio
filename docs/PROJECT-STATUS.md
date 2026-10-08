@@ -33,12 +33,13 @@ Last updated: 2026-10-08 (Sprint F route/metadata/link audit)
 
 ## Current blocker / validation state
 
-- Latest implementation commits include `ce03e68453e0f2decb33eed50208a7429ab8aa6f` (semantic mobile navigation), `cda61beed6982e58c9b84b8621ff550b59b9de30` (serialized Pages deployments), and the social-preview increment (`4bcf09a4…`, `83684e93…`, `a0524b9a…`). The social-preview build completed successfully through the route-generation/output-verification stages; one deployment run failed only because concurrent publishers raced on the `gh-pages` ref. The workflow now cancels superseded deployment runs. The first concurrency-enabled run (`37345010099`) exposed a JSX regression in the navigation change before deployment; that source error has been corrected in `c2e4679775734552e93f4037d6c18a59f3e41aaf` and a fresh CI validation is pending.
-- The research content gap is intentional: the new evidence fields are schema/UI slots, not invented content. The case-study content gap is intentional: the repository currently does not contain verified architecture, metrics, detailed personal contribution, trade-offs, learning narratives, or public project URLs for most projects. These must be supplied or independently verified before those sections can be marked complete.
-
-- GitHub Actions run `37340152916` completed successfully for the project case-study navigation fix, including build, route generation, output verification and deployment. Accessibility/credential runs `37344674404` and `37344679055` completed successfully. Social-preview run `37344841012` built and verified the full production output successfully but lost the final `gh-pages` push to a concurrent publisher; the follow-up metadata run `37344847171` completed successfully. The deployment workflow now serializes/cancels superseded runs to prevent this race.
-- `gh-pages` was inspected after deployment and contains route-specific HTML for `/projects`, every project detail route, `/research`, `/achievements`, `/experience`, `/about`, and `/contact`, plus `404.html`, `robots.txt`, `sitemap.xml`, and the favicon.
+- Sprint E final CSS cleanup is production-build/deployment validated by workflow `37770445915`.
+- Sprint F shared route metadata/runtime integration is validated by workflows `37771255163`, `37771269493` and `37771280638`.
+- Sprint F external-link hardening is validated by workflows `37771291284`, `37771299338` and `37771306145`.
+- The deployed `gh-pages` tree was inspected and contains route-specific HTML for `/`, `/projects`, all five project detail routes, `/research`, `/achievements`, `/experience`, `/about` and `/contact`, plus `404.html`, `robots.txt`, `sitemap.xml` and the favicon.
+- Route metadata was also checked directly on the deployed branch: every public route has the expected title and canonical URL, and the five project detail routes resolve to their project-specific metadata.
 - The live-site browser checker could not access GitHub Pages from this environment, so external browser verification remains explicitly unconfirmed.
+- The remaining content/evidence gap is intentional: the repository still lacks verified architecture, metrics, detailed personal contribution, trade-offs, learning narratives, and public project URLs for most projects. These must be supplied or independently verified before those sections are marked complete.
 
 ## Completed implementation increments
 
