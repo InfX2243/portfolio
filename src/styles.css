@@ -233,7 +233,7 @@ a { text-decoration: none; }
 @media (max-width: 650px) {
   .certificate-card { grid-template-columns: 100px 1fr; min-height: 230px; }
   .credential-visual-top { font-size: .56rem; }
-  .spline-shell, .spline-shell spline-viewer { min-height: 330px; height: 330px; }
+
 }
 
 .project-visual { margin-top: 24px; border: 1px solid rgba(125,211,252,.14); border-radius: 14px; background: rgba(2,8,15,.58); overflow: hidden; }
@@ -265,8 +265,8 @@ a { text-decoration: none; }
 .credly-card .credential-fallback small { display: block; max-width: 34rem; line-height: 1.5; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .button, .spot-card, .evidence-details summary { transition: none; }
-  .button:hover, .spot-card:hover { transform: none; }
+  .button, .evidence-details summary { transition: none; }
+  .button:hover { transform: none; }
 }
 
 
