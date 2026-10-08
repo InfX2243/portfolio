@@ -190,11 +190,11 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 - Responsive styling was added for tablet and mobile layouts.
 
 ### Outstanding:
-- Production build/CI validation for Sprint B.
+- Production build validation for Sprint B: package.json exposes the build command, but the current GitHub integration reports no CI status checks for the latest branch commit, so a passing build cannot yet be claimed.
 - Direct route/refresh validation on GitHub Pages.
 - Browser-level visual, keyboard, contrast and reduced-motion review.
 - Research and Achievements remain to be refined.
 
 ### Next:
-- Run the production validation pass across Home, Projects, project detail routes and Experience.
+- Run the production build and route validation when an executable repository environment/CI run is available.
 - Then begin Sprint C: Research/Achievements editorial refinement.
