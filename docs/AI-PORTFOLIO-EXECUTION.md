@@ -1814,3 +1814,191 @@ It should make the visitor think:
 > **This person is technically serious, has already built interesting things, can explain their decisions, has research potential, and is likely to grow quickly.**
 
 That is the target outcome.
+
+
+---
+
+# V1 RELEASE DIRECTION — BRITTANY CHIANG-INSPIRED ENGINEERING PORTFOLIO
+
+> Added 2026-10-08. This section supersedes earlier visual ideas that prioritized galleries, constellations, heavy WebGL, or decorative evidence maps. The reference is the current Brittany Chiang portfolio at https://brittanychiang.com/; the implementation must be original and must not copy its source, branding, text, or exact layout.
+
+## V1.1 Design objective
+The portfolio should feel like a serious early-career software engineer / researcher portfolio, not an AI showcase or visual experiment.
+
+The visual benchmark is the reference's combination of:
+- strong typography;
+- generous whitespace;
+- restrained dark palette;
+- compact navigation;
+- clear personal introduction;
+- experience as a primary proof point;
+- selected projects with concise descriptions;
+- technology labels;
+- writing/research as supporting evidence;
+- subtle interaction rather than constant animation;
+- obvious external links;
+- a human, personal tone.
+
+The portfolio remains multi-page because this project is intended to be an official portfolio and application artifact. The reference is a visual and editorial benchmark, not a requirement to copy its one-page information architecture.
+
+## V1.2 What to remove or de-emphasize
+Do not make the following dominant in v1:
+- large WebGL scenes;
+- particle-heavy hero effects;
+- artificial AI-dashboard aesthetics;
+- fake architecture diagrams;
+- generic evidence maps;
+- excessive rounded cards;
+- gradients used as decoration rather than hierarchy;
+- oversized section containers;
+- excessive badges/chips;
+- every piece of information presented as a card;
+- scroll effects that distract from reading;
+- visualizations that imply data or technical evidence that does not exist.
+
+VGPU/Canvas may remain available as a subtle ambient enhancement only if it does not compete with the content, hurt performance, or reduce accessibility.
+
+## V1.3 Visual hierarchy
+The homepage should read approximately in this order:
+1. Who I am.
+2. What I build / research.
+3. What I have done professionally.
+4. Selected projects.
+5. Research / writing / recognition.
+6. Education and community.
+7. Contact.
+
+The first viewport must be useful without requiring the visitor to understand an animation.
+
+The primary visual language is:
+- large editorial typography;
+- thin borders and rules;
+- dark navy/black background;
+- one restrained accent color;
+- compact monospace metadata;
+- asymmetric but readable layouts;
+- text links with arrows;
+- subtle hover/focus states;
+- minimal shadows.
+
+## V1.4 Navigation
+Keep the existing reliable multi-page router.
+Desktop navigation should become visually quieter:
+- wordmark/name on the left;
+- primary page links in the center/right;
+- one small availability/contact signal;
+- no oversized pill navigation.
+Mobile navigation must remain accessible and keyboard-safe.
+Navigation labels should stay short: Home, Projects, Research, Experience, About, Contact.
+Achievements may remain a dedicated route but should not visually compete with Projects/Experience in the primary hierarchy unless content volume justifies it.
+
+## V1.5 Homepage specification
+The homepage must be redesigned as an editorial landing page.
+### Hero
+Use:
+- small eyebrow;
+- large name or concise first-person introduction;
+- one strong positioning statement;
+- short supporting paragraph;
+- GitHub / LinkedIn / résumé or contact links when verified.
+Do not use a slogan that sounds like a product marketing headline.
+Preferred direction: Hi, I'm Abid. I build cloud-native, AI-enabled and backend systems.
+The exact final wording must remain truthful and may be refined during content review.
+
+### About introduction
+A short human paragraph should explain current education, current engineering role, technical interests, and research direction. Do not duplicate the full About page.
+
+### Experience
+Experience is a major proof section. Use a compact timeline/list inspired by the reference: date; role; organization; concise responsibility summary; technology/focus tags; link to full experience page. Only verified responsibilities may be stated.
+
+### Featured projects
+Use a small number of high-signal projects. For each featured project show title, type/context, one concise description, technology list, award/recognition only when verified, optional real project screenshot/thumbnail when an asset is supplied, and project/case-study link.
+If no real screenshot exists, use a restrained typographic project panel rather than inventing an interface.
+
+### Research
+Research should appear as a compact editorial list or two-column selection, not as a fabricated scientific dashboard. Each entry may show title, venue/context, one-line description, recognition, and verified external link if available. Detailed methodology belongs on /research.
+
+### Writing
+If verified articles, papers, technical notes, or public writing are supplied, provide a lightweight Writing section. Do not invent publications merely to imitate the reference.
+
+### Contact
+Finish with a simple, high-contrast invitation to connect.
+
+## V1.6 Projects page
+The Projects page should feel like a project archive. Use a hierarchy: Featured projects; Other projects; optional project archive expansion.
+Avoid a uniform grid where every project looks equally important.
+Each project row/card should prioritize title, concise description, type, stack, recognition/outcome, and external links.
+Project visuals are optional and must be real or explicitly abstract.
+
+## V1.7 Project detail pages
+Keep case-study routes, but make them editorial rather than dashboard-like.
+Preferred order: title + context; short summary; recognition; real visual if available; verified project facts; problem/context; role/contribution; architecture/technical decisions only when verified; result/evidence; learning; stack and links.
+Missing evidence must cause the section to disappear, not produce filler text.
+
+## V1.8 Research page
+Use research as a credible differentiator. Structure entries around question/problem, methodology, personal contribution, result, venue, recognition, and evidence links. All optional fields remain hidden until verified.
+
+## V1.9 Achievements
+Achievements should become an evidence page rather than a badge wall. Priority: major verified award; certifications; credential evidence; community recognition. Credly embeds remain supported but should not dominate the page.
+
+## V1.10 About
+About should be more personal and concise. Include education, technical direction, research interests, community/leadership, and selected technologies. Do not repeat every skill from the homepage.
+
+## V1.11 Visual component policy
+Prefer reusable components such as SectionHeader, ExperienceList, ProjectCard, ProjectVisual, ResearchList, CredentialCard, ExternalLink, and PageHeader.
+Avoid creating a separate visual system for every page.
+ProjectVisual must not describe itself as an evidence map unless actual structured evidence is being visualized. Its default v1 role is a restrained project media/identity panel.
+
+## V1.12 Motion and interaction
+Motion should be subtle: link underline/arrow movement; small card translation; soft accent transitions; mobile menu animation; optional ambient background.
+No scroll-jacking. No animation that is required to understand content. prefers-reduced-motion must continue to disable non-essential motion.
+
+## V1.13 Typography and spacing
+Typography is the primary visual tool. Use large but controlled display type; readable body copy; monospace only for metadata, labels and technical signals; generous vertical rhythm; avoid dense card interiors; avoid paragraphs longer than necessary on the homepage.
+
+## V1.14 Asset policy
+Use real assets when available: project screenshots; research figures; certificates; headshot/profile image if supplied; award evidence.
+Recommended directories: public/images/projects/, public/images/research/, public/images/achievements/, public/images/profile/.
+Never fabricate project screenshots, metrics, awards, paper metadata, architecture diagrams, or personal imagery.
+
+## V1.15 Release acceptance criteria
+V1 is release-ready only when every public route works; navigation works on desktop and mobile; direct GitHub Pages nested-route loads work; content is factually verified; no placeholder/filler claims remain visible; no fake project visuals are presented as real; external links are verified; keyboard navigation works; focus states are visible; reduced motion works; contrast is acceptable; production build passes; deployment passes; bundle/runtime cost is reasonable; mobile layout is intentionally designed; social metadata and favicon/robots/sitemap remain valid; and final content review is complete.
+
+## V1.16 Implementation order
+### Sprint A — Visual reset
+- Replace the current dashboard/card-heavy homepage composition.
+- Simplify navigation.
+- Establish final typography, spacing, borders and accent rules.
+- Remove unnecessary visual noise.
+- Keep the existing routing/deployment architecture.
+
+### Sprint B — Experience + projects
+- Rebuild experience as the primary proof section.
+- Rebuild featured projects as editorial project entries.
+- Replace the current generic evidence-map visual.
+- Add real project assets only where supplied/verified.
+- Keep detailed project routes.
+
+### Sprint C — Research + achievements
+- Refine research into an editorial research archive.
+- Refine achievements into evidence-led credential presentation.
+- Keep Credly lazy loading.
+
+### Sprint D — Secondary pages
+- Refine About, Contact and full Experience pages.
+- Add verified résumé link if supplied.
+- Add Writing only when actual writing exists.
+
+### Sprint E — Release hardening
+- Keyboard/focus audit.
+- Mobile audit.
+- Reduced-motion audit.
+- Contrast audit.
+- Performance audit.
+- Link/content verification.
+- Production build.
+- GitHub Pages deployment.
+- Final route-by-route acceptance test.
+
+## V1.17 Explicit non-goals
+Do not turn the site into a clone of Brittany Chiang's site; copy its copy, visual assets, code, or exact layout; add a large WebGL showcase merely because the existing project supports it; invent a writing section; invent project screenshots; invent research results; add more pages just to increase perceived scope; or optimize for visual novelty over credibility.
