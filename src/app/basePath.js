@@ -1,4 +1,6 @@
-export const BASE_PATH = import.meta.env.BASE_URL.replace(/\/$/, "");
+import { SITE_BASE_PATH } from "../config/site";
+
+export const BASE_PATH = SITE_BASE_PATH.replace(/\/$/, "");
 
 export function normalizePath(pathname) {
   if (!BASE_PATH) return pathname.replace(/\/+$/, "") || "/";
