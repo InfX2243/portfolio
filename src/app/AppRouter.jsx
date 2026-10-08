@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import { projects } from "../data/portfolio";
+import { BASE_PATH, normalizePath } from "./basePath";
 
 const HomePage = lazy(() => import("../pages/HomePage").then(m => ({ default: m.HomePage })));
 const ProjectsPage = lazy(() => import("../pages/ProjectsPage").then(m => ({ default: m.ProjectsPage })));
