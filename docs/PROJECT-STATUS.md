@@ -1,6 +1,6 @@
 # Portfolio Implementation Status
 
-Last updated: 2026-10-08 (Sprint F route/metadata/link audit)  
+Last updated: 2026-10-08 (Sprint G deployment/configuration validation)  
 > Branch: `portfolio-v1`  
 > Source of truth: `docs/AI-PORTFOLIO-EXECUTION.md`
 
@@ -249,7 +249,33 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 - Continue with route-by-route acceptance documentation and the final V1 sign-off checklist when browser validation is available.
 
 
-### Sprint F — Route / Metadata / Link Audit (2026-10-08)
+### Sprint G — Deployment / Configuration / Build Validation (2026-10-08)
+
+### Completed:
+- Audited the deployment configuration and found the GitHub Pages base path and site origin were still duplicated between Vite configuration and the static route generator.
+- Added `src/config/site.js` as the shared deployment configuration source.
+- Updated Vite, runtime base-path handling, and static route generation to consume the same base path.
+- Removed the remaining hardcoded social-image host from the route generator.
+- Added `scripts/validate-route-build.mjs` to validate generated public routes, unique titles, descriptions, canonical URLs and required deployment assets.
+- Wired the validation script into the production `build` command so route/metadata drift becomes a build failure instead of a release-time discovery.
+- Reconfirmed the previous Sprint F documentation and link-hardening workflows are green.
+
+### Validated:
+- Shared deployment configuration commits passed workflows `37771672325` and `37771678458`.
+- Final Sprint F documentation synchronization passed workflow `37771471561`.
+- The combined Sprint G build-validation workflow is currently pending/processing and must be confirmed before this sprint is marked CI-complete.
+
+### Outstanding:
+- Confirm the final Sprint G production build with the new route validator.
+- Browser/device validation remains unavailable in this environment.
+- Runtime accessibility, Credly third-party rendering/fallback and final evidence verification remain outstanding.
+
+### Next:
+1. Confirm Sprint G CI and fix any validator/build failures.
+2. Continue final release audit across accessibility, performance and third-party runtime behavior.
+3. Perform final browser/device acceptance and evidence verification before V1 sign-off.
+
+## Sprint F — Route / Metadata / Link Audit (2026-10-08)
 
 ### Completed:
 - Confirmed the final Sprint E CSS cleanup workflow is green (37770445915), so the previously pending Sprint E source cleanup is now production-build/deployment validated.
