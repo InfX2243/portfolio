@@ -223,6 +223,7 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 ## Sprint D — Release Hardening Audit (2026-10-08)
 
 ### Completed:
+- Removed the unused legacy `MobileNav.jsx`, `SpotlightCard.jsx`, and `CanvasParticleReveal.jsx` components after confirming the active page/layout implementation does not import them.
 - Re-audited the current `portfolio-v1` implementation against the authoritative V1 release direction before making release-hardening changes.
 - Audited the client router and GitHub Pages base-path behavior and found an edge case where any pathname beginning with the base string could be treated as being inside the portfolio base path.
 - Hardened `src/app/AppRouter.jsx` so the base path is stripped only for an exact base-path match or a real child route (`/portfolio/...`), while local-root development remains supported.
@@ -230,17 +231,18 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 - Confirmed the current mobile navigation uses the shared `PortfolioLayout` implementation; the standalone legacy `MobileNav.jsx` component is not part of the active layout path and remains a cleanup candidate rather than being reintroduced.
 
 ### Validated:
+- The cleanup is source-level only and does not change the active route/layout implementation.
 - The latest pre-Sprint-D implementation commit `3f0031c0b7a63ffd1a1c74109209c3f2d6200dec` passed the full GitHub Pages workflow (`37767830050`), including npm install, production build, static route generation/output verification and deployment.
 - The status-only follow-up commit `16d85e0170ffd869c726631f65cd18978609b57f` also passed its workflow (`37767872703`).
-- Sprint D router hardening is committed as `e6d7c4c2ddc06f9df73c129fbfc080f5a8105ce0`; its push-triggered workflow should be rechecked before marking this increment fully CI-validated.
+- Sprint D router hardening is committed as `e6d7c4c2ddc06f9df73c129fbfc080f5a8105ce0`; the status-only documentation commit is `16a4409268e939b3daa5e31d46934c31af1d9b58`, followed by the cleanup commits `c4c9d052cd391748217945acc2debea39289cc39`, `b21dce79f21e2210aadb0cfcaa86a7ae57659267`, and `f41a4fbf71f6fc03c2b05d19a48d01ea91ecbd7d`. Their push-triggered workflow results should be rechecked before marking this increment fully CI-validated.
 - Browser/device validation remains explicitly unconfirmed because the available environment cannot perform a reliable live GitHub Pages browser review.
 
 ### Outstanding:
-- Confirm the Sprint D router-hardening GitHub Actions run.
+- Confirm the Sprint D/release-hardening GitHub Actions run after the cleanup commits settle.
 - Complete manual browser/device review for desktop/mobile layout, keyboard focus, contrast, reduced motion, direct nested-route refresh, external links and Credly runtime fallback.
-- Decide whether to remove the unused legacy `MobileNav.jsx` and other demonstrably dead visual components/CSS after a reference audit; do not remove anything still reachable.
+- Audit and prune only remaining demonstrably dead legacy CSS after confirming no active component depends on it.
 - Verify remaining public research/award/certificate URLs only when authoritative sources are available.
 
 ### Next:
-- Confirm Sprint D CI.
-- Then continue release-hardening with a focused cleanup pass for dead code/stale styles and route-by-route acceptance documentation, followed by final V1 sign-off when browser validation is available.
+- Confirm Sprint D CI after the cleanup commits.
+- Continue with route-by-route acceptance documentation and the final V1 sign-off checklist when browser validation is available.
