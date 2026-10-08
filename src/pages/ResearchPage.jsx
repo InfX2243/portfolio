@@ -1,12 +1,12 @@
-import {PortfolioLayout} from "../components/layout/PortfolioLayout";
-import {PageHeader} from "../components/layout/PageHeader";
-import {ResearchVisual} from "../components/ResearchVisual";
-import {research} from "../data/portfolio";
+import { PortfolioLayout } from "../components/layout/PortfolioLayout";
+import { PageHeader } from "../components/layout/PageHeader";
+import { ResearchVisual } from "../components/ResearchVisual";
+import { research } from "../data/portfolio";
 
-function ResearchDetail({label, title, value}) {
+function ResearchDetail({ label, title, value }) {
   if (!value) return null;
   return (
-    <section className="research-detail">
+    <section className="research-archive-detail">
       <p className="eyebrow">{label}</p>
       <h3>{title}</h3>
       <p>{value}</p>
@@ -14,53 +14,69 @@ function ResearchDetail({label, title, value}) {
   );
 }
 
+function ResearchLinks({ links }) {
+  const verified = Object.entries(links || {}).filter(
+    ([, url]) => typeof url === "string" && /^https?:\/\//.test(url)
+  );
+  if (!verified.length) return null;
+
+  return (
+    <div className="research-archive-links">
+      {verified.map(([label, url]) => (
+        <a className="text-link" key={label} href={url} target="_blank" rel="noopener noreferrer">
+          {label} ↗
+        </a>
+      ))}
+    </div>
+  );
+}
+
 export function ResearchPage() {
   return (
     <PortfolioLayout>
-      <section className="section-shell page-section">
+      <section className="section-shell page-section research-page-editorial">
         <PageHeader
           index="01"
           eyebrow="Research"
           title="Questions, systems, evidence."
-          intro="Research work is separated from project marketing so recognition, context and verified evidence remain legible."
+          intro="Research is presented as an evidence archive: what was investigated, what is verified, and what still needs a public source."
         />
 
-        <div className="research-grid">
-          {research.map(item => (
-            <article className="research-card" key={item.id}>
-              <div className="research-card-top">
-                <span>{item.index}</span>
+        <div className="research-archive-list">
+          {research.map((item, index) => (
+            <article className="research-archive-entry" key={item.id}>
+              <div className="research-archive-index">
+                <span>{item.index || String(index + 1).padStart(2, "0")}</span>
                 <span>{item.signal}</span>
               </div>
-              <h2>{item.title}</h2>
-              <p className="research-context">{item.context} · {item.recognition}</p>
-              <p>{item.description}</p>
 
-              <ResearchVisual research={item} />
-
-              <div className="research-details">
-                <ResearchDetail label="Research question / problem" title="What was investigated" value={item.problem} />
-                <ResearchDetail label="Methodology" title="How it was approached" value={item.methodology} />
-                <ResearchDetail label="Contribution" title="What I contributed" value={item.contribution} />
-                <ResearchDetail label="Result" title="What was learned" value={item.result} />
-              </div>
-
-              <div className="research-evidence">
-                <span>Evidence</span>
-                <small>{item.evidence}</small>
-              </div>
-
-              {item.links && Object.keys(item.links).length > 0 && (
-                <div className="tag-row">
-                  {Object.entries(item.links)
-                    .filter(([, url]) => typeof url === "string" && /^https?:\/\//.test(url))
-                    .map(([label, url]) => (
-                      <a className="button" key={label} href={url} target="_blank" rel="noreferrer">
-                        {label} ↗
-                      </a>
-                    ))}
+              <div className="research-archive-content">
+                <div className="research-archive-heading">
+                  <div>
+                    <p className="eyebrow">{item.context}</p>
+                    <h2>{item.title}</h2>
+                  </div>
+                  {item.recognition && <p className="research-archive-recognition">{item.recognition}</p>}
                 </div>
-              )}
+
+                <p className="research-archive-description">{item.description}</p>
+
+                <ResearchVisual research={item} />
+
+                <div className="research-archive-details">
+                  <ResearchDetail label="Research question / problem" title="What was investigated" value={item.problem} />
+                  <ResearchDetail label="Methodology" title="How it was approached" value={item.methodology} />
+                  <ResearchDetail label="Contribution" title="What I contributed" value={item.contribution} />
+                  <ResearchDetail label="Result" title="What was learned" value={item.result} />
+                </div>
+
+                <div className="research-archive-evidence">
+                  <span className="eyebrow">Evidence boundary</span>
+                  <p>{item.evidence}</p>
+                </div>
+
+                <ResearchLinks links={item.links} />
+              </div>
             </article>
           ))}
         </div>
