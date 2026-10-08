@@ -24,8 +24,8 @@ export function HomePage() {
           <p className="hero-lede">{profile.summary}</p>
           <div className="hero-actions">
             <a className="button button-primary" href={withBasePath("/projects")}>Explore projects <span aria-hidden="true">↘</span></a>
-            <a className="text-link" href={profile.links.github} target="_blank" rel="noreferrer">GitHub ↗</a>
-            <a className="text-link" href={profile.links.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a>
+            <a className="text-link" href={profile.links.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            <a className="text-link" href={profile.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
           </div>
         </div>
         <div className="home-hero-aside" aria-label="Current direction">
