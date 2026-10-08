@@ -610,3 +610,85 @@ body { background: var(--bg); color: var(--text); }
 @media (prefers-reduced-motion: reduce) {
   .desktop-nav a::after { transition: none; }
 }
+
+/* Sprint B — Experience editorial page */
+.experience-page-editorial { padding-bottom: 100px; }
+.experience-archive { border-top: 1px solid var(--line); }
+.experience-entry {
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr);
+  gap: 50px;
+  padding: 42px 0 48px;
+  border-bottom: 1px solid var(--line);
+}
+.experience-entry-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  color: #708291;
+  font: 500 .64rem var(--mono);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.experience-entry-content { max-width: 780px; }
+.experience-entry-content h2 {
+  margin: 8px 0 18px;
+  font-size: clamp(2.5rem, 5vw, 4.8rem);
+  line-height: .95;
+  letter-spacing: -.06em;
+}
+.experience-entry-note {
+  max-width: 650px;
+  margin: 0;
+  color: var(--soft);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+.experience-entry-focus {
+  margin-top: 46px;
+  padding-top: 17px;
+  border-top: 1px solid var(--line);
+}
+.experience-entry-focus ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+}
+.experience-entry-focus li {
+  color: #aab7c2;
+  font-size: .82rem;
+  line-height: 1.6;
+}
+.experience-entry-focus li + li::before {
+  content: "·";
+  color: var(--cyan);
+  margin: 0 10px;
+}
+.experience-boundary {
+  max-width: 650px;
+  margin: 60px 0 0 220px;
+  padding: 18px 0 0;
+  border-top: 1px solid var(--line);
+}
+.experience-boundary p:last-child {
+  margin: 10px 0 0;
+  color: #7f8f9d;
+  font-size: .78rem;
+  line-height: 1.7;
+}
+@media (max-width: 650px) {
+  .experience-entry {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 30px 0 36px;
+  }
+  .experience-entry-meta { max-width: 100%; }
+  .experience-entry-content h2 { font-size: clamp(2.5rem, 13vw, 4rem); }
+  .experience-entry-focus { margin-top: 34px; }
+  .experience-entry-focus ul { display: block; }
+  .experience-entry-focus li + li::before { margin: 0 8px 0 0; }
+  .experience-boundary { margin: 48px 0 0; }
+}
