@@ -1,6 +1,6 @@
 # Portfolio Implementation Status
 
-Last updated: 2026-10-08 (Sprint E routing/style audit)  
+Last updated: 2026-10-08 (Sprint F route/metadata/link audit)  
 > Branch: `portfolio-v1`  
 > Source of truth: `docs/AI-PORTFOLIO-EXECUTION.md`
 
@@ -15,9 +15,9 @@ Last updated: 2026-10-08 (Sprint E routing/style audit)
 
 | Phase | Status | Completed | Next work |
 |---|---|---|---|
-| P0 / Phase 0 — Repository Audit | DONE | Repository, dependencies, routes, data, deployment workflow and visual components inspected; Sprint D re-audited routing/navigation and Sprint E re-audited shared path handling and obsolete visual CSS. | Re-run audit after major architectural changes. |
+| P0 / Phase 0 — Repository Audit | DONE | Repository, dependencies, routes, data, deployment workflow and visual components inspected; Sprint D re-audited routing/navigation and Sprint E re-audited shared path handling and obsolete visual CSS. | Re-run audit after major architectural changes; Sprint F completed a route/metadata/link consistency pass. |
 | P0 / Phase 1 — Information Architecture | PARTIAL | Lightweight multi-page router, shared layout/navigation/footer, 404 handling, GitHub Pages fallback strategy, centralized Vite-base-aware navigation, and static route entry-point generation for every public route. GitHub Pages `gh-pages` contains route-specific `index.html` files for direct nested loads. | External browser verification remains open because the live-site checker in this environment cannot access GitHub Pages; repository/deployment output verifies the required static route files. |
-| P0 / Phase 2 — Landing Page | PARTIAL | Sprint A editorial hierarchy is implemented and the homepage deployment has repeatedly passed production build/deploy validation. | Final browser/device, accessibility and content-truth review. |
+| P0 / Phase 2 — Landing Page | PARTIAL | Sprint A editorial hierarchy is implemented and the homepage deployment has repeatedly passed production build/deploy validation. | Final browser/device, accessibility and content-truth review; route metadata is now shared between runtime and static generation. |
 | P0 / Phase 3 — Projects | PARTIAL | Projects index, project cards, dynamic project routes, normalized evidence-aware case-study schema, featured three projects, centralized base-path links, and case-study navigation with verified-resource/related-work slots. | Populate only verified problem/context/architecture/decision/trade-off/learning fields; add verified visuals and links.
 | P0 / Phase 4 — Research | PARTIAL | Research page is now an editorial evidence archive; Cognitrace and Green Passport remain data-driven; unsupported award/publication claims are explicitly withheld; research visual no longer presents a fabricated evidence map. | Verify links, publication/venue metadata, methodology/contribution evidence; optional evidence fields remain hidden until verified. |
 | P0 / Phase 5 — Achievements | PARTIAL | Achievements is now an editorial evidence archive with separated recognition, selected certifications, Credly embeds and credential inventory. Credly remains near-viewport lazy-loaded; seven certification IDs and issue months remain repository-verified. | Add public verification URLs where available and complete browser/third-party embed audit. |
@@ -27,7 +27,7 @@ Last updated: 2026-10-08 (Sprint E routing/style audit)
 | P0 / Phase 9 — Performance | PARTIAL | Route chunks and homepage visual effects are lazy-loaded; unused Spline dependency removed; GitHub Actions production build now passes. | Production build log recorded the main chunks at 210.26 kB / 65.93 kB gzip and 155.37 kB / 50.01 kB gzip; route chunks remain small and homepage visual effects are separate. Next: mobile/low-power runtime testing and third-party loading review. |
 | P0 / Phase 10 — Accessibility | PARTIAL | Skip link, focus-visible styles, reduced-motion rules, semantic nav labels, Escape handling, active-page semantics, focus restoration, inert closed mobile nav, main landmark, 44px mobile nav controls, single-h1 homepage hierarchy. | Full keyboard/focus/contrast/link audit and browser verification. |
 | P1 / Phase 11 — SEO / Sharing | PARTIAL | Route-specific titles/descriptions, static route-specific Open Graph/Twitter metadata generated at build time, canonical URLs, favicon, `robots.txt`, `sitemap.xml`, and a dedicated `og-image.svg` social preview are implemented. | Validate the generated image metadata after deployment and perform final search/social crawler verification. |
-| P0 / Phase 12 — Final Validation | PARTIAL | Production build/deployment CI is green; Sprint D corrected a base-path normalization edge case and Sprint E centralized the fix across router/layout while removing confirmed obsolete visual CSS. Browser/device validation and remaining P0 content/accessibility/performance checks are outstanding. | Confirm latest Sprint E CI, then complete route-by-route acceptance and external browser verification when available. |
+| P0 / Phase 12 — Final Validation | PARTIAL | Production build/deployment CI is green; Sprint D corrected a base-path normalization edge case and Sprint E centralized the fix across router/layout while removing confirmed obsolete visual CSS. Browser/device validation and remaining P0 content/accessibility/performance checks are outstanding. | Confirm latest Sprint F link-hardening CI, then complete browser/device acceptance and final V1 sign-off when available. |
 
 \* About is structurally complete; it still needs the final truth/quality review before final portfolio sign-off.
 
@@ -247,6 +247,35 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 - Confirm Sprint D CI after the cleanup commits.
 - Continue with route-by-route acceptance documentation and the final V1 sign-off checklist when browser validation is available.
 
+
+### Sprint F — Route / Metadata / Link Audit (2026-10-08)
+
+### Completed:
+- Confirmed the final Sprint E CSS cleanup workflow is green (37770445915), so the previously pending Sprint E source cleanup is now production-build/deployment validated.
+- Audited the route architecture and found duplicated page metadata between the client router and static route generator.
+- Added src/data/routes.js as the shared public-route and metadata source for both runtime document metadata and GitHub Pages static entry-point generation.
+- Updated the client router to consume the shared route metadata instead of maintaining a second page-title/description map.
+- Updated static route generation to consume the same public-route manifest, including all five project detail routes.
+- Audited external links and hardened every current target="_blank" portfolio link to use rel="noopener noreferrer".
+- Verified the deployed gh-pages tree contains static entry points for Home, Projects, all five project details, Research, Achievements, Experience, About, Contact, plus 404.html.
+
+### Validated:
+- Route-manifest creation and router integration passed GitHub Actions workflows 37771255163 and 37771269493.
+- Static route-generator integration passed workflow 37771280638.
+- Sprint E final CSS cleanup passed workflow 37770445915.
+- Source inspection confirms internal navigation uses the centralized Vite base-path helper and external links use explicit safe opener relationships.
+- Deployed gh-pages inspection confirms the expected nested route HTML files exist.
+
+### Outstanding:
+- The three final external-link hardening commits are currently running through GitHub Actions; the latest link commit must be rechecked before this Sprint F increment is marked fully CI-validated.
+- Browser/device visual validation remains unavailable in this environment.
+- Keyboard-only focus, contrast, reduced-motion runtime behavior, Credly third-party fallback, and live external-link verification still need browser-level validation.
+- Verified public research/award/certificate URLs remain outstanding where authoritative sources are not yet present.
+
+### Next:
+1. Confirm the latest external-link hardening workflow is green and update this status record with the final run ID.
+2. Perform final browser/device acceptance when a reliable live-site browser is available.
+3. Complete content/evidence verification and issue the final V1 release sign-off only after those checks pass.
 
 ## Sprint E — Routing / Style Audit (2026-10-08)
 
