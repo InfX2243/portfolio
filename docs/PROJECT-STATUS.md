@@ -1,6 +1,6 @@
 # Portfolio Implementation Status
 
-Last updated: 2026-10-08 (Sprint D release-hardening audit)  
+Last updated: 2026-10-08 (Sprint E routing/style audit)  
 > Branch: `portfolio-v1`  
 > Source of truth: `docs/AI-PORTFOLIO-EXECUTION.md`
 
@@ -15,7 +15,7 @@ Last updated: 2026-10-08 (Sprint D release-hardening audit)
 
 | Phase | Status | Completed | Next work |
 |---|---|---|---|
-| P0 / Phase 0 — Repository Audit | DONE | Repository, dependencies, routes, data, deployment workflow and visual components inspected; Sprint D re-audited routing, navigation, accessibility hooks, metadata and deployment. | Re-run audit after major architectural changes. |
+| P0 / Phase 0 — Repository Audit | DONE | Repository, dependencies, routes, data, deployment workflow and visual components inspected; Sprint D re-audited routing/navigation and Sprint E re-audited shared path handling and obsolete visual CSS. | Re-run audit after major architectural changes. |
 | P0 / Phase 1 — Information Architecture | PARTIAL | Lightweight multi-page router, shared layout/navigation/footer, 404 handling, GitHub Pages fallback strategy, centralized Vite-base-aware navigation, and static route entry-point generation for every public route. GitHub Pages `gh-pages` contains route-specific `index.html` files for direct nested loads. | External browser verification remains open because the live-site checker in this environment cannot access GitHub Pages; repository/deployment output verifies the required static route files. |
 | P0 / Phase 2 — Landing Page | PARTIAL | Sprint A editorial hierarchy is implemented and the homepage deployment has repeatedly passed production build/deploy validation. | Final browser/device, accessibility and content-truth review. |
 | P0 / Phase 3 — Projects | PARTIAL | Projects index, project cards, dynamic project routes, normalized evidence-aware case-study schema, featured three projects, centralized base-path links, and case-study navigation with verified-resource/related-work slots. | Populate only verified problem/context/architecture/decision/trade-off/learning fields; add verified visuals and links.
@@ -27,7 +27,7 @@ Last updated: 2026-10-08 (Sprint D release-hardening audit)
 | P0 / Phase 9 — Performance | PARTIAL | Route chunks and homepage visual effects are lazy-loaded; unused Spline dependency removed; GitHub Actions production build now passes. | Production build log recorded the main chunks at 210.26 kB / 65.93 kB gzip and 155.37 kB / 50.01 kB gzip; route chunks remain small and homepage visual effects are separate. Next: mobile/low-power runtime testing and third-party loading review. |
 | P0 / Phase 10 — Accessibility | PARTIAL | Skip link, focus-visible styles, reduced-motion rules, semantic nav labels, Escape handling, active-page semantics, focus restoration, inert closed mobile nav, main landmark, 44px mobile nav controls, single-h1 homepage hierarchy. | Full keyboard/focus/contrast/link audit and browser verification. |
 | P1 / Phase 11 — SEO / Sharing | PARTIAL | Route-specific titles/descriptions, static route-specific Open Graph/Twitter metadata generated at build time, canonical URLs, favicon, `robots.txt`, `sitemap.xml`, and a dedicated `og-image.svg` social preview are implemented. | Validate the generated image metadata after deployment and perform final search/social crawler verification. |
-| P0 / Phase 12 — Final Validation | PARTIAL | Production build/deployment CI is green, static nested route entry points are deployed, and Sprint D corrected a base-path normalization edge case. Browser/device validation and remaining P0 content/accessibility/performance checks are outstanding. | Complete route-by-route acceptance and external browser verification when available. |
+| P0 / Phase 12 — Final Validation | PARTIAL | Production build/deployment CI is green; Sprint D corrected a base-path normalization edge case and Sprint E centralized the fix across router/layout while removing confirmed obsolete visual CSS. Browser/device validation and remaining P0 content/accessibility/performance checks are outstanding. | Confirm latest Sprint E CI, then complete route-by-route acceptance and external browser verification when available. |
 
 \* About is structurally complete; it still needs the final truth/quality review before final portfolio sign-off.
 
@@ -100,7 +100,7 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 3. **DONE — Projects:** editorial project archive and evidence-led case-study routes established.
 4. **DONE — Research/Achievements:** editorial evidence archives, restrained research signal panel, primary navigation and Credly failure recovery established.
 5. **DONE — Secondary pages:** About and Contact remain structurally complete with evidence boundaries; further content additions require verified source material.
-6. **IN PROGRESS — Release hardening:** route/base-path, accessibility, metadata, external-link, performance and deployment acceptance audit.
+6. **IN PROGRESS — Release hardening:** route/base-path, accessibility, metadata, external-link, performance and deployment acceptance audit; Sprint E cleanup is implemented and awaiting CI confirmation.
 
 ### Documentation source of truth
 `docs/AI-PORTFOLIO-EXECUTION.md` now contains the authoritative **V1 RELEASE DIRECTION — BRITTANY CHIANG-INSPIRED ENGINEERING PORTFOLIO** section. Future AI implementation loops must follow that section and must not revert to the earlier gallery/constellation/WebGL-heavy direction.
@@ -246,3 +246,29 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 ### Next:
 - Confirm Sprint D CI after the cleanup commits.
 - Continue with route-by-route acceptance documentation and the final V1 sign-off checklist when browser validation is available.
+
+
+## Sprint E — Routing / Style Audit (2026-10-08)
+
+### Completed:
+- Re-audited the release-hardening implementation after Sprint D and confirmed the recent deployment cleanup runs are green through the latest status commit.
+- Centralized `normalizePath()` in `src/app/basePath.js` so the router and shared portfolio layout use the same safe base-path semantics.
+- Fixed the remaining navigation-level variant of the base-path prefix edge case: paths are only stripped when they equal the configured base path or begin with the base path followed by `/`.
+- Removed confirmed obsolete pre-editorial CSS from `src/styles.css`, including legacy spotlight-card, project/research flow, particle-layer and Spline-shell selectors that no longer have active component consumers.
+- Preserved the active WebGPU enhancement styles used by `VgpuField`; no active editorial project/research signal styles were removed.
+- Kept the cleanup targeted rather than rewriting the stylesheet wholesale.
+
+### Validated:
+- Sprint D cleanup workflows previously completed successfully, including the latest status synchronization run.
+- Source-level inspection confirmed the deleted legacy visual components are no longer present and the active homepage uses `VgpuField` plus the editorial `ProjectVisual` / `ResearchVisual` components.
+- Source-level inspection confirmed no remaining references to the removed legacy selectors after the final CSS cleanup.
+
+### Outstanding:
+- Latest Sprint E source commits still require their GitHub Actions production build/deployment confirmation.
+- Browser/device visual validation remains unavailable in this environment.
+- Route-by-route acceptance still needs explicit verification of nested static entry points, active navigation, metadata, keyboard/focus behavior, contrast, reduced motion and external links.
+
+### Next:
+1. Confirm the latest Sprint E GitHub Actions runs and fix any build/deployment regressions.
+2. Perform a route-by-route source acceptance audit for Home, Projects, all three project details, Research, Achievements, Experience, About, Contact and Not Found.
+3. Audit external links and target/rel behavior, then record final V1 release-hardening status.
