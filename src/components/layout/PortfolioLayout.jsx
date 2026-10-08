@@ -58,7 +58,7 @@ export function PortfolioLayout({ children }) {
             </a>
           ))}
         </nav>
-        <a className="nav-status" href={profile.links.linkedin} target="_blank" rel="noreferrer">
+        <a className="nav-status" href={profile.links.linkedin} target="_blank" rel="noopener noreferrer">
           <span className="status-dot" /> Open to conversations
         </a>
         <button
