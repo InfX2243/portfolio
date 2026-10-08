@@ -148,5 +148,28 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 - Project archive and case-study presentation still need the Sprint B treatment.
 
 ### Next:
-- Redesign /projects as an editorial archive with featured work clearly separated from secondary work.
-- Then refine project detail presentation without fabricating missing case-study evidence.
+- Refine project detail presentation without fabricating missing case-study evidence.
+- Then validate the combined Sprint A + Sprint B changes in CI/build and perform route/accessibility checks.
+
+## Sprint B — Projects (2026-10-08)
+
+### Completed:
+- Reworked /projects into an editorial archive with a clear Featured Work section and a quieter Other Work section.
+- Preserved project ordering and existing verified data while giving Cognitrace, Ascend APEX and Green Passport stronger visual priority.
+- Replaced generic dashboard/card presentation with project rows, technical metadata and restrained project visual panels.
+- Kept project links route-aware through the existing base-path helper.
+- Preserved the evidence-first rule: missing case-study details remain absent rather than being inferred.
+
+### Validated:
+- Projects page consumes the existing structured projects data.
+- Featured and secondary lists are derived from the existing featured flag; no project facts were duplicated into the component.
+- Responsive layouts were added for tablet and mobile.
+
+### Outstanding:
+- Project detail page still needs visual refinement to match the new archive.
+- Production build/CI validation for the combined Sprint A + Sprint B changes.
+- Browser-level visual, keyboard, contrast and reduced-motion review remains pending.
+
+### Next:
+- Refine project detail pages into an editorial case-study layout.
+- Validate all Sprint B routes and production build before moving to Research/Achievements.
