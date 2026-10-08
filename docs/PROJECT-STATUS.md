@@ -1,6 +1,6 @@
 # Portfolio Implementation Status
 
-Last updated: 2026-10-05 (implementation loop)  
+Last updated: 2026-10-08 (Sprint A visual reset)  
 > Branch: `portfolio-v1`  
 > Source of truth: `docs/AI-PORTFOLIO-EXECUTION.md`
 
@@ -17,7 +17,7 @@ Last updated: 2026-10-05 (implementation loop)
 |---|---|---|---|
 | P0 / Phase 0 — Repository Audit | DONE | Repository, dependencies, routes, data, deployment workflow and visual components inspected. | Re-run audit after major architectural changes. |
 | P0 / Phase 1 — Information Architecture | PARTIAL | Lightweight multi-page router, shared layout/navigation/footer, 404 handling, GitHub Pages fallback strategy, centralized Vite-base-aware navigation, and static route entry-point generation for every public route. GitHub Pages `gh-pages` contains route-specific `index.html` files for direct nested loads. | External browser verification remains open because the live-site checker in this environment cannot access GitHub Pages; repository/deployment output verifies the required static route files. |
-| P0 / Phase 2 — Landing Page | PARTIAL | Hero, VGPU/Canvas enhancement, featured work, research, experience, domains, selected achievements and CTA structure exist. | Content/evidence review, final positioning copy, responsive/accessibility validation. |
+| P0 / Phase 2 — Landing Page | IN PROGRESS | Sprint A reset started: homepage moved from dashboard/card composition to editorial identity → context → experience → selected work → research → direction → contact hierarchy. | Validate production build, mobile behavior, accessibility and visual consistency; then continue with Sprint B experience/project refinement. |
 | P0 / Phase 3 — Projects | PARTIAL | Projects index, project cards, dynamic project routes, normalized evidence-aware case-study schema, featured three projects, centralized base-path links, and case-study navigation with verified-resource/related-work slots. | Populate only verified problem/context/architecture/decision/trade-off/learning fields; add verified visuals and links.
 | P0 / Phase 4 — Research | PARTIAL | Research page, Cognitrace, Green Passport, research visuals and recognition separation; unsupported award/publication claims are now explicitly withheld. | Verify links, publication/venue metadata, methodology/contribution evidence; the UI now has optional research-question, methodology, contribution and result slots that stay hidden until verified data is added. |
 | P0 / Phase 5 — Achievements | PARTIAL | Achievements page, award section, Credly component, certificate component and credential data model; Credly embeds now defer loading until near viewport; seven certification IDs and issue months verified against the owner’s public LinkedIn profile. | Add public verification URLs where available and complete gallery audit. |
@@ -95,7 +95,7 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 - **Non-goals:** no dashboard aesthetic, no fake evidence maps, no fabricated screenshots/metrics/research results, no unnecessary WebGL showcase, no clone of the reference site.
 
 ### V1 implementation queue
-1. **NEXT — Visual reset:** simplify navigation, redesign global spacing/type/rules, and replace dashboard/card-heavy homepage composition.
+1. **IN PROGRESS — Visual reset:** simplify navigation, redesign global spacing/type/rules, and replace dashboard/card-heavy homepage composition.
 2. **NEXT — Experience:** make verified professional experience a major homepage proof section and refine the full Experience page.
 3. **NEXT — Projects:** replace the generic evidence-map presentation with restrained project identity/media panels; redesign Projects and case-study pages.
 4. **NEXT — Research/Achievements:** refine both into editorial/evidence-led archives while preserving truth constraints and lazy-loaded Credly.
@@ -104,3 +104,27 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 
 ### Documentation source of truth
 `docs/AI-PORTFOLIO-EXECUTION.md` now contains the authoritative **V1 RELEASE DIRECTION — BRITTANY CHIANG-INSPIRED ENGINEERING PORTFOLIO** section. Future AI implementation loops must follow that section and must not revert to the earlier gallery/constellation/WebGL-heavy direction.
+
+
+## Sprint A — Visual Reset (2026-10-08)
+
+### Completed:
+- Reworked the homepage composition around identity, context, experience, selected projects, research, technical direction, community and contact.
+- Simplified primary navigation to Home, Projects, Research, Experience, About and Contact; Achievements remains a dedicated route without competing for primary navigation weight.
+- Replaced the fixed pill-style navigation treatment with a restrained full-width editorial header while preserving the existing router, base-path handling and mobile accessibility behavior.
+- Replaced ProjectVisual's generic "Evidence map" presentation with a restrained project identity/evidence panel that does not imply a structured visualization where none exists.
+- Added a v1 editorial visual layer for typography, spacing, thin rules, metadata, project rows, experience rows, research rows and responsive behavior.
+
+### Validated:
+- Repository-level source inspection completed for the authoritative execution specification, project status, homepage, layout/navigation, project visual, portfolio data and GitHub Pages workflow.
+- Existing routing/deployment architecture was preserved.
+- Automated production validation is pending after the visual reset changes.
+
+### Outstanding:
+- Production build/CI validation of the Sprint A changes.
+- Browser-level desktop/mobile visual review remains unavailable from the current environment.
+- Full keyboard, contrast, reduced-motion and link audit remains pending.
+
+### Next:
+- Validate Sprint A in CI and inspect the resulting build output.
+- Then begin Sprint B: make verified Bitkraft experience the primary proof section and refine Projects/ProjectVisual as a coherent editorial archive.
