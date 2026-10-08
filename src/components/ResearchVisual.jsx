@@ -5,32 +5,24 @@ export function ResearchVisual({ research }) {
     research.recognition,
   ].filter(Boolean);
 
-  const nodes = [
-    { label: "QUESTION", value: research.context ?? "Research context" },
-    { label: "INVESTIGATE", value: research.description ?? "Research direction" },
-    { label: "RECOGNITION", value: research.recognition ?? "Recognition pending" },
-    { label: "EVIDENCE", value: research.evidence ?? "Source-backed evidence" },
-  ];
-
   return (
-    <div className="research-visual" aria-label={`Visual evidence map for ${research.title}`}>
-      <div className="research-visual-head">
-        <span>Evidence map</span>
-        <span>{research.signal ?? "Research signal"}</span>
+    <div className="research-signal-panel">
+      <div className="research-signal-head">
+        <span>Research signal</span>
+        <span>{research.signal || "Evidence status"}</span>
       </div>
-      <div className="research-flow">
-        {nodes.map((node, index) => (
-          <div className="research-node-wrap" key={node.label}>
-            <div className="research-node">
-              <span>{node.label}</span>
-              <strong>{node.value}</strong>
-            </div>
-            {index < nodes.length - 1 && <span className="research-flow-line" aria-hidden="true">→</span>}
-          </div>
-        ))}
+      <div className="research-signal-body">
+        <div>
+          <span className="eyebrow">Context</span>
+          <strong>{research.context || "Context pending verification"}</strong>
+        </div>
+        <div>
+          <span className="eyebrow">Recognition</span>
+          <strong>{research.recognition || "Recognition pending verification"}</strong>
+        </div>
       </div>
       <div className="research-signal-strip">
-        {signals.slice(0, 4).map((signal) => <span key={signal}>{signal}</span>)}
+        {signals.slice(0, 3).map((signal) => <span key={signal}>{signal}</span>)}
       </div>
     </div>
   );
