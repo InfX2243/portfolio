@@ -44,9 +44,8 @@ a { text-decoration: none; }
 .button-primary { border-color: rgba(125,211,252,.45); background: rgba(125,211,252,.1); }
 .text-link { font: 500 .75rem var(--mono); color: var(--soft); padding: 10px; }
 .hero-meta { position: absolute; bottom: 30px; left: 0; right: 0; display: flex; justify-content: space-between; color: #65788a; }
-.gpu-field, .particle-layer { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.gpu-field { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .gpu-field { z-index: 0; opacity: .55; }
-.particle-layer { z-index: 1; opacity: .62; }
 .section { padding-top: 130px; padding-bottom: 70px; position: relative; }
 .section-head { display: grid; grid-template-columns: 70px 1fr; gap: 18px; border-top: 1px solid var(--line); padding-top: 18px; margin-bottom: 44px; }
 .section-index { color: var(--cyan); padding-top: 5px; }
@@ -104,7 +103,7 @@ a { text-decoration: none; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-  .gpu-field, .particle-layer { display: none; }
+  .gpu-field { display: none; }
 }
 
 .project-detail { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--line); }
@@ -236,10 +235,9 @@ a { text-decoration: none; }
 .nav a:focus-visible, .button:focus-visible, .text-link:focus-visible { border-radius: 8px; }
 .evidence-details summary:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; border-radius: 6px; }
 .credly-card .credential-fallback small { display: block; max-width: 34rem; line-height: 1.5; }
-.spline-shell spline-viewer { display: block; width: 100%; min-height: 420px; border: 0; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .button, .spot-card, .evidence-details summary { transition: none; }
+  .button, .evidence-details summary { transition: none; }
   .button:hover, }
 
 
