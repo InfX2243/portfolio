@@ -126,5 +126,27 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 - Full keyboard, contrast, reduced-motion and link audit remains pending.
 
 ### Next:
-- Validate Sprint A in CI and inspect the resulting build output.
-- Then begin Sprint B: make verified Bitkraft experience the primary proof section and refine Projects/ProjectVisual as a coherent editorial archive.
+- Complete Sprint B Projects refinement and editorial project archive.
+- Then validate the combined Sprint A + Sprint B changes in CI/build and perform route/accessibility checks.
+
+## Sprint B — Experience (2026-10-08)
+
+### Completed:
+- Reworked the dedicated Experience page into the same editorial system established on the homepage.
+- Made the verified Bitkraft Technologies LLP Software Engineer Intern entry the clear focal point.
+- Preserved the three verified focus areas: AR & Game Engineering, Backend Platform Engineering, and AI Pipeline Engineering.
+- Added an explicit evidence boundary so missing responsibilities, project names, ownership and measurable outcomes are not inferred.
+
+### Validated:
+- Experience page consumes the existing structured experience data.
+- No new professional claims or unverified metrics were introduced.
+- Responsive styling was added for narrow viewports.
+
+### Outstanding:
+- Production build/CI validation for the combined Sprint A + Sprint B changes.
+- Browser-level visual and keyboard review remains pending.
+- Project archive and case-study presentation still need the Sprint B treatment.
+
+### Next:
+- Redesign /projects as an editorial archive with featured work clearly separated from secondary work.
+- Then refine project detail presentation without fabricating missing case-study evidence.
