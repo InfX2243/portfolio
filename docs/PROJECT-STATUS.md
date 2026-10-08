@@ -171,5 +171,30 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 - Browser-level visual, keyboard, contrast and reduced-motion review remains pending.
 
 ### Next:
-- Refine project detail pages into an editorial case-study layout.
-- Validate all Sprint B routes and production build before moving to Research/Achievements.
+- Validate all Sprint B routes and the production build.
+- Then begin Sprint C: Research/Achievements editorial refinement.
+
+## Sprint B — Project Detail (2026-10-08)
+
+### Completed:
+- Reworked project detail routes into an evidence-led editorial case-study structure.
+- Added clear hierarchy for recognition, contribution, technical focus, verified case-study fields, resources, evidence boundaries and related work.
+- Preserved conditional rendering so null/unavailable case-study fields do not create empty sections.
+- Preserved existing project links and base-path routing.
+- Kept the existing project data model as the source of truth; no project metrics, architecture details or research claims were invented.
+
+### Validated:
+- Project detail content is derived from the existing project data.
+- Missing case-study fields remain hidden.
+- Related projects are derived from the existing project collection.
+- Responsive styling was added for tablet and mobile layouts.
+
+### Outstanding:
+- Production build/CI validation for Sprint B.
+- Direct route/refresh validation on GitHub Pages.
+- Browser-level visual, keyboard, contrast and reduced-motion review.
+- Research and Achievements remain to be refined.
+
+### Next:
+- Run the production validation pass across Home, Projects, project detail routes and Experience.
+- Then begin Sprint C: Research/Achievements editorial refinement.
