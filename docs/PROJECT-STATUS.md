@@ -77,3 +77,30 @@ Last updated: 2026-10-05 (implementation loop)
 32. Serialized GitHub Pages deployments with workflow concurrency cancellation after diagnosing a non-code deployment race: the social-preview build passed, but two concurrent `gh-pages` publishers raced on the branch ref.
 33. Corrected the mobile-navigation semantic landmark increment after CI caught an invalid JSX closing tag; the mobile menu now closes with `</nav>` and the follow-up production deployment completed successfully (`37345294174`, followed by docs validation `37345338343`).
 34. Structured the Research page around optional evidence fields for research question/problem, methodology, personal contribution and result; fields remain empty until verified source material is available, while verified evidence and external links remain visible.
+
+
+## V1 Redesign Direction (2026-10-08)
+
+The portfolio visual strategy has been reset around a polished, editorial engineering-portfolio direction benchmarked against Brittany Chiang's current site. This is inspiration for hierarchy and restraint, not a clone. The existing multi-page router and GitHub Pages architecture remain in place.
+
+### Direction now locked
+- **Primary aesthetic:** restrained dark editorial engineering portfolio.
+- **Primary hierarchy:** identity → experience → selected projects → research/writing → achievements → about/community → contact.
+- **Typography/spacing:** large controlled display type, readable body copy, monospace metadata, generous whitespace, thin rules.
+- **Navigation:** quieter desktop navigation and accessible mobile navigation.
+- **Projects:** editorial archive and case studies, with real visuals only when verified.
+- **Research:** concise research archive; detailed methodology/contribution/result only when verified.
+- **Motion:** subtle micro-interactions and optional ambient effects; no animation dependency for comprehension.
+- **VGPU/Canvas:** retained only as restrained enhancement if performance/accessibility remain strong.
+- **Non-goals:** no dashboard aesthetic, no fake evidence maps, no fabricated screenshots/metrics/research results, no unnecessary WebGL showcase, no clone of the reference site.
+
+### V1 implementation queue
+1. **NEXT — Visual reset:** simplify navigation, redesign global spacing/type/rules, and replace dashboard/card-heavy homepage composition.
+2. **NEXT — Experience:** make verified professional experience a major homepage proof section and refine the full Experience page.
+3. **NEXT — Projects:** replace the generic evidence-map presentation with restrained project identity/media panels; redesign Projects and case-study pages.
+4. **NEXT — Research/Achievements:** refine both into editorial/evidence-led archives while preserving truth constraints and lazy-loaded Credly.
+5. **NEXT — Secondary pages:** refine About and Contact; add résumé/writing only when verified assets/content are supplied.
+6. **NEXT — Release hardening:** desktop/mobile/keyboard/reduced-motion/contrast/performance/link checks, production build, deployment, and route-by-route acceptance.
+
+### Documentation source of truth
+`docs/AI-PORTFOLIO-EXECUTION.md` now contains the authoritative **V1 RELEASE DIRECTION — BRITTANY CHIANG-INSPIRED ENGINEERING PORTFOLIO** section. Future AI implementation loops must follow that section and must not revert to the earlier gallery/constellation/WebGL-heavy direction.
