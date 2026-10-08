@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { profile } from "../../data/portfolio";
-import { BASE_PATH, withBasePath } from "../../app/basePath";
+import { BASE_PATH, normalizePath, withBasePath } from "../../app/basePath";
 
 const links = [
   ["/", "Home"],
@@ -20,9 +20,7 @@ export function PortfolioLayout({ children }) {
   const [open, setOpen] = useState(false);
   const toggleRef = useRef(null);
   const wasOpen = useRef(false);
-  const current = BASE_PATH && window.location.pathname.startsWith(BASE_PATH)
-    ? window.location.pathname.slice(BASE_PATH.length).replace(/\/+$/, "") || "/"
-    : window.location.pathname;
+  const current = normalizePath(window.location.pathname);
 
   useEffect(() => {
     if (!open) {
