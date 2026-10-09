@@ -351,3 +351,12 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 - **DONE:** Explicitly categorized industry leadership, independent revenue, and building a technology venture as aspirations, not current accomplishments.
 - **NEXT:** Follow up on concrete project details and evidence; confirm official employer title, institution name, and relevant dates. Review the outdated résumé as a secondary reference only; the user's recent direct statements take precedence when there is a discrepancy.
 - **Scope:** Documentation/content-source update only. This does not claim that public UI copy has been rewritten, that all facts are independently verified, or that a build/deployment was run.
+
+
+## 2026-10-10 — Portfolio product requirements baseline
+
+- **DONE:** Created `docs/PORTFOLIO-REQUIREMENTS.md` as the product-level requirements baseline for the official V1 portfolio.
+- **Captured:** target audiences, visitor goals, multi-page information architecture, page-level content expectations, evidence/content integrity rules, visual direction already agreed, engineering/accessibility/performance requirements, release scope, current implementation baseline, and V1 acceptance criteria.
+- **OPEN:** Detailed design decisions are intentionally reserved for a short user-led design discussion: hero concept, visual identity/palette, personal imagery, real project visuals, motion intensity, homepage emphasis, how visible the Tony Stark/JARVIS inspiration should be, and resume CTA placement.
+- **NEXT:** Discuss and lock the visual direction before major visual implementation changes. Then audit the current branch against the requirements, address release blockers, and keep this status file synchronized.
+- **Scope note:** Requirements documentation only. No portfolio UI, application code, or deployment was changed or validated in this increment.
