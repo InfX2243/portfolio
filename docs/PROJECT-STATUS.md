@@ -1,6 +1,6 @@
 # Portfolio Implementation Status
 
-Last updated: 2026-10-10 (canonical personal profile added)
+Last updated: 2026-10-10 (Round 1 discovery captured)
 > Branch: `portfolio-v1`  
 > Source of truth: `docs/AI-PORTFOLIO-EXECUTION.md`
 
@@ -336,5 +336,18 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 - **DONE:** Documented the user's stated engineering mindset, learning philosophy, portfolio goals, visual reference, multi-page preference, and repository context.
 - **DONE:** Explicitly marked the supplied résumé as outdated (last updated 2026-05-17 per user) and listed personal/professional facts that must not be guessed.
 - **DONE:** Added instructions for future AI sessions to read the profile before writing personal content and to keep this file aligned with new direct user confirmations.
-- **NEXT:** Review the profile against the résumé and ask the user to confirm or update missing/outdated career details before publishing factual biography, experience, skills, project outcomes, or credentials.
+- **DONE:** Added the user's Round 1 answers and follow-up examples to `docs/ABOUT-ME.md`, keeping current self-reported details, self-assessments, unverified achievement leads, and aspirations separate.
+- **DONE:** Updated `docs/portfolio-content.md` with the latest user-reported education timeline and current role title, plus internal notes on positioning and candidate achievement leads. Did not promote unverified examples into confirmed portfolio achievements.
+- **NEXT:** Ask targeted follow-ups about the Oracle APEX enterprise application/certification, the full-stack app and AWS Builder Jacket, the RAG bootcamp system, and the specific AWS Academy optimization example. Confirm official education institution/job title and exact dates before final publication.
 - **Scope note:** This change is documentation/context only. It does not claim that portfolio UI content has already been rewritten from the profile or that the profile's facts have all been résumé-verified.
+
+
+## 2026-10-10 — Round 1 personal discovery captured
+
+- **DONE:** Updated `docs/ABOUT-ME.md` with the user's Round 1 answers and follow-up answers: current situation, interests, Tony Stark/JARVIS inspiration, stated strengths and values, autonomy preference, and 3–5 year ambitions.
+- **DONE:** Recorded the user-reported current education as B.E. Information Technology, Semester 7, expected graduation 2027, and current role as Software Developer Intern at Bitkraft.
+- **DONE:** Updated `docs/portfolio-content.md` with the latest role-title statement and internal personal-brand/achievement-lead notes. Kept the older “Software Engineer Intern” title discrepancy visible for confirmation.
+- **DONE:** Captured Oracle APEX, full-stack/AWS Builder Jacket, RAG bootcamp, touch-typing, and AWS Academy examples as **user-reported leads requiring detail/evidence**, not as independently verified achievements.
+- **DONE:** Explicitly categorized industry leadership, independent revenue, and building a technology venture as aspirations, not current accomplishments.
+- **NEXT:** Follow up on concrete project details and evidence; confirm official employer title, institution name, and relevant dates. Review the outdated résumé as a secondary reference only; the user's recent direct statements take precedence when there is a discrepancy.
+- **Scope:** Documentation/content-source update only. This does not claim that public UI copy has been rewritten, that all facts are independently verified, or that a build/deployment was run.
