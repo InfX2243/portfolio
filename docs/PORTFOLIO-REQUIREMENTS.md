@@ -1,6 +1,6 @@
 # Portfolio V1 — Product Requirements
 
-> **Status:** Draft baseline — product direction and functional scope captured; detailed visual design decisions are intentionally pending user discussion.  
+> **Status:** Design direction agreed; page-by-page visual requirements documented; ready for implementation planning.  
 > **Repository:** `InfX2243/portfolio`  
 > **Working branch:** `portfolio-v1`  
 > **Last updated:** 2026-10-10  
@@ -107,18 +107,105 @@ A visitor should quickly understand who Abid is and what kind of work he builds.
 - About should humanize the profile through education, engineering philosophy, technical interests, learning trajectory, research direction, and community involvement; avoid generic filler.
 - Contact should make professional contact straightforward. GitHub and LinkedIn are known starting links; publish email and resume actions only when the destinations/assets are verified and available.
 
-## 5. Design requirements (direction agreed; detailed design pending)
+## 5. Design requirements (direction agreed)
 
-Agreed direction:
-- Use Brittany Chiang's portfolio as inspiration for a polished, restrained, editorial developer-portfolio feel; do not clone its layout, copy, or assets.
-- Make the site more visual and refined while keeping content, evidence, and navigation clear.
-- Keep the existing multi-page information architecture.
-- Use a coherent design system across routes.
-- Favor strong hierarchy, typography, spacing, and real project/research visuals over decoration.
-- Motion and technical effects are optional enhancements, never required to understand the content.
-- The existing execution specification's V1 release direction is the baseline unless the user explicitly changes it.
+### 5.1 Creative direction
 
-**Not yet finalized:** exact hero composition, layout proportions, accent color, typography choices beyond current baseline, visual motif, background treatment, image/3D usage, project-card treatment, animation intensity, and mobile-specific composition. Discuss these with the user before making a major visual redesign.
+**Design concept: “A high-performance engineering lab, presented with editorial restraint.”**
+
+The portfolio should feel technical and futuristic at first glance, with a refined dark interface and an immersive, custom-built hero visual. It must still read as a credible engineer's portfolio—not a sci-fi game UI, product dashboard, or Tony Stark fan page. Brittany Chiang's portfolio remains a reference for polish, typography, hierarchy, and restraint only; do not clone its layout, copy, or assets.
+
+Confirmed user preferences:
+- **Hero:** technical and futuristic.
+- **Theme:** dark, refined, technical.
+- **Visual ambition:** immersive hero with 3D/technical effects, implemented with performance in mind.
+- **Tony Stark/JARVIS influence:** subtle visual and story details, not a dominant theme.
+
+### 5.2 Visual system
+
+- **Palette:** near-black/charcoal foundations, layered graphite surfaces, cool off-white text, muted slate secondary text, and one controlled electric-cyan/blue accent. Use a restrained secondary signal color only when it communicates state or data. Avoid neon gradients across every section.
+- **Typography:** strong editorial display face for headings paired with a highly legible UI/body face; use a mono face sparingly for labels, technical metadata, indices, and small system annotations. Prefer locally bundled/system-friendly fonts where possible and avoid adding font-loading fragility.
+- **Composition:** generous whitespace, clear grid, deliberate asymmetry, fine borders, restrained separators, strong alignment, and a readable content measure. Technical detail should support the story rather than compete with it.
+- **Surface language:** subtle grid/coordinate lines, instrument-like markers, tiny status labels, schematic traces, and layered depth. These details should be sparse and decorative, never necessary for understanding content.
+- **Navigation:** simple, obvious, keyboard-friendly site navigation. Do not turn navigation into a simulated terminal or command console.
+- **Imagery:** prefer authentic screenshots, real diagrams, research figures, and project-specific visuals. Do not use fabricated UI screenshots or claim conceptual art represents the actual product.
+
+### 5.3 Home hero — signature experience
+
+Build a memorable, interactive technical hero that visually suggests systems thinking, connected components, and iterative engineering. Recommended treatment:
+- A clear text block with the user's name, concise current-role/engineering positioning, and two obvious actions (explore selected work; contact/profile or resume only when verified).
+- A custom 3D-inspired system object/scene on the opposite side or behind the text: a restrained orbital network, layered geometric assembly, signal paths, or modular nodes. It should feel engineered rather than like a generic floating sphere.
+- Motion can respond subtly to pointer movement and/or scroll on capable devices, with a static composition as the default/fallback on small screens, reduced-motion preferences, low-power devices, or failed initialization.
+- The hero must not depend on WebGL to expose the name, introduction, navigation, or calls to action.
+- Prefer CSS/SVG/canvas or an already available lightweight implementation after inspecting the current code and bundle. Add a 3D library only if a prototype demonstrates clear value and an acceptable production cost. Do not reintroduce Spline or add a heavy dependency by default.
+- No continuously spinning scene, excessive bloom/particles, high-frequency pointer tracking, or effects that compete with text. Pause or simplify work when hidden/off-screen where practical.
+
+### 5.4 Page-by-page design direction
+
+#### Home (/)
+- Lead with the immersive technical hero and a concise, human headline—not a wall of badges, metrics, or a fictional “AI system online” screen.
+- Follow with a short “what I build”/engineering focus strip, then selected projects, current experience, research signal, selected recognition, and a concise about/community preview.
+- Give each section a clear editorial heading and a path to its dedicated page.
+- Feature only verified, high-signal work; avoid repeating every technology or credential above the fold.
+
+#### Projects (/projects)
+- Present a curated project archive with a clear Featured Work tier and a quieter secondary-work tier.
+- Use generous editorial rows or asymmetric panels, strong project titles, concise problem/purpose, contribution when known, a few technical tags, and verified links.
+- Use real thumbnails or restrained schematic visuals tied to each project. Keep visuals consistent but distinct; do not make every project a generic glassmorphism card.
+- Provide filters only if they materially improve finding projects and can remain accessible; do not add filter UI as decoration.
+
+#### Project detail (/projects/:slug)
+- Treat each as an engineering case study, not a marketing landing page.
+- Use a strong title/summary, project context, role/contribution, key technical decisions, architecture/flow visual where evidence supports it, challenges/trade-offs, outcomes, learnings, stack, resources, and related work.
+- Use a large project-specific visual only when an authentic screenshot, diagram, or clearly labeled conceptual diagram is available.
+- Hide unknown sections instead of using invented narrative, impact numbers, or placeholder charts.
+
+#### Research (/research)
+- Give research its own quieter, scholarly editorial language within the same design system: publication/project status, research question, approach, contribution, findings, venue and links when verified.
+- Use paper figures or original explanatory diagrams only when grounded in the actual work.
+- Distinguish research projects from formally published/accepted papers and awards. No simulated evidence maps or unsupported claims.
+
+#### Achievements (/achievements)
+- Lead with meaningful verified recognition, then selected credentials, then the full credential inventory.
+- Make awards and certifications visually distinct through labels and clear metadata, not a giant wall of identical badges.
+- Keep Credly embeds optional, lazy-loaded, resilient to failure, and secondary to readable credential information.
+
+#### Experience (/experience)
+- Use a clean, chronological professional timeline or editorial role sections with role, employer, dates, and verified focus areas.
+- Use subtle timeline/connection motifs if they improve scanability; avoid fabricated impact metrics or implying ownership not established by evidence.
+- Resolve the official Bitkraft role title and dates before public sign-off.
+
+#### About (/about)
+- Shift from the technical hero's visual intensity to a more personal, readable editorial page.
+- Explain the learning-by-building mindset, continuous improvement, engineering interests, education, and community contributions using concrete examples only where confirmed.
+- Include the Tony Stark/JARVIS inspiration as a brief personal story about iteration, curiosity, and systems thinking—not cosplay language, character graphics, or a fictional AI persona.
+- Keep long-term ambitions clearly framed as ambitions, not present achievements.
+
+#### Contact (/contact)
+- Keep this page calm and direct, with obvious email/profile links once verified.
+- Use a simple contact panel and a small technical visual motif; no fake terminal interaction or unnecessary contact form/backend.
+- Resume CTA should appear only once the resume asset is updated and verified; until then, do not imply an outdated PDF is current.
+
+#### Not found
+- Use the same dark visual language and one subtle schematic accent.
+- Clearly explain that the page was not found and offer working routes back home/projects. Do not make the error page a heavy animation.
+
+### 5.5 Motion, 3D, accessibility, and performance guardrails
+
+- Motion should have a clear purpose: convey depth, relationships, or interaction. It must never be required to understand the site.
+- Honor prefers-reduced-motion; provide a stable static fallback and avoid scroll-jacking.
+- Support touch and keyboard users; pointer parallax is enhancement-only.
+- Respect mobile/low-power conditions with fewer effects, lower rendering cost, and no unnecessary continuous animation.
+- Lazy-load noncritical visual modules; avoid blocking the main thread and avoid delaying Largest Contentful Paint with a decorative scene.
+- Ensure text contrast and focus visibility remain strong over all backgrounds. Decorative canvas/SVG content should be hidden from assistive technology unless it conveys information, in which case provide an equivalent text description.
+- Test the production build and bundle impact before selecting or adding dependencies. A visually impressive effect that materially harms load time, battery, or accessibility should be simplified.
+
+### 5.6 Decisions intentionally still open
+- Exact hero object/scene and implementation technique after inspecting current components and bundle.
+- Whether a professional portrait is available; the default is no portrait dependency.
+- Exact font families and final accent values after checking the existing design tokens and contrast.
+- Which authentic project/research images are available.
+- Final placement of resume CTA, pending an updated and verified resume.
 
 ## 6. Functional and engineering requirements
 
@@ -214,20 +301,24 @@ V1 can be considered release-ready only when all applicable criteria are met:
 - [ ] Page metadata, canonical URLs, social preview, favicon, robots.txt, and sitemap are checked.
 - [ ] `docs/PROJECT-STATUS.md` records the final state, remaining known limitations, and validation evidence.
 
-## 11. Open decisions and questions
+## 11. Design decisions and remaining inputs
 
-These are intentionally left for the upcoming design discussion, rather than guessed by the implementation agent:
+The user's design preferences are now explicit and should be treated as settled:
+- Technical/futuristic hero.
+- Dark, refined technical theme.
+- Immersive 3D/technical hero effects, with performance-conscious implementation.
+- Subtle Tony Stark/JARVIS-inspired details and story—not a themed imitation.
 
-1. **Hero concept:** Which direction should the first screen use—minimal editorial typography, a technical/system visual, a portrait-led layout, or a restrained combination?
-2. **Visual identity:** Should the existing dark editorial direction remain, or does the user want a different palette/light-dark strategy?
-3. **Personal imagery:** Is there a preferred professional photo/avatar, or should the design avoid personal photography?
-4. **Technical visuals:** Which real project screenshots, architecture diagrams, demos, or research visuals are available now? If none are ready, which projects should receive custom diagrams first?
-5. **Motion/3D:** How much motion is desirable: nearly static, subtle interactions, or a more expressive hero (still performance/accessibility-safe)?
-6. **Homepage emphasis:** Should the first scroll prioritize experience, selected projects, research, or a balanced sequence? The existing execution spec currently prioritizes identity → experience → selected projects → research/writing → achievements → about/community → contact.
-7. **Distinctive personal motif:** Should Tony Stark/JARVIS inspiration be visible in the interface at all, or remain only in the biography/story? The baseline recommendation is to keep it subtle and avoid a themed imitation.
-8. **Resume CTA:** Should a resume download appear in the hero once the resume is updated, or remain in Contact/About until then?
+Use Section 5 as the concrete page-by-page design baseline. Do not re-ask the user to choose between editorial, technical, portrait-led, light/dark, static/immersive, or visible/subtle inspiration; those choices have been made.
 
-The user wants to move quickly. Resolve these in a short, prioritized design conversation; do not reopen already-settled information architecture or re-ask discovery questions that do not affect V1.
+Only seek further input when it blocks a concrete implementation decision. The main content inputs still needed before final release are:
+1. Real project screenshots, demos, architecture diagrams, and research figures that can be published.
+2. Confirmation of the official Bitkraft role title and dates.
+3. Confirmation of institution spelling and education dates.
+4. Verified credential, award, research/publication, contact, and repository URLs.
+5. An updated resume before presenting a resume-download action as current.
+
+Move quickly: inspect the existing hero and design tokens, prototype the smallest convincing hero improvement, and validate the visual and bundle impact before deciding whether any new rendering dependency is justified.
 
 ## 12. Change control
 
