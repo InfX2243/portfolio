@@ -17,7 +17,8 @@ This document is the **single source of truth for portfolio development tasks**.
 When an AI is asked to continue development of this portfolio:
 
 1. Read this file completely before changing code.
-2. Treat this file as the authoritative product, UX, architecture, content, and validation specification.
+2. Read `docs/ABOUT-ME.md` before writing or revising personal biography, positioning, or portfolio copy. Treat it as the canonical working profile; distinguish verified facts from user preferences, draft copy, and unknowns.
+3. Treat this file as the authoritative product, UX, architecture, content, and validation specification.
 3. Do not use old planning documents as competing requirements.
 4. Existing repository code is implementation evidence, not automatically the desired final architecture.
 5. Inspect the current repository state before modifying anything.
