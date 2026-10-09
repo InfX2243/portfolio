@@ -1,6 +1,6 @@
 # Portfolio Implementation Status
 
-Last updated: 2026-10-08 (Sprint G deployment/configuration validation)  
+Last updated: 2026-10-10 (canonical personal profile added)
 > Branch: `portfolio-v1`  
 > Source of truth: `docs/AI-PORTFOLIO-EXECUTION.md`
 
@@ -328,3 +328,13 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 1. Confirm the latest Sprint E GitHub Actions runs and fix any build/deployment regressions.
 2. Perform a route-by-route source acceptance audit for Home, Projects, all three project details, Research, Achievements, Experience, About, Contact and Not Found.
 3. Audit external links and target/rel behavior, then record final V1 release-hardening status.
+
+
+## 2026-10-10 — Canonical personal profile
+
+- **DONE:** Added `docs/ABOUT-ME.md` as the durable, evidence-conscious profile/context source for AI-generated portfolio content.
+- **DONE:** Documented the user's stated engineering mindset, learning philosophy, portfolio goals, visual reference, multi-page preference, and repository context.
+- **DONE:** Explicitly marked the supplied résumé as outdated (last updated 2026-05-17 per user) and listed personal/professional facts that must not be guessed.
+- **DONE:** Added instructions for future AI sessions to read the profile before writing personal content and to keep this file aligned with new direct user confirmations.
+- **NEXT:** Review the profile against the résumé and ask the user to confirm or update missing/outdated career details before publishing factual biography, experience, skills, project outcomes, or credentials.
+- **Scope note:** This change is documentation/context only. It does not claim that portfolio UI content has already been rewritten from the profile or that the profile's facts have all been résumé-verified.
