@@ -7,11 +7,17 @@ Software engineering, cloud, AI systems, backend/platform engineering, interacti
 Systems that move from idea to infrastructure.
 
 ## Profile
-Information Technology undergraduate at M.H. Saboo Siddik College of Engineering and Software Engineer Intern at Bitkraft Technologies LLP. Current interests and experience span cloud-native infrastructure, AI-integrated applications, backend systems, full-stack development, Unity/AR-oriented engineering, and applied research.
+**Current details directly reported by Abid on 2026-10-10:** B.E. in Information Technology, currently in Semester 7, with expected graduation in 2027; currently working as a Software Developer Intern at Bitkraft.
+
+**Positioning direction (draft):** A hands-on, ambitious engineer interested in software engineering, cloud, AI, systems design, backend/platform engineering, and robotics. Emphasize building, experimentation, continuous learning, and improving systems. This describes interests and intended direction, not verified proficiency across every area.
+
+The previous portfolio content used “Software Engineer Intern” and named M.H. Saboo Siddik College of Engineering. The latest user answer gives “Software Developer Intern” and degree/timeline, but does not restate the institution or official HR title. Confirm those details against current records before final publication.
 
 ## Experience
-### Bitkraft Technologies LLP — Software Engineer Intern (2026–Present)
-Verified focus areas from the project source:
+### Bitkraft Technologies LLP — Software Developer Intern (current; start date not reconfirmed)
+User-reported current role title as of 2026-10-10. The previous content used “Software Engineer Intern”; confirm the official title before final publication.
+
+Previously documented focus areas (verify they accurately describe the current role before turning them into responsibility claims):
 - AR & Game Engineering
 - Backend Platform Engineering
 - AI Pipeline Engineering
@@ -61,7 +67,7 @@ Verified focus areas from the project source:
 - LinkedIn: https://www.linkedin.com/in/abid-ahmed-shaikh/
 
 ## Verification Notes
-Do not publish unverified dates, metrics, responsibilities, paper links, project repositories, email address, or resume URL. Add those only when supplied or independently verified.
+Do not publish unverified dates, metrics, responsibilities, paper links, project repositories, email address, or resume URL. Add those only when supplied or independently verified. User-reported details are useful leads but are not automatically independently verified. Keep aspirations separate from current achievements. See `docs/ABOUT-ME.md` for the canonical discovery notes and follow-up requirements.
 
 
 ## Credential / visual evidence additions
@@ -104,3 +110,30 @@ The next portfolio pass will add:
 - more visual research evidence.
 
 The portfolio should become less text-heavy while preserving the existing truth/verification policy.
+
+
+## Personal profile and career direction (internal content notes)
+
+### User-stated values and working style
+- Strongly values rapid learning, adaptability, experimentation, deep technical understanding, attention to detail, independence, optimization, and continually raising standards.
+- Enjoys challenging problems and hands-on tinkering.
+- Inspired by Tony Stark's iterative improvement and inventive approach; JARVIS and Iron Legions express an interest in intelligent automation and the intersection of software with physical systems.
+- Prefers autonomy in how work is approached. Confirm how this balances with teamwork, feedback, code review, and shared engineering standards before publishing.
+- Personal motto: “Never stop learning, because life never stops teaching.”
+- Personal conviction: “I have more to offer.”
+
+### Aspirations — do not present as current accomplishments
+- Become influential in industry technical decisions and technologies over the next 3–5 years.
+- Contribute pioneering work and eventually build a substantial technology venture.
+- Create independent sources of income through projects or business.
+- Build advanced personal automation/assistant systems inspired by JARVIS.
+
+### Candidate achievement leads supplied by the user (not independently verified)
+- Learned Oracle APEX over approximately three months, built an “enterprise application” in that period, and earned a certification during the same journey. Confirm project purpose, exact personal contribution, official certification name/date, and team context.
+- Built a full-stack application in two days and reports receiving an AWS Builder Jacket. Confirm application name, stack, event/program, recognition basis, and public evidence. The user estimated a $100 value; omit this valuation from portfolio copy.
+- Built a RAG system in three days during an AI Developer Bootcamp at work. Confirm use case, tools, architecture, personal contribution, and whether details can be public.
+- Learned touch typing in three days. The user also mentioned not sleeping during this period; omit sleep deprivation from professional positioning.
+- Identified “AWS Academy” as an example of optimization/high standards but has not yet described the specific problem or outcome.
+- The user says there are additional examples; collect them in later discovery rounds rather than assuming these are exhaustive.
+
+Do not turn any of these candidate leads into published project or achievement claims until their details and supporting evidence are reviewed.
