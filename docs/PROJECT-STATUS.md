@@ -1,6 +1,6 @@
 # Portfolio Implementation Status
 
-Last updated: 2026-10-10 (Round 1 discovery captured)
+Last updated: 2026-10-10 (Visual design direction agreed)
 > Branch: `portfolio-v1`  
 > Source of truth: `docs/AI-PORTFOLIO-EXECUTION.md`
 
@@ -360,3 +360,13 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 - **OPEN:** Detailed design decisions are intentionally reserved for a short user-led design discussion: hero concept, visual identity/palette, personal imagery, real project visuals, motion intensity, homepage emphasis, how visible the Tony Stark/JARVIS inspiration should be, and resume CTA placement.
 - **NEXT:** Discuss and lock the visual direction before major visual implementation changes. Then audit the current branch against the requirements, address release blockers, and keep this status file synchronized.
 - **Scope note:** Requirements documentation only. No portfolio UI, application code, or deployment was changed or validated in this increment.
+
+
+## 2026-10-10 — Portfolio visual direction agreed
+
+- **DONE:** Captured the user's confirmed design choices in docs/PORTFOLIO-REQUIREMENTS.md: technical/futuristic hero, refined dark technical theme, immersive 3D/technical effects with performance guardrails, and subtle Tony Stark/JARVIS-inspired details.
+- **DONE:** Added concrete page-by-page design direction for Home, Projects, project details, Research, Achievements, Experience, About, Contact, and Not Found.
+- **DONE:** Defined the visual system (near-black/graphite, controlled cyan/blue accent, editorial typography, restrained mono labels, schematic details), hero behavior/fallbacks, motion/accessibility requirements, and criteria for adding any visual dependency.
+- **NEXT:** Inspect the current hero implementation, design tokens, and bundle before selecting the lowest-cost implementation path. Prototype the hero incrementally, then validate build, bundle impact, responsive behavior, reduced motion, and runtime fallback.
+- **BLOCKED FOR FINAL SIGN-OFF:** Verify authentic project/research visuals and public links; confirm official Bitkraft title/dates and institution spelling; use an updated resume before presenting a current resume-download CTA.
+- **Scope note:** This increment updates product/design documentation only. No application UI, source code, build, or deployment was changed or validated.
