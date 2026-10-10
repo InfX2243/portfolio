@@ -190,3 +190,8 @@ Appended the eight newly supplied Credly badge IDs to src/data/credentials.json,
 - Tightened the mobile breakpoint selector to .nav > .desktop-nav so it overrides the scoped desktop display rule and prevents desktop links from appearing beside the mobile toggle.
 - Removed the repeated evidence-boundary paragraph from every case study; missing evidence is already handled by conditionally hiding empty sections, and repeated policy copy was visually noisy.
 - No factual project content was introduced. Production workflow and browser validation are pending at the time of this note.
+
+## Sprint L — Project archive link accessibility (2026-10-11)
+
+- Added unique aria-label values to repeated project archive action links, including the project title, so link lists expose a meaningful destination rather than repeating generic “Inspect” labels.
+- Visible labels and styling are unchanged. Screen-reader runtime testing remains outstanding.
