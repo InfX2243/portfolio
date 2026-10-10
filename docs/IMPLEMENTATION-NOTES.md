@@ -174,3 +174,13 @@ Appended the eight newly supplied Credly badge IDs to src/data/credentials.json,
 - Shared desktop navigation rules now target only `.desktop-nav`; mobile panel display and open-state rules target only `.mobile-nav-panel`.
 - The change does not alter route data or navigation behavior; it separates the styling scopes so the existing accessible mobile-menu implementation can work as intended.
 - GitHub Actions workflow 38082452851 passed after this change. Browser visual verification is still outstanding.
+
+
+## Sprint J — Case-study content cleanup (2026-10-11)
+
+- Project detail rendering now distinguishes useful project-specific copy from generic placeholder statements in the current data model.
+- Generic contribution placeholders are no longer presented as personal contributions; project focus tags remain available in a single dedicated location.
+- The technical-decisions section appears only when case-study-specific decision details exist, instead of repeating the general focus/approach tags.
+- A verified recognition statement is not repeated in the outcome section when both values are identical.
+- When no specific contribution text is available, the technical-focus section expands into a single-column layout.
+- Validation: GitHub Actions workflow 38082557265 passed production build, route/metadata validation, fallback generation, output guard, and deployment. Browser rendering remains unverified.
