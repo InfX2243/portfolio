@@ -1,6 +1,6 @@
 # Portfolio Implementation Status
 
-Last updated: 2026-10-11 (Sprint I — navigation duplication fix)
+Last updated: 2026-10-11 (Sprint J — case-study content cleanup)
 > Branch: `portfolio-v1`  
 > Source of truth: `docs/AI-PORTFOLIO-EXECUTION.md`
 
@@ -411,3 +411,22 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 ### Next
 1. Continue the visual audit with the project archive and case-study pages, preserving the evidence-first content rules.
 2. Complete browser checks for desktop/tablet/mobile navigation, keyboard focus, and menu dismissal when a browser runtime is available.
+
+
+## Sprint J — Case-study content cleanup (2026-10-11)
+
+### Completed
+- Audited the project detail template against the current data model and found that generic fallback copy was being rendered as personal contribution, outcome, and evidence.
+- Case-study pages now suppress generic placeholder statements that say details are pending verification or merely describe the project as an exploration.
+- Technical-focus tags are no longer repeated as if they were project-specific technical decisions; that section appears only when actual decision details exist in the case-study data.
+- Recognition is not repeated as an outcome when both fields contain the same award statement.
+- When personal contribution details are not yet supplied, the technical-focus panel uses the available width rather than leaving an empty second column.
+- No project facts, metrics, URLs, or responsibilities were invented.
+
+### Validation
+- **Validated:** GitHub Actions workflow [38082557265](https://github.com/InfX2243/portfolio/actions/runs/38082557265) passed the production build, route/metadata validation, fallback generation, output guard, and deployment after the case-study cleanup.
+- Browser-level rendering and responsive visual review remain outstanding.
+
+### Next
+1. Review the projects archive and case-study pages in a browser at desktop, tablet, and mobile widths when browser access is available.
+2. Continue the visual hierarchy audit without inventing project evidence; collect real contribution, architecture, and result details before adding them to case studies.
