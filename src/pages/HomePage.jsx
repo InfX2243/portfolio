@@ -3,6 +3,7 @@ import { PortfolioLayout } from "../components/layout/PortfolioLayout";
 import { PageHeader } from "../components/layout/PageHeader";
 import { withBasePath } from "../app/basePath";
 import { ProjectVisual } from "../components/ProjectVisual";
+import { HeroSystemVisual } from "../components/HeroSystemVisual";
 import { profile, projects, research, experience, domains, leadership } from "../data/portfolio";
 
 const VgpuField = lazy(() =>
@@ -28,9 +29,13 @@ export function HomePage() {
             <a className="text-link" href={profile.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
           </div>
         </div>
-        <div className="home-hero-aside" aria-label="Current direction">
+        <HeroSystemVisual />
+        <div className="hero-focus-strip" aria-label="Current engineering focus">
           <span className="mono-label">CURRENT DIRECTION</span>
-          <p>Cloud-native infrastructure<br />AI-enabled applications<br />Backend systems<br />Applied research</p>
+          <span>Cloud infrastructure</span>
+          <span>Applied AI</span>
+          <span>Backend systems</span>
+          <span>Research &amp; experimentation</span>
         </div>
       </section>
 
