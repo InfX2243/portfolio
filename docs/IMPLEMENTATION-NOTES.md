@@ -165,4 +165,4 @@ Appended the eight newly supplied Credly badge IDs to src/data/credentials.json,
 - Added IntersectionObserver visibility tracking so the frame loop pauses while the hero canvas is off-screen and resumes only when visible.
 - Added document visibility handling so animation pauses when the browser tab is hidden.
 - The static SVG systems visual remains available as the primary visual and fallback; no user-facing content depends on WebGPU.
-- Validation for commit `8058b9d093c340352a4f570d9a96dd7afb1423b4` is pending in workflow `38082205722` at documentation time.
+- Validation passed in GitHub Actions workflow `38082205722` (run 308): production build, route/metadata validation, fallback generation, output guard, and deployment all succeeded.
