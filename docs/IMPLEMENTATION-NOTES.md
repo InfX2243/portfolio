@@ -166,3 +166,11 @@ Appended the eight newly supplied Credly badge IDs to src/data/credentials.json,
 - Added document visibility handling so animation pauses when the browser tab is hidden.
 - The static SVG systems visual remains available as the primary visual and fallback; no user-facing content depends on WebGPU.
 - Validation passed in GitHub Actions workflow `38082205722` (run 308): production build, route/metadata validation, fallback generation, output guard, and deployment all succeeded.
+
+
+## Sprint I — Navigation duplication fix (2026-10-11)
+
+- Fixed a CSS specificity collision that allowed the hidden mobile navigation panel to render alongside desktop navigation.
+- Shared desktop navigation rules now target only `.desktop-nav`; mobile panel display and open-state rules target only `.mobile-nav-panel`.
+- The change does not alter route data or navigation behavior; it separates the styling scopes so the existing accessible mobile-menu implementation can work as intended.
+- Build/deployment validation is pending after this change. Browser visual verification is still outstanding.
