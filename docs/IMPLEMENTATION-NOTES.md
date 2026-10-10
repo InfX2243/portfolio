@@ -184,3 +184,9 @@ Appended the eight newly supplied Credly badge IDs to src/data/credentials.json,
 - A verified recognition statement is not repeated in the outcome section when both values are identical.
 - When no specific contribution text is available, the technical-focus section expands into a single-column layout.
 - Validation: GitHub Actions workflow 38082557265 passed production build, route/metadata validation, fallback generation, output guard, and deployment. Browser rendering remains unverified.
+
+## Sprint K — Responsive navigation and case-study density (2026-10-11)
+
+- Tightened the mobile breakpoint selector to .nav > .desktop-nav so it overrides the scoped desktop display rule and prevents desktop links from appearing beside the mobile toggle.
+- Removed the repeated evidence-boundary paragraph from every case study; missing evidence is already handled by conditionally hiding empty sections, and repeated policy copy was visually noisy.
+- No factual project content was introduced. Production workflow and browser validation are pending at the time of this note.
