@@ -405,7 +405,8 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 
 ### Validation
 - Source-level selector checks confirm the broad `.nav nav` selectors were removed and the desktop and mobile navigation now have separate display rules.
-- A fresh production build/deployment workflow is required to validate the updated CSS bundle; browser/device verification is still outstanding and must not be inferred from CI alone.
+- **Validated:** GitHub Actions workflow [38082452851](https://github.com/InfX2243/portfolio/actions/runs/38082452851) passed after the navigation CSS change.
+- Browser/device verification is still outstanding and must not be inferred from CI alone.
 
 ### Next
 1. Confirm the navigation-fix workflow passes.
