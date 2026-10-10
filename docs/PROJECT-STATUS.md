@@ -383,11 +383,13 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 
 ### Validation
 - Source files and GitHub Actions workflow were inspected after the changes.
-- The deployment workflow for commit `17d16818a634a70b437b2a2858c59684640c0bff` was queued as run `38081940013` at the time this status was recorded.
-- **Not yet validated:** final workflow result, actual browser rendering, responsive visual balance, contrast, keyboard flow, and runtime performance. Do not mark Sprint H complete until CI passes; browser/device checks remain a separate release requirement.
+- Workflow `38081940013` failed after Vite compilation because the existing route validator incorrectly formed paths like `dist/.projects/index.html`; it also exposed that the route generator did not apply route metadata to the homepage output.
+- Fixed `scripts/generate-route-pages.mjs` to render canonical homepage metadata before writing nested routes, and fixed `scripts/validate-route-build.mjs` to use explicit `./` relative paths for nested route HTML and required assets.
+- The corrected source is committed as `890b11ad63dde690457ca42f6d3bb85b3792bdcf`; workflow `38082014781` is queued for validation.
+- **Not yet validated:** corrected workflow result, actual browser rendering, responsive visual balance, contrast, keyboard flow, and runtime performance. Do not mark Sprint H complete until CI passes; browser/device checks remain a separate release requirement.
 
 ### Next
-1. Confirm workflow `38081940013` and fix any build or route-generation regression.
+1. Confirm workflow `38082014781` and fix any remaining build or route-generation failure.
 2. Review the hero at desktop, tablet, and narrow mobile widths; check that the SVG never competes with headline/calls to action.
 3. Audit the existing WebGPU layer's visibility lifecycle and low-power behavior, then decide whether to keep, simplify, or disable it when the hero is off-screen.
 4. Continue with the shared visual system only after the hero composition is accepted.
