@@ -409,6 +409,5 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 - Browser/device verification is still outstanding and must not be inferred from CI alone.
 
 ### Next
-1. Confirm the navigation-fix workflow passes.
-2. Continue the visual audit with the project archive and case-study pages, preserving the evidence-first content rules.
-3. Complete browser checks for desktop/tablet/mobile navigation, keyboard focus, and menu dismissal when a browser runtime is available.
+1. Continue the visual audit with the project archive and case-study pages, preserving the evidence-first content rules.
+2. Complete browser checks for desktop/tablet/mobile navigation, keyboard focus, and menu dismissal when a browser runtime is available.
