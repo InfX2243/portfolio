@@ -11,7 +11,11 @@ const routes = publicRoutes.map((path) => ({
   ...getRouteMetadata(path),
 }));
 
-const template = render(\n  await readFile(new URL("index.html", dist), "utf8"),\n  routes.find((route) => route.path === "/"),\n);\nawait writeFile(new URL("index.html", dist), template, "utf8");
+const template = render(
+  await readFile(new URL("index.html", dist), "utf8"),
+  routes.find((route) => route.path === "/"),
+);
+await writeFile(new URL("index.html", dist), template, "utf8");
 
 function escapeHtml(value) {
   return value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
