@@ -430,3 +430,19 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 ### Next
 1. Review the projects archive and case-study pages in a browser at desktop, tablet, and mobile widths when browser access is available.
 2. Continue the visual hierarchy audit without inventing project evidence; collect real contribution, architecture, and result details before adding them to case studies.
+
+## Sprint K — Responsive navigation and case-study density (2026-10-11)
+
+### Completed
+- Continued the visual audit and found a second navigation-specificity issue: the mobile breakpoint hid .desktop-nav with a lower-specificity selector, so the desktop links could remain visible beside the mobile menu toggle. Updated the rule to target .nav > .desktop-nav, matching the scoped desktop navigation selector.
+- Removed the repeated “Evidence boundary” boilerplate from every project case study. The page already suppresses missing/unverified sections, so repeating a generic explanation added noise without adding project-specific evidence.
+- No project claims or technical details were added.
+
+### Validation
+- **Pending:** GitHub Actions production build and deployment for commits 829810987c9242f395838a79c006be020461eb65 (responsive navigation) and 9cc5f30e8047d390e06c071b4cfcd4dd41d930f1 (case-study density).
+- Browser-level desktop/mobile visual validation remains outstanding.
+
+### Next
+1. Confirm the source workflow is green for both changes.
+2. Continue the editorial hierarchy and responsive layout audit; keep missing project evidence hidden until supplied or independently verified.
+3. Complete real browser checks at desktop, tablet, and mobile widths when a browser runtime is available.
