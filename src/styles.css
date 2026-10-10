@@ -808,6 +808,7 @@ body { background: var(--bg); color: var(--text); }
   padding: 28px 0 65px;
   border-top: 1px solid var(--line);
 }
+.case-study-intro-single { grid-template-columns: minmax(0, 1fr); }
 .case-study-intro > div > p:last-child {
   margin: 9px 0 0;
   color: var(--soft);
