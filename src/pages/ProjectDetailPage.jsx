@@ -4,8 +4,14 @@ import { ProjectVisual } from "../components/ProjectVisual";
 import { projects } from "../data/portfolio";
 import { withBasePath } from "../app/basePath";
 
+const PLACEHOLDER_COPY = /pending verification|requires an authoritative public source|engineering project \/ technical exploration|detailed metrics are intentionally omitted until verified|project exists in the portfolio source/i;
+
+function hasSpecificContent(value) {
+  return typeof value === "string" && value.trim().length > 0 && !PLACEHOLDER_COPY.test(value);
+}
+
 function CaseSection({ label, title, value, children }) {
-  if (!value && !children) return null;
+  if (!hasSpecificContent(value) && !children) return null;
 
   return (
     <section className="case-study-section">
@@ -58,10 +64,21 @@ export function ProjectDetailPage({ slug }) {
   }
 
   const study = project.caseStudy || {};
-  const contribution = study.role || project.contribution;
-  const decisions = study.technicalDecisions || project.approach;
-  const outcome = study.result || project.outcome;
-  const evidence = study.evidence || project.evidence;
+  const contribution = hasSpecificContent(study.role) ? study.role : null;
+  const decisions = Array.isArray(study.technicalDecisions) && study.technicalDecisions.length
+    ? study.technicalDecisions
+    : null;
+  const rawOutcome = hasSpecificContent(study.result)
+    ? study.result
+    : hasSpecificContent(project.outcome)
+      ? project.outcome
+      : null;
+  const outcome = rawOutcome && rawOutcome !== project.award ? rawOutcome : null;
+  const evidence = hasSpecificContent(study.evidence)
+    ? study.evidence
+    : hasSpecificContent(project.evidence)
+      ? project.evidence
+      : null;
 
   const related = projects
     .filter((item) => item.id !== project.id && (item.type === project.type || item.featured))
@@ -86,11 +103,11 @@ export function ProjectDetailPage({ slug }) {
 
         <ProjectVisual project={project} />
 
-        <div className="case-study-intro">
-          <div>
+        <div className={contribution ? "case-study-intro" : "case-study-intro case-study-intro-single"}>
+          {contribution && <div>
             <p className="eyebrow">Contribution</p>
             <p>{contribution}</p>
-          </div>
+          </div>}
           <div>
             <p className="eyebrow">Technical focus</p>
             <div className="plain-tags">
