@@ -383,13 +383,13 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 
 ### Validation
 - Source files and GitHub Actions workflow were inspected after the changes.
-- Workflow `38081940013` failed after Vite compilation because the existing route validator incorrectly formed paths like `dist/.projects/index.html`; it also exposed that the route generator did not apply route metadata to the homepage output.
-- Fixed `scripts/generate-route-pages.mjs` to render canonical homepage metadata before writing nested routes, and fixed `scripts/validate-route-build.mjs` to use explicit `./` relative paths for nested route HTML and required assets.
-- The corrected source is committed as `890b11ad63dde690457ca42f6d3bb85b3792bdcf`; workflow `38082014781` is queued for validation.
-- **Not yet validated:** corrected workflow result, actual browser rendering, responsive visual balance, contrast, keyboard flow, and runtime performance. Do not mark Sprint H complete until CI passes; browser/device checks remain a separate release requirement.
+- Workflow `38081940013` exposed pre-existing route-build validation defects: incorrect nested/asset paths and missing homepage metadata generation. Follow-up CI runs also caught a generator syntax issue and escaped-title comparison/404 timing assumptions; each was corrected in source and the latest workflow was rerun.
+- Fixed `scripts/generate-route-pages.mjs` to apply canonical route metadata to the homepage before generating nested route entry points.
+- Fixed `scripts/validate-route-build.mjs` to resolve nested route/asset paths correctly, compare HTML-escaped metadata, and validate assets that exist before the deployment-only 404 fallback step.
+- **Validated:** GitHub Actions workflow `38082118258` (run 305, commit `a5508fb39fc75a531371e19a9e4b44e49a9eacdd`) passed Vite production build, route generation/metadata validation, the 404 fallback step, output checks, and deployment to `gh-pages`.
+- **Still outstanding:** actual browser rendering, responsive visual balance, contrast, keyboard flow, reduced-motion runtime behavior, and runtime performance. CI passing does not replace browser/device acceptance.
 
 ### Next
-1. Confirm workflow `38082014781` and fix any remaining build or route-generation failure.
-2. Review the hero at desktop, tablet, and narrow mobile widths; check that the SVG never competes with headline/calls to action.
-3. Audit the existing WebGPU layer's visibility lifecycle and low-power behavior, then decide whether to keep, simplify, or disable it when the hero is off-screen.
-4. Continue with the shared visual system only after the hero composition is accepted.
+1. Review the deployed hero at desktop, tablet, and narrow mobile widths; check that the SVG never competes with headline/calls to action.
+2. Audit the existing WebGPU layer's visibility lifecycle and low-power behavior, then decide whether to keep, simplify, or disable it when the hero is off-screen.
+3. Refine the shared visual system only after the hero composition is accepted.
