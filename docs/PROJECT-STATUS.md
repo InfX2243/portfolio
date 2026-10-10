@@ -1,6 +1,6 @@
 # Portfolio Implementation Status
 
-Last updated: 2026-10-10 (Visual design direction agreed)
+Last updated: 2026-10-11 (Sprint H — systems-orbit hero)
 > Branch: `portfolio-v1`  
 > Source of truth: `docs/AI-PORTFOLIO-EXECUTION.md`
 
@@ -370,3 +370,24 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 - **NEXT:** Inspect the current hero implementation, design tokens, and bundle before selecting the lowest-cost implementation path. Prototype the hero incrementally, then validate build, bundle impact, responsive behavior, reduced motion, and runtime fallback.
 - **BLOCKED FOR FINAL SIGN-OFF:** Verify authentic project/research visuals and public links; confirm official Bitkraft title/dates and institution spelling; use an updated resume before presenting a current resume-download CTA.
 - **Scope note:** This increment updates product/design documentation only. No application UI, source code, build, or deployment was changed or validated.
+
+
+## Sprint H — Systems-orbit hero foundation (2026-10-11)
+
+### Completed
+- Audited the current homepage hero and confirmed it had strong editorial typography and a lazy-loaded WebGPU line field, but no distinct system object to carry the agreed technical/futuristic direction.
+- Added `src/components/HeroSystemVisual.jsx`: a custom decorative SVG system illustration with orbit paths, connected nodes, a central modular core, and restrained technical annotations.
+- Integrated the illustration into the Home hero and replaced the former right-side text block with a responsive engineering-focus strip.
+- Added responsive desktop/tablet/mobile styling and low-amplitude orbit-line motion; the SVG remains the primary visual when motion is reduced.
+- Kept the illustration dependency-free and used the existing palette. No external image, fabricated project screenshot, or new 3D library was added.
+
+### Validation
+- Source files and GitHub Actions workflow were inspected after the changes.
+- The deployment workflow for commit `17d16818a634a70b437b2a2858c59684640c0bff` was queued as run `38081940013` at the time this status was recorded.
+- **Not yet validated:** final workflow result, actual browser rendering, responsive visual balance, contrast, keyboard flow, and runtime performance. Do not mark Sprint H complete until CI passes; browser/device checks remain a separate release requirement.
+
+### Next
+1. Confirm workflow `38081940013` and fix any build or route-generation regression.
+2. Review the hero at desktop, tablet, and narrow mobile widths; check that the SVG never competes with headline/calls to action.
+3. Audit the existing WebGPU layer's visibility lifecycle and low-power behavior, then decide whether to keep, simplify, or disable it when the hero is off-screen.
+4. Continue with the shared visual system only after the hero composition is accepted.
