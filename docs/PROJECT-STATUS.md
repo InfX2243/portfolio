@@ -446,3 +446,17 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 1. Confirm the source workflow is green for both changes.
 2. Continue the editorial hierarchy and responsive layout audit; keep missing project evidence hidden until supplied or independently verified.
 3. Complete real browser checks at desktop, tablet, and mobile widths when a browser runtime is available.
+
+## Sprint L — Project archive link accessibility (2026-10-11)
+
+### Completed
+- Added project-specific accessible names to the repeated “Inspect case study” and “Inspect” links in the project archive. Screen-reader link lists can now distinguish which project each action opens without relying on surrounding visual context.
+- Visible link copy and layout remain unchanged.
+
+### Validation
+- **Pending:** GitHub Actions production build/deployment for commit 4fd274b44b63565d69e49c4be1f84eb1fbfeb5ed.
+- Browser and screen-reader validation remain outstanding; the change is source-level accessibility hardening, not a claim of assistive-technology testing.
+
+### Next
+1. Confirm CI for the responsive navigation, case-study cleanup, and archive-link accessibility changes.
+2. Continue the route-by-route accessibility and responsive audit; do not mark browser acceptance complete until tested in a real browser.
