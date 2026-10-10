@@ -173,4 +173,4 @@ Appended the eight newly supplied Credly badge IDs to src/data/credentials.json,
 - Fixed a CSS specificity collision that allowed the hidden mobile navigation panel to render alongside desktop navigation.
 - Shared desktop navigation rules now target only `.desktop-nav`; mobile panel display and open-state rules target only `.mobile-nav-panel`.
 - The change does not alter route data or navigation behavior; it separates the styling scopes so the existing accessible mobile-menu implementation can work as intended.
-- Build/deployment validation is pending after this change. Browser visual verification is still outstanding.
+- GitHub Actions workflow 38082452851 passed after this change. Browser visual verification is still outstanding.
