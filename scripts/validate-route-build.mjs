@@ -21,7 +21,7 @@ const seenTitles = new Set();
 for (const route of publicRoutes) {
   const html = route === "/"
     ? index
-    : await readFile(new URL(`.${route.replace(/^\//, "")}/index.html`, dist), "utf8");
+    : await readFile(new URL(`./${route.replace(/^\//, "")}/index.html`, dist), "utf8");
 
   const metadata = getRouteMetadata(route);
   const titleMatch = html.match(/<title>(.*?)<\/title>/);
@@ -40,7 +40,7 @@ for (const route of publicRoutes) {
 
 const requiredAssets = ["404.html", "robots.txt", "sitemap.xml"];
 for (const asset of requiredAssets) {
-  await access(new URL(`.${asset}`, dist)).catch(() => fail(`Missing deployment asset: ${asset}`));
+  await access(new URL(`./${asset}`, dist)).catch(() => fail(`Missing deployment asset: ${asset}`));
 }
 
 if (process.exitCode) process.exit();
