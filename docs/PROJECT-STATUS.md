@@ -388,10 +388,9 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 - Fixed `scripts/validate-route-build.mjs` to resolve nested route/asset paths correctly, compare HTML-escaped metadata, and validate assets that exist before the deployment-only 404 fallback step.
 - **Validated:** GitHub Actions workflow `38082118258` (run 305, commit `a5508fb39fc75a531371e19a9e4b44e49a9eacdd`) passed Vite production build, route generation/metadata validation, the 404 fallback step, output checks, and deployment to `gh-pages`.
 - Added a performance follow-up in `src/components/VgpuField.jsx`: skip GPU initialization for reduced-motion, small-viewport, coarse-pointer, low-core-count, and data-saver contexts; stop the frame loop when the hero is off-screen or the document is hidden; resume only when visible again.
-- Workflow `38082205722` is validating the GPU lifecycle change now; result is pending at the time of this status update.
+- **Validated:** workflow `38082205722` passed the production build, route/metadata validation, fallback generation, output guard, and deployment for the GPU lifecycle change.
 - **Still outstanding:** actual browser rendering, responsive visual balance, contrast, keyboard flow, reduced-motion runtime behavior, and runtime performance. CI passing does not replace browser/device acceptance.
 
 ### Next
-1. Confirm workflow `38082205722` passes for the GPU lifecycle change.
-2. Review the deployed hero at desktop, tablet, and narrow mobile widths; check that the SVG never competes with headline/calls to action.
-3. Refine the shared visual system only after the hero composition is accepted.
+1. Review the deployed hero at desktop, tablet, and narrow mobile widths; check that the SVG never competes with headline/calls to action.
+2. Refine the shared visual system only after the hero composition is accepted.
