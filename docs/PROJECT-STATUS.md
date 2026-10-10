@@ -1,6 +1,6 @@
 # Portfolio Implementation Status
 
-Last updated: 2026-10-11 (Sprint H — systems-orbit hero and GPU lifecycle)
+Last updated: 2026-10-11 (Sprint I — navigation duplication fix)
 > Branch: `portfolio-v1`  
 > Source of truth: `docs/AI-PORTFOLIO-EXECUTION.md`
 
@@ -394,3 +394,20 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 ### Next
 1. Review the deployed hero at desktop, tablet, and narrow mobile widths; check that the SVG never competes with headline/calls to action.
 2. Refine the shared visual system only after the hero composition is accepted.
+
+
+## Sprint I — Navigation duplication fix (2026-10-11)
+
+### Completed
+- Traced duplicated top-navigation links to a CSS specificity collision: the broad `.nav nav` selector applied `display: flex` to both the desktop navigation and the mobile menu, overriding the mobile panel's hidden state.
+- Scoped shared navigation layout and hover selectors to the direct `.desktop-nav` child and scoped mobile-panel visibility/layout selectors to the direct `.mobile-nav-panel` child.
+- Preserved the existing route list, active-route semantics, mobile toggle ARIA state, Escape dismissal, link-selection closure, focus restoration, and inert closed state.
+
+### Validation
+- Source-level selector checks confirm the broad `.nav nav` selectors were removed and the desktop and mobile navigation now have separate display rules.
+- A fresh production build/deployment workflow is required to validate the updated CSS bundle; browser/device verification is still outstanding and must not be inferred from CI alone.
+
+### Next
+1. Confirm the navigation-fix workflow passes.
+2. Continue the visual audit with the project archive and case-study pages, preserving the evidence-first content rules.
+3. Complete browser checks for desktop/tablet/mobile navigation, keyboard focus, and menu dismissal when a browser runtime is available.
