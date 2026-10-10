@@ -129,3 +129,13 @@ Added the eight user-supplied Credly badge IDs to the JSON credential source and
 ## Credly 16-badge gallery checkpoint
 
 Appended the eight newly supplied Credly badge IDs to src/data/credentials.json, bringing the total to 16. The credentials UI already maps over the full badge collection, so no component duplication was required. Each new record retains the supplied 150×270 embed dimensions and Credly host; title/issuer/public URL remain unset pending verification.
+
+
+## Sprint H — Systems-orbit hero foundation (2026-10-11)
+
+- Added a dependency-free SVG systems illustration in `src/components/HeroSystemVisual.jsx`.
+- The illustration uses a central modular core, orbit paths, connected nodes, and small technical labels to convey connected systems and iteration without presenting itself as a literal project architecture.
+- Integrated the illustration into the homepage hero and replaced the old right-side focus text block with a responsive engineering-focus strip.
+- Added responsive layout rules and reduced-motion handling for the subtle orbit-line animation.
+- No new runtime dependency or external asset was introduced.
+- Validation state: deployment workflow `38081940013` was queued at documentation time; build and browser/device validation are not yet claimed.
