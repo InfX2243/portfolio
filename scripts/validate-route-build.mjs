@@ -6,6 +6,10 @@ import { SITE_BASE_PATH, SITE_URL } from "../src/config/site.js";
 const dist = new URL("../dist/", import.meta.url);
 const base = SITE_BASE_PATH.replace(/\/$/, "");
 
+function escapeHtml(value) {
+  return value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+}
+
 function fail(message) {
   console.error(message);
   process.exitCode = 1;
@@ -28,8 +32,8 @@ for (const route of publicRoutes) {
   const canonicalMatch = html.match(/<link rel="canonical" href="([^"]*)"/);
   const descriptionMatch = html.match(/<meta name="description" content="([^"]*)"/);
 
-  if (!titleMatch || titleMatch[1] !== metadata.title) fail(`Title mismatch: ${route}`);
-  if (!descriptionMatch || descriptionMatch[1] !== metadata.description) fail(`Description mismatch: ${route}`);
+  if (!titleMatch || titleMatch[1] !== escapeHtml(metadata.title)) fail(`Title mismatch: ${route}`);
+  if (!descriptionMatch || descriptionMatch[1] !== escapeHtml(metadata.description)) fail(`Description mismatch: ${route}`);
 
   const expectedCanonical = `${SITE_URL}${base}${route === "/" ? "/" : route}`;
   if (!canonicalMatch || canonicalMatch[1] !== expectedCanonical) fail(`Canonical mismatch: ${route}`);
@@ -38,7 +42,7 @@ for (const route of publicRoutes) {
   seenTitles.add(metadata.title);
 }
 
-const requiredAssets = ["404.html", "robots.txt", "sitemap.xml"];
+const requiredAssets = ["robots.txt", "sitemap.xml", "favicon.svg", "og-image.svg"];
 for (const asset of requiredAssets) {
   await access(new URL(`./${asset}`, dist)).catch(() => fail(`Missing deployment asset: ${asset}`));
 }
