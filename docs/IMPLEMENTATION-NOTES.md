@@ -148,3 +148,12 @@ Appended the eight newly supplied Credly badge IDs to src/data/credentials.json,
 - Fixed the generator to render and write homepage metadata first, then reuse that template for nested route entry points.
 - Fixed the validator's route and asset URLs to use explicit `./` paths.
 - Corrected validation is pending in GitHub Actions workflow `38082014781`; no green CI result is claimed yet.
+
+
+## Sprint H validation result — route build checks (2026-10-11)
+
+- The route generator now writes the canonical metadata version of the root `dist/index.html` before generating nested route pages.
+- The route validator resolves nested route and asset paths correctly, compares HTML-escaped title/description values, and checks only assets expected to exist at build-validation time. The workflow itself continues to create and verify `404.html` before deployment.
+- Earlier attempts exposed and fixed the route path, homepage metadata, generator syntax, escaped title, and 404 timing issues.
+- GitHub Actions workflow `38082118258` (run 305, commit `a5508fb39fc75a531371e19a9e4b44e49a9eacdd`) passed the production build, route/metadata validator, fallback generation, output guard, and deployment.
+- Browser/device review remains outstanding; CI passing is not a claim that visual balance, contrast, reduced-motion runtime behavior, or low-power behavior has been manually verified.
