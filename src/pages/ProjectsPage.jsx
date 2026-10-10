@@ -24,7 +24,7 @@ function ProjectArchiveRow({ project }) {
           <div className="plain-tags" aria-label={project.title + " technologies and focus"}>
             {project.approach.map((tag) => <span key={tag}>{tag}</span>)}
           </div>
-          <a className="text-link" href={withBasePath("/projects/" + project.id)}>
+          <a className="text-link" href={withBasePath("/projects/" + project.id)} aria-label={"Inspect " + project.title + " case study"}>
             Inspect case study ↗
           </a>
         </div>
@@ -77,7 +77,7 @@ export function ProjectsPage() {
                       {project.approach.map((tag) => <span key={tag}>{tag}</span>)}
                     </div>
                   </div>
-                  <a className="text-link" href={withBasePath("/projects/" + project.id)}>
+                  <a className="text-link" href={withBasePath("/projects/" + project.id)} aria-label={"Inspect " + project.title + " project"}>
                     Inspect ↗
                   </a>
                 </article>
