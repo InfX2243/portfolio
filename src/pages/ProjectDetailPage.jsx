@@ -137,14 +137,6 @@ export function ProjectDetailPage({ slug }) {
 
         <ProjectLinks links={project.links} />
 
-        <aside className="case-study-boundary">
-          <p className="eyebrow">Evidence boundary</p>
-          <p>
-            Detailed architecture, implementation, metrics, publication status and external
-            resources appear only when they are present in verified portfolio data.
-          </p>
-        </aside>
-
         <section className="related-work" aria-labelledby="related-work-title">
           <p className="eyebrow">Continue exploring</p>
           <h2 id="related-work-title">Related work.</h2>
