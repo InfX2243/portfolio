@@ -28,30 +28,84 @@ export function VgpuField() {
 
   useEffect(() => {
     let disposed = false;
-    let stop = () => {};
+    let isVisible = false;
+    let stopLoop = null;
+    let resources = null;
+    let observer = null;
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const smallViewport = window.matchMedia("(max-width: 700px)");
+    const coarsePointer = window.matchMedia("(pointer: coarse)");
+    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    const lowPower = (navigator.hardwareConcurrency > 0 && navigator.hardwareConcurrency <= 4) ||
+      Boolean(connection?.saveData);
+
+    // The SVG hero is the complete visual fallback. GPU work is desktop-only enhancement.
+    if (
+      !("gpu" in navigator) ||
+      reducedMotion.matches ||
+      smallViewport.matches ||
+      coarsePointer.matches ||
+      lowPower ||
+      !ref.current
+    ) {
+      return undefined;
+    }
+
+    const pause = () => {
+      if (!stopLoop) return;
+      try { stopLoop(); } catch {}
+      stopLoop = null;
+    };
+
+    const start = () => {
+      if (disposed || !resources || stopLoop || !isVisible || document.hidden) return;
+      stopLoop = resources.frameLoop(resources.gpu, (frame) => {
+        resources.field.set({ time: resources.time.time });
+        frame.pass(resources.target, resources.field);
+      });
+    };
+
+    const onVisibilityChange = () => {
+      if (document.hidden) pause();
+      else start();
+    };
+
+    document.addEventListener("visibilitychange", onVisibilityChange);
+
+    if ("IntersectionObserver" in window) {
+      observer = new IntersectionObserver((entries) => {
+        isVisible = entries.some((entry) => entry.isIntersecting);
+        if (isVisible) start();
+        else pause();
+      }, { threshold: 0.01 });
+      observer.observe(ref.current);
+    } else {
+      isVisible = true;
+    }
 
     async function boot() {
-      if (!("gpu" in navigator) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
       try {
         const { init, effect, frameLoop, surface, clock } = await import("vgpu");
         if (disposed || !ref.current) return;
         const gpu = await init();
+        if (disposed) return;
         const target = surface(gpu, ref.current, { dpr: [1, 1.25] });
         const field = effect(gpu, shader, { set: { time: 0 } });
         const time = clock(gpu);
-        stop = frameLoop(gpu, (frame) => {
-          field.set({ time: time.time });
-          frame.pass(target, field);
-        });
+        resources = { gpu, target, field, time, frameLoop };
+        start();
       } catch {
-        // WebGPU is an enhancement; the HTML/canvas layers remain the fallback.
+        // WebGPU is an enhancement; the HTML/SVG layers remain the fallback.
       }
     }
 
     boot();
     return () => {
       disposed = true;
-      try { stop(); } catch {}
+      pause();
+      observer?.disconnect();
+      document.removeEventListener("visibilitychange", onVisibilityChange);
     };
   }, []);
 
