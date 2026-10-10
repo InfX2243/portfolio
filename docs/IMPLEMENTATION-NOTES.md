@@ -157,3 +157,12 @@ Appended the eight newly supplied Credly badge IDs to src/data/credentials.json,
 - Earlier attempts exposed and fixed the route path, homepage metadata, generator syntax, escaped title, and 404 timing issues.
 - GitHub Actions workflow `38082118258` (run 305, commit `a5508fb39fc75a531371e19a9e4b44e49a9eacdd`) passed the production build, route/metadata validator, fallback generation, output guard, and deployment.
 - Browser/device review remains outstanding; CI passing is not a claim that visual balance, contrast, reduced-motion runtime behavior, or low-power behavior has been manually verified.
+
+
+## Sprint H performance follow-up — GPU field lifecycle (2026-10-11)
+
+- The WebGPU field is now explicitly an enhancement: it skips initialization when WebGPU is unavailable, reduced motion is requested, viewport is small, pointer is coarse, reported hardware concurrency is low, or data-saver is enabled.
+- Added IntersectionObserver visibility tracking so the frame loop pauses while the hero canvas is off-screen and resumes only when visible.
+- Added document visibility handling so animation pauses when the browser tab is hidden.
+- The static SVG systems visual remains available as the primary visual and fallback; no user-facing content depends on WebGPU.
+- Validation for commit `8058b9d093c340352a4f570d9a96dd7afb1423b4` is pending in workflow `38082205722` at documentation time.
