@@ -139,3 +139,12 @@ Appended the eight newly supplied Credly badge IDs to src/data/credentials.json,
 - Added responsive layout rules and reduced-motion handling for the subtle orbit-line animation.
 - No new runtime dependency or external asset was introduced.
 - Validation state: deployment workflow `38081940013` was queued at documentation time; build and browser/device validation are not yet claimed.
+
+
+## Sprint H validation follow-up — route build validator (2026-10-11)
+
+- The first workflow compiled the React/Vite app but failed in `scripts/validate-route-build.mjs`: route URLs were constructed as `dist/.projects/index.html` instead of `dist/projects/index.html`, and required-asset checks used the same relative-path mistake.
+- The homepage metadata validator also found a genuine generator gap: `scripts/generate-route-pages.mjs` generated metadata for nested routes but did not render the canonical route metadata into the root `dist/index.html`.
+- Fixed the generator to render and write homepage metadata first, then reuse that template for nested route entry points.
+- Fixed the validator's route and asset URLs to use explicit `./` paths.
+- Corrected validation is pending in GitHub Actions workflow `38082014781`; no green CI result is claimed yet.
