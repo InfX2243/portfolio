@@ -1751,3 +1751,13 @@ a:hover { text-decoration-thickness: .12em; }
 .polished-project-art-placeholder > span { color: #b5eaff; font: 500 .75rem var(--mono); }
 .polished-project-art-placeholder strong { font-size: clamp(1.25rem,2.3vw,1.8rem); line-height: 1.2; }
 .polished-project-art-placeholder i { color: var(--muted); font-size: .8rem; font-style: normal; }
+
+
+/* Accessibility audit finding: scroll-linked opacity animations briefly reduced text contrast. */
+@supports (animation-timeline: view()) {
+  .editorial-section, .page-section > section, .secondary-projects {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

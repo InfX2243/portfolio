@@ -606,3 +606,8 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 - Added an automated release gate for structural checks and serious/critical axe findings. This is a smoke test, not by itself a WCAG conformance certification.
 
 **Still required for a full WCAG 2.2 AA claim:** review the live GitHub Actions audit results, resolve all reported findings (including moderate/minor findings), then complete manual keyboard-only, 200%/400% zoom/reflow, contrast, mobile menu and screen-reader checks on the deployed site.
+
+
+### Automated axe audit follow-up
+
+The browser audit is now exercising the GitHub Pages base path and has exposed an accessibility issue that a static review missed: view-timeline reveal animations temporarily reduced contrast by fading text to partial opacity. The content reveal effect has been disabled for accessible, stable rendering. The next workflow run must confirm whether this resolves all serious contrast findings; full conformance still requires manual review.
