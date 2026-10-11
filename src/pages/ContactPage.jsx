@@ -1,6 +1,7 @@
 import { PortfolioLayout } from "../components/layout/PortfolioLayout";
 import { PageHeader } from "../components/layout/PageHeader";
 import { profile } from "../data/portfolio";
+import { withBasePath } from "../app/basePath";
 
 export function ContactPage() {
   return (
@@ -24,6 +25,7 @@ export function ContactPage() {
             <span>01 / LinkedIn</span>
             <strong>Connect professionally ↗</strong>
           </a>
+          {profile.resume && <a className="contact-card contact-resume-card" href={withBasePath(profile.resume)} target="_blank" rel="noopener noreferrer" aria-label="Open Abid Ahmed Shaikh résumé PDF"><span>03 / Résumé</span><strong>View current résumé ↗</strong></a>}
           <a
             className="contact-card"
             href={profile.links.github}
