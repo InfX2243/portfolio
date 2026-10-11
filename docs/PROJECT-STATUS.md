@@ -470,7 +470,7 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 - No award claims, job responsibilities, dates, or metrics were added.
 
 ### Validation
-- **Pending:** GitHub Actions for achievement archive content commit `c88455f932efc9075a04a90d6450ba32926aeb00` and experience numbering commit `fd47bc6ef847b395b2caba0498176ee5096ae01b`.
+- **Validated:** GitHub Actions passed for achievement archive content commit [`c88455f`](https://github.com/InfX2243/portfolio/actions/runs/38117005114) and experience numbering commit [`fd47bc6`](https://github.com/InfX2243/portfolio/actions/runs/38117006869). Both documentation updates also passed workflows [332](https://github.com/InfX2243/portfolio/actions/runs/38117020428) and [333](https://github.com/InfX2243/portfolio/actions/runs/38117022304).
 - Browser and screen-reader validation remain outstanding.
 
 ### Next
