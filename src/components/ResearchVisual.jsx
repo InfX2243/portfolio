@@ -7,7 +7,7 @@ export function ResearchVisual({ research }) {
         <span>Research profile</span>
         <span>{research.signal || "Research"}</span>
       </div>
-      <div className="research-signal-body">
+      <div className={research.recognition ? "research-signal-body" : "research-signal-body research-signal-body-single"}>
         {research.context && (
           <div>
             <span className="eyebrow">Context</span>
