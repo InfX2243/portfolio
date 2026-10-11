@@ -525,3 +525,21 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 2. Review heading hierarchy, skip-link behavior, and reduced-motion CSS at source level; fix only clear defects.
 3. Continue auditing stale or unsupported public claims and keep official role-title confirmation as a pre-release item.
 4. Perform browser/device and assistive-technology acceptance testing before release sign-off.
+
+
+## Sprint R — Credly badge rendering and visual asset audit (2026-10-11)
+
+### Completed
+- Replaced the shared-script/DOM-scan Credly implementation with one direct, lazy-loaded Credly embed iframe per supplied badge ID. This removes the loader's dependency on a one-time document scan when SPA pages mount or remount.
+- Added a separate public-badge link for each card so the credential remains directly inspectable even if embedded content is blocked or unavailable.
+- Kept all 16 user-supplied badge IDs in `src/data/credentials.json`; did not guess badge titles, issuers, or issue dates.
+- Renamed the section heading from “Verified badge embeds” to “Credly badges” because the presence of a supplied ID alone does not establish that every badge is publicly accessible.
+- Added sizing rules for the direct iframe and the external fallback link.
+
+### Validation boundary
+- Source changes are committed. GitHub Actions must pass before this increment is considered build-validated.
+- CI cannot confirm that each third-party badge is public or that the iframe content renders in a real browser. After deployment, inspect the Achievements page and open a few badges directly; any private/unaccepted/invalid badge will need to be made public or have its ID corrected in `src/data/credentials.json`.
+
+### Visual assets to collect next
+- Add real project screenshots, architecture diagrams, research artifacts, official issuer marks, and an optional professional portrait only when the source assets are available and usage is appropriate.
+- Keep the exact asset-path plan in the implementation handoff; do not create placeholder logos or synthetic screenshots that could be mistaken for real evidence.
