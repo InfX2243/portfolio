@@ -22,6 +22,31 @@ function CaseSection({ label, title, value, children }) {
   );
 }
 
+function ProjectGallery({ project }) {
+  if (!Array.isArray(project.gallery) || !project.gallery.length) return null;
+
+  return (
+    <section className="project-gallery" aria-labelledby="project-gallery-title">
+      <div className="archive-section-heading">
+        <p className="eyebrow">Product walkthrough</p>
+        <h2 id="project-gallery-title">Inside {project.title}.</h2>
+        <p>Selected screens from the supplied project assets, grouped by the experience they document.</p>
+      </div>
+      <div className="project-gallery-grid">
+        {project.gallery.map((item) => (
+          <figure className="project-gallery-item" key={item.src}>
+            <img src={withBasePath(item.src)} alt={item.alt} loading="lazy" />
+            <figcaption>
+              {item.group && <span>{item.group}</span>}
+              <strong>{item.caption}</strong>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function ProjectLinks({ links = {} }) {
   const entries = Object.entries(links).filter(
     ([, url]) => typeof url === "string" && /^https?:\/\//.test(url),
@@ -102,6 +127,7 @@ export function ProjectDetailPage({ slug }) {
         )}
 
         <ProjectVisual project={project} />
+        <ProjectGallery project={project} />
 
         <div className={contribution ? "case-study-intro" : "case-study-intro case-study-intro-single"}>
           {contribution && <div>
