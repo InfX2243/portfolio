@@ -95,3 +95,11 @@ Do not invent or redraw official logos. If no approved mark exists, use a clean 
 - Ascend APEX individual contribution, reviewed technical architecture, public event citation and project repository/demo URL still require direct source details if they are to be published.
 - The résumé link is wired, but its contents must be confirmed current before final release.
 - The full Ascend APEX screenshot set is retained; only a curated subset is displayed to keep the case study useful rather than excessively long.
+
+
+## Deployment verification — 2026-10-11
+
+- Production build/deployment workflow: [38141920169](https://github.com/InfX2243/portfolio/actions/runs/38141920169) — success.
+- The deployed `gh-pages` tree includes `index.html`, `projects/index.html`, `projects/ascend-apex/index.html`, `research/index.html`, `achievements/index.html`, `experience/index.html`, `about/index.html`, `contact/index.html` and `404.html`.
+- Sampled deployed assets include the Ascend APEX overview and skill-validation workflow, profile photograph, résumé PDF, ACM mark and AWS issuer mark.
+- Manual browser checks remain outstanding because the live site could not be opened in the available browser-checking environment.

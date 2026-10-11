@@ -246,7 +246,7 @@ Appended the eight newly supplied Credly badge IDs to src/data/credentials.json,
 - Added iframe sizing and link styles in `src/styles.css`; renamed the Achievements section to “Credly badges” to avoid implying every ID has already been publicly verified.
 - The 16 IDs remain sourced from `src/data/credentials.json`; titles, issuers, and issue dates are not inferred.
 - Validation boundary: source commits are present; confirm GitHub Actions status and then verify the deployed embeds in a real browser. CI does not prove that Credly marks each badge public or that external iframe content loaded successfully.
-- Asset follow-up priorities: real screenshots and architecture visuals for projects, authentic paper/poster artifacts for research, official issuer logos where useful, and optional professional portrait. Use the exact file paths and formats in `docs/VISUAL-ASSET-CHECKLIST.md`; do not fabricate evidence assets.
+- Sprint S has since integrated the supplied screenshots, portrait, résumé, employer/community marks and issuer logos. Remaining evidence assets are authentic architecture diagrams or public research papers/posters if supplied; do not fabricate evidence assets.
 
 
 ## Sprint S — supplied assets integrated into the v1 experience

@@ -27,7 +27,7 @@ Last updated: 2026-10-11 (Sprint S — supplied asset integration and v1 release
 | P0 / Phase 9 — Performance | PARTIAL | Route chunks and homepage visual effects are lazy-loaded; unused Spline dependency removed; GitHub Actions production build now passes. | Production build log recorded the main chunks at 210.26 kB / 65.93 kB gzip and 155.37 kB / 50.01 kB gzip; route chunks remain small and homepage visual effects are separate. Next: mobile/low-power runtime testing and third-party loading review. |
 | P0 / Phase 10 — Accessibility | PARTIAL | Skip link, focus-visible styles, reduced-motion rules, semantic nav labels, Escape handling, active-page semantics, focus restoration, inert closed mobile nav, main landmark, 44px mobile nav controls, single-h1 homepage hierarchy. | Full keyboard/focus/contrast/link audit and browser verification. |
 | P1 / Phase 11 — SEO / Sharing | PARTIAL | Route-specific titles/descriptions, static route-specific Open Graph/Twitter metadata generated at build time, canonical URLs, favicon, `robots.txt`, `sitemap.xml`, and a dedicated `og-image.svg` social preview are implemented. | Validate the generated image metadata after deployment and perform final search/social crawler verification. |
-| P0 / Phase 12 — Final Validation | PARTIAL | Production build/deployment CI is green; Sprint D corrected a base-path normalization edge case and Sprint E centralized the fix across router/layout while removing confirmed obsolete visual CSS. Browser/device validation and remaining P0 content/accessibility/performance checks are outstanding. | Confirm latest Sprint F link-hardening CI, then complete browser/device acceptance and final V1 sign-off when available. |
+| P0 / Phase 12 — Final Validation | PARTIAL | Production build and GitHub Pages deployment passed on workflow 38141920169 after Sprint S integration. The deployed tree contains all nested routes and sampled supplied assets. | Complete real-browser/device, keyboard, contrast, reduced-motion, Credly and final content checks before formal V1 sign-off. |
 
 \* About is structurally complete; it still needs the final truth/quality review before final portfolio sign-off.
 
@@ -38,7 +38,7 @@ Last updated: 2026-10-11 (Sprint S — supplied asset integration and v1 release
 - Sprint F external-link hardening is validated by workflows `37771291284`, `37771299338` and `37771306145`.
 - The deployed `gh-pages` tree was inspected and contains route-specific HTML for `/`, `/projects`, all five project detail routes, `/research`, `/achievements`, `/experience`, `/about` and `/contact`, plus `404.html`, `robots.txt`, `sitemap.xml` and the favicon.
 - Route metadata was also checked directly on the deployed branch: every public route has the expected title and canonical URL, and the five project detail routes resolve to their project-specific metadata.
-- The live-site browser checker could not access GitHub Pages from this environment, so external browser verification remains explicitly unconfirmed.
+- The live-site browser checker could not access GitHub Pages from this environment. Direct inspection of the deployed `gh-pages` tree confirms the Home, Projects, Ascend APEX, Research, Achievements, Experience, About and Contact route entrypoints, plus sampled supplied image/logo/résumé assets. Real-browser visual and interaction verification remains explicitly unconfirmed.
 - The remaining content/evidence gap is intentional: the repository still lacks verified architecture, metrics, detailed personal contribution, trade-offs, learning narratives, and public project URLs for most projects. These must be supplied or independently verified before those sections are marked complete.
 
 ## Sprint O — Profile accuracy and personal voice (2026-10-11)
@@ -540,9 +540,9 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 - Source changes are committed. GitHub Actions must pass before this increment is considered build-validated.
 - CI cannot confirm that each third-party badge is public or that the iframe content renders in a real browser. After deployment, inspect the Achievements page and open a few badges directly; any private/unaccepted/invalid badge will need to be made public or have its ID corrected in `src/data/credentials.json`.
 
-### Visual assets to collect next
-- Add real project screenshots, architecture diagrams, research artifacts, official issuer marks, and an optional professional portrait only when the source assets are available and usage is appropriate.
-- Added `docs/VISUAL-ASSET-CHECKLIST.md` with prioritized asset suggestions, exact repository paths, and the React source files that should consume each asset. Do not create placeholder logos or synthetic screenshots that could be mistaken for real evidence.
+### Visual asset follow-up
+- Sprint S integrated the supplied project screenshots, portrait, résumé, employer/community marks and issuer logos; see `docs/VISUAL-ASSET-CHECKLIST.md` for the exact paths and remaining evidence gaps.
+- Remaining visual/evidence work is limited to authentic architecture diagrams or public research artifacts if the user supplies them. Do not create synthetic screenshots or diagrams that could be mistaken for actual project evidence.
 
 
 ## Sprint S — supplied visual assets and flagship case study (2026-10-11)
@@ -557,7 +557,7 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 - Added responsive gallery styling and corrected certificate URL validation after the first build caught a regex escaping error.
 
 ### Validation boundary / next actions
-- Latest source commit should be validated through the newest GitHub Actions build/deployment run; earlier intermediate runs failed while the certificate URL regex was malformed, and those intermediate failures are not considered successful validation.
+- The latest source-code commit for Sprint S (`fb6b388f677d210b488cd6b21b6eee3a64891908`) passed GitHub Actions workflow [38141920169](https://github.com/InfX2243/portfolio/actions/runs/38141920169), including production build, generated-route validation and GitHub Pages deployment. Earlier intermediate runs failed while a certificate URL regex and featured-project sort expression were malformed; both issues were corrected before the successful run.
 - Check the deployed site on mobile and desktop for image loading, crop, gallery density, résumé download, and third-party Credly embeds.
 - Confirm the résumé PDF is the final, current version before treating its public link as release-ready.
 - Confirm official job-title wording, and supply an individual contribution summary and public event/repository source for Ascend APEX if available.

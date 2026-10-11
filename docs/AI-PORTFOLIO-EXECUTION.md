@@ -2030,3 +2030,10 @@ Implementation requirements for this sprint:
 6. Treat successful CI as build/deploy evidence only. Browser, mobile, keyboard, reduced-motion, image-path, résumé and Credly checks remain manual release gates.
 
 The Sprint S code changes also fixed certificate URL validation after an initial CI build caught a malformed regex literal. The follow-up workflow passed. Continue with one final source audit and documentation refresh before v1 sign-off.
+
+
+## Post-integration validation checkpoint — 2026-10-11
+
+The Sprint S source implementation commit `fb6b388f677d210b488cd6b21b6eee3a64891908` passed [GitHub Actions workflow 38141920169](https://github.com/InfX2243/portfolio/actions/runs/38141920169). The production build, generated-route checks and GitHub Pages deployment completed successfully. The deployed `gh-pages` tree was inspected and contains the expected nested route entrypoints and sampled supplied assets, including the Ascend APEX overview/workflow, profile image, résumé, community mark and AWS issuer logo.
+
+This is a repository/deployment check, not a claim of manual browser acceptance. Desktop/mobile layout, keyboard/screen-reader behavior, reduced motion, actual image rendering, résumé freshness, external links and Credly iframe availability remain final release checks.
