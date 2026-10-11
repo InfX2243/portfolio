@@ -495,10 +495,11 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 ### Completed
 - Corrected the shared profile summary to use **Software Developer Intern**, matching the current role label and the latest direct statement captured in `docs/ABOUT-ME.md`.
 - Corrected the authoritative execution specification's stale Bitkraft role label and clarified that the supporting positioning refers to research experience plus evidence-backed engineering recognition, not an implied research award.
+- Reworked the Contact page into readable JSX and removed a public-facing note about missing email/resume details; the page now focuses on the verified LinkedIn and GitHub contact paths.
 - Kept the official HR/offer-letter job title as a pre-release verification item; the direct user statement is the current working source, not independent HR verification.
 
 ### Validation
-- **Pending:** GitHub Actions production build/deployment for the two content-source updates and this status-document update.
+- **Pending:** GitHub Actions production build/deployment for the content-source, Contact page, and documentation updates.
 - Browser/device rendering, keyboard navigation, screen-reader review, reduced-motion runtime behavior, and third-party credential embed behavior remain unverified.
 
 ### Next
