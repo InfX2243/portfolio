@@ -182,3 +182,25 @@ a[href$="cognitrace"] { color: #a8dfff; }
 ) {
   color: #b8c6d2 !important;
 }
+
+
+/* Additional specificity for muted metadata whose component rules otherwise win the cascade. */
+.app main :is(
+  .home-focus-caption,
+  .project-archive-title p,
+  .project-archive-index,
+  .project-archive-meta,
+  .polished-research-copy > p,
+  .credential-meta p,
+  .certificate-meta p,
+  .credential-visual-top span,
+  .project-gallery figcaption,
+  .project-gallery figcaption strong,
+  .experience-entry-focus li,
+  .home-section-heading .eyebrow,
+  .home-section-heading > p,
+  .text-link[href$="projects"],
+  section[aria-labelledby="overview-title"] .home-section-heading .eyebrow
+) {
+  color: #b8c6d2 !important;
+}
