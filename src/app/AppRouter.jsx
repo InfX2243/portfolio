@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import { getRouteMetadata } from "../data/routes";
 import { BASE_PATH, normalizePath } from "./basePath";
 import { requestRouteFocus } from "./routeFocus";
+import { GuidedTour } from "../components/GuidedTour";
 
 const HomePage = lazy(() => import("../pages/HomePage").then(m => ({ default: m.HomePage })));
 const ProjectsPage = lazy(() => import("../pages/ProjectsPage").then(m => ({ default: m.ProjectsPage })));
@@ -81,8 +82,11 @@ export function AppRouter() {
     <NotFoundPage />;
 
   return (
-    <Suspense fallback={<div className="route-loading section-shell" role="status" aria-live="polite">Loading portfolio section…</div>}>
-      {page}
-    </Suspense>
+    <>
+      <Suspense fallback={<div className="route-loading section-shell" role="status" aria-live="polite">Loading portfolio section…</div>}>
+        {page}
+      </Suspense>
+      <GuidedTour path={path} />
+    </>
   );
 }
