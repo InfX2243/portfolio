@@ -20,7 +20,6 @@ export function GuidedTour({ path }) {
 
     const stopForManualControl = (event) => {
       if (Date.now() - startedAt.current < 1000) return;
-      if (event.type === "keydown" && !["ArrowDown", "ArrowUp", "PageDown", "PageUp", "Home", "End", " "].includes(event.key)) return;
       setPlaying(false);
     };
 
