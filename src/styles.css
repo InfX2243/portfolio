@@ -1196,3 +1196,18 @@ body { background: var(--bg); color: var(--text); }
 @media (prefers-reduced-motion: reduce) {
   .hero-orbit-one, .hero-orbit-two { animation: none; }
 }
+
+
+/* Sprint R — direct, lazy Credly badge embeds */
+.credly-embed iframe {
+  display: block;
+  width: min(100%, 150px);
+  height: 270px;
+  border: 0;
+  background: transparent;
+}
+.credential-fallback .text-link {
+  display: inline-flex;
+  justify-self: start;
+  padding: 8px 0 0;
+}
