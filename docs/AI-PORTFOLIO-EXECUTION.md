@@ -387,6 +387,7 @@ Mobile navigation must:
 - close on route selection;
 - close on Escape;
 - maintain visible focus;
+- move programmatic focus to the main content after client-side route changes, once the destination page has mounted;
 - respect reduced motion.
 
 Use active-route indication.
