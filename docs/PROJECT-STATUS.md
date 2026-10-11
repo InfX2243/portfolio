@@ -1,6 +1,6 @@
 # Portfolio Implementation Status
 
-Last updated: 2026-10-12 (Sprint AB — automated walkthrough, cursor tracking and hero visual refinement)
+Last updated: 2026-10-12 (Sprint AE — directional motion, hover preservation and viewer-led tour resume)
 > Branch: `portfolio-v1`  
 > Source of truth: `docs/AI-PORTFOLIO-EXECUTION.md`
 
@@ -735,3 +735,17 @@ The browser audit exposed and helped fix a contrast issue caused by scroll-linke
 1. Confirm the latest workflow result and resolve any remaining audit findings.
 2. Review animation behavior at desktop and mobile widths, avoiding motion that harms readability or causes layout instability.
 3. Complete the manual accessibility checks already listed in Sprint V before formal V1 sign-off.
+
+
+## Sprint AE — Directional scroll motion and viewer-led walkthrough resume (2026-10-12)
+
+### Implemented in source
+- Replaced the single-direction, vertical-only scroll reveal with varied left/right editorial entrances, subtle rotation/scale, and opposing exit travel. Reverse scrolling naturally plays the sequence in reverse, so content enters from the opposite side.
+- Uses the individual CSS `translate`, `rotate`, and `scale` properties rather than overriding `transform`; existing card/link hover and press transforms can run at the same time.
+- Removed the tour reading-state border treatment that could outline an entire section and make the site feel boxed in. The cursor remains decorative and non-interactive.
+- Resume now re-anchors to the first relevant target at the viewer's current viewport. Scrolling ahead or navigating to another route while paused no longer replays the previous target checkpoint. Tour-driven route transitions still begin at the new route's first target.
+- Tightened the homepage's mobile contrast override selectors after the prior CI run exposed specificity conflicts. This is an automated smoke-test correction, not a substitute for manual contrast review.
+
+### Validation
+- **Pending CI:** production build, route generation, desktop/mobile axe audit, and GitHub Pages deployment must pass on the latest Sprint AE commit before this sprint is marked validated.
+- **Still required:** real-browser visual review of directional scroll choreography, hover interactions during the tour, route changes/resume behavior, mobile layout, keyboard navigation, and reduced-motion behavior. Automated axe testing is not a full WCAG conformance certification.
