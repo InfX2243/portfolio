@@ -582,3 +582,11 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 1. Review the new deployed hierarchy and responsive layout in a real browser.
 2. Fix any concrete overflow, contrast, focus, animation or image-crop defects found during manual acceptance.
 3. Confirm résumé freshness and official role-title wording; retain current evidence boundaries for research and team contribution.
+
+
+## Sprint U — executive-summary and accessibility correction
+- **DONE (source):** Homepage rewritten to surface personal narrative, education, current role, team recognition, projects, research, technical interests, community and selected certifications on one page.
+- **DONE (source):** Navigation now links directly to the deep-dive archives and exposes Credentials in both desktop and mobile navigation.
+- **DONE (source):** Contrast tokens, keyboard focus, skip-link, target sizes, reduced-motion and forced-colors handling strengthened.
+- **PENDING:** Production build/workflow result and deployed route verification.
+- **BLOCKED pending external validation:** Do not declare WCAG 2.2 AA conformance until automated axe/WAVE plus keyboard, zoom/reflow, screen-reader and rendered contrast checks pass on the deployed site.
