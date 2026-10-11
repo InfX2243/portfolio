@@ -1,8 +1,11 @@
+import { withBasePath } from "../app/basePath";
+
 export function ResearchVisual({ research }) {
   if (!research) return null;
 
   return (
     <div className="research-signal-panel" aria-label={research.title + " research profile"}>
+      {research.visual && <div className="research-visual-media"><img src={withBasePath(research.visual)} alt={research.visualAlt || `${research.title} research visual`} loading="lazy" /></div>}
       <div className="research-signal-head">
         <span>Research profile</span>
         <span>{research.signal || "Research"}</span>
