@@ -101,7 +101,22 @@ export function GuidedTour({ path }) {
           continue;
         }
 
-        const target = candidates[targetIndex.current % candidates.length];
+        if (targetIndex.current >= candidates.length) {
+          await scrollToPosition(document.documentElement.scrollHeight);
+          if (cancelled) break;
+          const currentIndex = tourRoutes.findIndex((route) => route.path === normalizePath(path));
+          const nextRoute = tourRoutes[currentIndex + 1];
+          if (!nextRoute) {
+            setPlaying(false);
+            break;
+          }
+          history.pushState({}, "", BASE_PATH + nextRoute.path);
+          window.dispatchEvent(new PopStateEvent("popstate"));
+          await wait(900);
+          continue;
+        }
+
+        const target = candidates[targetIndex.current];
         targetIndex.current += 1;
         const rect = target.getBoundingClientRect();
         const visible = rect.top >= 92 && rect.bottom <= window.innerHeight - 90;
@@ -118,21 +133,6 @@ export function GuidedTour({ path }) {
         target.classList.add("guided-tour-highlight");
         await wait(reduceMotion ? 350 : 1050);
         if (cancelled) break;
-
-        const atBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 80;
-        const nextTargetExists = targetIndex.current < candidates.length;
-        if (atBottom && !nextTargetExists) {
-          const currentIndex = tourRoutes.findIndex((route) => route.path === normalizePath(path));
-          const nextRoute = tourRoutes[currentIndex + 1];
-          if (!nextRoute) {
-            setPlaying(false);
-            break;
-          }
-          history.pushState({}, "", BASE_PATH + nextRoute.path);
-          window.dispatchEvent(new PopStateEvent("popstate"));
-          await wait(900);
-          continue;
-        }
 
         // Give the viewer a brief pause between highlighted items before continuing down the page.
         const freshRect = target.getBoundingClientRect();
