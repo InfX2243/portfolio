@@ -54,7 +54,7 @@ export const projects = [
     type: "Applied Engineering",
     award: "1st Place Nationwide · Xcelerate 2025 Oracle APEX Hackathon",
     description:
-      "A role-based skill-validation application built with Oracle APEX, with dedicated Student, Faculty, Recruiter and Admin experiences. Ascend APEX won first place nationwide at the Xcelerate 2025 Oracle APEX Hackathon.",
+      "A role-based skill-validation application built with Oracle APEX, with dedicated Student, Faculty, Recruiter and Admin experiences.",
     visual: { src: "/assets/projects/ascend-apex/overview.png", alt: "Ascend APEX application overview" },
     gallery: [
       { src: "/assets/projects/ascend-apex/Student1.png", alt: "Ascend APEX student experience", caption: "Student workspace", group: "Student" },

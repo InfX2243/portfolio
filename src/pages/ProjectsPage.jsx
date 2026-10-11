@@ -1,6 +1,6 @@
 import { PortfolioLayout } from "../components/layout/PortfolioLayout";
 import { PageHeader } from "../components/layout/PageHeader";
-import { ProjectVisual } from "../components/ProjectVisual";
+import { withBasePath } from "../app/basePath";
 import { projects } from "../data/portfolio";
 import { withBasePath } from "../app/basePath";
 
@@ -8,7 +8,7 @@ function ProjectCard({ project }) {
   return (
     <article className="polished-project-card">
       <div className="polished-project-art">
-        {project.visual ? <ProjectVisual project={project} /> : <div className="polished-project-art-placeholder" aria-hidden="true"><span>{project.number}</span><strong>{project.type}</strong><i>Engineering archive</i></div>}
+        {project.visual ? <img className="polished-project-image" src={withBasePath(project.visual.src)} alt={project.visual.alt} loading="lazy" /> : <div className="polished-project-art-placeholder" aria-hidden="true"><span>{project.number}</span><strong>{project.type}</strong><i>Engineering archive</i></div>}
       </div>
       <div className="polished-project-body">
         <div className="polished-project-kicker"><span>{project.number} / {project.type}</span>{project.award && <span className="polished-award">Award-winning team project</span>}</div>
