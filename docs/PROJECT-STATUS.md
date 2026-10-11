@@ -638,3 +638,12 @@ The browser audit exposed and helped fix a contrast issue caused by scroll-linke
 - **PARTIAL — screenshot semantics:** Several source screenshots use only numbered filenames, so gallery captions identify screen order rather than guessing at undocumented feature names. Update captions after visually reviewing each screen.
 - **NEXT — validation:** Run `npm ci && npm run build`, inspect all project detail routes, and verify image loading in a browser.
 
+
+
+## Sprint Y — CI recovery and motion polish (2026-10-12)
+
+- **DONE — root cause identified:** production build and route generation passed; the deployment job failed at the axe smoke audit on the Achievements route because contrast checks entered the third-party Credly badge iframe. The audit reported 1.77:1 inside provider-controlled content and 4.29:1 for our own credential fallback metadata.
+- **DONE — audit boundary clarified:** exclude only the externally hosted `.credly-embed iframe` from axe scans; the portfolio-owned page and fallback links/text remain in the audit. Credly's embedded UI still needs separate manual review.
+- **DONE — contrast:** raised portfolio-owned credential metadata from the failing muted color to a more readable token.
+- **DONE — interaction polish:** added restrained hover elevation, border/shadow transitions, subtle image zoom and contact-link motion. Effects are limited to hover-capable devices and disabled for reduced-motion preferences.
+- **NEXT — CI confirmation:** verify the latest push passes build, structural checks, desktop/mobile axe smoke audit and GitHub Pages deployment before calling release recovery complete.
