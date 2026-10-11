@@ -71,22 +71,22 @@ export function GuidedTour({ path }) {
       const cursor = cursorRef.current;
       if (!cursor) return;
 
-      // Park outside the target's content box. Prefer its right edge; use the left gutter when needed.
+      // Keep the cursor close enough to feel precise, but outside the target hit area.
       const rightSpace = window.innerWidth - rect.right;
       const leftSpace = rect.left;
-      const hasRightGutter = rightSpace >= 34;
-      const hasLeftGutter = leftSpace >= 34;
+      const hasRightGutter = rightSpace >= 22;
+      const hasLeftGutter = leftSpace >= 22;
       const x = hasRightGutter
-        ? rect.right + 18
+        ? rect.right + 7
         : hasLeftGutter
-          ? rect.left - 18
-          : Math.min(window.innerWidth - 18, Math.max(18, rect.left + 20));
-      // Wide targets may have no horizontal gutter, so park just above/below rather than over text.
+          ? rect.left - 7
+          : Math.min(window.innerWidth - 10, Math.max(10, rect.left + 10));
+      // When a card spans the viewport, keep the pointer just above or below its edge.
       const y = hasRightGutter || hasLeftGutter
-        ? Math.min(window.innerHeight - 24, Math.max(24, rect.top + Math.min(rect.height / 2, 42)))
-        : rect.top > 48
-          ? rect.top - 18
-          : Math.min(window.innerHeight - 24, rect.bottom + 18);
+        ? Math.min(window.innerHeight - 12, Math.max(12, rect.top + Math.min(rect.height / 2, 28)))
+        : rect.top > 34
+          ? rect.top - 7
+          : Math.min(window.innerHeight - 12, rect.bottom + 7);
       const current = cursor.dataset.position?.split(",").map(Number) || [window.innerWidth - 24, 100];
       const [startX, startY] = current;
 
@@ -108,12 +108,17 @@ export function GuidedTour({ path }) {
       });
     };
 
-    const getCandidates = () => Array.from(document.querySelectorAll(TARGET_SELECTOR)).filter((element) => {
-      if (element.closest(".guided-tour") || element.closest("[aria-hidden='true']")) return false;
-      const rect = element.getBoundingClientRect();
-      const style = window.getComputedStyle(element);
-      return rect.width > 0 && rect.height > 0 && style.visibility !== "hidden" && style.display !== "none";
-    });
+    const getCandidates = () => {
+      const candidates = Array.from(document.querySelectorAll(TARGET_SELECTOR)).filter((element) => {
+        if (element.closest(".guided-tour") || element.closest("[aria-hidden='true']")) return false;
+        const rect = element.getBoundingClientRect();
+        const style = window.getComputedStyle(element);
+        return rect.width > 0 && rect.height > 0 && style.visibility !== "hidden" && style.display !== "none";
+      });
+      // A project/research/experience card is one stop. Don't revisit its nested heading and links.
+      const targetCards = candidates.filter((element) => element.matches("article, .polished-project-card, .polished-research-card, .experience-timeline-main, .polished-contact-link"));
+      return candidates.filter((element) => !targetCards.some((card) => card !== element && card.contains(element)));
+    };
 
     const runTour = async () => {
       while (!cancelled) {
@@ -124,7 +129,6 @@ export function GuidedTour({ path }) {
         }
 
         if (targetIndex.current >= candidates.length) {
-          await scrollToPosition(document.documentElement.scrollHeight);
           if (cancelled) break;
           const currentIndex = tourRoutes.findIndex((route) => route.path === normalizePath(path));
           const nextRoute = tourRoutes[currentIndex + 1];
@@ -159,12 +163,8 @@ export function GuidedTour({ path }) {
         await wait(reduceMotion ? 250 : 850);
         if (cancelled) break;
 
-        const freshRect = target.getBoundingClientRect();
-        if (freshRect.bottom > window.innerHeight - 118) {
-          await scrollToPosition(window.scrollY + window.innerHeight * 0.48);
-        } else {
-          await wait(300);
-        }
+        // Let the visitor follow the highlight; the next target decides whether scrolling is needed.
+        await wait(250);
       }
     };
 
@@ -212,6 +212,11 @@ export function GuidedTour({ path }) {
             <button className="guided-tour-stop" type="button" onClick={stopTour}>Stop walkthrough <span aria-hidden="true">×</span></button>
           </div>
         </>
+      )}
+      {!playing && (
+        <div className="guided-tour guided-tour-idle">
+          <button className="guided-tour-replay" type="button" onClick={() => { startedAt.current = Date.now(); targetIndex.current = 0; setPlaying(true); }}>Replay walkthrough <span aria-hidden="true">↻</span></button>
+        </div>
       )}
     </>
   );
