@@ -965,6 +965,8 @@ body { background: var(--bg); color: var(--text); }
   padding: 20px 16px 22px;
 }
 .research-signal-body > div + div { border-left: 1px solid var(--line); }
+.research-signal-body-single { grid-template-columns: minmax(0, 1fr); }
+.research-signal-body-single > div + div { border-left: 0; border-top: 1px solid var(--line); }
 .research-signal-body strong {
   display: block;
   margin-top: 12px;
