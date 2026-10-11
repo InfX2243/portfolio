@@ -60,7 +60,7 @@ a { text-decoration: none; }
   border-left: 2px solid var(--cyan);
   color: var(--soft);
 }
-.about-philosophy p {
+.about-statement .about-philosophy p {
   margin: 0 0 12px;
   font-size: clamp(1.05rem, 1.8vw, 1.35rem);
   line-height: 1.6;
