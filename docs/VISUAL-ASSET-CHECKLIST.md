@@ -1,6 +1,6 @@
 # Visual asset and credibility checklist
 
-This checklist is the source of truth for real image assets to collect for the portfolio. The repository currently has `public/favicon.svg`, `public/og-image.svg`, `public/robots.txt`, and `public/sitemap.xml`; it does not yet have a project-asset library under `public/assets/`.
+This checklist is the source of truth for real image assets used by the portfolio. The uploaded asset library is now committed under `public/assets/` on `portfolio-v1`; the current implementation status and remaining gaps are recorded in the Sprint S section below.
 
 ## Rules
 
@@ -75,3 +75,23 @@ Do not invent or redraw official logos. If no approved mark exists, use a clean 
 5. Alt text/caption is accurate.
 6. The layout works at desktop and mobile widths.
 7. The production build and deployed page are checked.
+
+
+## Sprint S — uploaded assets received and wired (2026-10-11)
+
+### Integrated from the repository
+
+- **Ascend APEX:** `projects/ascend-apex/overview.png`, selected `Student*.png`, `Faculty*.png`, `Recruiter*.png`, `Admin*.png` screens, and `Skill Validation Workflow.png`. The case study now includes a selected, lazy-loaded gallery; unused screenshots remain available in the repository for later curation.
+- **Cognitrace:** `projects/cognitrace/Cognitrace1.png`, `Cognitrace2.png`, and `Cognitrace3.png`.
+- **Green Passport:** `projects/green-passport/Green Passport.png`.
+- **Cloud web application builder:** `projects/aws-web-application-builder/aws-wab.png`.
+- **Profile / résumé:** `profile/Photograph.png` and `documents/Abid Ahmed Shaikh Resume.pdf`.
+- **Experience / community:** `experience/White-Bitkraft-Logo.webp`, `community/acm.png`, and `community/awssbgmhssce.png`.
+- **Credential issuer marks:** `issuers/Amazon_Web_Services_Logo.svg` and `issuers/Oracle-Logo-1.png`.
+
+### Remaining assets / evidence gaps
+
+- No verified architecture diagrams or research PDFs/posters were present in the uploaded set. Do not synthesize these as if they were original project artifacts.
+- Ascend APEX individual contribution, reviewed technical architecture, public event citation and project repository/demo URL still require direct source details if they are to be published.
+- The résumé link is wired, but its contents must be confirmed current before final release.
+- The full Ascend APEX screenshot set is retained; only a curated subset is displayed to keep the case study useful rather than excessively long.
