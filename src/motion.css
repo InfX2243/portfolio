@@ -233,3 +233,38 @@ body ol > li > strong,
 body .polished-project-award {
   color: #b8c6d2 !important;
 }
+
+
+/* Final cascade guard: lazy-loaded page styles arrive after the app shell stylesheet.
+   Higher-specificity contrast tokens keep the audited foregrounds accessible on every route. */
+html body .app main .project-signal-strip.project-signal-strip > span,
+html body .app main .archive-section-heading.archive-section-heading > .eyebrow,
+html body .app main .archive-section-heading.archive-section-heading > p,
+html body .app main .case-study-intro.case-study-intro .eyebrow,
+html body .app main .case-study-section.case-study-section > .eyebrow,
+html body .app main .plain-tags.plain-tags > span,
+html body .app main .polished-research-copy.polished-research-copy > p,
+html body .app main .polished-research-copy.polished-research-copy > .eyebrow,
+html body .app main .polished-research-footer.polished-research-footer > span,
+html body .app main .experience-timeline-rail.experience-timeline-rail > span,
+html body .app main .polished-page-footnote.polished-page-footnote,
+html body .app main .certificate-meta.certificate-meta > small,
+html body .app main .certificate-meta.certificate-meta > p,
+html body .app main .polished-domain-card.polished-domain-card > h3,
+html body .app main .polished-domain-card.polished-domain-card > p,
+html body .app main .about-principles.about-principles > article > h2,
+html body .app main .about-principles.about-principles > article > p,
+html body .app main .polished-section-heading.polished-section-heading > p,
+html body .app main .about-domain-section.about-domain-section .eyebrow,
+html body .app main .polished-project-award.polished-project-award,
+html body .app main .polished-credly-section.polished-credly-section > .polished-credentials-heading > span,
+html body .app main .polished-credly-section.polished-credly-section > .polished-credentials-heading .eyebrow,
+html body .app main .polished-research-copy.polished-research-copy a[href$="cognitrace"],
+html body .app main aside.aside > .eyebrow,
+html body .app main #project-gallery-title#project-gallery-title,
+html body .app main #research-principle-title#research-principle-title,
+html body .app main #about-domains-title#about-domains-title,
+html body .app main ol > li > span,
+html body .app main ol > li > strong {
+  color: #c2ced8 !important;
+}
