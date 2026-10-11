@@ -1,6 +1,5 @@
 import { PortfolioLayout } from "../components/layout/PortfolioLayout";
 import { withBasePath } from "../app/basePath";
-import { HeroSystemVisual } from "../components/HeroSystemVisual";
 import { profile, projects, research, experience, domains, leadership, certifications } from "../data/portfolio";
 
 export function HomePage() {
@@ -36,7 +35,15 @@ export function HomePage() {
               <figcaption><span>Currently</span><strong>Learning by building</strong></figcaption>
             </figure>
           )}
-          <HeroSystemVisual />
+          <div className="home-focus-note" aria-label="How I approach engineering">
+            <p className="mono-label">HOW I WORK</p>
+            <ol>
+              <li><span>01</span><strong>Build with intent</strong></li>
+              <li><span>02</span><strong>Understand the system</strong></li>
+              <li><span>03</span><strong>Improve the next iteration</strong></li>
+            </ol>
+            <p className="home-focus-caption">Curiosity is useful. Turning it into something real is better.</p>
+          </div>
         </div>
         <div className="home-hero-bottom">
           <p className="home-principle">“Never stop learning, because life never stops teaching.”</p>
