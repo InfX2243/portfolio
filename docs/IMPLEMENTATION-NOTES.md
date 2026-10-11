@@ -225,5 +225,6 @@ Appended the eight newly supplied Credly badge IDs to src/data/credentials.json,
 
 - Updated the shared `profile.summary` to use the current user-reported title **Software Developer Intern**, avoiding conflicting role labels between the shared profile and experience archive.
 - Updated the authoritative execution specification's old Bitkraft role label and revised its supporting positioning line to avoid implying that the research itself received an award.
+- Reworked the Contact page into maintainable JSX and removed an internal-sounding verification note from public copy. It now presents only the verified LinkedIn and GitHub routes.
 - Kept official title confirmation as an explicit pre-release follow-up; no new role details, research claims, metrics, or awards were added.
 - Validation: source-level content changes are committed; GitHub Actions for the new commits is pending. Browser/device and assistive-technology validation remain outstanding.
