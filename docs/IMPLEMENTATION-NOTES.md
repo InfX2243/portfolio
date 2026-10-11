@@ -209,4 +209,5 @@ Appended the eight newly supplied Credly badge IDs to src/data/credentials.json,
 - Removed repetitive verification-status labels from Cognitrace research metadata; the title/context/signal now describe the project rather than echoing the evidence caveat.
 - Removed pending-verification placeholders from Cognitrace and Green Passport project outcome fields so unverified recognition is not presented as a result.
 - Kept a concise evidence note explaining that award/publication details still need an authoritative public source. No award, publication, or conference claim was added.
+- Updated `ResearchVisual` to avoid repeating the signal label and to omit recognition metadata entirely when no verified recognition value exists; it no longer invents a “Recognition pending verification” field.
 - Validation: source and documentation commits trigger the GitHub Pages production workflow; browser/device and assistive-technology validation remain outstanding.
