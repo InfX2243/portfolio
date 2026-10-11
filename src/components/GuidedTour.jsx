@@ -161,13 +161,54 @@ export function GuidedTour({ path }) {
           await wait(180);
 
           const expectedPath = normalizePath(BASE_PATH + nextRoute.path);
-          const navLink = Array.from(document.querySelectorAll("a[href]")).find((link) => {
-            if (link.closest("main") || link.closest(".guided-tour")) return false;
+          const findVisibleNavLink = () => Array.from(document.querySelectorAll("a[href]")).find((link) => {
+            if (link.closest("main") || link.closest(".guided-tour") ||
+                link.closest('[aria-hidden="true"]') || link.closest("[inert]")) return false;
             const url = new URL(link.href, window.location.href);
+            const style = window.getComputedStyle(link);
             return normalizePath(url.pathname) === expectedPath &&
               link.getClientRects().length > 0 &&
-              window.getComputedStyle(link).visibility !== "hidden";
+              style.display !== "none" && style.visibility === "visible";
           });
+
+          let navLink = findVisibleNavLink();
+          if (!navLink) {
+            // Mobile layouts hide the desktop links behind a real menu-toggle button.
+            const menuButton = document.querySelector(".mobile-nav-toggle");
+            if (!menuButton || menuButton.getClientRects().length === 0) {
+              setPlaying(false);
+              break;
+            }
+            const menuRect = menuButton.getBoundingClientRect();
+            const cursor = cursorRef.current;
+            if (cursor) {
+              const current = cursor.dataset.position?.split(",").map(Number) ||
+                [window.innerWidth - 24, 100];
+              const [startX, startY] = current;
+              const x = menuRect.left + menuRect.width / 2;
+              const y = menuRect.top + menuRect.height / 2;
+              await new Promise((resolve) => {
+                const duration = reduceMotion ? 0 : 420;
+                const start = performance.now();
+                const tick = (now) => {
+                  if (cancelled) { resolve(); return; }
+                  const progress = duration === 0 ? 1 : Math.min(1, (now - start) / duration);
+                  const eased = easeInOutCubic(progress);
+                  const nextX = startX + (x - startX) * eased;
+                  const nextY = startY + (y - startY) * eased;
+                  cursor.style.transform = `translate3d(${nextX}px, ${nextY}px, 0)`;
+                  cursor.dataset.position = `${nextX},${nextY}`;
+                  if (progress < 1) frameId = window.requestAnimationFrame(tick);
+                  else resolve();
+                };
+                frameId = window.requestAnimationFrame(tick);
+              });
+            }
+            if (cancelled) break;
+            menuButton.click();
+            await wait(reduceMotion ? 80 : 220);
+            navLink = findVisibleNavLink();
+          }
 
           if (!navLink) {
             // Fail safely if a route is not represented in the visible navigation.
