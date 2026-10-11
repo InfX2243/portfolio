@@ -542,4 +542,4 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 
 ### Visual assets to collect next
 - Add real project screenshots, architecture diagrams, research artifacts, official issuer marks, and an optional professional portrait only when the source assets are available and usage is appropriate.
-- Keep the exact asset-path plan in the implementation handoff; do not create placeholder logos or synthetic screenshots that could be mistaken for real evidence.
+- Added `docs/VISUAL-ASSET-CHECKLIST.md` with prioritized asset suggestions, exact repository paths, and the React source files that should consume each asset. Do not create placeholder logos or synthetic screenshots that could be mistaken for real evidence.
