@@ -72,14 +72,21 @@ export function GuidedTour({ path }) {
       if (!cursor) return;
 
       // Park outside the target's content box. Prefer its right edge; use the left gutter when needed.
-      const rightX = rect.right + 18;
-      const leftX = rect.left - 18;
-      const x = rightX <= window.innerWidth - 18
-        ? rightX
-        : leftX >= 18
-          ? leftX
-          : window.innerWidth - 14;
-      const y = Math.min(window.innerHeight - 24, Math.max(24, rect.top + Math.min(rect.height / 2, 42)));
+      const rightSpace = window.innerWidth - rect.right;
+      const leftSpace = rect.left;
+      const hasRightGutter = rightSpace >= 34;
+      const hasLeftGutter = leftSpace >= 34;
+      const x = hasRightGutter
+        ? rect.right + 18
+        : hasLeftGutter
+          ? rect.left - 18
+          : Math.min(window.innerWidth - 18, Math.max(18, rect.left + 20));
+      // Wide targets may have no horizontal gutter, so park just above/below rather than over text.
+      const y = hasRightGutter || hasLeftGutter
+        ? Math.min(window.innerHeight - 24, Math.max(24, rect.top + Math.min(rect.height / 2, 42)))
+        : rect.top > 48
+          ? rect.top - 18
+          : Math.min(window.innerHeight - 24, rect.bottom + 18);
       const current = cursor.dataset.position?.split(",").map(Number) || [window.innerWidth - 24, 100];
       const [startX, startY] = current;
 
