@@ -268,3 +268,37 @@ html body .app main ol > li > span,
 html body .app main ol > li > strong {
   color: #c2ced8 !important;
 }
+
+
+/* Last-mile specificity for route-level stylesheets loaded after the shared app CSS. */
+html body .polished-project-award.polished-project-award.polished-project-award,
+html body .project-signal-strip.project-signal-strip.project-signal-strip > span,
+html body .archive-section-heading.archive-section-heading.archive-section-heading > .eyebrow,
+html body .archive-section-heading.archive-section-heading.archive-section-heading > p,
+html body .case-study-intro.case-study-intro.case-study-intro .eyebrow,
+html body .case-study-section.case-study-section.case-study-section > .eyebrow,
+html body .plain-tags.plain-tags.plain-tags > span,
+html body .polished-research-copy.polished-research-copy.polished-research-copy > p,
+html body .polished-research-copy.polished-research-copy.polished-research-copy > .eyebrow,
+html body .polished-research-footer.polished-research-footer.polished-research-footer > span,
+html body .experience-timeline-rail.experience-timeline-rail.experience-timeline-rail > span,
+html body .polished-page-footnote.polished-page-footnote.polished-page-footnote,
+html body .certificate-card .certificate-meta.certificate-meta > small,
+html body .certificate-card .certificate-meta.certificate-meta > p,
+html body .polished-domain-card.polished-domain-card.polished-domain-card > h3,
+html body .polished-domain-card.polished-domain-card.polished-domain-card > p,
+html body .about-principles.about-principles.about-principles > article > h2,
+html body .about-principles.about-principles.about-principles > article > p,
+html body .polished-section-heading.polished-section-heading.polished-section-heading > p,
+html body .about-domain-section.about-domain-section.about-domain-section .eyebrow,
+html body .polished-credly-section.polished-credly-section.polished-credly-section > .polished-credentials-heading > span,
+html body .polished-credly-section.polished-credly-section.polished-credly-section > .polished-credentials-heading .eyebrow,
+html body .polished-research-copy.polished-research-copy.polished-research-copy a[href$="cognitrace"],
+html body aside .eyebrow.eyebrow.eyebrow,
+html body #project-gallery-title#project-gallery-title,
+html body #research-principle-title#research-principle-title,
+html body #about-domains-title#about-domains-title,
+html body ol > li > span,
+html body ol > li > strong {
+  color: #c2ced8 !important;
+}
