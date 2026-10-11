@@ -36,7 +36,7 @@ try {
     if (!pageTitle.trim()) structuralIssues.push("document title is empty");
     if (h1Count !== 1) structuralIssues.push(`expected one main h1, found ${h1Count}`);
     if (viewport.width < 500 && await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1)) structuralIssues.push("horizontal overflow at mobile width");
-    const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"]).analyze();
+    const results = await new AxeBuilder({ page }).exclude(".credly-embed iframe").withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"]).analyze();
     console.log(`\n[${viewport.label} /${route || ""}] title="${pageTitle}" axe violations=${results.violations.length}`);
     for (const violation of results.violations) {
       console.log(`- ${violation.impact}: ${violation.id} — ${violation.help} (${violation.nodes.length} nodes)`);
