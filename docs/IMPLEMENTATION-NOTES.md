@@ -228,3 +228,12 @@ Appended the eight newly supplied Credly badge IDs to src/data/credentials.json,
 - Reworked the Contact page into maintainable JSX and removed an internal-sounding verification note from public copy. It now presents only the verified LinkedIn and GitHub routes.
 - Kept official title confirmation as an explicit pre-release follow-up; no new role details, research claims, metrics, or awards were added.
 - Validation: GitHub Actions passed for the profile-summary update ([38118237792](https://github.com/InfX2243/portfolio/actions/runs/38118237792)), execution-spec correction ([38118240493](https://github.com/InfX2243/portfolio/actions/runs/38118240493)), Contact page cleanup ([38118304284](https://github.com/InfX2243/portfolio/actions/runs/38118304284)), and the preceding documentation updates ([38118316831](https://github.com/InfX2243/portfolio/actions/runs/38118316831), [38118319340](https://github.com/InfX2243/portfolio/actions/runs/38118319340)). Browser/device and assistive-technology validation remain outstanding.
+
+
+## Sprint Q — SPA navigation focus and accessibility audit (2026-10-11)
+
+- Added `src/app/routeFocus.js` as a small shared handoff between navigation and layout.
+- Internal route transitions and browser history navigation request focus handoff; the shared layout focuses the `main` landmark after the destination layout mounts. The landmark uses `tabIndex={-1}` so it can receive programmatic focus without adding an extra tab stop.
+- Same-route clicks do not leave a stale focus request waiting for a future page mount.
+- Added the SPA focus handoff requirement to `docs/AI-PORTFOLIO-EXECUTION.md`.
+- Source-level implementation only: GitHub Actions and real-browser checks are being verified separately. No screen-reader or manual browser acceptance is claimed.
