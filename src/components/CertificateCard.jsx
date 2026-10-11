@@ -8,7 +8,7 @@ function issuerMark(issuer) {
 
 export function CertificateCard({ certificate }) {
   const hasAsset = Boolean(certificate?.asset);
-  const hasUrl = typeof certificate?.certificateUrl === "string" && /^https?:\\/\\//.test(certificate.certificateUrl);
+  const hasUrl = typeof certificate?.certificateUrl === "string" && /^https?:\/\//.test(certificate.certificateUrl);
   const mark = issuerMark(certificate?.issuer);
 
   return (
