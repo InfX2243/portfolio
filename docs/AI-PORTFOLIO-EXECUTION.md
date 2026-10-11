@@ -76,7 +76,7 @@ Preferred positioning:
 
 Preferred supporting description:
 
-> Information Technology undergraduate focused on backend engineering, cloud infrastructure and applied AI, with research experience spanning award-recognized work.
+> Information Technology undergraduate focused on backend engineering, cloud infrastructure and applied AI, with research experience and evidence-backed engineering recognition.
 
 The exact final copy must remain truthful to verified profile information.
 
@@ -313,7 +313,7 @@ Purpose: show professional engineering context.
 
 Initial known experience:
 
-- Bitkraft Technologies — Software Engineer Intern.
+- Bitkraft Technologies — Software Developer Intern (user-reported title; confirm against official HR/offer-letter wording before final publication).
 
 Only include responsibilities, projects, technologies and outcomes that are verified.
 
