@@ -201,4 +201,4 @@ Appended the eight newly supplied Credly badge IDs to src/data/credentials.json,
 
 - Removed a research-award placeholder from the achievements page. An item explicitly stating that award/publication metadata is unverified is not itself an achievement; the project remains represented on the Research page, where verification status is contextual.
 - Experience archive numbering now derives from the map index instead of repeating a literal “01” for every entry.
-- No new factual claims were added. GitHub Actions validation was pending when this note was written; browser and assistive-technology testing are still outstanding.
+- No new factual claims were added. GitHub Actions passed for the source changes and their documentation updates (runs [330](https://github.com/InfX2243/portfolio/actions/runs/38117005114), [331](https://github.com/InfX2243/portfolio/actions/runs/38117006869), [332](https://github.com/InfX2243/portfolio/actions/runs/38117020428), and [333](https://github.com/InfX2243/portfolio/actions/runs/38117022304)). Browser and assistive-technology testing are still outstanding.
