@@ -683,6 +683,7 @@ The browser audit exposed and helped fix a contrast issue caused by scroll-linke
 ### Validation:
 - Source updates committed in separate increments:
   - Guided-tour automation and scroll/cursor stabilization: e535bc35d41a1c20510424355734723e17f77362
+  - Wide-target cursor placement refinement: 1179ec079c8be0ac743a42374a19fb9a20d7b645
   - Replace hero atom artwork with editorial engineering principles: 22e3a41e5bcdafb05b30774c9a4c7c381ce7cd2d
   - Cursor/spotlight and hero styling refinement: 4d62470dc2466cc987d22472be524ab3d039ac6a
 - CI build, automated accessibility audit, and Pages deployment must be checked on the latest commit before this sprint is marked fully validated.
