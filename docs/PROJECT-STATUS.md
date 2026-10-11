@@ -656,3 +656,13 @@ The browser audit exposed and helped fix a contrast issue caused by scroll-linke
 - **DONE — viewer control:** cursor movement, scrolling, touch, and common navigation keys stop automation so the viewer can take over immediately; the control also supports explicit start/stop and announces its state.
 - **DONE — motion/accessibility:** tour uses smooth scrolling only when reduced motion is not requested, has visible keyboard focus, and remains usable on narrow screens.
 - **NEXT — validation:** confirm production build, route generation, desktop/mobile accessibility smoke tests, and GitHub Pages deployment before considering the guided tour release-ready.
+
+
+
+## Sprint AA — Guided-tour motion and cursor polish (2026-10-12)
+
+- **DONE — smoother travel:** replaced overlapping browser-native smooth-scroll requests with one cancellable requestAnimationFrame tween using eased interpolation, so each scroll has a consistent start, pace and finish.
+- **DONE — visual pointer:** added a decorative, non-interactive cursor that glides between headings, project/research cards, links and buttons; a subtle spotlight outline calls attention to the current target without triggering clicks or site actions.
+- **DONE — user control:** real pointer movement, wheel, touch and keyboard input still stop the tour. The simulated pointer uses `pointer-events: none` and never moves the user's actual operating-system cursor.
+- **DONE — accessibility:** the tour checks `prefers-reduced-motion`, shortens/removes cursor movement and pulse animation when requested, and provides forced-colors spotlight styling.
+- **NEXT — validation:** wait for the latest CI run to confirm production build, route generation, desktop/mobile axe smoke audit and deployment; then visually verify the tour in a real browser. Cursor movement is a visual cue only and does not synthesize real hover events.
