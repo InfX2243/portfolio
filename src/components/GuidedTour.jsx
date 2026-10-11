@@ -25,6 +25,7 @@ export function GuidedTour({ path }) {
   const startedAt = useRef(Date.now());
   const cursorRef = useRef(null);
   const targetIndex = useRef(0);
+  const routeRef = useRef(normalizePath(path));
 
   useEffect(() => {
     if (!playing) return undefined;
@@ -37,7 +38,11 @@ export function GuidedTour({ path }) {
     const previousScrollBehavior = document.documentElement.style.scrollBehavior;
     // The tween owns every scroll frame. CSS smooth scrolling would queue competing animations.
     document.documentElement.style.scrollBehavior = "auto";
-    targetIndex.current = 0;
+    // Preserve the reading position when paused; reset only when the tour changes routes.
+    if (routeRef.current !== normalizePath(path)) {
+      routeRef.current = normalizePath(path);
+      targetIndex.current = 0;
+    }
 
     const wait = (ms) => new Promise((resolve) => {
       timeoutId = window.setTimeout(resolve, ms);
@@ -71,22 +76,16 @@ export function GuidedTour({ path }) {
       const cursor = cursorRef.current;
       if (!cursor) return;
 
-      // Keep the cursor close enough to feel precise, but outside the target hit area.
-      const rightSpace = window.innerWidth - rect.right;
-      const leftSpace = rect.left;
-      const hasRightGutter = rightSpace >= 22;
-      const hasLeftGutter = leftSpace >= 22;
+      // Let the visual pointer kiss the target’s right edge, like a reader tracking a line.
+      // Wide cards use their rightmost content edge; cramped mobile layouts use the left edge.
+      const hasRightGutter = window.innerWidth - rect.right >= 2;
+      const hasLeftGutter = rect.left >= 18;
       const x = hasRightGutter
-        ? rect.right + 7
+        ? rect.right - 1
         : hasLeftGutter
-          ? rect.left - 7
-          : Math.min(window.innerWidth - 10, Math.max(10, rect.left + 10));
-      // When a card spans the viewport, keep the pointer just above or below its edge.
-      const y = hasRightGutter || hasLeftGutter
-        ? Math.min(window.innerHeight - 12, Math.max(12, rect.top + Math.min(rect.height / 2, 28)))
-        : rect.top > 34
-          ? rect.top - 7
-          : Math.min(window.innerHeight - 12, rect.bottom + 7);
+          ? rect.left - 2
+          : Math.min(window.innerWidth - 3, Math.max(3, rect.right - 2));
+      const y = Math.min(window.innerHeight - 8, Math.max(8, rect.top + Math.min(rect.height / 2, 24)));
       const current = cursor.dataset.position?.split(",").map(Number) || [window.innerWidth - 24, 100];
       const [startX, startY] = current;
 
@@ -138,7 +137,7 @@ export function GuidedTour({ path }) {
           }
           history.pushState({}, "", BASE_PATH + nextRoute.path);
           window.dispatchEvent(new PopStateEvent("popstate"));
-          // Route change remounts the tour effect and resets the target index for the new page.
+          // The next route starts at its first reading target.
           await wait(900);
           continue;
         }
@@ -157,9 +156,9 @@ export function GuidedTour({ path }) {
 
         await moveCursorBeside(target);
         if (cancelled) break;
-        highlighted?.classList.remove("guided-tour-highlight");
+        highlighted?.classList.remove("guided-tour-highlight", "guided-tour-reading");
         highlighted = target;
-        target.classList.add("guided-tour-highlight");
+        target.classList.add("guided-tour-highlight", "guided-tour-reading");
         await wait(reduceMotion ? 250 : 850);
         if (cancelled) break;
 
@@ -173,27 +172,28 @@ export function GuidedTour({ path }) {
       cancelled = true;
       window.cancelAnimationFrame(frameId);
       window.clearTimeout(timeoutId);
-      highlighted?.classList.remove("guided-tour-highlight");
+      highlighted?.classList.remove("guided-tour-highlight", "guided-tour-reading");
       document.documentElement.style.scrollBehavior = previousScrollBehavior;
     };
   }, [playing, path]);
 
-  // Any real user input immediately hands control back; the visual cursor never captures input.
+  // Moving the visitor’s pointer is not an interruption. Pause only for deliberate navigation input.
   useEffect(() => {
     if (!playing) return undefined;
-    const stopForManualControl = () => {
+    const pauseForIntent = (event) => {
       if (Date.now() - startedAt.current < 1100) return;
+      if (event.type === "keydown" && !["ArrowDown", "ArrowUp", "PageDown", "PageUp", "Home", "End", " "].includes(event.key)) return;
       setPlaying(false);
     };
-    window.addEventListener("pointermove", stopForManualControl, { passive: true });
-    window.addEventListener("wheel", stopForManualControl, { passive: true });
-    window.addEventListener("touchstart", stopForManualControl, { passive: true });
-    window.addEventListener("keydown", stopForManualControl);
+    window.addEventListener("wheel", pauseForIntent, { passive: true });
+    window.addEventListener("touchstart", pauseForIntent, { passive: true });
+    window.addEventListener("keydown", pauseForIntent);
+    window.addEventListener("pointerdown", pauseForIntent, { passive: true });
     return () => {
-      window.removeEventListener("pointermove", stopForManualControl);
-      window.removeEventListener("wheel", stopForManualControl);
-      window.removeEventListener("touchstart", stopForManualControl);
-      window.removeEventListener("keydown", stopForManualControl);
+      window.removeEventListener("wheel", pauseForIntent);
+      window.removeEventListener("touchstart", pauseForIntent);
+      window.removeEventListener("keydown", pauseForIntent);
+      window.removeEventListener("pointerdown", pauseForIntent);
     };
   }, [playing]);
 
@@ -208,14 +208,14 @@ export function GuidedTour({ path }) {
             <span className="guided-tour-cursor-ring" />
           </div>
           <div className="guided-tour" aria-label="Automated portfolio walkthrough">
-            <span className="guided-tour-hint" aria-live="polite">Portfolio walkthrough · move, scroll, or press any key to take control</span>
+            <span className="guided-tour-hint" aria-live="polite">Guided read-through · scroll or interact to pause; continue whenever you like</span>
             <button className="guided-tour-stop" type="button" onClick={stopTour}>Stop walkthrough <span aria-hidden="true">×</span></button>
           </div>
         </>
       )}
       {!playing && (
         <div className="guided-tour guided-tour-idle">
-          <button className="guided-tour-replay" type="button" onClick={() => { startedAt.current = Date.now(); targetIndex.current = 0; setPlaying(true); }}>Replay walkthrough <span aria-hidden="true">↻</span></button>
+          <button className="guided-tour-replay" type="button" onClick={() => { startedAt.current = Date.now(); setPlaying(true); }}>Continue walkthrough <span aria-hidden="true">→</span></button>
         </div>
       )}
     </>
