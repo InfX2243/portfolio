@@ -1763,3 +1763,74 @@ a:hover { text-decoration-thickness: .12em; }
 }
 
 .polished-project-image { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: contain; }
+
+
+/* Refined micro-interactions: restrained motion, visible focus, and readable credential metadata. */
+.credential-fallback small,
+.certificate-meta small {
+  color: #91a2b3;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .polished-project-card,
+  .polished-research-card,
+  .polished-domain-card,
+  .polished-community-list article,
+  .polished-certificate-grid .certificate-card,
+  .credential-visual-card,
+  .research-card,
+  .experience-timeline-main {
+    transition: border-color 180ms ease, background-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+  }
+  .polished-project-card:hover,
+  .polished-research-card:hover,
+  .polished-domain-card:hover,
+  .polished-community-list article:hover,
+  .polished-certificate-grid .certificate-card:hover,
+  .credential-visual-card:hover,
+  .research-card:hover,
+  .experience-timeline-main:hover {
+    border-color: rgba(125, 211, 252, .38);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, .16);
+    transform: translateY(-2px);
+  }
+  .polished-project-art img,
+  .project-visual-media img {
+    transition: transform 240ms ease;
+  }
+  .polished-project-card:hover .polished-project-art img,
+  .polished-project-card:hover .project-visual-media img {
+    transform: scale(1.025);
+  }
+  .polished-contact-link,
+  .polished-contact-link > span:last-child,
+  .nav > .desktop-nav a,
+  .project-links a,
+  .text-link {
+    transition: color 160ms ease, border-color 160ms ease, transform 160ms ease;
+  }
+  .polished-contact-link:hover > span:last-child {
+    color: var(--cyan);
+    transform: translateX(3px);
+  }
+  .polished-contact-link:hover strong,
+  .project-links a:hover {
+    color: var(--cyan);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .polished-project-card,
+  .polished-research-card,
+  .polished-domain-card,
+  .polished-community-list article,
+  .polished-certificate-grid .certificate-card,
+  .credential-visual-card,
+  .research-card,
+  .experience-timeline-main,
+  .polished-project-art img,
+  .project-visual-media img,
+  .polished-contact-link,
+  .polished-contact-link > span:last-child {
+    transition: none !important;
+    transform: none !important;
+  }
+}
