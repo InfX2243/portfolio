@@ -150,3 +150,35 @@ a[href$="cognitrace"] { color: #a8dfff; }
 @media (forced-colors: active) {
   .guided-tour-highlight { text-decoration: underline; }
 }
+
+
+/* Sprint AG — ensure low-emphasis text still meets WCAG contrast on dark panels.
+   Keep the override scoped to known muted metadata/copy rather than recolouring all text. */
+.app main :is(
+  ol > li > span,
+  ol > li > strong,
+  .polished-project-award,
+  .archive-section-heading > .eyebrow,
+  .archive-section-heading > p,
+  .case-study-intro .eyebrow,
+  .case-study-section > .eyebrow,
+  .plain-tags > span,
+  .polished-research-footer > span,
+  .polished-research-copy > .eyebrow,
+  .polished-research-copy a[href$="cognitrace"],
+  aside > .eyebrow,
+  .experience-timeline-rail > span,
+  .polished-page-footnote,
+  .polished-credly-section > .polished-credentials-heading > .eyebrow,
+  .polished-credly-section > .polished-credentials-heading > span,
+  .about-principles > article > h2,
+  .about-principles > article > p,
+  .about-domain-section .eyebrow,
+  .polished-section-heading > p,
+  .polished-domain-card > h3,
+  .polished-domain-card > p,
+  #project-gallery-title,
+  #research-principle-title
+) {
+  color: #b8c6d2 !important;
+}
