@@ -3,18 +3,40 @@ import { profile } from "../../data/portfolio";
 import { BASE_PATH, normalizePath, withBasePath } from "../../app/basePath";
 import { consumeRouteFocusRequest, requestRouteFocus } from "../../app/routeFocus";
 
-const links = [
-  ["/", "Home"],
-  ["/projects", "Projects"],
+const desktopLinks = [
+  ["/projects", "Work"],
   ["/research", "Research"],
-  ["/achievements", "Achievements"],
   ["/experience", "Experience"],
+  ["/about", "About"],
+];
+const mobileLinks = [
+  ["/projects", "Work"],
+  ["/research", "Research"],
+  ["/experience", "Experience"],
+  ["/achievements", "Achievements"],
   ["/about", "About"],
   ["/contact", "Contact"],
 ];
 
 function active(path, href) {
   return href === "/" ? path === "/" : path === href || path.startsWith(href + "/");
+}
+
+function NavigationLinks({ links, current, navigate, closeMenu }) {
+  return links.map(([href, label]) => (
+    <a
+      key={href}
+      aria-current={active(current, href) ? "page" : undefined}
+      className={active(current, href) ? "active-route" : ""}
+      href={withBasePath(href)}
+      onClick={(event) => {
+        navigate(event, href);
+        closeMenu?.();
+      }}
+    >
+      {label}
+    </a>
+  ));
 }
 
 export function PortfolioLayout({ children }) {
@@ -32,6 +54,7 @@ export function PortfolioLayout({ children }) {
   useEffect(() => {
     if (!open) {
       if (wasOpen.current) toggleRef.current?.focus();
+      wasOpen.current = false;
       return undefined;
     }
     wasOpen.current = true;
@@ -64,14 +87,10 @@ export function PortfolioLayout({ children }) {
           ABID<span>.</span>
         </a>
         <nav className="desktop-nav" aria-label="Primary navigation">
-          {links.map(([href, label]) => (
-            <a key={href} aria-current={active(current, href) ? "page" : undefined} className={active(current, href) ? "active-route" : ""} href={withBasePath(href)} onClick={(event) => navigate(event, href)}>
-              {label}
-            </a>
-          ))}
+          <NavigationLinks links={desktopLinks} current={current} navigate={navigate} />
         </nav>
-        <a className="nav-status" href={profile.links.linkedin} target="_blank" rel="noopener noreferrer">
-          <span className="status-dot" /> Open to conversations
+        <a className="nav-contact" href={withBasePath("/contact")} onClick={(event) => navigate(event, "/contact")}>
+          Let&apos;s talk <span aria-hidden="true">↗</span>
         </a>
         <button
           ref={toggleRef}
@@ -85,17 +104,17 @@ export function PortfolioLayout({ children }) {
           <span aria-hidden="true">{open ? "×" : "☰"}</span>
         </button>
         <nav id="mobile-nav" className={open ? "mobile-nav-panel is-open" : "mobile-nav-panel"} aria-label="Mobile primary navigation" aria-hidden={!open} inert={!open}>
-          {links.map(([href, label]) => (
-            <a key={href} aria-current={active(current, href) ? "page" : undefined} className={active(current, href) ? "active-route" : ""} href={withBasePath(href)} onClick={(event) => navigate(event, href)}>
-              {label}
-            </a>
-          ))}
+          <NavigationLinks links={mobileLinks} current={current} navigate={navigate} closeMenu={() => setOpen(false)} />
         </nav>
       </header>
       <main id="main-content" tabIndex={-1}>{children}</main>
       <footer className="footer section-shell">
         <a href={withBasePath("/")} onClick={(event) => navigate(event, "/")}>ABID AHMED SHAIKH</a>
-        <span>Built as a technical artifact, not a template.</span>
+        <nav className="footer-links" aria-label="Footer navigation">
+          <a href={withBasePath("/achievements")} onClick={(event) => navigate(event, "/achievements")}>Achievements</a>
+          <a href={withBasePath("/contact")} onClick={(event) => navigate(event, "/contact")}>Contact</a>
+          <a href={profile.links.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        </nav>
         <span>© 2026</span>
       </footer>
     </div>

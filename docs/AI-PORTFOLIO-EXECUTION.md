@@ -2037,3 +2037,16 @@ The Sprint S code changes also fixed certificate URL validation after an initial
 The Sprint S source implementation commit `fb6b388f677d210b488cd6b21b6eee3a64891908` passed [GitHub Actions workflow 38141920169](https://github.com/InfX2243/portfolio/actions/runs/38141920169). The production build, generated-route checks and GitHub Pages deployment completed successfully. The deployed `gh-pages` tree was inspected and contains the expected nested route entrypoints and sampled supplied assets, including the Ascend APEX overview/workflow, profile image, résumé, community mark and AWS issuer logo.
 
 This is a repository/deployment check, not a claim of manual browser acceptance. Desktop/mobile layout, keyboard/screen-reader behavior, reduced motion, actual image rendering, résumé freshness, external links and Credly iframe availability remain final release checks.
+
+
+## Sprint T — profile hierarchy and creative depth (2026-10-11)
+
+The latest user feedback requires a profile-first correction rather than simply adding decoration. Follow these constraints for further iterations:
+
+- Homepage reading order: identity and personal context → selected work → research → experience → technical direction → recognition/community → contact.
+- Do not repeat profile.summary verbatim in the hero and introduction. Keep factual education and role details distinct from interests and personal philosophy.
+- Keep desktop navigation compact: Work, Research, Experience, About, and a visible Contact action. The wordmark links Home; Achievements stays discoverable through the homepage, footer, and mobile navigation.
+- Use a shared page background and consistent typography, spacing, rules and accent tokens on all routes.
+- Use CSS perspective, layered SVG depth, gentle motion and restrained micro-interactions to add creativity. Do not add a heavyweight 3D engine solely for decoration. The first viewport must remain useful with animations disabled.
+- Respect prefers-reduced-motion, preserve visible focus and the SPA main-content focus handoff, and keep all decorative visuals aria-hidden where appropriate.
+- Validate the full route set after changes. Successful CI is build/deployment evidence, not proof of browser visual acceptance.

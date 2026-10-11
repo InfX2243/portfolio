@@ -562,3 +562,23 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 - Confirm the résumé PDF is the final, current version before treating its public link as release-ready.
 - Confirm official job-title wording, and supply an individual contribution summary and public event/repository source for Ascend APEX if available.
 - The site is not marked fully released until the remaining manual browser/accessibility checks and final content verification are complete.
+
+
+## Sprint T — profile-first hierarchy, navigation and restrained depth (2026-10-11)
+
+### Completed in source
+- Reordered the homepage to follow the intended portfolio story: identity and personal context, selected projects, research, professional experience, technical direction, recognition/community, and contact.
+- Replaced duplicated summary copy with a distinct factual introduction grounded in the current education and role details; retained the learning principle as a personal signal rather than a marketing claim.
+- Simplified desktop navigation around the primary visitor journeys (Work, Research, Experience, About) with a clear Contact action. The wordmark is the Home route; Achievements remains available from mobile navigation, the footer, and the homepage recognition section.
+- Established a shared, continuous dark background with subtle ambient color and a low-contrast grid across routes.
+- Added lightweight CSS perspective, layered orbital depth, gentle drift, project-image hover depth, link/label micro-interactions and progressive scroll-reveal where supported. Reduced-motion preferences disable non-essential movement. No new dependency or always-on 3D engine was introduced.
+
+### Validation boundary
+- This sprint is not marked build-validated until GitHub Actions completes successfully for the source commit.
+- CI and generated-route checks do not establish real-browser visual quality. Review the deployed homepage and every route at desktop, tablet and narrow mobile widths; test navigation and focus by keyboard; verify reduced motion; and inspect project screenshot crops, Credly embeds and résumé freshness before release sign-off.
+- The CSS 3D effect is intentionally decorative and non-interactive. The WebGPU field remains an optional enhancement with existing device and reduced-motion guards.
+
+### Next
+1. Review the new deployed hierarchy and responsive layout in a real browser.
+2. Fix any concrete overflow, contrast, focus, animation or image-crop defects found during manual acceptance.
+3. Confirm résumé freshness and official role-title wording; retain current evidence boundaries for research and team contribution.

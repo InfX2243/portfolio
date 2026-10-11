@@ -259,3 +259,13 @@ Appended the eight newly supplied Credly badge IDs to src/data/credentials.json,
 - Corrected certificate URL regex escaping after CI identified a production-build syntax failure. The fix passed the follow-up workflow.
 
 Release note: CI validates build and deployment mechanics, not real-browser image rendering or accessibility. Final mobile/desktop, keyboard, external-link, résumé-freshness, Credly-embed and official job-title checks remain explicit release gates.
+
+
+## Sprint T — profile-first layout and subtle 3D motion (2026-10-11)
+
+- Reordered the homepage to reduce repeated positioning copy and put selected work before research, experience, technical direction and community/recognition. The intro now states current education, the user-reported internship title and interests without inventing task ownership.
+- Simplified the shared desktop navigation to the highest-priority routes. The ABID wordmark is the Home link; Contact is a clear action; Achievements remains reachable through the mobile menu, homepage, and footer.
+- Added a shared fixed atmospheric gradient plus low-contrast grid so page transitions retain one visual environment rather than feeling like separate backgrounds.
+- Added CSS-only 3D perspective to the hero system illustration and supplied project media, plus small hover, link, orbit and progressive scroll-reveal transitions. This avoids adding a new WebGL/3D dependency or turning animation into a required source of information.
+- Preserved focus visibility, main-content focus handoff, mobile menu Escape behavior and prefers-reduced-motion support; the new non-essential animations/transforms are disabled for reduced-motion users.
+- Validation boundary: wait for the source workflow before claiming build success. CSS and CI do not replace real-device checks for the 3D effect, layout, image crops, keyboard navigation or assistive technology.

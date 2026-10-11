@@ -22,9 +22,10 @@ export function HomePage() {
         <div className="home-hero-copy">
           <p className="hero-kicker"><span />{profile.eyebrow}</p>
           <h1 id="hero-title">Hi, I&apos;m Abid.<br /><em>I build systems.</em></h1>
-          <p className="hero-lede">{profile.summary}</p>
+          <p className="hero-lede">{profile.role}</p>
+          <p className="hero-supporting">An Information Technology undergraduate and Software Developer Intern, interested in the engineering behind cloud platforms, backend systems and AI-enabled applications.</p>
           <div className="hero-actions">
-            <a className="button button-primary" href={withBasePath("/projects")}>Explore projects <span aria-hidden="true">↘</span></a>
+            <a className="button button-primary" href={withBasePath("/projects")}>Explore my work <span aria-hidden="true">↘</span></a>
             <a className="text-link" href={profile.links.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
             <a className="text-link" href={profile.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
             {profile.resume && <a className="text-link" href={withBasePath(profile.resume)} target="_blank" rel="noopener noreferrer">Résumé ↗</a>}
@@ -41,40 +42,20 @@ export function HomePage() {
       </section>
 
       <section className="section-shell editorial-section" aria-labelledby="about-heading">
-        <PageHeader level="h2" index="01" eyebrow="A little context" title="Engineering with a research mindset." intro={profile.role} />
+        <PageHeader level="h2" index="01" eyebrow="The person behind the work" title="Curiosity, made practical." intro="A concise introduction to the person, not another list of technologies." />
         <div className="intro-grid">
-          <p className="intro-statement">{profile.summary}</p>
+          <p className="intro-statement">I&apos;m studying Information Technology at M.H. Saboo Siddik College of Engineering while working as a Software Developer Intern at Bitkraft Technologies LLP. I like learning by building, then understanding why a system works the way it does.</p>
           <dl className="fact-list">
             <div><dt>Education</dt><dd>{profile.education}</dd></div>
-            <div><dt>Focus</dt><dd>Cloud · AI · Backend · Systems</dd></div>
+            <div><dt>Interests</dt><dd>Cloud platforms · backend engineering · applied AI · research</dd></div>
+            <div><dt>Principle</dt><dd>Never stop learning, because life never stops teaching.</dd></div>
           </dl>
         </div>
-      </section>
-
-      <section className="section-shell editorial-section" aria-labelledby="experience-heading">
-        <PageHeader level="h2" index="02" eyebrow="Experience" title="Where I&apos;m building." intro="Professional experience is the clearest proof of how the technical interests above translate into real engineering work." />
-        <div className="experience-list">
-          {experience.map((item) => (
-            <article className="experience-item" key={item.org}>
-              <p className="experience-period">{item.period}</p>
-              <div className="experience-main">
-                <div>
-                  <p className="mono-label">{item.org}</p>
-                  <h3>{item.role}</h3>
-                  <p>{item.note}</p>
-                </div>
-                <ul className="plain-tags" aria-label="Focus areas">
-                  {item.focus.map((focus) => <li key={focus}>{focus}</li>)}
-                </ul>
-              </div>
-            </article>
-          ))}
-        </div>
-        <a className="text-link" href={withBasePath("/experience")}>View full experience ↗</a>
+        <a className="text-link section-link" href={withBasePath("/about")}>More about me ↗</a>
       </section>
 
       <section className="section-shell editorial-section" aria-labelledby="projects-heading">
-        <PageHeader level="h2" index="03" eyebrow="Selected work" title="A few things I&apos;ve worked on." intro="Featured projects first; deeper case studies remain available where verified evidence supports them." />
+        <PageHeader level="h2" index="02" eyebrow="Selected work" title="Start with what I&apos;ve built." intro="The most distinctive work comes first. Each case study uses supplied project material and separates known facts from details that still need verification." />
         <div className="project-archive">
           {featured.map((project) => (
             <article className="project-row" key={project.id}>
@@ -99,11 +80,11 @@ export function HomePage() {
             </article>
           ))}
         </div>
-        <a className="text-link section-link" href={withBasePath("/projects")}>View all projects ↗</a>
+        <a className="text-link section-link" href={withBasePath("/projects")}>Browse all projects ↗</a>
       </section>
 
       <section className="section-shell editorial-section" aria-labelledby="research-heading">
-        <PageHeader level="h2" index="04" eyebrow="Research" title="Questions worth investigating." intro="Research sits alongside engineering here, with claims kept separate from evidence until they can be verified." />
+        <PageHeader level="h2" index="03" eyebrow="Research" title="Questions worth investigating." intro="Research belongs alongside engineering. The page distinguishes project context from publication or recognition claims that still need authoritative evidence." />
         <div className="research-archive">
           {research.map((item) => (
             <article className="research-row" key={item.id}>
@@ -122,8 +103,31 @@ export function HomePage() {
         </div>
       </section>
 
+      <section className="section-shell editorial-section" aria-labelledby="experience-heading">
+        <PageHeader level="h2" index="04" eyebrow="Experience" title="Where I&apos;m growing as an engineer." intro="Professional context matters, so this section stays concise and does not imply responsibilities beyond the information currently confirmed." />
+        <div className="experience-list">
+          {experience.map((item) => (
+            <article className="experience-item" key={item.org}>
+              <p className="experience-period">{item.period}</p>
+              <div className="experience-main">
+                <div>
+                  {item.logo && <img className="experience-company-logo" src={withBasePath(item.logo)} alt="" loading="lazy" />}
+                  <p className="mono-label">{item.org}</p>
+                  <h3>{item.role}</h3>
+                  <p>{item.note}</p>
+                </div>
+                <ul className="plain-tags" aria-label="Focus areas">
+                  {item.focus.map((focus) => <li key={focus}>{focus}</li>)}
+                </ul>
+              </div>
+            </article>
+          ))}
+        </div>
+        <a className="text-link" href={withBasePath("/experience")}>Full experience details ↗</a>
+      </section>
+
       <section className="section-shell editorial-section" aria-labelledby="direction-heading">
-        <PageHeader level="h2" index="05" eyebrow="Technical direction" title="The areas shaping the next chapter." />
+        <PageHeader level="h2" index="05" eyebrow="Technical direction" title="The areas shaping my next chapter." intro="A few connected areas of interest, rather than a claim to have mastered every tool in the stack." />
         <div className="direction-list">
           {domains.slice(0, 4).map((domain) => (
             <article key={domain.title}>
@@ -136,7 +140,7 @@ export function HomePage() {
       </section>
 
       <section className="section-shell editorial-section" aria-labelledby="community-heading">
-        <PageHeader level="h2" index="06" eyebrow="Beyond the code" title="Recognition and community." intro="A compact view of the signals that sit alongside project and research work." />
+        <PageHeader level="h2" index="06" eyebrow="Recognition & community" title="Signals beyond the code." intro="Selected team recognition and community involvement complement the work itself." />
         <div className="community-list">
           {featured.filter((project) => project.award).map((project) => (
             <div key={project.id}>
@@ -153,6 +157,7 @@ export function HomePage() {
             </div>
           ))}
         </div>
+        <a className="text-link section-link" href={withBasePath("/achievements")}>Explore achievements &amp; credentials ↗</a>
         <div className="home-closing">
           <p className="mono-label">07 / CONTACT</p>
           <h2>Let&apos;s build something meaningful.</h2>
