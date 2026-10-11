@@ -1,6 +1,7 @@
 import { PortfolioLayout } from "../components/layout/PortfolioLayout";
 import { PageHeader } from "../components/layout/PageHeader";
 import { profile, domains, leadership, stack } from "../data/portfolio";
+import { withBasePath } from "../app/basePath";
 
 export function AboutPage() {
   return (
@@ -30,6 +31,7 @@ export function AboutPage() {
           </div>
 
           <div className="signal-list">
+            {profile.portrait && <figure className="about-profile-portrait"><img src={withBasePath(profile.portrait)} alt="Portrait of Abid Ahmed Shaikh" loading="lazy" /><figcaption>Abid Ahmed Shaikh</figcaption></figure>}
             <div>
               <span>POSITIONING</span>
               <strong>Early-career software engineer building cloud-native, AI-enabled and backend systems.</strong>
@@ -55,7 +57,8 @@ export function AboutPage() {
         <h2 className="subsection-title">Community</h2>
         <div className="credential-list">
           {leadership.map(([name, role], index) => (
-            <div key={name}>
+            <div key={name} className="community-entry">
+              <img src={withBasePath(name.startsWith("AWS") ? "/assets/community/awssbgmhssce.png" : "/assets/community/acm.png")} alt="" loading="lazy" />
               <span>{String(index + 1).padStart(2, "0")}</span>
               <strong>{name}</strong>
               <small>{role}</small>
