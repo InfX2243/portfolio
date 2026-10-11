@@ -26,6 +26,7 @@ export function GuidedTour({ path }) {
   const cursorRef = useRef(null);
   const targetIndex = useRef(0);
   const routeRef = useRef(normalizePath(path));
+  const expectedTourRoute = useRef(null);
 
   useEffect(() => {
     if (!playing) return undefined;
@@ -41,7 +42,13 @@ export function GuidedTour({ path }) {
     // Preserve the reading position when paused; reset only when the tour changes routes.
     if (routeRef.current !== normalizePath(path)) {
       routeRef.current = normalizePath(path);
-      targetIndex.current = 0;
+      if (expectedTourRoute.current === routeRef.current) {
+        targetIndex.current = 0;
+        expectedTourRoute.current = null;
+      } else {
+        targetIndex.current = -1;
+        expectedTourRoute.current = null;
+      }
     }
 
     const wait = (ms) => new Promise((resolve) => {
@@ -127,6 +134,16 @@ export function GuidedTour({ path }) {
           continue;
         }
 
+        if (targetIndex.current < 0) {
+          // Resume from the current viewport instead of replaying a stale checkpoint.
+          const readingLine = Math.max(112, Math.min(window.innerHeight * 0.38, window.innerHeight - 120));
+          const currentTarget = candidates.findIndex((element) => {
+            const rect = element.getBoundingClientRect();
+            return rect.bottom > readingLine && rect.top < window.innerHeight - 72;
+          });
+          targetIndex.current = currentTarget >= 0 ? currentTarget : 0;
+        }
+
         if (targetIndex.current >= candidates.length) {
           if (cancelled) break;
           const currentIndex = tourRoutes.findIndex((route) => route.path === normalizePath(path));
@@ -135,6 +152,7 @@ export function GuidedTour({ path }) {
             setPlaying(false);
             break;
           }
+          expectedTourRoute.current = normalizePath(nextRoute.path);
           history.pushState({}, "", BASE_PATH + nextRoute.path);
           window.dispatchEvent(new PopStateEvent("popstate"));
           // The next route starts at its first reading target.
@@ -155,9 +173,9 @@ export function GuidedTour({ path }) {
 
         await moveCursorBeside(target);
         if (cancelled) break;
-        highlighted?.classList.remove("guided-tour-highlight", "guided-tour-reading");
+        highlighted?.classList.remove("guided-tour-highlight");
         highlighted = target;
-        target.classList.add("guided-tour-highlight", "guided-tour-reading");
+        target.classList.add("guided-tour-highlight");
         await wait(reduceMotion ? 250 : 850);
         if (cancelled) break;
 
@@ -183,6 +201,7 @@ export function GuidedTour({ path }) {
     const pauseForIntent = (event) => {
       if (Date.now() - startedAt.current < 1100) return;
       if (event.type === "keydown" && !["ArrowDown", "ArrowUp", "PageDown", "PageUp", "Home", "End", " "].includes(event.key)) return;
+      targetIndex.current = -1;
       setPlaying(false);
     };
     window.addEventListener("wheel", pauseForIntent, { passive: true });
@@ -215,7 +234,7 @@ export function GuidedTour({ path }) {
       )}
       {!playing && (
         <div className="guided-tour guided-tour-idle">
-          <button className="guided-tour-replay" type="button" onClick={() => { startedAt.current = Date.now(); setPlaying(true); }}>Continue walkthrough <span aria-hidden="true">→</span></button>
+          <button className="guided-tour-replay" type="button" onClick={() => { startedAt.current = Date.now(); targetIndex.current = -1; setPlaying(true); }}>Continue walkthrough <span aria-hidden="true">→</span></button>
         </div>
       )}
     </>
