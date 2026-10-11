@@ -2007,3 +2007,26 @@ V1 is release-ready only when every public route works; navigation works on desk
 
 ## V1.17 Explicit non-goals
 Do not turn the site into a clone of Brittany Chiang's site; copy its copy, visual assets, code, or exact layout; add a large WebGL showcase merely because the existing project supports it; invent a writing section; invent project screenshots; invent research results; add more pages just to increase perceived scope; or optimize for visual novelty over credibility.
+
+---
+
+# Sprint S — supplied assets and v1 release finalisation (2026-10-11)
+
+The supplied visual assets are now committed under `public/assets/` on `portfolio-v1`. The current integration uses the existing filenames and keeps the asset source under version control:
+
+- `projects/ascend-apex/`: overview, Student, Faculty, Recruiter and Admin screens, plus `Skill Validation Workflow.png`.
+- `projects/cognitrace/`: three supplied project screens.
+- `projects/green-passport/Green Passport.png`.
+- `projects/aws-web-application-builder/aws-wab.png`.
+- `profile/Photograph.png`, `documents/Abid Ahmed Shaikh Resume.pdf`, `experience/White-Bitkraft-Logo.webp`, community marks and issuer logos.
+
+Implementation requirements for this sprint:
+
+1. Put Ascend APEX first in featured work because it has the strongest confirmed recognition signal.
+2. Use real screenshots and short, accessible captions. Keep gallery images lazy-loaded and responsive.
+3. Present the Xcelerate 2025 Oracle APEX Hackathon first-place result clearly; do not invent an individual task split, backend architecture, scale metrics or unprovided external links.
+4. Link the supplied résumé from Home and Contact, but verify that the PDF is current before release.
+5. Use the supplied portrait, employer/community marks and issuer marks only in their appropriate context.
+6. Treat successful CI as build/deploy evidence only. Browser, mobile, keyboard, reduced-motion, image-path, résumé and Credly checks remain manual release gates.
+
+The Sprint S code changes also fixed certificate URL validation after an initial CI build caught a malformed regex literal. The follow-up workflow passed. Continue with one final source audit and documentation refresh before v1 sign-off.
