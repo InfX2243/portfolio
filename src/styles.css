@@ -1416,3 +1416,50 @@ body { min-width: 320px; background: var(--bg); color: var(--text); }
   .hero-system-visual, .hero-system-visual:hover, .project-row .project-visual:hover, .project-gallery-item:hover, .project-archive-entry .project-visual:hover, .direction-list article:hover, .button:hover, .nav-contact:hover { transform: none; }
   .project-visual-media img, .project-gallery-item img { transition: none; }
 }
+
+
+/* Tablet navigation handoff: keep navigation available between mobile and desktop breakpoints. */
+@media (max-width: 760px) {
+  .mobile-nav-toggle {
+    display: inline-grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    flex: 0 0 auto;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: rgba(255,255,255,.025);
+    color: var(--soft);
+    font: 500 1rem var(--mono);
+    cursor: pointer;
+  }
+
+  .nav > .mobile-nav-panel {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 18px;
+    right: 18px;
+    display: grid;
+    gap: 4px;
+    padding: 8px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: rgba(7,10,15,.97);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-6px);
+    transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
+  }
+
+  .nav > .mobile-nav-panel.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav > .mobile-nav-panel { transition: none; }
+}
