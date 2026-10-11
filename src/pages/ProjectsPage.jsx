@@ -2,7 +2,6 @@ import { PortfolioLayout } from "../components/layout/PortfolioLayout";
 import { PageHeader } from "../components/layout/PageHeader";
 import { withBasePath } from "../app/basePath";
 import { projects } from "../data/portfolio";
-import { withBasePath } from "../app/basePath";
 
 function ProjectCard({ project }) {
   return (
