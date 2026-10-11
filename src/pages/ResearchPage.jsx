@@ -39,7 +39,7 @@ export function ResearchPage() {
           index="01"
           eyebrow="Research"
           title="Questions, systems, evidence."
-          intro="Research is presented as an evidence archive: what was investigated, what is verified, and what still needs a public source."
+          intro="A selection of research-oriented work at the intersection of applied AI, systems thinking and practical engineering."
         />
 
         <div className="research-archive-list">
@@ -70,10 +70,12 @@ export function ResearchPage() {
                   <ResearchDetail label="Result" title="What was learned" value={item.result} />
                 </div>
 
-                <div className="research-archive-evidence">
-                  <span className="eyebrow">Evidence boundary</span>
-                  <p>{item.evidence}</p>
-                </div>
+                {item.evidence && !/await an authoritative public source|verified in the repository content source/i.test(item.evidence) && (
+                  <div className="research-archive-evidence">
+                    <span className="eyebrow">Evidence</span>
+                    <p>{item.evidence}</p>
+                  </div>
+                )}
 
                 <ResearchLinks links={item.links} />
               </div>
