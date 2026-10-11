@@ -647,3 +647,12 @@ The browser audit exposed and helped fix a contrast issue caused by scroll-linke
 - **DONE — contrast:** raised portfolio-owned credential metadata from the failing muted color to a more readable token.
 - **DONE — interaction polish:** added restrained hover elevation, border/shadow transitions, subtle image zoom and contact-link motion. Effects are limited to hover-capable devices and disabled for reduced-motion preferences.
 - **NEXT — CI confirmation:** verify the latest push passes build, structural checks, desktop/mobile axe smoke audit and GitHub Pages deployment before calling release recovery complete.
+
+
+## Sprint Z — Contact details and opt-in guided tour (2026-10-12)
+
+- **DONE — direct contact:** added the supplied email and mobile number to the centralized profile data and the Contact page, using accessible `mailto:` and `tel:` links.
+- **DONE — guided tour:** added a persistent, opt-in guided-tour control that scrolls through the current page and advances through the top-level portfolio routes (Home, Work, Research, Experience, Credentials, About, Contact).
+- **DONE — viewer control:** cursor movement, scrolling, touch, and common navigation keys stop automation so the viewer can take over immediately; the control also supports explicit start/stop and announces its state.
+- **DONE — motion/accessibility:** tour uses smooth scrolling only when reduced motion is not requested, has visible keyboard focus, and remains usable on narrow screens.
+- **NEXT — validation:** confirm production build, route generation, desktop/mobile accessibility smoke tests, and GitHub Pages deployment before considering the guided tour release-ready.
