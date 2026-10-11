@@ -38,11 +38,6 @@ export function AchievementsPage() {
           </div>
           <div className="achievement-list">
             <AwardRow
-              label="Research recognition"
-              title="Cognitrace"
-              description="Publication and award metadata remains withheld until an authoritative public source is available."
-            />
-            <AwardRow
               label="Hackathon"
               title="1st Place Nationwide · Xcelerate 2025 Oracle APEX Hackathon"
               description="Publicly corroborated recognition associated with Ascend APEX and the ORACLEONAUTS team."
