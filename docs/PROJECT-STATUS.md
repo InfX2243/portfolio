@@ -750,3 +750,17 @@ The browser audit exposed and helped fix a contrast issue caused by scroll-linke
 - **PASS — implementation commit `60dbbdf4c11c52af64299a9de13771a2c4bfe250`:** production build, generated-route checks, desktop/mobile axe smoke audit, route fallback verification, and GitHub Pages deployment all passed in [workflow 38169380583](https://github.com/InfX2243/portfolio/actions/runs/38169380583).
 - Documentation is being reconciled with that successful run; the follow-up commit must also pass the deployment workflow.
 - **Still required:** real-browser visual review of directional scroll choreography, hover interactions during the tour, route changes/resume behavior, mobile layout, keyboard navigation, and reduced-motion behavior. Automated axe testing is not a full WCAG conformance certification.
+
+
+## Sprint AF — Box-safe scroll choreography (2026-10-12)
+
+### Implemented
+- Removed the previous scroll-linked exit travel, rotation, and scale. Those effects could move a visible card's contents beyond the card's visual bounds while the card was still on screen.
+- Replaced nested section/heading/card animations with a single, entry-only animation on the card shell. Alternating cards enter gently from the left or right with a small vertical lift and opacity reveal.
+- The animation ends as the card enters; it has no exit keyframes. After entry, content stays aligned with its card while it remains visible and as it leaves the viewport. Existing hover/press transforms remain independent.
+- Kept the reveal behind prefers-reduced-motion: no-preference and browser feature checks. Browsers without scroll-driven animation support retain the stable static layout.
+
+### Validation
+- Source commit: c63fbda7693c8a3be5081789a15fbff520e8ea7b.
+- Pending: verify the latest GitHub Actions run passes production build, route generation, desktop/mobile accessibility smoke audit, and GitHub Pages deployment.
+- Automated checks cannot judge animation choreography visually. Review card clipping/alignment, hover/press behavior, reverse scrolling, mobile layouts, and reduced-motion behavior in a real browser before V1 sign-off.
