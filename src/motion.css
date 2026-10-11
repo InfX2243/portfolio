@@ -66,13 +66,10 @@
 .guided-tour-cursor {
   pointer-events: none;
 }
-.guided-tour-highlight:is(h1, h2, h3, a, button) {
+.guided-tour-highlight:is(h1, h2, h3, a, button):not(:hover):not(:focus-visible) {
   color: #b5eaff;
   text-decoration-color: currentColor;
   text-underline-offset: .22em;
-}
-.guided-tour-highlight:is(article, section, figure, .contact-card, .project-list-card, .experience-card) {
-  /* Deliberately no border, outline, or shadow: avoid boxing in whole page sections. */
 }
 .guided-tour-cursor-dot {
   box-shadow: 0 0 0 3px rgba(125, 211, 252, .15), 0 0 18px rgba(125, 211, 252, .55);
