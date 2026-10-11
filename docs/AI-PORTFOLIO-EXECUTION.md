@@ -12,6 +12,8 @@
 
 ## 0. How the AI Must Use This File
 
+For visual asset collection, use `docs/VISUAL-ASSET-CHECKLIST.md` as the exact-path source of truth. Add only authentic, public-shareable assets, and wire every added file into its intended page/component.
+
 This document is the **single source of truth for portfolio development tasks**.
 
 When an AI is asked to continue development of this portfolio:
