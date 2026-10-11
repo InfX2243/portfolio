@@ -2,6 +2,7 @@ import { PortfolioLayout } from "../components/layout/PortfolioLayout";
 import { PageHeader } from "../components/layout/PageHeader";
 import { CredlyBadge } from "../components/CredlyBadge";
 import { CertificateCard } from "../components/CertificateCard";
+import { withBasePath } from "../app/basePath";
 import { certifications } from "../data/portfolio";
 import credentials from "../data/credentials.json";
 

@@ -289,3 +289,10 @@ Release note: CI validates build and deployment mechanics, not real-browser imag
 - Source changes require the GitHub Actions production build and deployed-route checks.
 - WCAG conformance is **not yet certified**. A real audit still needs automated accessibility testing (for example axe/WAVE), keyboard-only review, 200%/400% zoom and reflow checks, contrast sampling of rendered states, and screen-reader spot checks on the deployed site.
 - Any remaining issue discovered in those checks must be fixed before claiming full WCAG 2.2 AA conformance.
+
+
+## Sprint V — page hierarchy, duplication and accessibility
+
+The secondary routes now use one visual system: a concise page introduction, a clear count/context row where helpful, responsive content cards, predictable spacing, and detail links only where deeper material exists. The Work archive lists each project once. Research cards avoid empty methodology/result scaffolding and do not present unverified conference or award claims as facts. Experience is a timeline rather than a repeated profile summary. About is now a deeper look at engineering principles and technical directions rather than a second copy of the landing-page biography. Credentials no longer repeats the same certification list in a second inventory or renders a wall of generic badge embeds with missing titles.
+
+The new Playwright + axe-core smoke audit covers the landing page, archives, detail routes, contact/about/experience/credentials and a not-found route. It checks document titles, exactly one main H1 and WCAG 2.0/2.1/2.2 A/AA axe rules, and gates serious/critical violations. This is an automated baseline; it does not establish full WCAG 2.2 AA conformance. Inspect CI output, fix all remaining findings and perform manual keyboard, reflow/zoom and assistive-technology testing before making that claim.

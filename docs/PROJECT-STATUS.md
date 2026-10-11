@@ -1,6 +1,6 @@
 # Portfolio Implementation Status
 
-Last updated: 2026-10-11 (Sprint U — profile-first landing page and accessibility remediation)
+Last updated: 2026-10-11 (Sprint V — archive page redesign, content deduplication and automated accessibility smoke audit)
 > Branch: `portfolio-v1`  
 > Source of truth: `docs/AI-PORTFOLIO-EXECUTION.md`
 
@@ -590,3 +590,19 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 - **DONE (source):** Contrast tokens, keyboard focus, skip-link, target sizes, reduced-motion and forced-colors handling strengthened.
 - **DONE:** Production build, generated route checks and GitHub Pages deployment passed in workflow [38143490385](https://github.com/InfX2243/portfolio/actions/runs/38143490385).
 - **BLOCKED pending external validation:** Do not declare WCAG 2.2 AA conformance until automated axe/WAVE plus keyboard, zoom/reflow, screen-reader and rendered contrast checks pass on the deployed site.
+
+
+## Sprint V — secondary-page polish and accessibility smoke testing
+
+**Implemented in source; release validation runs in GitHub Actions.**
+
+- Reworked Work into one consistent, award-aware project grid; each project appears once and links to its own case study.
+- Reworked Research into concise project cards. Empty methodology/result sections and unverified award/publication filler are no longer presented as content.
+- Reworked Experience into a responsive timeline with organization, role, period, verified focus areas and supplied company mark.
+- Reworked Credentials to show the verified recognition and certification records once. Removed the duplicate credential inventory and generic, repeated embedded badge wall where badge metadata was unavailable.
+- Reworked About around engineering principles, technical directions and community participation rather than repeating the landing-page biography, education, portrait and motto.
+- Reworked Contact into a direct, keyboard-accessible link panel.
+- Added shared responsive styling for the secondary pages, reduced-motion/forced-colors considerations and a browser-based axe accessibility smoke audit across all major routes.
+- Added an automated release gate for structural checks and serious/critical axe findings. This is a smoke test, not by itself a WCAG conformance certification.
+
+**Still required for a full WCAG 2.2 AA claim:** review the live GitHub Actions audit results, resolve all reported findings (including moderate/minor findings), then complete manual keyboard-only, 200%/400% zoom/reflow, contrast, mobile menu and screen-reader checks on the deployed site.

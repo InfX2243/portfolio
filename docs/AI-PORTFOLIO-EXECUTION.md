@@ -2058,3 +2058,10 @@ The latest user feedback requires a profile-first correction rather than simply 
 5. Text contrast must meet 4.5:1 for normal text and 3:1 for large text; meaningful controls and focus indicators must be discernible.
 6. Reduced-motion preferences must disable non-essential motion; layouts must reflow without horizontal scrolling at narrow widths and browser zoom.
 7. WCAG conformance must not be claimed based only on CSS changes or a successful build. Run automated accessibility checks and manual keyboard, zoom/reflow, screen-reader and contrast verification before release sign-off.
+
+
+## Secondary page quality bar — Sprint V
+
+All non-landing routes should follow the landing page's visual system without copying its content verbatim. Use concise, page-specific introductions; avoid repeating a project in multiple lists; remove empty fields and generic placeholders instead of rendering scaffolding; and keep unverified recognition/publication claims out of the UI. Work is a unified archive linking to project case studies, Research is a compact overview linking to relevant project details, Experience focuses on role and verified focus areas, About contains deeper principles/domains/community, Credentials presents each certification record once, and Contact prioritizes clear direct links.
+
+Accessibility is a release requirement, not a styling label. Run `npm run test:a11y` against the production build; fix all axe findings, including moderate/minor findings, and perform keyboard-only, focus visibility, reduced motion, forced-colors, 200%/400% zoom/reflow and screen-reader checks. A passing automated smoke audit alone must not be described as WCAG conformance.

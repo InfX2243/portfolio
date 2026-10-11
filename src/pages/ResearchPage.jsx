@@ -2,91 +2,35 @@ import { PortfolioLayout } from "../components/layout/PortfolioLayout";
 import { PageHeader } from "../components/layout/PageHeader";
 import { ResearchVisual } from "../components/ResearchVisual";
 import { research } from "../data/portfolio";
-
-function ResearchDetail({ label, title, value }) {
-  if (!value) return null;
-  return (
-    <section className="research-archive-detail">
-      <p className="eyebrow">{label}</p>
-      <h3>{title}</h3>
-      <p>{value}</p>
-    </section>
-  );
-}
-
-function ResearchLinks({ links }) {
-  const verified = Object.entries(links || {}).filter(
-    ([, url]) => typeof url === "string" && /^https?:\/\//.test(url)
-  );
-  if (!verified.length) return null;
-
-  return (
-    <div className="research-archive-links">
-      {verified.map(([label, url]) => (
-        <a className="text-link" key={label} href={url} target="_blank" rel="noopener noreferrer">
-          {label} ↗
-        </a>
-      ))}
-    </div>
-  );
-}
+import { withBasePath } from "../app/basePath";
 
 export function ResearchPage() {
   return (
     <PortfolioLayout>
-      <section className="section-shell page-section research-page-editorial">
-        <PageHeader
-          index="01"
-          eyebrow="Research"
-          title="Questions, systems, evidence."
-          intro="A selection of research-oriented work at the intersection of applied AI, systems thinking and practical engineering."
-        />
-
-        <div className="research-archive-list">
+      <section className="section-shell page-section polished-page research-polished">
+        <PageHeader index="02" eyebrow="Research" title="Curiosity, made concrete." intro="Research-oriented projects that reflect an interest in applied AI, systems thinking and turning practical questions into something that can be investigated." />
+        <div className="polished-page-meta"><span>{String(research.length).padStart(2, "0")} projects</span><span>Only confirmed details are presented as facts</span></div>
+        <div className="polished-research-grid">
           {research.map((item, index) => (
-            <article className="research-archive-entry" key={item.id}>
-              <div className="research-archive-index">
-                <span>{item.index || String(index + 1).padStart(2, "0")}</span>
-                <span>{item.signal}</span>
-              </div>
-
-              <div className="research-archive-content">
-                <div className="research-archive-heading">
-                  <div>
-                    <p className="eyebrow">{item.context}</p>
-                    <h2>{item.title}</h2>
-                  </div>
-                  {item.recognition && <p className="research-archive-recognition">{item.recognition}</p>}
+            <article className="polished-research-card" key={item.id}>
+              <div className="polished-research-visual"><ResearchVisual research={item} /></div>
+              <div className="polished-research-copy">
+                <p className="eyebrow">{item.context}</p>
+                <h2>{item.title}</h2>
+                <p>{item.description}</p>
+                <div className="polished-research-footer">
+                  <span>{item.signal}</span>
+                  <a className="text-link" href={withBasePath("/projects/" + item.id)}>View project details <span aria-hidden="true">↗</span></a>
                 </div>
-
-                <p className="research-archive-description">{item.description}</p>
-
-                <ResearchVisual research={item} />
-
-                <div className="research-archive-details">
-                  <ResearchDetail label="Research question / problem" title="What was investigated" value={item.problem} />
-                  <ResearchDetail label="Methodology" title="How it was approached" value={item.methodology} />
-                  <ResearchDetail label="Contribution" title="What I contributed" value={item.contribution} />
-                  <ResearchDetail label="Result" title="What was learned" value={item.result} />
-                </div>
-
-                {item.evidence && !/await an authoritative public source|verified in the repository content source/i.test(item.evidence) && (
-                  <div className="research-archive-evidence">
-                    <span className="eyebrow">Evidence</span>
-                    <p>{item.evidence}</p>
-                  </div>
-                )}
-
-                <ResearchLinks links={item.links} />
               </div>
             </article>
           ))}
         </div>
-
-        <div className="research-method">
-          <span className="eyebrow">Research method</span>
-          <p>Formulate a problem → build something testable → interrogate the result → communicate what was learned.</p>
-        </div>
+        <aside className="polished-research-note" aria-labelledby="research-principle-title">
+          <span className="eyebrow">Working principle</span>
+          <h2 id="research-principle-title">Be precise about what the evidence says.</h2>
+          <p>Publication, award and outcome claims belong here only when they can be supported by a reliable source. Project details can grow as that evidence becomes available.</p>
+        </aside>
       </section>
     </PortfolioLayout>
   );
