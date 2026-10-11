@@ -3,7 +3,7 @@ export const profile = {
   eyebrow: "SOFTWARE ENGINEERING · CLOUD · AI · RESEARCH",
   role: "Building intelligent systems, developer platforms, and research-driven products.",
   summary:
-    "Information Technology undergraduate and Software Engineer Intern exploring cloud-native infrastructure, AI-integrated applications, backend systems, and applied research.",
+    "Information Technology undergraduate and Software Developer Intern exploring cloud-native infrastructure, AI-integrated applications, backend systems, and applied research.",
   education: "M.H. Saboo Siddik College of Engineering · Information Technology · 2023–2027",
   links: {
     github: "https://github.com/InfX2243",
