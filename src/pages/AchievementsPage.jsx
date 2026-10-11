@@ -1,89 +1,32 @@
 import { PortfolioLayout } from "../components/layout/PortfolioLayout";
 import { PageHeader } from "../components/layout/PageHeader";
-import { CredlyBadge } from "../components/CredlyBadge";
 import { CertificateCard } from "../components/CertificateCard";
 import { withBasePath } from "../app/basePath";
-import { certifications } from "../data/portfolio";
 import credentials from "../data/credentials.json";
 
-function AwardRow({ label, title, description }) {
-  return (
-    <article className="achievement-row">
-      <span className="achievement-row-label">{label}</span>
-      <div>
-        <h2>{title}</h2>
-        <p>{description}</p>
-      </div>
-    </article>
-  );
-}
-
 export function AchievementsPage() {
-  const badges = credentials.badges || [];
   const certificates = credentials.certificates || [];
-
   return (
     <PortfolioLayout>
-      <section className="section-shell page-section achievements-page-editorial">
-        <PageHeader
-          index="01"
-          eyebrow="Achievements"
-          title="Evidence you can inspect."
-          intro="Awards, certifications and credentials are separated by evidence type so recognition is clear without turning the page into a badge wall."
-        />
-
-        <section className="achievement-archive">
-          <div className="archive-section-heading">
-            <p className="eyebrow">Recognition</p>
-            <h2>Selected achievements</h2>
-          </div>
-          <div className="achievement-list">
-            <AwardRow
-              label="Hackathon"
-              title="1st Place Nationwide · Xcelerate 2025 Oracle APEX Hackathon"
-              description="Publicly corroborated recognition associated with Ascend APEX and the ORACLEONAUTS team."
-            />
+      <section className="section-shell page-section polished-page credentials-polished">
+        <PageHeader index="04" eyebrow="Credentials & recognition" title="Proof, not just claims." intro="A clear record of the team recognition and professional certifications currently documented. Open a credential record for its issuer and available verification details." />
+        <section className="polished-recognition" aria-labelledby="recognition-title">
+          <div className="polished-recognition-mark" aria-hidden="true">01</div>
+          <div>
+            <p className="eyebrow">Team recognition · 2025</p>
+            <h2 id="recognition-title">Xcelerate Oracle APEX Hackathon</h2>
+            <p>First place nationwide, awarded to team ORACLEONAUTS for Ascend APEX.</p>
+            <a className="text-link" href={withBasePath("/projects/ascend-apex")}>Explore Ascend APEX <span aria-hidden="true">↗</span></a>
           </div>
         </section>
-
-        <section className="achievement-archive">
-          <div className="archive-section-heading">
-            <p className="eyebrow">Credentials</p>
-            <h2>Selected certifications</h2>
-          </div>
-          <div className="certificate-grid">
-            {certificates.filter((certificate) => certificate.featured).map((certificate) => (
-              <CertificateCard key={certificate.id} certificate={certificate} />
-            ))}
-          </div>
-        </section>
-
-        <section className="achievement-archive">
-          <div className="archive-section-heading">
-            <p className="eyebrow">Credly</p>
-            <h2>Credly badges</h2>
-          </div>
-          <div className="credly-badge-grid">
-            {badges.map((badge) => <CredlyBadge key={badge.id} badge={badge} />)}
-          </div>
-        </section>
-
-        <section className="achievement-archive">
-          <div className="archive-section-heading">
-            <p className="eyebrow">Inventory</p>
-            <h2>Credential record</h2>
-          </div>
-          <div className="credential-list">
-            {certifications.map((certificate, index) => (
-              <div key={certificate}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <strong>{certificate}</strong>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <p className="achievement-note">Credential details vary by issuer; use the available Credly links to inspect public badge records.</p>
+        <div className="polished-credentials-heading">
+          <div><p className="eyebrow">Certification record</p><h2>Professional learning, documented.</h2></div>
+          <span>{String(certificates.length).padStart(2, "0")} credentials</span>
+        </div>
+        <div className="polished-certificate-grid">
+          {certificates.map((certificate) => <CertificateCard key={certificate.id} certificate={certificate} />)}
+        </div>
+        <p className="polished-page-footnote">Where an issuer verification URL is not available, the card shows the supplied credential ID and issue date instead. Each certification appears once in this archive.</p>
       </section>
     </PortfolioLayout>
   );
