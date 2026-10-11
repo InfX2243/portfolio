@@ -292,6 +292,16 @@ export const domains = [
     title: "Research & Communication",
     body: "Applied research, technical writing, publications, awards and community contribution.",
   },
+  {
+    label: "06",
+    title: "Security & Privacy Engineering",
+    body: "Local-first application design, browser cryptography, encrypted data flows, recovery design and security-boundary documentation.",
+  },
+  {
+    label: "07",
+    title: "API Integration & Developer Tools",
+    body: "Public API integration, GitHub profile data, dashboard UX, data-driven interfaces and practical developer utilities.",
+  },
 ];
 
 export const certifications = [
