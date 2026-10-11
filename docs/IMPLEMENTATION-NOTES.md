@@ -300,4 +300,9 @@ The new Playwright + axe-core smoke audit covers the landing page, archives, det
 
 ### Automated contrast finding and remediation
 
-The first real axe run found severe text-contrast failures on project case studies, the credentials page and the community area. The affected foreground values were the result of scroll-linked reveal animations rendering content at partial opacity, not the final static palette. Removed the scroll-linked opacity animation from content sections so text remains fully legible during initial render and when users scroll. Re-run the browser audit after this change; any remaining contrast findings must be treated as real until proven otherwise.
+The first real axe run found severe text-contrast failures on project case studies, the credentials page and the community area. The affected foreground values were the result of scroll-linked reveal animations rendering content at partial opacity, not the final static palette. Removed the scroll-linked opacity animation from content sections so text remains fully legible during initial render and when users scroll. The subsequent CI run passed: all 11 routes were scanned at desktop and mobile widths with zero axe violations and no structural/mobile overflow failures.
+
+
+### Sprint V validation result
+
+GitHub Actions run [38145584620](https://github.com/InfX2243/portfolio/actions/runs/38145584620) completed successfully, including production build, the Playwright/axe smoke audit and deployment. Eleven routes (home, Work, three project details, Research, Experience, Credentials, About, Contact and Not Found) were scanned at 1280px and 390px viewport widths. All 22 route/viewport checks reported zero axe violations, each route had a title and one visible main H1, and the mobile document-width check found no horizontal overflow. This does not replace manual keyboard, zoom/reflow and screen-reader validation, so do not describe the site as fully WCAG 2.2 AA conformant until those checks are completed.

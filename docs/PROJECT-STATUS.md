@@ -610,4 +610,13 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 
 ### Automated axe audit follow-up
 
-The browser audit is now exercising the GitHub Pages base path and has exposed an accessibility issue that a static review missed: view-timeline reveal animations temporarily reduced contrast by fading text to partial opacity. The content reveal effect has been disabled for accessible, stable rendering. The next workflow run must confirm whether this resolves all serious contrast findings; full conformance still requires manual review.
+The browser audit exposed and helped fix a contrast issue caused by scroll-linked reveal animations. The successful CI run (2026-10-11) audited 11 routes at desktop (1280px) and mobile (390px) widths: zero axe violations on every route and no structural or mobile horizontal-overflow failures. Manual keyboard-only, 200%/400% zoom/reflow, contrast spot-checks and screen-reader review remain outstanding, so this is not yet a full WCAG 2.2 AA conformance claim.
+
+
+## Sprint V release validation
+
+- Build and GitHub Pages deployment: **PASS** — [workflow run](https://github.com/InfX2243/portfolio/actions/runs/38145584620).
+- Automated axe smoke audit: **PASS** — 11 routes at desktop (1280×900) and mobile (390×844), zero axe violations reported across all 22 route/viewport combinations.
+- Structural checks: **PASS** — each route has a document title and exactly one visible main H1.
+- Mobile reflow smoke check: **PASS** — no horizontal document overflow at 390px.
+- Remaining manual accessibility work: keyboard-only navigation and focus order, menu Escape/focus return, 200%/400% zoom and reflow, screen-reader behavior, and manual review of any contrast or visual states not captured by axe.
