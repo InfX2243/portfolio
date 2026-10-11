@@ -2050,3 +2050,13 @@ The latest user feedback requires a profile-first correction rather than simply 
 - Use CSS perspective, layered SVG depth, gentle motion and restrained micro-interactions to add creativity. Do not add a heavyweight 3D engine solely for decoration. The first viewport must remain useful with animations disabled.
 - Respect prefers-reduced-motion, preserve visible focus and the SPA main-content focus handoff, and keep all decorative visuals aria-hidden where appropriate.
 - Validate the full route set after changes. Successful CI is build/deployment evidence, not proof of browser visual acceptance.
+
+
+## Sprint U acceptance criteria — profile-first landing page and WCAG 2.2 AA
+1. The landing page must provide a credible, concise overview of identity, personal philosophy, education, current experience, selected projects, research, verified recognition, technical direction, community and certifications without requiring another route.
+2. Secondary routes provide detail, source evidence and complete inventories rather than being required to understand the profile.
+3. Never add unsupported achievements, metrics, publication status, individual contribution or technical ownership.
+4. All interactive controls must be keyboard reachable with clearly visible focus; skip navigation must work; navigation controls must have accessible names and correct expanded state.
+5. Text contrast must meet 4.5:1 for normal text and 3:1 for large text; meaningful controls and focus indicators must be discernible.
+6. Reduced-motion preferences must disable non-essential motion; layouts must reflow without horizontal scrolling at narrow widths and browser zoom.
+7. WCAG conformance must not be claimed based only on CSS changes or a successful build. Run automated accessibility checks and manual keyboard, zoom/reflow, screen-reader and contrast verification before release sign-off.
