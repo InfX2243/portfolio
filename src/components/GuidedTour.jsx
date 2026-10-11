@@ -143,7 +143,6 @@ export function GuidedTour({ path }) {
         }
 
         const target = candidates[targetIndex.current];
-        targetIndex.current += 1;
         let rect = target.getBoundingClientRect();
         const visible = rect.top >= 112 && rect.bottom <= window.innerHeight - 96;
         if (!visible) {
@@ -162,8 +161,9 @@ export function GuidedTour({ path }) {
         await wait(reduceMotion ? 250 : 850);
         if (cancelled) break;
 
-        // Let the visitor follow the highlight; the next target decides whether scrolling is needed.
+        // Commit progress only after this target has been read; pausing mid-scroll resumes it.
         await wait(250);
+        targetIndex.current += 1;
       }
     };
 
