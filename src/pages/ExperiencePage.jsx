@@ -14,11 +14,11 @@ export function ExperiencePage() {
         />
 
         <div className="experience-archive">
-          {experience.map((item) => (
+          {experience.map((item, index) => (
             <article className="experience-entry" key={item.org}>
               <div className="experience-entry-meta">
                 <span>{item.period}</span>
-                <span>01</span>
+                <span>{String(index + 1).padStart(2, "0")}</span>
               </div>
 
               <div className="experience-entry-content">
