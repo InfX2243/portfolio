@@ -1,63 +1,76 @@
-/* Sprint AE — directional, layered scroll choreography that preserves hover transforms. */
+/* Sprint AF — entry-only card reveals. Never translate visible content out of its own box. */
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) and (translate: 1px 1px) {
     /*
-     * Animate individual transform properties, not transform itself. This lets existing
-     * hover/press transforms keep working while scroll-driven movement runs underneath.
-     * Sections alternate entry direction; cards and editorial blocks use a softer lift.
+     * Animate the card shell as one unit and only during its entry phase.
+     * There is deliberately no exit keyframe: once a card has entered, its
+     * contents stay aligned with the card while it remains visible and as it
+     * leaves the viewport. Avoid animating both a parent section and its child.
      */
-    .app main > :is(section, .section-shell),
-    .app main :is(.home-hero, .editorial-section, .page-section, .section, .section-head,
-      .polished-section-heading, .archive-section-heading, .project-archive-entry,
-      .secondary-project-entry, .research-archive-entry, .case-study-section,
-      .experience-entry, .experience-card, .experience-row, .certificate-card,
-      .credly-card, .achievement-highlight > div, .about-principles > article,
-      .polished-domain-card, .contact-card, .project-list-card, .case-grid > section,
-      .project-visual, .project-gallery figure, .credential-list > div, .about-grid > *,
-      .intro-grid > *, .research-callout > *, .closing, .footer) {
-      animation: portfolio-section-travel 1ms linear both;
+    .app main :is(
+      .polished-project-card,
+      .polished-research-card,
+      .home-project-card,
+      .home-research-card,
+      .project-list-card,
+      .project-archive-entry,
+      .secondary-project-entry,
+      .research-archive-entry,
+      .experience-card,
+      .experience-row,
+      .certificate-card,
+      .credly-card,
+      .credential-card,
+      .polished-domain-card,
+      .contact-card,
+      .polished-contact-link,
+      .overview-card,
+      .case-grid > section,
+      .project-gallery figure,
+      .about-principles > article
+    ) {
+      animation-name: portfolio-card-entry-left;
+      animation-duration: 1ms;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
       animation-timeline: view(block);
-      animation-range: entry 0% exit 100%;
+      animation-range: entry 0% entry 78%;
     }
 
-    .app main :is(.polished-project-card, .polished-research-card, .experience-timeline-main,
-      .overview-card, .home-project-card, .home-research-card, .credential-card,
-      .polished-contact-link, .project-list-card, .research-archive-entry, .experience-entry) {
-      animation: portfolio-card-travel 1ms linear both;
-      animation-timeline: view(block);
-      animation-range: entry 0% exit 100%;
+    /* A restrained alternating rhythm, without rotating or scaling box edges. */
+    .app main :is(
+      .polished-project-card,
+      .polished-research-card,
+      .home-project-card,
+      .home-research-card,
+      .project-list-card,
+      .project-archive-entry,
+      .secondary-project-entry,
+      .research-archive-entry,
+      .experience-card,
+      .experience-row,
+      .certificate-card,
+      .credly-card,
+      .credential-card,
+      .polished-domain-card,
+      .contact-card,
+      .polished-contact-link,
+      .overview-card,
+      .case-grid > section,
+      .project-gallery figure,
+      .about-principles > article
+    ):nth-child(even) {
+      animation-name: portfolio-card-entry-right;
     }
 
-    .app main :is(h1, h2, h3, .section-head, .polished-section-heading, .archive-section-heading):nth-child(odd) {
-      animation: portfolio-heading-left 1ms linear both;
-      animation-timeline: view(block);
-      animation-range: entry 0% exit 100%;
-    }
-    .app main :is(h1, h2, h3, .section-head, .polished-section-heading, .archive-section-heading):nth-child(even) {
-      animation: portfolio-heading-right 1ms linear both;
-      animation-timeline: view(block);
-      animation-range: entry 0% exit 100%;
+    @keyframes portfolio-card-entry-left {
+      from { opacity: 0; translate: -1.25rem .65rem; }
+      to { opacity: 1; translate: 0 0; }
     }
 
-    @keyframes portfolio-section-travel {
-      0% { translate: -3.2rem 1.8rem; rotate: -.45deg; scale: .975; }
-      16%, 78% { translate: 0 0; rotate: 0deg; scale: 1; }
-      100% { translate: 2.8rem -1.6rem; rotate: .35deg; scale: .985; }
-    }
-    @keyframes portfolio-card-travel {
-      0% { translate: 2.4rem 2rem; rotate: .7deg; scale: .96; }
-      18%, 80% { translate: 0 0; rotate: 0deg; scale: 1; }
-      100% { translate: -2.2rem -1.8rem; rotate: -.55deg; scale: .98; }
-    }
-    @keyframes portfolio-heading-left {
-      0% { translate: -4rem 1.4rem; rotate: -1deg; scale: .97; }
-      20%, 80% { translate: 0 0; rotate: 0deg; scale: 1; }
-      100% { translate: 3rem -1.2rem; rotate: .5deg; scale: .985; }
-    }
-    @keyframes portfolio-heading-right {
-      0% { translate: 4rem 1.4rem; rotate: 1deg; scale: .97; }
-      20%, 80% { translate: 0 0; rotate: 0deg; scale: 1; }
-      100% { translate: -3rem -1.2rem; rotate: -.5deg; scale: .985; }
+    @keyframes portfolio-card-entry-right {
+      from { opacity: 0; translate: 1.25rem .65rem; }
+      to { opacity: 1; translate: 0 0; }
     }
   }
 }
