@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import { getRouteMetadata } from "../data/routes";
 import { BASE_PATH, normalizePath } from "./basePath";
+import { requestRouteFocus } from "./routeFocus";
 
 const HomePage = lazy(() => import("../pages/HomePage").then(m => ({ default: m.HomePage })));
 const ProjectsPage = lazy(() => import("../pages/ProjectsPage").then(m => ({ default: m.ProjectsPage })));
@@ -17,7 +18,10 @@ export function AppRouter() {
   const [path, setPath] = useState(() => normalizePath(window.location.pathname));
 
   useEffect(() => {
-    const sync = () => setPath(normalizePath(window.location.pathname));
+    const sync = () => {
+      requestRouteFocus();
+      setPath(normalizePath(window.location.pathname));
+    };
     window.addEventListener("popstate", sync);
     return () => window.removeEventListener("popstate", sync);
   }, []);
