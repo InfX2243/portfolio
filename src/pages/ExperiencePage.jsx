@@ -1,6 +1,7 @@
 import { PortfolioLayout } from "../components/layout/PortfolioLayout";
 import { PageHeader } from "../components/layout/PageHeader";
 import { experience } from "../data/portfolio";
+import { withBasePath } from "../app/basePath";
 
 export function ExperiencePage() {
   return (
@@ -22,6 +23,7 @@ export function ExperiencePage() {
               </div>
 
               <div className="experience-entry-content">
+                {item.logo && <img className="experience-company-logo" src={withBasePath(item.logo)} alt={`${item.org} logo`} loading="lazy" />}
                 <p className="eyebrow">{item.org}</p>
                 <h2>{item.role}</h2>
                 <p className="experience-entry-note">{item.note}</p>
