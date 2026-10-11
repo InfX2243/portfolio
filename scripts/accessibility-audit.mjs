@@ -19,7 +19,8 @@ try {
   }
   if (!ready) throw new Error("Vite preview server did not become ready.");
   browser = await chromium.launch({ headless: true });
-  const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+  const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  const page = await context.newPage();
   for (const route of routes) {
     const response = await page.goto(new URL(route, baseURL).href, { waitUntil: "domcontentloaded" });
     await page.locator("main").waitFor({ state: "visible" });
