@@ -1761,3 +1761,5 @@ a:hover { text-decoration-thickness: .12em; }
     transform: none !important;
   }
 }
+
+.polished-project-image { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: contain; }
