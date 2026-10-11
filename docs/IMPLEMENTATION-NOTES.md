@@ -237,3 +237,13 @@ Appended the eight newly supplied Credly badge IDs to src/data/credentials.json,
 - Same-route clicks do not leave a stale focus request waiting for a future page mount.
 - Added the SPA focus handoff requirement to `docs/AI-PORTFOLIO-EXECUTION.md`.
 - GitHub Actions passed for the route-focus utility ([38118559498](https://github.com/InfX2243/portfolio/actions/runs/38118559498)), shared-layout focus behavior ([38118571946](https://github.com/InfX2243/portfolio/actions/runs/38118571946)), router integration ([38118579942](https://github.com/InfX2243/portfolio/actions/runs/38118579942)), and the Sprint Q documentation updates. This confirms build/route checks only; no screen-reader or manual browser acceptance is claimed.
+
+
+## Sprint R — Credly badge rendering and visual asset plan (2026-10-11)
+
+- Changed `src/components/CredlyBadge.jsx` to render each supplied ID through a direct, lazy-loaded Credly iframe instead of relying on a one-time script scan of all badge placeholders.
+- Each badge now has an independent public-badge link, so the user can still inspect it if third-party iframe rendering is blocked.
+- Added iframe sizing and link styles in `src/styles.css`; renamed the Achievements section to “Credly badges” to avoid implying every ID has already been publicly verified.
+- The 16 IDs remain sourced from `src/data/credentials.json`; titles, issuers, and issue dates are not inferred.
+- Validation boundary: source commits are present; confirm GitHub Actions status and then verify the deployed embeds in a real browser. CI does not prove that Credly marks each badge public or that external iframe content loaded successfully.
+- Asset follow-up priorities: real screenshots and architecture visuals for projects, authentic paper/poster artifacts for research, official issuer logos where useful, and optional professional portrait. Use the exact file paths and formats in the asset checklist shared with the owner; do not fabricate evidence assets.
