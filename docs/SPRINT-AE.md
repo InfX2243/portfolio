@@ -11,7 +11,7 @@ Branch: `portfolio-v1`
 - Distinguishes tour-driven route transitions from viewer-driven navigation: automatic tour transitions start at the new route's beginning, while manual navigation re-anchors from the current page.
 - Increased specificity for mobile homepage contrast corrections after the previous workflow exposed CSS cascade conflicts.
 
-## Validation gate
-- Awaiting latest GitHub Actions run: production build, route generation, axe audit at desktop and mobile widths, and deploy to `gh-pages).
-- Do not mark deployed until the workflow confirms success.
+## Validation
+- **PASS — implementation commit `60dbbdf4c11c52af64299a9de13771a2c4bfe250`:** production build, route generation, desktop/mobile axe audit, route fallback verification, and deployment to `gh-pages` passed in [workflow 38169380583](https://github.com/InfX2243/portfolio/actions/runs/38169380583).
+- The documentation follow-up commit triggers the same release workflow again; confirm that run before declaring the current branch head validated.
 - Manual acceptance still required for perceived animation quality, hover feedback during tour, route switching and resume, reduced-motion behavior, keyboard navigation, and assistive technology. The automated axe scan is a smoke test, not a complete WCAG conformance certification.
