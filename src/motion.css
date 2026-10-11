@@ -1,62 +1,83 @@
-/* Sprint AD — content-led motion and readable walkthrough states */
+/* Sprint AE — directional, layered scroll choreography that preserves hover transforms. */
 @media (prefers-reduced-motion: no-preference) {
-  @supports (animation-timeline: view()) {
+  @supports (animation-timeline: view()) and (translate: 1px 1px) {
     /*
-     * Every meaningful content unit moves into view and eases upward/out as it leaves.
-     * Transform-only motion keeps text contrast stable for assistive audits and readers.
+     * Animate individual transform properties, not transform itself. This lets existing
+     * hover/press transforms keep working while scroll-driven movement runs underneath.
+     * Sections alternate entry direction; cards and editorial blocks use a softer lift.
      */
-    .app main > *,
-    .app main :is(
-      .home-hero, .editorial-section, .page-section, .section, .section-head,
+    .app main > :is(section, .section-shell),
+    .app main :is(.home-hero, .editorial-section, .page-section, .section, .section-head,
       .polished-section-heading, .archive-section-heading, .project-archive-entry,
       .secondary-project-entry, .research-archive-entry, .case-study-section,
       .experience-entry, .experience-card, .experience-row, .certificate-card,
       .credly-card, .achievement-highlight > div, .about-principles > article,
       .polished-domain-card, .contact-card, .project-list-card, .case-grid > section,
-      .project-visual, .project-gallery figure, .credential-list > div,
-      .about-grid > *, .intro-grid > *, .research-callout > *, .closing, .footer,
-      h1, h2, h3, h4, p, li, figure, blockquote, .button, .text-link, .tag-row,
-      .plain-tags, .stack-line, .experience-entry-focus, .case-study-resources,
-      .related-work, .case-study-boundary
-    ) {
-      animation-name: portfolio-reading-flow;
-      animation-duration: 1ms;
-      animation-timing-function: linear;
-      animation-fill-mode: both;
+      .project-visual, .project-gallery figure, .credential-list > div, .about-grid > *,
+      .intro-grid > *, .research-callout > *, .closing, .footer) {
+      animation: portfolio-section-travel 1ms linear both;
       animation-timeline: view(block);
       animation-range: entry 0% exit 100%;
     }
 
-    @keyframes portfolio-reading-flow {
-      0% { transform: translate3d(0, 26px, 0) scale(.985); }
-      18%, 82% { transform: translate3d(0, 0, 0) scale(1); }
-      100% { transform: translate3d(0, -24px, 0) scale(.99); }
+    .app main :is(.polished-project-card, .polished-research-card, .experience-timeline-main,
+      .overview-card, .home-project-card, .home-research-card, .credential-card,
+      .polished-contact-link, .project-list-card, .research-archive-entry, .experience-entry) {
+      animation: portfolio-card-travel 1ms linear both;
+      animation-timeline: view(block);
+      animation-range: entry 0% exit 100%;
+    }
+
+    .app main :is(h1, h2, h3, .section-head, .polished-section-heading, .archive-section-heading):nth-child(odd) {
+      animation: portfolio-heading-left 1ms linear both;
+      animation-timeline: view(block);
+      animation-range: entry 0% exit 100%;
+    }
+    .app main :is(h1, h2, h3, .section-head, .polished-section-heading, .archive-section-heading):nth-child(even) {
+      animation: portfolio-heading-right 1ms linear both;
+      animation-timeline: view(block);
+      animation-range: entry 0% exit 100%;
+    }
+
+    @keyframes portfolio-section-travel {
+      0% { translate: -3.2rem 1.8rem; rotate: -.45deg; scale: .975; }
+      16%, 78% { translate: 0 0; rotate: 0deg; scale: 1; }
+      100% { translate: 2.8rem -1.6rem; rotate: .35deg; scale: .985; }
+    }
+    @keyframes portfolio-card-travel {
+      0% { translate: 2.4rem 2rem; rotate: .7deg; scale: .96; }
+      18%, 80% { translate: 0 0; rotate: 0deg; scale: 1; }
+      100% { translate: -2.2rem -1.8rem; rotate: -.55deg; scale: .98; }
+    }
+    @keyframes portfolio-heading-left {
+      0% { translate: -4rem 1.4rem; rotate: -1deg; scale: .97; }
+      20%, 80% { translate: 0 0; rotate: 0deg; scale: 1; }
+      100% { translate: 3rem -1.2rem; rotate: .5deg; scale: .985; }
+    }
+    @keyframes portfolio-heading-right {
+      0% { translate: 4rem 1.4rem; rotate: 1deg; scale: .97; }
+      20%, 80% { translate: 0 0; rotate: 0deg; scale: 1; }
+      100% { translate: -3rem -1.2rem; rotate: -.5deg; scale: .985; }
     }
   }
 }
 
-/* The decorative reading pointer touches the target edge; this class mimics a gentle hover. */
-.guided-tour-reading:is(a, button, [role="link"]) {
-  color: var(--cyan) !important;
+/* Keep the tour pointer decorative; it must never replace or suppress real hover states. */
+.guided-tour-cursor {
+  pointer-events: none;
+}
+.guided-tour-highlight:is(h1, h2, h3, a, button) {
+  color: #b5eaff;
   text-decoration-color: currentColor;
   text-underline-offset: .22em;
 }
-.guided-tour-reading:is(article, section, figure, .contact-card, .project-list-card, .experience-card) {
-  border-color: rgba(125, 211, 252, .36);
-}
-.guided-tour-reading {
-  transition: color .24s ease, border-color .24s ease, text-decoration-color .24s ease;
-}
-.guided-tour-cursor {
-  z-index: 1000;
-  pointer-events: none;
+.guided-tour-highlight:is(article, section, figure, .contact-card, .project-list-card, .experience-card) {
+  /* Deliberately no border, outline, or shadow: avoid boxing in whole page sections. */
 }
 .guided-tour-cursor-dot {
   box-shadow: 0 0 0 3px rgba(125, 211, 252, .15), 0 0 18px rgba(125, 211, 252, .55);
 }
-.guided-tour-cursor-ring {
-  opacity: .48;
-}
+.guided-tour-cursor-ring { opacity: .48; }
 
 /* Contrast corrections surfaced by the latest desktop/mobile axe smoke audit. */
 .home-focus-caption,
@@ -99,4 +120,20 @@ a[href$="cognitrace"] { color: #a8dfff; }
 }
 @media (forced-colors: active) {
   .guided-tour-reading { outline: 2px solid Highlight; outline-offset: 3px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .guided-tour-cursor-ring { animation: none; }
+  .guided-tour-highlight { transition: none; }
+  .app main :is(section, article, figure, h1, h2, h3, .polished-project-card,
+    .polished-research-card, .experience-timeline-main, .home-project-card,
+    .home-research-card, .credential-card, .polished-contact-link) {
+    animation: none !important;
+    translate: none !important;
+    rotate: none !important;
+    scale: none !important;
+  }
+}
+@media (forced-colors: active) {
+  .guided-tour-highlight { text-decoration: underline; }
 }
