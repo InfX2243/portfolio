@@ -1,169 +1,167 @@
-import { lazy, Suspense } from "react";
 import { PortfolioLayout } from "../components/layout/PortfolioLayout";
-import { PageHeader } from "../components/layout/PageHeader";
 import { withBasePath } from "../app/basePath";
-import { ProjectVisual } from "../components/ProjectVisual";
 import { HeroSystemVisual } from "../components/HeroSystemVisual";
-import { profile, projects, research, experience, domains, leadership } from "../data/portfolio";
-
-const VgpuField = lazy(() =>
-  import("../components/VgpuField").then((m) => ({ default: m.VgpuField })),
-);
+import { profile, projects, research, experience, domains, leadership, certifications } from "../data/portfolio";
 
 export function HomePage() {
-  const featured = projects.filter((project) => project.featured).sort((a, b) => Number(Boolean(b.award)) - Number(Boolean(a.award)));
+  const featured = projects
+    .filter((project) => project.featured)
+    .sort((a, b) => Number(Boolean(b.award)) - Number(Boolean(a.award)));
+  const primaryResearch = research.slice(0, 2);
 
   return (
     <PortfolioLayout>
-      <section className="home-hero section-shell" aria-labelledby="hero-title">
-        <Suspense fallback={null}>
-          <VgpuField />
-        </Suspense>
+      <section className="home-hero home-hero-rebuilt section-shell" aria-labelledby="hero-title">
         <div className="home-hero-copy">
-          <p className="hero-kicker"><span />{profile.eyebrow}</p>
-          <h1 id="hero-title">Hi, I&apos;m Abid.<br /><em>I build systems.</em></h1>
+          <p className="hero-kicker"><span aria-hidden="true" />{profile.eyebrow}</p>
+          <h1 id="hero-title">I&apos;m Abid.<br /><em>I build, learn, repeat.</em></h1>
           <p className="hero-lede">{profile.role}</p>
-          <p className="hero-supporting">An Information Technology undergraduate and Software Developer Intern, interested in the engineering behind cloud platforms, backend systems and AI-enabled applications.</p>
+          <p className="hero-supporting">
+            I&apos;m an engineer who likes turning ideas into real things. I learn by building,
+            testing, understanding why a system behaves the way it does, and making the next
+            iteration better. Right now, that means balancing my Information Technology degree,
+            an internship, engineering projects and research.
+          </p>
           <div className="hero-actions">
-            <a className="button button-primary" href={withBasePath("/projects")}>Explore my work <span aria-hidden="true">↘</span></a>
-            <a className="text-link" href={profile.links.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-            <a className="text-link" href={profile.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-            {profile.resume && <a className="text-link" href={withBasePath(profile.resume)} target="_blank" rel="noopener noreferrer">Résumé ↗</a>}
+            <a className="button button-primary" href={withBasePath("/projects")}>Explore selected work <span aria-hidden="true">↗</span></a>
+            <a className="text-link" href={profile.links.github} target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+            <a className="text-link" href={profile.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+            {profile.resume && <a className="text-link" href={withBasePath(profile.resume)} target="_blank" rel="noopener noreferrer">Résumé <span aria-hidden="true">↗</span></a>}
           </div>
         </div>
-        <HeroSystemVisual />
-        <div className="hero-focus-strip" aria-label="Current engineering focus">
-          <span className="mono-label">CURRENT DIRECTION</span>
-          <span>Cloud infrastructure</span>
-          <span>Applied AI</span>
-          <span>Backend systems</span>
-          <span>Research &amp; experimentation</span>
+        <div className="home-hero-aside">
+          {profile.portrait && (
+            <figure className="home-portrait">
+              <img src={withBasePath(profile.portrait)} alt="Portrait of Abid Ahmed Shaikh" fetchPriority="high" />
+              <figcaption><span>Currently</span><strong>Learning by building</strong></figcaption>
+            </figure>
+          )}
+          <HeroSystemVisual />
+        </div>
+        <div className="home-hero-bottom">
+          <p className="home-principle">“Never stop learning, because life never stops teaching.”</p>
+          <p className="home-principle-note">A personal principle — and a reminder that there is always more to offer.</p>
         </div>
       </section>
 
-      <section className="section-shell editorial-section" aria-labelledby="about-heading">
-        <PageHeader level="h2" index="01" eyebrow="The person behind the work" title="Curiosity, made practical." intro="A concise introduction to the person, not another list of technologies." />
-        <div className="intro-grid">
-          <p className="intro-statement">I&apos;m studying Information Technology at M.H. Saboo Siddik College of Engineering while working as a Software Developer Intern at Bitkraft Technologies LLP. I like learning by building, then understanding why a system works the way it does.</p>
-          <dl className="fact-list">
-            <div><dt>Education</dt><dd>{profile.education}</dd></div>
-            <div><dt>Interests</dt><dd>Cloud platforms · backend engineering · applied AI · research</dd></div>
-            <div><dt>Principle</dt><dd>Never stop learning, because life never stops teaching.</dd></div>
-          </dl>
+      <section className="section-shell overview-section" aria-labelledby="overview-title">
+        <div className="home-section-heading">
+          <div><p className="eyebrow">The short version</p><h2 id="overview-title">A profile, at a glance.</h2></div>
+          <p>The context behind the work, without making you hunt for it.</p>
         </div>
-        <a className="text-link section-link" href={withBasePath("/about")}>More about me ↗</a>
+        <div className="overview-grid">
+          <article className="overview-card overview-about">
+            <p className="mono-label">01 / ABOUT</p>
+            <h3>Curious by default. Hands-on by choice.</h3>
+            <p>I enjoy difficult problems that reward experimentation, careful implementation and continuous improvement. I care about how things work—not just getting a demo over the line—and I want each project to teach me something I can use in the next one.</p>
+            <a className="text-link" href={withBasePath("/about")}>More of my story <span aria-hidden="true">↗</span></a>
+          </article>
+          <article className="overview-card">
+            <p className="mono-label">02 / EDUCATION</p>
+            <h3>B.E. Information Technology</h3>
+            <p>M.H. Saboo Siddik College of Engineering</p>
+            <span className="overview-detail">2023–2027 · Expected graduation 2027</span>
+          </article>
+          <article className="overview-card">
+            <p className="mono-label">03 / EXPERIENCE</p>
+            {experience.slice(0, 1).map((item) => (
+              <div key={item.org}>
+                {item.logo && <img className="overview-company-logo" src={withBasePath(item.logo)} alt="" loading="lazy" />}
+                <h3>{item.role}</h3>
+                <p>{item.org}</p>
+                <span className="overview-detail">{item.period}</span>
+                <p className="overview-copy">{item.note}</p>
+              </div>
+            ))}
+            <a className="text-link" href={withBasePath("/experience")}>Experience details <span aria-hidden="true">↗</span></a>
+          </article>
+          <article className="overview-card overview-award">
+            <p className="mono-label">04 / TEAM RECOGNITION</p>
+            <span className="award-mark" aria-hidden="true">01</span>
+            <h3>1st Place Nationwide</h3>
+            <p>Xcelerate 2025 Oracle APEX Hackathon</p>
+            <span className="overview-detail">Team ORACLEONAUTS · Ascend APEX</span>
+            <a className="text-link" href={withBasePath("/projects/ascend-apex")}>See the project <span aria-hidden="true">↗</span></a>
+          </article>
+          <article className="overview-card overview-focus">
+            <p className="mono-label">05 / TECHNICAL DIRECTION</p>
+            <h3>Areas I&apos;m exploring</h3>
+            <ul className="overview-pills">
+              {domains.slice(0, 4).map((domain) => <li key={domain.title}>{domain.title}</li>)}
+            </ul>
+          </article>
+          <article className="overview-card">
+            <p className="mono-label">06 / COMMUNITY</p>
+            <h3>Learning with others</h3>
+            <ul className="overview-community">
+              {leadership.map(([name, context]) => <li key={name}><strong>{name}</strong><span>{context}</span></li>)}
+            </ul>
+          </article>
+        </div>
       </section>
 
-      <section className="section-shell editorial-section" aria-labelledby="projects-heading">
-        <PageHeader level="h2" index="02" eyebrow="Selected work" title="Start with what I&apos;ve built." intro="The most distinctive work comes first. Each case study uses supplied project material and separates known facts from details that still need verification." />
-        <div className="project-archive">
+      <section className="section-shell overview-section" aria-labelledby="work-title">
+        <div className="home-section-heading">
+          <div><p className="eyebrow">Selected work</p><h2 id="work-title">Built to be explored.</h2></div>
+          <a className="text-link" href={withBasePath("/projects")}>All projects <span aria-hidden="true">↗</span></a>
+        </div>
+        <div className="home-project-grid">
           {featured.map((project) => (
-            <article className="project-row" key={project.id}>
-              <div className="project-row-index">{project.number}</div>
-              <div className="project-row-main">
-                <div className="project-row-heading">
-                  <div>
-                    <p className="mono-label">{project.type}</p>
-                    <h3>{project.title}</h3>
-                  </div>
-                  {project.award && <p className="project-award">{project.award}</p>}
-                </div>
+            <article className="home-project-card" key={project.id}>
+              <a className="home-project-image" href={withBasePath("/projects/" + project.id)} aria-label={"Open " + project.title + " case study"}>
+                {project.visual && <img src={withBasePath(project.visual.src)} alt={project.visual.alt} loading="lazy" />}
+                <span className="home-project-open" aria-hidden="true">↗</span>
+              </a>
+              <div className="home-project-copy">
+                <p className="mono-label">{project.type}</p>
+                <h3><a href={withBasePath("/projects/" + project.id)}>{project.title}</a></h3>
+                {project.award && <p className="home-project-award">{project.award}</p>}
                 <p>{project.description}</p>
-                <div className="project-row-footer">
-                  <div className="plain-tags" aria-label="Technologies and focus">
-                    {project.approach.map((tag) => <span key={tag}>{tag}</span>)}
-                  </div>
-                  <a className="text-link" href={withBasePath("/projects/" + project.id)}>Case study ↗</a>
-                </div>
-              </div>
-              <ProjectVisual project={project} />
-            </article>
-          ))}
-        </div>
-        <a className="text-link section-link" href={withBasePath("/projects")}>Browse all projects ↗</a>
-      </section>
-
-      <section className="section-shell editorial-section" aria-labelledby="research-heading">
-        <PageHeader level="h2" index="03" eyebrow="Research" title="Questions worth investigating." intro="Research belongs alongside engineering. The page distinguishes project context from publication or recognition claims that still need authoritative evidence." />
-        <div className="research-archive">
-          {research.map((item) => (
-            <article className="research-row" key={item.id}>
-              <span className="research-row-index">{item.index}</span>
-              <div>
-                <p className="mono-label">{item.context}</p>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </div>
-              <div className="research-row-signal">
-                <span>{item.signal}</span>
-                <a className="text-link" href={withBasePath("/research")}>Explore research ↗</a>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="section-shell editorial-section" aria-labelledby="experience-heading">
-        <PageHeader level="h2" index="04" eyebrow="Experience" title="Where I&apos;m growing as an engineer." intro="Professional context matters, so this section stays concise and does not imply responsibilities beyond the information currently confirmed." />
-        <div className="experience-list">
-          {experience.map((item) => (
-            <article className="experience-item" key={item.org}>
-              <p className="experience-period">{item.period}</p>
-              <div className="experience-main">
-                <div>
-                  {item.logo && <img className="experience-company-logo" src={withBasePath(item.logo)} alt="" loading="lazy" />}
-                  <p className="mono-label">{item.org}</p>
-                  <h3>{item.role}</h3>
-                  <p>{item.note}</p>
-                </div>
-                <ul className="plain-tags" aria-label="Focus areas">
-                  {item.focus.map((focus) => <li key={focus}>{focus}</li>)}
+                <ul className="home-project-tags" aria-label={project.title + " focus areas"}>
+                  {project.approach.slice(0, 3).map((tag) => <li key={tag}>{tag}</li>)}
                 </ul>
+                <a className="text-link" href={withBasePath("/projects/" + project.id)}>Project overview <span aria-hidden="true">↗</span></a>
               </div>
             </article>
           ))}
         </div>
-        <a className="text-link" href={withBasePath("/experience")}>Full experience details ↗</a>
       </section>
 
-      <section className="section-shell editorial-section" aria-labelledby="direction-heading">
-        <PageHeader level="h2" index="05" eyebrow="Technical direction" title="The areas shaping my next chapter." intro="A few connected areas of interest, rather than a claim to have mastered every tool in the stack." />
-        <div className="direction-list">
-          {domains.slice(0, 4).map((domain) => (
-            <article key={domain.title}>
-              <span>{domain.label}</span>
-              <h3>{domain.title}</h3>
-              <p>{domain.body}</p>
+      <section className="section-shell overview-section" aria-labelledby="research-title">
+        <div className="home-section-heading">
+          <div><p className="eyebrow">Research & investigation</p><h2 id="research-title">Questions worth following.</h2></div>
+          <a className="text-link" href={withBasePath("/research")}>Research details <span aria-hidden="true">↗</span></a>
+        </div>
+        <div className="home-research-grid">
+          {primaryResearch.map((item) => (
+            <article className="home-research-card" key={item.id}>
+              {item.visual && <img src={withBasePath(item.visual)} alt={item.visualAlt || ""} loading="lazy" />}
+              <div><p className="mono-label">{item.context}</p><h3>{item.title}</h3><p>{item.description}</p></div>
             </article>
           ))}
         </div>
+        <p className="home-evidence-note">Publication, methodology and individual-contribution details are included only when supported by evidence.</p>
       </section>
 
-      <section className="section-shell editorial-section" aria-labelledby="community-heading">
-        <PageHeader level="h2" index="06" eyebrow="Recognition & community" title="Signals beyond the code." intro="Selected team recognition and community involvement complement the work itself." />
-        <div className="community-list">
-          {featured.filter((project) => project.award).map((project) => (
-            <div key={project.id}>
-              <span className="mono-label">{project.type}</span>
-              <strong>{project.award}</strong>
-              <a className="text-link" href={withBasePath("/projects/" + project.id)}>See the work ↗</a>
-            </div>
-          ))}
-          {leadership.map(([name, context]) => (
-            <div key={name}>
-              <span className="mono-label">Community</span>
-              <strong>{name}</strong>
-              <small>{context}</small>
-            </div>
-          ))}
+      <section className="section-shell overview-section" aria-labelledby="credentials-title">
+        <div className="home-section-heading">
+          <div><p className="eyebrow">Credentials & learning</p><h2 id="credentials-title">Learning, put to work.</h2></div>
+          <a className="text-link" href={withBasePath("/achievements")}>All credentials <span aria-hidden="true">↗</span></a>
         </div>
-        <a className="text-link section-link" href={withBasePath("/achievements")}>Explore achievements &amp; credentials ↗</a>
-        <div className="home-closing">
-          <p className="mono-label">07 / CONTACT</p>
-          <h2>Let&apos;s build something meaningful.</h2>
-          <p>Open to technical conversations, research communities, and engineering opportunities.</p>
-          <a className="button button-primary" href={withBasePath("/contact")}>Get in touch ↗</a>
+        <div className="home-credentials-panel">
+          <div className="home-credentials-intro">
+            <span className="credential-count">{String(certifications.length).padStart(2, "0")}</span>
+            <div><h3>Professional certifications</h3><p>A selected overview; visit the credentials page for the complete inventory and available badge records.</p></div>
+          </div>
+          <ul className="home-certification-list">
+            {certifications.slice(0, 4).map((certificate) => <li key={certificate}>{certificate}</li>)}
+          </ul>
         </div>
+      </section>
+
+      <section className="section-shell home-final-cta" aria-labelledby="contact-title">
+        <div><p className="eyebrow">The next iteration</p><h2 id="contact-title">I have more to offer.<br /><em>Let&apos;s find out what&apos;s next.</em></h2><p>Open to engineering conversations, research communities and opportunities to build useful things with thoughtful people.</p></div>
+        <a className="button button-primary" href={withBasePath("/contact")}>Get in touch <span aria-hidden="true">↗</span></a>
       </section>
     </PortfolioLayout>
   );
