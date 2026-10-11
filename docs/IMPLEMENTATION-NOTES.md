@@ -211,3 +211,11 @@ Appended the eight newly supplied Credly badge IDs to src/data/credentials.json,
 - Kept a concise evidence note explaining that award/publication details still need an authoritative public source. No award, publication, or conference claim was added.
 - Updated `ResearchVisual` to avoid repeating the signal label and to omit recognition metadata entirely when no verified recognition value exists; it no longer invents a “Recognition pending verification” field.
 - Validation: source and documentation commits trigger the GitHub Pages production workflow; browser/device and assistive-technology validation remain outstanding.
+
+
+## Sprint O — Profile accuracy and personal voice (2026-10-11)
+
+- Updated the Bitkraft role label to **Software Developer Intern**, reflecting the latest direct statement captured in `docs/ABOUT-ME.md`. The official HR/offer-letter title should still be confirmed before final publication if it differs.
+- Reformatted the About page into maintainable JSX and added the user's learning philosophy as one restrained quote, grounded in the canonical profile notes.
+- Added quote styling using the existing palette and typography tokens; no new dependencies or unverified professional claims were introduced.
+- Production build/deployment and browser/device validation are pending for this increment.
