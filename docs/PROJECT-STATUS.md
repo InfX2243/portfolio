@@ -620,3 +620,14 @@ The browser audit exposed and helped fix a contrast issue caused by scroll-linke
 - Structural checks: **PASS** — each route has a document title and exactly one visible main H1.
 - Mobile reflow smoke check: **PASS** — no horizontal document overflow at 390px.
 - Remaining manual accessibility work: keyboard-only navigation and focus order, menu Escape/focus return, 200%/400% zoom and reflow, screen-reader behavior, and manual review of any contrast or visual states not captured by axe.
+
+## Sprint W — Project archive expansion and credential visibility (2026-10-11)
+
+- **DONE — project data:** Added Moodly, Memory Game, GitDev360, Vaulix, AWS Academy Management Portal, and EchoClass to the centralized project archive, including source links, case-study context, technical focus, and explicit evidence boundaries.
+- **DONE — skills:** Added Security & Privacy Engineering and API Integration & Developer Tools domains; expanded stack terms to include browser cryptography and GitHub API integration.
+- **DONE — AI certification:** Added AWS Certified AI Practitioner to the credential archive. Public verification URL and issue date remain unprovided and are not fabricated.
+- **DONE — Credly rendering:** Connected the existing Credly badge records to the Achievements page through the reusable Credly embed component.
+- **DONE — asset instructions:** Added `docs/PROJECT-ASSET-UPLOAD-GUIDE.md` with exact screenshot paths and privacy guidance.
+- **PARTIAL — image assets:** Project records currently point to `public/assets/projects/<project-slug>/cover.png`; upload screenshots to the six paths in the asset guide to replace the existing image fallback/empty image state.
+- **PARTIAL — validation:** Repository writes succeeded, but a local production build and real-browser/keyboard/embed audit have not been run from this connector session. Run `npm ci && npm run build` and check the Projects and Achievements pages before release.
+
