@@ -1,6 +1,6 @@
 # Portfolio Implementation Status
 
-Last updated: 2026-10-11 (Sprint V — archive page redesign, content deduplication and automated accessibility smoke audit)
+Last updated: 2026-10-12 (Sprint AB — automated walkthrough, cursor tracking and hero visual refinement)
 > Branch: `portfolio-v1`  
 > Source of truth: `docs/AI-PORTFOLIO-EXECUTION.md`
 
@@ -666,3 +666,28 @@ The browser audit exposed and helped fix a contrast issue caused by scroll-linke
 - **DONE — user control:** real pointer movement, wheel, touch and keyboard input still stop the tour. The simulated pointer uses `pointer-events: none` and never moves the user's actual operating-system cursor.
 - **DONE — accessibility:** the tour checks `prefers-reduced-motion`, shortens/removes cursor movement and pulse animation when requested, and provides forced-colors spotlight styling.
 - **NEXT — validation:** wait for the latest CI run to confirm production build, route generation, desktop/mobile axe smoke audit and deployment; then visually verify the tour in a real browser. Cursor movement is a visual cue only and does not synthesize real hover events.
+
+
+## Sprint AB — Automated walkthrough and hero visual refinement (2026-10-12)
+
+### Completed:
+- Removed the user-facing Guided tour launch button. The walkthrough now starts automatically on page load when the visitor has not requested reduced motion.
+- Kept a clear Stop walkthrough control while it is running; real pointer movement, scrolling, touch, or keyboard input also returns control to the visitor.
+- Made scrolling deterministic by temporarily disabling CSS smooth-scroll behavior while the tour's single animation loop is active, then restoring the original setting during cleanup.
+- Reworked cursor placement so the decorative pointer sits beside a target rather than over its text or controls. Target geometry is re-measured after each scroll to avoid stale coordinates at the start/end of a scroll.
+- Removed the strong target outline, border-radius, and glow box-shadow. The tour now uses only a restrained text accent on headings and links; cards and reading content are not boxed.
+- Replaced the atom/orbit hero illustration below the profile portrait with a restrained typographic “How I work” sequence: build with intent, understand the system, improve the next iteration.
+- Kept the cursor decorative and non-interactive (pointer-events: none); it does not synthesize clicks or trigger actual DOM hover behavior.
+- Preserved reduced-motion and forced-colors handling; reduced-motion visitors are not auto-scrolled.
+
+### Validation:
+- Source updates committed in separate increments:
+  - Guided-tour automation and scroll/cursor stabilization: e535bc35d41a1c20510424355734723e17f77362
+  - Replace hero atom artwork with editorial engineering principles: 22e3a41e5bcdafb05b30774c9a4c7c381ce7cd2d
+  - Cursor/spotlight and hero styling refinement: 4d62470dc2466cc987d22472be524ab3d039ac6a
+- CI build, automated accessibility audit, and Pages deployment must be checked on the latest commit before this sprint is marked fully validated.
+- Real-browser timing and cross-device review remain outstanding; do not infer deployed success from source commits alone.
+
+### Next:
+- Confirm the latest workflow result.
+- Review any build/accessibility failures, fix them before proceeding, and update this section with the final validation result.
