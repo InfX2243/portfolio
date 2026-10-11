@@ -204,3 +204,32 @@ a[href$="cognitrace"] { color: #a8dfff; }
 ) {
   color: #b8c6d2 !important;
 }
+
+
+/* Sprint AG follow-up: page templates are not all wrapped by the same shell.
+   Use direct, route-independent selectors so the contrast rule reaches every template. */
+body .project-signal-strip > span,
+body .archive-section-heading > .eyebrow,
+body .archive-section-heading > p,
+body .case-study-intro .eyebrow,
+body .case-study-section > .eyebrow,
+body .plain-tags > span,
+body .experience-timeline-rail > span,
+body .polished-page-footnote,
+body .polished-credly-section > .polished-credentials-heading > div > .eyebrow,
+body .polished-credly-section > .polished-credentials-heading > span,
+body .certificate-meta > small,
+body .certificate-meta > p,
+body .polished-domain-card > h3,
+body .polished-domain-card > p,
+body .about-principles > article > h2,
+body .about-principles > article > p,
+body .about-domain-section > .polished-section-heading > div > .eyebrow,
+body #project-gallery-title,
+body #research-principle-title,
+body #about-domains-title,
+body ol > li > span,
+body ol > li > strong,
+body .polished-project-award {
+  color: #b8c6d2 !important;
+}
