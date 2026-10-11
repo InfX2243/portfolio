@@ -630,4 +630,11 @@ The browser audit exposed and helped fix a contrast issue caused by scroll-linke
 - **DONE — asset instructions:** Added `docs/PROJECT-ASSET-UPLOAD-GUIDE.md` with exact screenshot paths and privacy guidance.
 - **PARTIAL — image assets:** Project records currently point to `public/assets/projects/<project-slug>/cover.png`; upload screenshots to the six paths in the asset guide to replace the existing image fallback/empty image state.
 - **PARTIAL — validation:** Repository writes succeeded, but a local production build and real-browser/keyboard/embed audit have not been run from this connector session. Run `npm ci && npm run build` and check the Projects and Achievements pages before release.
+## Sprint X — Use the complete project screenshot collections (2026-10-11)
+
+- **DONE — asset audit:** Inspected the `portfolio-v1` Git tree for `public/assets/projects/`; confirmed existing screenshot collections for Moodly (8), Memory Game (4), GitDev360 (9), Vaulix (15), AWS Academy (15), and EchoClass (17), plus existing collections for Ascend APEX, Cognitrace, Green Passport, and the AWS Web Application Builder.
+- **DONE — gallery wiring:** Replaced nonexistent `cover.png` references with actual tracked asset filenames and connected every numbered screenshot for the six projects to the case-study gallery.
+- **DONE — AWS Academy path correction:** Portfolio now points to `public/assets/projects/aws-academy/awsacademy1.png` and uses the actual `aws-academy/` directory rather than the nonexistent `aws-academy-mhsscoe-website/` asset directory.
+- **PARTIAL — screenshot semantics:** Several source screenshots use only numbered filenames, so gallery captions identify screen order rather than guessing at undocumented feature names. Update captions after visually reviewing each screen.
+- **NEXT — validation:** Run `npm ci && npm run build`, inspect all project detail routes, and verify image loading in a browser.
 
