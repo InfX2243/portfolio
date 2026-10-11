@@ -23,7 +23,7 @@ try {
   const page = await context.newPage();
   for (const route of routes) {
     const response = await page.goto(new URL(route, baseURL).href, { waitUntil: "domcontentloaded" });
-    await page.locator("main").waitFor({ state: "visible" });
+    await page.locator("main h1").waitFor({ state: "visible", timeout: 15000 });
     const pageTitle = await page.title();
     const h1Count = await page.locator("main h1").count();
     const structuralIssues = [];
