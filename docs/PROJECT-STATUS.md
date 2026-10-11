@@ -460,3 +460,20 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 ### Next
 1. Confirm CI for the responsive navigation, case-study cleanup, and archive-link accessibility changes.
 2. Continue the route-by-route accessibility and responsive audit; do not mark browser acceptance complete until tested in a real browser.
+
+
+## Sprint M — Achievement semantics and experience archive consistency (2026-10-11)
+
+### Completed
+- Removed the Cognitrace placeholder row from the “Selected achievements” archive because its copy explicitly said publication/award metadata was not verified. The research project remains represented on the Research page, while the achievements list now contains only an award entry with an evidence basis.
+- Replaced the hardcoded experience entry number with a position-derived number so future entries remain correctly ordered without duplicate “01” labels.
+- No award claims, job responsibilities, dates, or metrics were added.
+
+### Validation
+- **Pending:** GitHub Actions for achievement archive content commit `c88455f932efc9075a04a90d6450ba32926aeb00` and experience numbering commit `fd47bc6ef847b395b2caba0498176ee5096ae01b`.
+- Browser and screen-reader validation remain outstanding.
+
+### Next
+1. Confirm both source-change workflows pass.
+2. Continue auditing page-level content hierarchy and repeated evidence-boundary copy.
+3. Validate desktop, tablet, and mobile rendering in a real browser before release sign-off.
