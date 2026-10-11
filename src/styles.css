@@ -1897,3 +1897,56 @@ a:hover { text-decoration-thickness: .12em; }
 @media (forced-colors: active) {
   .guided-tour-button, .guided-tour-hint { border: 1px solid ButtonText; }
 }
+
+
+/* Guided-tour spotlight and decorative cursor: visual only, never steals input. */
+.guided-tour-cursor {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+  will-change: transform;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, .4));
+}
+.guided-tour-cursor-dot {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 9px;
+  height: 9px;
+  border: 2px solid #07111c;
+  border-radius: 50%;
+  background: #7dd3fc;
+  box-shadow: 0 0 0 2px rgba(125, 211, 252, .85);
+}
+.guided-tour-cursor-ring {
+  position: absolute;
+  top: -14px;
+  left: -14px;
+  width: 29px;
+  height: 29px;
+  border: 1px solid rgba(125, 211, 252, .9);
+  border-radius: 50%;
+  animation: guided-tour-cursor-pulse 1.5s ease-out infinite;
+}
+.guided-tour-highlight {
+  outline: 2px solid rgba(125, 211, 252, .88) !important;
+  outline-offset: 5px;
+  border-radius: 5px;
+  box-shadow: 0 0 0 8px rgba(125, 211, 252, .08), 0 0 24px rgba(125, 211, 252, .1) !important;
+}
+@keyframes guided-tour-cursor-pulse {
+  0% { opacity: .85; transform: scale(.78); }
+  75%, 100% { opacity: 0; transform: scale(1.35); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .guided-tour-cursor-ring { animation: none; }
+  .guided-tour-highlight { box-shadow: none !important; }
+}
+@media (forced-colors: active) {
+  .guided-tour-highlight { outline: 2px solid Highlight !important; }
+  .guided-tour-cursor-dot, .guided-tour-cursor-ring { border-color: CanvasText; }
+}
