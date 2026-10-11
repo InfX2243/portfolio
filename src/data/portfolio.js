@@ -7,6 +7,11 @@ export const profile = {
   education: "M.H. Saboo Siddik College of Engineering · Information Technology · 2023–2027",
   portrait: "/assets/profile/Photograph.png",
   resume: "/assets/documents/Abid Ahmed Shaikh Resume.pdf",
+  contact: {
+    email: "abid.231446.it@mhssce.ac.in",
+    phoneDisplay: "+91 9967813266",
+    phoneDial: "+919967813266",
+  },
   links: {
     github: "https://github.com/InfX2243",
     linkedin: "https://www.linkedin.com/in/abid-ahmed-shaikh/",
