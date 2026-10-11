@@ -1,0 +1,99 @@
+/* Sprint AD — content-led motion and readable walkthrough states */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    /*
+     * Every meaningful content unit moves into view and eases upward/out as it leaves.
+     * Transform-only motion keeps text contrast stable for assistive audits and readers.
+     */
+    .app main > *,
+    .app main :is(
+      .home-hero, .editorial-section, .page-section, .section, .section-head,
+      .polished-section-heading, .archive-section-heading, .project-archive-entry,
+      .secondary-project-entry, .research-archive-entry, .case-study-section,
+      .experience-entry, .experience-card, .experience-row, .certificate-card,
+      .credly-card, .achievement-highlight > div, .about-principles > article,
+      .polished-domain-card, .contact-card, .project-list-card, .case-grid > section,
+      .project-visual, .project-gallery figure, .credential-list > div,
+      .about-grid > *, .intro-grid > *, .research-callout > *, .closing, .footer,
+      h1, h2, h3, h4, p, li, figure, blockquote, .button, .text-link, .tag-row,
+      .plain-tags, .stack-line, .experience-entry-focus, .case-study-resources,
+      .related-work, .case-study-boundary
+    ) {
+      animation-name: portfolio-reading-flow;
+      animation-duration: 1ms;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: view(block);
+      animation-range: entry 0% exit 100%;
+    }
+
+    @keyframes portfolio-reading-flow {
+      0% { transform: translate3d(0, 26px, 0) scale(.985); }
+      18%, 82% { transform: translate3d(0, 0, 0) scale(1); }
+      100% { transform: translate3d(0, -24px, 0) scale(.99); }
+    }
+  }
+}
+
+/* The decorative reading pointer touches the target edge; this class mimics a gentle hover. */
+.guided-tour-reading:is(a, button, [role="link"]) {
+  color: var(--cyan) !important;
+  text-decoration-color: currentColor;
+  text-underline-offset: .22em;
+}
+.guided-tour-reading:is(article, section, figure, .contact-card, .project-list-card, .experience-card) {
+  border-color: rgba(125, 211, 252, .36);
+}
+.guided-tour-reading {
+  transition: color .24s ease, border-color .24s ease, text-decoration-color .24s ease;
+}
+.guided-tour-cursor {
+  z-index: 1000;
+  pointer-events: none;
+}
+.guided-tour-cursor-dot {
+  box-shadow: 0 0 0 3px rgba(125, 211, 252, .15), 0 0 18px rgba(125, 211, 252, .55);
+}
+.guided-tour-cursor-ring {
+  opacity: .48;
+}
+
+/* Contrast corrections surfaced by the latest desktop/mobile axe smoke audit. */
+.home-focus-caption,
+ol > li > span,
+.archive-section-heading > .eyebrow,
+.archive-section-heading > p,
+.case-study-intro .eyebrow,
+.case-study-intro > div > p:last-child,
+.plain-tags li,
+.plain-tags span,
+.project-archive-title p,
+.project-archive-index,
+.project-archive-meta,
+.polished-project-award,
+.polished-page-footnote,
+.polished-research-footer span,
+.polished-research-copy .eyebrow,
+.polished-research-copy > p,
+.credential-meta p,
+.certificate-meta p,
+.credential-visual-top span,
+.about-principles > article > p,
+.about-domain-section .eyebrow,
+.polished-section-heading > p,
+.polished-domain-card > span,
+.project-gallery figcaption strong,
+.project-gallery figcaption,
+.experience-entry-focus li {
+  color: #aebbc7;
+}
+a[href$="cognitrace"] { color: #a8dfff; }
+
+@media (prefers-reduced-motion: reduce) {
+  .guided-tour-reading { transition: none; }
+  .guided-tour-cursor-dot { box-shadow: none; }
+  .guided-tour-cursor-ring { display: none; }
+}
+@media (forced-colors: active) {
+  .guided-tour-reading { outline: 2px solid Highlight; outline-offset: 3px; }
+}
