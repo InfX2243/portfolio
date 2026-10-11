@@ -84,7 +84,10 @@ ol > li > span,
 .polished-domain-card > span,
 .project-gallery figcaption strong,
 .project-gallery figcaption,
-.experience-entry-focus li {
+.experience-entry-focus li,
+.home-section-heading .eyebrow,
+.home-section-heading > p,
+.text-link[href$="projects"] {
   color: #aebbc7;
 }
 a[href$="cognitrace"] { color: #a8dfff; }
