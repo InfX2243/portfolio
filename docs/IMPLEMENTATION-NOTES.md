@@ -236,4 +236,4 @@ Appended the eight newly supplied Credly badge IDs to src/data/credentials.json,
 - Internal route transitions and browser history navigation request focus handoff; the shared layout focuses the `main` landmark after the destination layout mounts. The landmark uses `tabIndex={-1}` so it can receive programmatic focus without adding an extra tab stop.
 - Same-route clicks do not leave a stale focus request waiting for a future page mount.
 - Added the SPA focus handoff requirement to `docs/AI-PORTFOLIO-EXECUTION.md`.
-- Source-level implementation only: GitHub Actions and real-browser checks are being verified separately. No screen-reader or manual browser acceptance is claimed.
+- GitHub Actions passed for the route-focus utility ([38118559498](https://github.com/InfX2243/portfolio/actions/runs/38118559498)), shared-layout focus behavior ([38118571946](https://github.com/InfX2243/portfolio/actions/runs/38118571946)), router integration ([38118579942](https://github.com/InfX2243/portfolio/actions/runs/38118579942)), and the Sprint Q documentation updates. This confirms build/route checks only; no screen-reader or manual browser acceptance is claimed.
