@@ -506,3 +506,22 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 1. Inspect the remaining public-facing content for stale role labels and unsupported implications.
 2. Continue keyboard/focus and mobile-navigation audit at source level; verify in a real browser before release sign-off.
 3. Gather authoritative role dates, current résumé, research publication details, and credential verification URLs before final release.
+
+
+## Sprint Q — SPA navigation focus and accessibility audit (2026-10-11)
+
+### Completed
+- Added a small route-focus handoff utility so client-side navigation can request a focus update without coupling page components to router internals.
+- The shared layout now makes the main landmark programmatically focusable and moves focus there after an internal route change has mounted, including browser back/forward navigation.
+- Same-route navigation avoids creating a focus request for a page that will not remount.
+- Updated the authoritative execution specification to require a main-content focus handoff after SPA navigation.
+
+### Validation
+- **Pending:** GitHub Actions production build and route validation for the route-focus implementation; source-level changes are not treated as browser or assistive-technology acceptance.
+- Real browser keyboard testing, screen-reader review, and narrow viewport navigation checks remain outstanding.
+
+### Next
+1. Confirm all source-change workflows pass.
+2. Review heading hierarchy, skip-link behavior, and reduced-motion CSS at source level; fix only clear defects.
+3. Continue auditing stale or unsupported public claims and keep official role-title confirmation as a pre-release item.
+4. Perform browser/device and assistive-technology acceptance testing before release sign-off.
