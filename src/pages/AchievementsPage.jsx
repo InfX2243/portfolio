@@ -82,10 +82,7 @@ export function AchievementsPage() {
           </div>
         </section>
 
-        <div className="achievement-boundary">
-          <span className="eyebrow">Evidence boundary</span>
-          <p>Credential titles, issuers, dates and IDs are shown only from repository-verified metadata. Public verification URLs and award/publication details remain hidden until directly verified.</p>
-        </div>
+        <p className="achievement-note">Credential details vary by issuer; use the available Credly links to inspect public badge records.</p>
       </section>
     </PortfolioLayout>
   );
