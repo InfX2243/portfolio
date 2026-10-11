@@ -517,7 +517,7 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 - Updated the authoritative execution specification to require a main-content focus handoff after SPA navigation.
 
 ### Validation
-- **Pending:** GitHub Actions production build and route validation for the route-focus implementation; source-level changes are not treated as browser or assistive-technology acceptance.
+- **Validated:** GitHub Actions passed for the route-focus utility ([38118559498](https://github.com/InfX2243/portfolio/actions/runs/38118559498)), shared-layout focus behavior ([38118571946](https://github.com/InfX2243/portfolio/actions/runs/38118571946)), router integration ([38118579942](https://github.com/InfX2243/portfolio/actions/runs/38118579942)), and Sprint Q documentation commits. Source-level CI is not treated as browser or assistive-technology acceptance.
 - Real browser keyboard testing, screen-reader review, and narrow viewport navigation checks remain outstanding.
 
 ### Next
