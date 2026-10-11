@@ -764,3 +764,20 @@ The browser audit exposed and helped fix a contrast issue caused by scroll-linke
 - Source commit: c63fbda7693c8a3be5081789a15fbff520e8ea7b.
 - Pending: verify the latest GitHub Actions run passes production build, route generation, desktop/mobile accessibility smoke audit, and GitHub Pages deployment.
 - Automated checks cannot judge animation choreography visually. Review card clipping/alignment, hover/press behavior, reverse scrolling, mobile layouts, and reduced-motion behavior in a real browser before V1 sign-off.
+
+
+## Sprint AG — Menu-led guided-tour transitions and contrast audit fixes (2026-10-12)
+
+### Implemented
+- Updated the guided walkthrough's route boundary: after reading the final target on a page, the cursor scrolls to the top, moves to the visible navigation link for the next route, and activates the real link with a click. If no matching visible navigation link exists, the tour stops safely instead of silently changing routes.
+- Added targeted high-contrast foreground overrides for muted metadata and supporting copy flagged by the desktop/mobile axe smoke audit. The audit remains enabled; no failing checks were disabled or downgraded.
+
+### Validation
+- The preceding workflow failed at the automated accessibility smoke audit, not at the production build. The failure identified serious colour-contrast violations across the home, project detail, research, experience, achievements, and about routes.
+- **Pending:** the latest branch-head workflow must pass production build, route generation, desktop/mobile axe checks, route fallback verification, and GitHub Pages deployment.
+- **Still required:** manual browser review of cursor-to-menu alignment and click behavior across desktop/mobile navigation, plus keyboard-only and reduced-motion walkthrough checks. Automated axe testing is not a complete WCAG certification.
+
+### Close-out criteria
+1. Latest GitHub Actions workflow succeeds on the current branch head.
+2. Verify the guided transition uses the visible menu control rather than a direct route mutation.
+3. If any contrast findings remain, fix the specific selectors and rerun the full audit before calling the release ready.
