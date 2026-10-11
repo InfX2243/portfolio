@@ -60,7 +60,7 @@ export function AchievementsPage() {
         <section className="achievement-archive">
           <div className="archive-section-heading">
             <p className="eyebrow">Credly</p>
-            <h2>Verified badge embeds</h2>
+            <h2>Credly badges</h2>
           </div>
           <div className="credly-badge-grid">
             {badges.map((badge) => <CredlyBadge key={badge.id} badge={badge} />)}
