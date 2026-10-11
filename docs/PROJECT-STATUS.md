@@ -715,3 +715,23 @@ The browser audit exposed and helped fix a contrast issue caused by scroll-linke
 1. Confirm the latest GitHub Actions run passes before considering this sprint build-validated.
 2. Visually verify that project cards are each visited once and the cursor remains close to the intended target after scrolling.
 3. Complete the remaining manual accessibility and release checks already listed in Sprint V.
+
+## Sprint AD — Reader-led motion and guided-tour continuity (2026-10-12)
+
+### Implemented in source
+- The decorative cursor now touches the target's rightmost edge where available, with a close-edge fallback on narrow layouts. A subtle reading state emulates hover emphasis without synthesizing clicks or actual pointer events.
+- Physical pointer movement no longer interrupts the tour. Deliberate scrolling, touch, pointer-down, and page-navigation keyboard input pause it so visitors can interact naturally.
+- Changed the idle action to **Continue walkthrough**. Route and target checkpoint are retained; target progress is committed after reading so a pause during scroll resumes on the same target rather than skipping ahead.
+- Added `src/motion.css` with scroll-linked entrance and exit movement for page sections and meaningful content units. Content gently rises into view and drifts upward as it leaves. Transform-only movement avoids lowering text contrast; unsupported browsers retain the static layout.
+- Kept reduced-motion and forced-colors accommodations. The decorative pointer remains non-interactive.
+- Added `docs/SPRINT-AD.md` as the detailed sprint note.
+
+### Validation
+- The previous CI run's production build and route generation passed, but the axe audit failed on existing muted-text contrast across multiple desktop/mobile routes. Targeted contrast corrections for the reported selectors are included in this increment.
+- **Pending:** latest commit must pass production build, generated-route checks, desktop/mobile axe smoke audit, and GitHub Pages deployment.
+- **Still required:** real-browser review of scroll entry/exit timing, tour interruption/resumption, narrow-screen cursor placement, keyboard-only behavior, screen-reader behavior, and reduced-motion mode. Automated axe testing is not a full WCAG conformance certification.
+
+### Next
+1. Confirm the latest workflow result and resolve any remaining audit findings.
+2. Review animation behavior at desktop and mobile widths, avoiding motion that harms readability or causes layout instability.
+3. Complete the manual accessibility checks already listed in Sprint V before formal V1 sign-off.
