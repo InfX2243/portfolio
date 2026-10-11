@@ -27,7 +27,7 @@ export const experience = [
 export const projects = [
   {
     id: "cognitrace",
-    number: "01",
+    number: "02",
     title: "Cognitrace",
     type: "Research",
     award: null,
@@ -49,7 +49,7 @@ export const projects = [
   },
   {
     id: "ascend-apex",
-    number: "02",
+    number: "01",
     title: "Ascend APEX",
     type: "Applied Engineering",
     award: "1st Place Nationwide · Xcelerate 2025 Oracle APEX Hackathon",
@@ -57,7 +57,6 @@ export const projects = [
       "A role-based skill-validation application built with Oracle APEX, with dedicated Student, Faculty, Recruiter and Admin experiences. Ascend APEX won first place nationwide at the Xcelerate 2025 Oracle APEX Hackathon.",
     visual: { src: "/assets/projects/ascend-apex/overview.png", alt: "Ascend APEX application overview" },
     gallery: [
-      { src: "/assets/projects/ascend-apex/overview.png", alt: "Ascend APEX application overview", caption: "Product overview", group: "Overview" },
       { src: "/assets/projects/ascend-apex/Student1.png", alt: "Ascend APEX student experience", caption: "Student workspace", group: "Student" },
       { src: "/assets/projects/ascend-apex/Student3.png", alt: "Ascend APEX student workflow", caption: "Student workflow", group: "Student" },
       { src: "/assets/projects/ascend-apex/Faculty1.png", alt: "Ascend APEX faculty experience", caption: "Faculty workspace", group: "Faculty" },
