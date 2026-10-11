@@ -269,3 +269,23 @@ Release note: CI validates build and deployment mechanics, not real-browser imag
 - Added CSS-only 3D perspective to the hero system illustration and supplied project media, plus small hover, link, orbit and progressive scroll-reveal transitions. This avoids adding a new WebGL/3D dependency or turning animation into a required source of information.
 - Preserved focus visibility, main-content focus handoff, mobile menu Escape behavior and prefers-reduced-motion support; the new non-essential animations/transforms are disabled for reduced-motion users.
 - Validation boundary: wait for the source workflow before claiming build success. CSS and CI do not replace real-device checks for the 3D effect, layout, image crops, keyboard navigation or assistive technology.
+
+
+## Sprint U — executive-summary hierarchy and accessibility remediation (2026-10-11)
+
+### Product correction
+- Rebuilt the homepage as the portfolio's executive summary: personal story and motto, portrait, education, current internship, the verified Ascend APEX team award, technical direction, community, three featured projects, research overview and selected certifications are all visible without visiting another route.
+- Replaced the long serial narrative with compact overview cards and project/research grids. Deep-dive routes remain available for case studies, the full research archive, experience, credentials and biography.
+- Updated navigation labels and included Credentials in the primary navigation; mobile navigation now activates at tablet widths to avoid cramped links.
+- Kept project and research claims bounded by current source evidence; no personal contribution, publication, metric or award has been inferred.
+
+### WCAG 2.2 AA remediation
+- Improved keyboard focus visibility, skip-link presentation, main landmark focus, scroll offsets and navigation target sizes.
+- Raised low-contrast metadata colors and clarified award/focus treatments against the dark background.
+- Added consistent reduced-motion handling for all decorative animations and transitions, plus forced-colors support for focus and card boundaries.
+- Added meaningful page section headings, accessible link names, decorative icon hiding and explicit list semantics to the new homepage.
+
+### Validation status — do not overclaim
+- Source changes require the GitHub Actions production build and deployed-route checks.
+- WCAG conformance is **not yet certified**. A real audit still needs automated accessibility testing (for example axe/WAVE), keyboard-only review, 200%/400% zoom and reflow checks, contrast sampling of rendered states, and screen-reader spot checks on the deployed site.
+- Any remaining issue discovered in those checks must be fixed before claiming full WCAG 2.2 AA conformance.
