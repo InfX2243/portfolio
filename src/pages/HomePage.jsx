@@ -11,7 +11,7 @@ const VgpuField = lazy(() =>
 );
 
 export function HomePage() {
-  const featured = projects.filter((project) => project.featured).sort((a, b) => Number(Boolean(b.award)) - Number(Boolean(a.award));
+  const featured = projects.filter((project) => project.featured).sort((a, b) => Number(Boolean(b.award)) - Number(Boolean(a.award)));
 
   return (
     <PortfolioLayout>
