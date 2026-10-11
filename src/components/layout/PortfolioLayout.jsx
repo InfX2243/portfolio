@@ -7,13 +7,14 @@ const desktopLinks = [
   ["/projects", "Work"],
   ["/research", "Research"],
   ["/experience", "Experience"],
+  ["/achievements", "Credentials"],
   ["/about", "About"],
 ];
 const mobileLinks = [
   ["/projects", "Work"],
   ["/research", "Research"],
   ["/experience", "Experience"],
-  ["/achievements", "Achievements"],
+  ["/achievements", "Credentials & awards"],
   ["/about", "About"],
   ["/contact", "Contact"],
 ];
@@ -84,13 +85,13 @@ export function PortfolioLayout({ children }) {
       <div className="ambient-grid" aria-hidden="true" />
       <header className="nav">
         <a className="wordmark" href={withBasePath("/")} onClick={(event) => navigate(event, "/")} aria-label="Abid Ahmed Shaikh home">
-          ABID<span>.</span>
+          ABID<span aria-hidden="true">.</span>
         </a>
         <nav className="desktop-nav" aria-label="Primary navigation">
           <NavigationLinks links={desktopLinks} current={current} navigate={navigate} />
         </nav>
         <a className="nav-contact" href={withBasePath("/contact")} onClick={(event) => navigate(event, "/contact")}>
-          Let&apos;s talk <span aria-hidden="true">↗</span>
+          Contact <span aria-hidden="true">↗</span>
         </a>
         <button
           ref={toggleRef}
@@ -98,7 +99,7 @@ export function PortfolioLayout({ children }) {
           type="button"
           aria-expanded={open}
           aria-controls="mobile-nav"
-          aria-label={open ? "Close navigation" : "Open navigation"}
+          aria-label={open ? "Close navigation menu" : "Open navigation menu"}
           onClick={() => setOpen((value) => !value)}
         >
           <span aria-hidden="true">{open ? "×" : "☰"}</span>
@@ -111,11 +112,13 @@ export function PortfolioLayout({ children }) {
       <footer className="footer section-shell">
         <a href={withBasePath("/")} onClick={(event) => navigate(event, "/")}>ABID AHMED SHAIKH</a>
         <nav className="footer-links" aria-label="Footer navigation">
-          <a href={withBasePath("/achievements")} onClick={(event) => navigate(event, "/achievements")}>Achievements</a>
+          <a href={withBasePath("/projects")} onClick={(event) => navigate(event, "/projects")}>Work</a>
+          <a href={withBasePath("/research")} onClick={(event) => navigate(event, "/research")}>Research</a>
+          <a href={withBasePath("/achievements")} onClick={(event) => navigate(event, "/achievements")}>Credentials</a>
           <a href={withBasePath("/contact")} onClick={(event) => navigate(event, "/contact")}>Contact</a>
-          <a href={profile.links.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a href={profile.links.github} target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
         </nav>
-        <span>© 2026</span>
+        <span>© 2026 Abid Ahmed Shaikh</span>
       </footer>
     </div>
   );
