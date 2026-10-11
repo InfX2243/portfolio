@@ -294,16 +294,17 @@ Credential metadata must be verified before presenting:
 
 ### Credly
 
-Use official Credly embeds when available.
+Use the official Credly embedded-badge endpoint when badge IDs are supplied:
+`https://www.credly.com/embedded_badge/{badge-id}`
 
 Important:
 
-- load the Credly script once;
-- do not inject one script per badge;
-- provide graceful fallback;
-- reserve layout space;
-- lazy-load where appropriate;
-- never let third-party content block core portfolio content.
+- render each badge in its own titled iframe with lazy loading;
+- provide a direct public-badge link outside the iframe as a fallback;
+- reserve layout space and constrain the embed to its card;
+- do not depend on a global script scan to discover dynamically mounted SPA content;
+- never let third-party content block core portfolio content;
+- a badge ID alone does not verify that the badge is public or that its title/issuer metadata is correct.
 
 ---
 
