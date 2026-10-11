@@ -41,13 +41,6 @@ export function ExperiencePage() {
           ))}
         </div>
 
-        <aside className="experience-boundary">
-          <p className="eyebrow">Evidence boundary</p>
-          <p>
-            Detailed responsibilities, internal project names, measurable outcomes and
-            technology ownership will be added only when verified source information is available.
-          </p>
-        </aside>
       </section>
     </PortfolioLayout>
   );
