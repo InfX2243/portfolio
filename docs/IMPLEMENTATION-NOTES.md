@@ -195,3 +195,10 @@ Appended the eight newly supplied Credly badge IDs to src/data/credentials.json,
 
 - Added unique aria-label values to repeated project archive action links, including the project title, so link lists expose a meaningful destination rather than repeating generic “Inspect” labels.
 - Visible labels and styling are unchanged. Screen-reader runtime testing remains outstanding.
+
+
+## Sprint M — Achievement semantics and experience archive consistency (2026-10-11)
+
+- Removed a research-award placeholder from the achievements page. An item explicitly stating that award/publication metadata is unverified is not itself an achievement; the project remains represented on the Research page, where verification status is contextual.
+- Experience archive numbering now derives from the map index instead of repeating a literal “01” for every entry.
+- No new factual claims were added. GitHub Actions validation was pending when this note was written; browser and assistive-technology testing are still outstanding.
