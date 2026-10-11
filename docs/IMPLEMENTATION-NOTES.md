@@ -247,3 +247,15 @@ Appended the eight newly supplied Credly badge IDs to src/data/credentials.json,
 - The 16 IDs remain sourced from `src/data/credentials.json`; titles, issuers, and issue dates are not inferred.
 - Validation boundary: source commits are present; confirm GitHub Actions status and then verify the deployed embeds in a real browser. CI does not prove that Credly marks each badge public or that external iframe content loaded successfully.
 - Asset follow-up priorities: real screenshots and architecture visuals for projects, authentic paper/poster artifacts for research, official issuer logos where useful, and optional professional portrait. Use the exact file paths and formats in `docs/VISUAL-ASSET-CHECKLIST.md`; do not fabricate evidence assets.
+
+
+## Sprint S — supplied assets integrated into the v1 experience
+
+- Confirmed the newly uploaded asset library under `public/assets/` and connected the portrait, résumé, employer/community marks, issuer logos, and project screenshots to the React pages.
+- Added data-driven `visual` and `gallery` fields to the project source; `ProjectVisual` now uses a real screenshot when one is supplied and keeps its existing restrained fallback otherwise.
+- Added a lazy-loaded, responsive product walkthrough to the case-study template. Ascend APEX uses selected screenshots across the Student, Faculty, Recruiter and Admin surfaces and includes the supplied skill-validation workflow visual.
+- Updated the Ascend APEX summary to describe the role-based application, highlighted the nationwide first-place result, and placed the project first in the homepage and project archive. No individual ownership or backend architecture was invented.
+- Added project screenshots to Cognitrace, Green Passport and the AWS Web Application Builder; added profile, résumé, community, employer and issuer assets to their relevant pages.
+- Corrected certificate URL regex escaping after CI identified a production-build syntax failure. The fix passed the follow-up workflow.
+
+Release note: CI validates build and deployment mechanics, not real-browser image rendering or accessibility. Final mobile/desktop, keyboard, external-link, résumé-freshness, Credly-embed and official job-title checks remain explicit release gates.
