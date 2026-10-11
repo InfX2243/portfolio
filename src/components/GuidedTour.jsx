@@ -21,12 +21,11 @@ const easeInOutCubic = (value) =>
   value < 0.5 ? 4 * value * value * value : 1 - Math.pow(-2 * value + 2, 3) / 2;
 
 export function GuidedTour({ path }) {
-  const [playing, setPlaying] = useState(false);
-  const startedAt = useRef(0);
+  const [playing, setPlaying] = useState(() => !window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  const startedAt = useRef(Date.now());
   const cursorRef = useRef(null);
   const targetIndex = useRef(0);
 
-  // A single cancellable animation loop avoids overlapping native smooth-scroll requests.
   useEffect(() => {
     if (!playing) return undefined;
 
@@ -35,6 +34,11 @@ export function GuidedTour({ path }) {
     let timeoutId = 0;
     let highlighted = null;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const previousScrollBehavior = document.documentElement.style.scrollBehavior;
+    // The tween owns every scroll frame. CSS smooth scrolling would queue competing animations.
+    document.documentElement.style.scrollBehavior = "auto";
+    targetIndex.current = 0;
+
     const wait = (ms) => new Promise((resolve) => {
       timeoutId = window.setTimeout(resolve, ms);
     });
@@ -56,21 +60,31 @@ export function GuidedTour({ path }) {
     const scrollToPosition = async (top) => {
       const start = window.scrollY;
       const maxTop = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
-      await animateValue(start, Math.max(0, Math.min(top, maxTop)), 1750, (value) => {
-        window.scrollTo(0, value);
-      });
+      const destination = Math.max(0, Math.min(top, maxTop));
+      await animateValue(start, destination, 1450, (value) => window.scrollTo(0, value));
+      // Let layout and scroll-linked elements settle before reading target coordinates.
+      await wait(90);
     };
 
-    const moveCursorTo = async (element) => {
+    const moveCursorBeside = async (element) => {
       const rect = element.getBoundingClientRect();
-      const x = Math.min(window.innerWidth - 22, Math.max(18, rect.left + Math.min(rect.width * 0.72, rect.width - 12)));
-      const y = Math.min(window.innerHeight - 22, Math.max(18, rect.top + Math.min(rect.height * 0.5, rect.height - 12)));
       const cursor = cursorRef.current;
       if (!cursor) return;
-      const current = cursor.dataset.position?.split(",").map(Number) || [window.innerWidth * 0.72, window.innerHeight * 0.55];
+
+      // Park outside the target's content box. Prefer its right edge; use the left gutter when needed.
+      const rightX = rect.right + 18;
+      const leftX = rect.left - 18;
+      const x = rightX <= window.innerWidth - 18
+        ? rightX
+        : leftX >= 18
+          ? leftX
+          : window.innerWidth - 14;
+      const y = Math.min(window.innerHeight - 24, Math.max(24, rect.top + Math.min(rect.height / 2, 42)));
+      const current = cursor.dataset.position?.split(",").map(Number) || [window.innerWidth - 24, 100];
       const [startX, startY] = current;
+
       await new Promise((resolve) => {
-        const duration = reduceMotion ? 0 : 680;
+        const duration = reduceMotion ? 0 : 520;
         const start = performance.now();
         const tick = (now) => {
           if (cancelled) { resolve(); return; }
@@ -87,17 +101,18 @@ export function GuidedTour({ path }) {
       });
     };
 
+    const getCandidates = () => Array.from(document.querySelectorAll(TARGET_SELECTOR)).filter((element) => {
+      if (element.closest(".guided-tour") || element.closest("[aria-hidden='true']")) return false;
+      const rect = element.getBoundingClientRect();
+      const style = window.getComputedStyle(element);
+      return rect.width > 0 && rect.height > 0 && style.visibility !== "hidden" && style.display !== "none";
+    });
+
     const runTour = async () => {
       while (!cancelled) {
-        const candidates = Array.from(document.querySelectorAll(TARGET_SELECTOR)).filter((element) => {
-          if (element.closest(".guided-tour") || element.closest("[aria-hidden='true']")) return false;
-          const rect = element.getBoundingClientRect();
-          const style = window.getComputedStyle(element);
-          return rect.width > 0 && rect.height > 0 && style.visibility !== "hidden" && style.display !== "none";
-        });
-
+        const candidates = getCandidates();
         if (!candidates.length) {
-          await wait(1200);
+          await wait(500);
           continue;
         }
 
@@ -112,34 +127,36 @@ export function GuidedTour({ path }) {
           }
           history.pushState({}, "", BASE_PATH + nextRoute.path);
           window.dispatchEvent(new PopStateEvent("popstate"));
+          // Route change remounts the tour effect and resets the target index for the new page.
           await wait(900);
           continue;
         }
 
         const target = candidates[targetIndex.current];
         targetIndex.current += 1;
-        const rect = target.getBoundingClientRect();
-        const visible = rect.top >= 92 && rect.bottom <= window.innerHeight - 90;
+        let rect = target.getBoundingClientRect();
+        const visible = rect.top >= 112 && rect.bottom <= window.innerHeight - 96;
         if (!visible) {
-          const desiredTop = window.scrollY + rect.top - Math.max(110, (window.innerHeight - Math.min(rect.height, 360)) / 2);
+          const desiredTop = window.scrollY + rect.top - Math.max(120, (window.innerHeight - Math.min(rect.height, 300)) / 2);
           await scrollToPosition(desiredTop);
           if (cancelled) break;
+          // Re-measure after scroll; never move toward a pre-scroll/stale rectangle.
+          rect = target.getBoundingClientRect();
         }
 
-        await moveCursorTo(target);
+        await moveCursorBeside(target);
         if (cancelled) break;
         highlighted?.classList.remove("guided-tour-highlight");
         highlighted = target;
         target.classList.add("guided-tour-highlight");
-        await wait(reduceMotion ? 350 : 1050);
+        await wait(reduceMotion ? 250 : 850);
         if (cancelled) break;
 
-        // Give the viewer a brief pause between highlighted items before continuing down the page.
         const freshRect = target.getBoundingClientRect();
-        if (freshRect.bottom > window.innerHeight - 120) {
-          await scrollToPosition(window.scrollY + window.innerHeight * 0.54);
+        if (freshRect.bottom > window.innerHeight - 118) {
+          await scrollToPosition(window.scrollY + window.innerHeight * 0.48);
         } else {
-          await wait(450);
+          await wait(300);
         }
       }
     };
@@ -150,14 +167,15 @@ export function GuidedTour({ path }) {
       window.cancelAnimationFrame(frameId);
       window.clearTimeout(timeoutId);
       highlighted?.classList.remove("guided-tour-highlight");
+      document.documentElement.style.scrollBehavior = previousScrollBehavior;
     };
   }, [playing, path]);
 
-  // Any real viewer input immediately returns control. The decorative cursor never emits pointer events.
+  // Any real user input immediately hands control back; the visual cursor never captures input.
   useEffect(() => {
     if (!playing) return undefined;
     const stopForManualControl = () => {
-      if (Date.now() - startedAt.current < 900) return;
+      if (Date.now() - startedAt.current < 1100) return;
       setPlaying(false);
     };
     window.addEventListener("pointermove", stopForManualControl, { passive: true });
@@ -172,39 +190,22 @@ export function GuidedTour({ path }) {
     };
   }, [playing]);
 
-  const toggleTour = () => {
-    if (playing) {
-      setPlaying(false);
-      return;
-    }
-    startedAt.current = Date.now();
-    targetIndex.current = 0;
-    setPlaying(true);
-  };
+  const stopTour = () => setPlaying(false);
 
   return (
     <>
       {playing && (
-        <div className="guided-tour-cursor" ref={cursorRef} aria-hidden="true">
-          <span className="guided-tour-cursor-dot" />
-          <span className="guided-tour-cursor-ring" />
-        </div>
+        <>
+          <div className="guided-tour-cursor" ref={cursorRef} aria-hidden="true">
+            <span className="guided-tour-cursor-dot" />
+            <span className="guided-tour-cursor-ring" />
+          </div>
+          <div className="guided-tour" aria-label="Automated portfolio walkthrough">
+            <span className="guided-tour-hint" aria-live="polite">Portfolio walkthrough · move, scroll, or press any key to take control</span>
+            <button className="guided-tour-stop" type="button" onClick={stopTour}>Stop walkthrough <span aria-hidden="true">×</span></button>
+          </div>
+        </>
       )}
-      <div className="guided-tour" aria-label="Portfolio guided tour">
-        <button
-          className={playing ? "guided-tour-button is-playing" : "guided-tour-button"}
-          type="button"
-          onClick={toggleTour}
-          aria-pressed={playing}
-          title={playing ? "Stop guided tour and take control" : "Automatically tour the portfolio; move your cursor or use any control to stop"}
-        >
-          <span className="guided-tour-indicator" aria-hidden="true">{playing ? "Ⅱ" : "▶"}</span>
-          <span>{playing ? "Stop tour" : "Guided tour"}</span>
-        </button>
-        <span className="guided-tour-hint" aria-live="polite">
-          {playing ? "Auto-browsing · move your cursor to take control" : "A hands-free portfolio walkthrough"}
-        </span>
-      </div>
     </>
   );
 }
