@@ -36,7 +36,7 @@ function ProjectArchiveRow({ project }) {
 }
 
 export function ProjectsPage() {
-  const featured = projects.filter((project) => project.featured);
+  const featured = projects.filter((project) => project.featured).sort((a, b) => Number(Boolean(b.award)) - Number(Boolean(a.award));
   const secondary = projects.filter((project) => !project.featured);
 
   return (
