@@ -692,3 +692,26 @@ The browser audit exposed and helped fix a contrast issue caused by scroll-linke
 ### Next:
 - Confirm the latest workflow result.
 - Review any build/accessibility failures, fix them before proceeding, and update this section with the final validation result.
+
+
+## Sprint AC — Walkthrough stability, replay, and motion refinement (2026-10-12)
+
+### Completed in source
+- Removed the extra half-viewport scroll after each walkthrough highlight; each next target now determines whether scrolling is necessary.
+- Grouped each project/research/experience/contact card into one walkthrough stop, avoiding repeated highlights of a card followed immediately by its nested heading and link.
+- Removed the unnecessary scroll to the bottom of a page before changing routes, which could produce a visible jump.
+- Added a persistent **Replay walkthrough** control after manual interruption and after the walkthrough reaches the final route. Replay resets the target sequence and restarts from the current route.
+- Moved the decorative cursor closer to the target edge while keeping it outside the target hit area; reduced the cursor ring size to improve perceived precision. The cursor remains decorative and does not click or synthesize hover events.
+- Added a restrained route-entry opacity transition and subtle hover/press feedback for content cards and links. Reduced-motion and forced-colors behavior remain supported.
+- Design rationale reviewed against motion guidance emphasizing one-time/grouped reveals, minimal movement, discoverable repeatable interactions, and reduced-motion fallbacks: [motion design reference](https://github.com/SandroHub013/awwwards-skill/blob/main/references/05-motion.md), [MDN reduced-motion guidance](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/%40media/prefers-reduced-motion), and [anchor/scroll accessibility guidance](https://github.com/mgifford/ACCESSIBILITY.md/blob/main/examples/ANCHOR_LINKS_ACCESSIBILITY_BEST_PRACTICES.md).
+
+### Validation
+- Source commits: tour behavior/replay (b1c8c1e3b6a5991158ee2ed1b9dde2a6f4a25874) and motion/replay styling (2b4a3d5905a80729033e0f9fb9558e48293cdeb6).
+- Previous walkthrough/cursor release workflow passed: [38166701391](https://github.com/InfX2243/portfolio/actions/runs/38166701391).
+- **Pending:** validate the current Sprint AC source commit through production build, route generation, desktop/mobile accessibility smoke audit, and GitHub Pages deployment.
+- **Still required:** real-browser visual review of the projects walkthrough, replay after stopping, narrow/mobile behavior, and manual keyboard/screen-reader/reduced-motion checks. Automated axe smoke testing is not a full WCAG conformance certification.
+
+### Next
+1. Confirm the latest GitHub Actions run passes before considering this sprint build-validated.
+2. Visually verify that project cards are each visited once and the cursor remains close to the intended target after scrolling.
+3. Complete the remaining manual accessibility and release checks already listed in Sprint V.
