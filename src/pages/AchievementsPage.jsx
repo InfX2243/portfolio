@@ -1,11 +1,13 @@
 import { PortfolioLayout } from "../components/layout/PortfolioLayout";
 import { PageHeader } from "../components/layout/PageHeader";
 import { CertificateCard } from "../components/CertificateCard";
+import { CredlyBadge } from "../components/CredlyBadge";
 import { withBasePath } from "../app/basePath";
 import credentials from "../data/credentials.json";
 
 export function AchievementsPage() {
   const certificates = credentials.certificates || [];
+  const badges = credentials.badges || [];
   return (
     <PortfolioLayout>
       <section className="section-shell page-section polished-page credentials-polished">
@@ -26,6 +28,18 @@ export function AchievementsPage() {
         <div className="polished-certificate-grid">
           {certificates.map((certificate) => <CertificateCard key={certificate.id} certificate={certificate} />)}
         </div>
+
+        <section className="polished-credly-section" aria-labelledby="credly-title">
+          <div className="polished-credentials-heading">
+            <div><p className="eyebrow">Digital credentials</p><h2 id="credly-title">Credly badges</h2></div>
+            <span>{String(badges.length).padStart(2, "0")} badges</span>
+          </div>
+          <p className="polished-page-footnote">Badge details and verification are provided by Credly. Open any badge to view its issuer and evidence.</p>
+          <div className="polished-certificate-grid credly-badge-grid">
+            {badges.map((badge) => <CredlyBadge key={badge.id} badge={badge} />)}
+          </div>
+        </section>
+
         <p className="polished-page-footnote">Where an issuer verification URL is not available, the card shows the supplied credential ID and issue date instead. Each certification appears once in this archive.</p>
       </section>
     </PortfolioLayout>
