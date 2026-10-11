@@ -1,6 +1,6 @@
 import { PortfolioLayout } from "../components/layout/PortfolioLayout";
 import { PageHeader } from "../components/layout/PageHeader";
-import { ResearchVisual } from "../components/ResearchVisual";
+import { withBasePath } from "../app/basePath";
 import { research } from "../data/portfolio";
 import { withBasePath } from "../app/basePath";
 
@@ -13,7 +13,7 @@ export function ResearchPage() {
         <div className="polished-research-grid">
           {research.map((item, index) => (
             <article className="polished-research-card" key={item.id}>
-              <div className="polished-research-visual"><ResearchVisual research={item} /></div>
+              <div className="polished-research-visual"><img src={withBasePath(item.visual)} alt={item.visualAlt || item.title + " research visual"} loading="lazy" /></div>
               <div className="polished-research-copy">
                 <p className="eyebrow">{item.context}</p>
                 <h2>{item.title}</h2>

@@ -7,15 +7,14 @@ import { withBasePath } from "../app/basePath";
 function ProjectCard({ project }) {
   return (
     <article className="polished-project-card">
-      <div className="polished-project-art"><ProjectVisual project={project} /></div>
+      <div className="polished-project-art">
+        {project.visual ? <ProjectVisual project={project} /> : <div className="polished-project-art-placeholder" aria-hidden="true"><span>{project.number}</span><strong>{project.type}</strong><i>Engineering archive</i></div>}
+      </div>
       <div className="polished-project-body">
         <div className="polished-project-kicker"><span>{project.number} / {project.type}</span>{project.award && <span className="polished-award">Award-winning team project</span>}</div>
         <h2>{project.title}</h2>
         <p>{project.description}</p>
         {project.award && <p className="polished-project-award">{project.award}</p>}
-        <ul className="polished-tags" aria-label={project.title + " technical focus"}>
-          {project.approach.map((tag) => <li key={tag}>{tag}</li>)}
-        </ul>
         <a className="text-link" href={withBasePath("/projects/" + project.id)}>Explore case study <span aria-hidden="true">↗</span></a>
       </div>
     </article>

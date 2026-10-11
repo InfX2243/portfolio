@@ -1746,3 +1746,8 @@ a:hover { text-decoration-thickness: .12em; }
 @media (forced-colors: active) {
   .polished-project-card, .polished-research-card, .experience-timeline-main, .polished-recognition, .polished-domain-card, .polished-community-list article, .polished-contact-panel { border: 1px solid CanvasText; }
 }
+
+.polished-project-art-placeholder { display: flex; min-height: 210px; width: 100%; flex-direction: column; justify-content: flex-end; gap: 8px; padding: 22px; border: 1px solid #283b4a; background: radial-gradient(ellipse at 80% 10%,rgba(100,190,224,.15),transparent 45%),linear-gradient(135deg,#0c1b28,#080e16 70%); }
+.polished-project-art-placeholder > span { color: #b5eaff; font: 500 .75rem var(--mono); }
+.polished-project-art-placeholder strong { font-size: clamp(1.25rem,2.3vw,1.8rem); line-height: 1.2; }
+.polished-project-art-placeholder i { color: var(--muted); font-size: .8rem; font-style: normal; }
