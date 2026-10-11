@@ -218,4 +218,12 @@ Appended the eight newly supplied Credly badge IDs to src/data/credentials.json,
 - Updated the Bitkraft role label to **Software Developer Intern**, reflecting the latest direct statement captured in `docs/ABOUT-ME.md`. The official HR/offer-letter title should still be confirmed before final publication if it differs.
 - Reformatted the About page into maintainable JSX and added the user's learning philosophy as one restrained quote, grounded in the canonical profile notes.
 - Added quote styling using the existing palette and typography tokens; no new dependencies or unverified professional claims were introduced.
-- Production build/deployment and browser/device validation are pending for this increment.
+- GitHub Actions passed for the role label, About-page copy/layout, quote styling, and quote selector correction (runs [38117320441](https://github.com/InfX2243/portfolio/actions/runs/38117320441), [38117323555](https://github.com/InfX2243/portfolio/actions/runs/38117323555), [38117327561](https://github.com/InfX2243/portfolio/actions/runs/38117327561), and [38117342932](https://github.com/InfX2243/portfolio/actions/runs/38117342932)). Browser/device and assistive-technology validation remain outstanding.
+
+
+## Sprint P — V1 content consistency audit (2026-10-11)
+
+- Updated the shared `profile.summary` to use the current user-reported title **Software Developer Intern**, avoiding conflicting role labels between the shared profile and experience archive.
+- Updated the authoritative execution specification's old Bitkraft role label and revised its supporting positioning line to avoid implying that the research itself received an award.
+- Kept official title confirmation as an explicit pre-release follow-up; no new role details, research claims, metrics, or awards were added.
+- Validation: source-level content changes are committed; GitHub Actions for the new commits is pending. Browser/device and assistive-technology validation remain outstanding.
