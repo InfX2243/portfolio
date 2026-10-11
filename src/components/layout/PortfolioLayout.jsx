@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { profile } from "../../data/portfolio";
 import { BASE_PATH, normalizePath, withBasePath } from "../../app/basePath";
+import { consumeRouteFocusRequest, requestRouteFocus } from "../../app/routeFocus";
 
 const links = [
   ["/", "Home"],
@@ -23,6 +24,12 @@ export function PortfolioLayout({ children }) {
   const current = normalizePath(window.location.pathname);
 
   useEffect(() => {
+    if (consumeRouteFocusRequest()) {
+      document.getElementById("main-content")?.focus({ preventScroll: true });
+    }
+  }, []);
+
+  useEffect(() => {
     if (!open) {
       if (wasOpen.current) toggleRef.current?.focus();
       return undefined;
@@ -39,6 +46,11 @@ export function PortfolioLayout({ children }) {
     if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     event.preventDefault();
     setOpen(false);
+    if (normalizePath(window.location.pathname) === href) {
+      window.scrollTo(0, 0);
+      return;
+    }
+    requestRouteFocus();
     history.pushState({}, "", BASE_PATH + href);
     window.dispatchEvent(new PopStateEvent("popstate"));
   };
@@ -80,7 +92,7 @@ export function PortfolioLayout({ children }) {
           ))}
         </nav>
       </header>
-      <main id="main-content">{children}</main>
+      <main id="main-content" tabIndex={-1}>{children}</main>
       <footer className="footer section-shell">
         <a href={withBasePath("/")} onClick={(event) => navigate(event, "/")}>ABID AHMED SHAIKH</a>
         <span>Built as a technical artifact, not a template.</span>
