@@ -747,5 +747,6 @@ The browser audit exposed and helped fix a contrast issue caused by scroll-linke
 - Tightened the homepage's mobile contrast override selectors after the prior CI run exposed specificity conflicts. This is an automated smoke-test correction, not a substitute for manual contrast review.
 
 ### Validation
-- **Pending CI:** production build, route generation, desktop/mobile axe audit, and GitHub Pages deployment must pass on the latest Sprint AE commit before this sprint is marked validated.
+- **PASS — implementation commit `60dbbdf4c11c52af64299a9de13771a2c4bfe250`:** production build, generated-route checks, desktop/mobile axe smoke audit, route fallback verification, and GitHub Pages deployment all passed in [workflow 38169380583](https://github.com/InfX2243/portfolio/actions/runs/38169380583).
+- Documentation is being reconciled with that successful run; the follow-up commit must also pass the deployment workflow.
 - **Still required:** real-browser visual review of directional scroll choreography, hover interactions during the tour, route changes/resume behavior, mobile layout, keyboard navigation, and reduced-motion behavior. Automated axe testing is not a full WCAG conformance certification.
