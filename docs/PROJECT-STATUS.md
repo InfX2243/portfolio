@@ -1,6 +1,6 @@
 # Portfolio Implementation Status
 
-Last updated: 2026-10-11 (Sprint S — supplied asset integration and v1 release hardening)
+Last updated: 2026-10-11 (Sprint U — profile-first landing page and accessibility remediation)
 > Branch: `portfolio-v1`  
 > Source of truth: `docs/AI-PORTFOLIO-EXECUTION.md`
 
@@ -588,5 +588,5 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 - **DONE (source):** Homepage rewritten to surface personal narrative, education, current role, team recognition, projects, research, technical interests, community and selected certifications on one page.
 - **DONE (source):** Navigation now links directly to the deep-dive archives and exposes Credentials in both desktop and mobile navigation.
 - **DONE (source):** Contrast tokens, keyboard focus, skip-link, target sizes, reduced-motion and forced-colors handling strengthened.
-- **PENDING:** Production build/workflow result and deployed route verification.
+- **DONE:** Production build, generated route checks and GitHub Pages deployment passed in workflow [38143490385](https://github.com/InfX2243/portfolio/actions/runs/38143490385).
 - **BLOCKED pending external validation:** Do not declare WCAG 2.2 AA conformance until automated axe/WAVE plus keyboard, zoom/reflow, screen-reader and rendered contrast checks pass on the deployed site.
