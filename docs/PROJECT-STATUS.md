@@ -1,6 +1,6 @@
 # Portfolio Implementation Status
 
-Last updated: 2026-10-11 (Sprint N — research content density and evidence clarity)
+Last updated: 2026-10-11 (Sprint O — profile accuracy and personal voice)
 > Branch: `portfolio-v1`  
 > Source of truth: `docs/AI-PORTFOLIO-EXECUTION.md`
 
@@ -21,7 +21,7 @@ Last updated: 2026-10-11 (Sprint N — research content density and evidence cla
 | P0 / Phase 3 — Projects | PARTIAL | Projects index, project cards, dynamic project routes, normalized evidence-aware case-study schema, featured three projects, centralized base-path links, and case-study navigation with verified-resource/related-work slots. | Populate only verified problem/context/architecture/decision/trade-off/learning fields; add verified visuals and links.
 | P0 / Phase 4 — Research | PARTIAL | Research page is an editorial evidence archive; unsupported award/publication claims are withheld, and Cognitrace no longer repeats unverified recognition status across its metadata fields; the research visual hides absent recognition instead of rendering a pending-verification placeholder. | Verify links, publication/venue metadata, methodology/contribution evidence; optional evidence fields remain hidden until verified. |
 | P0 / Phase 5 — Achievements | PARTIAL | Achievements is now an editorial evidence archive with separated recognition, selected certifications, Credly embeds and credential inventory. Credly remains near-viewport lazy-loaded; seven certification IDs and issue months remain repository-verified. | Add public verification URLs where available and complete browser/third-party embed audit. |
-| P0 / Phase 6 — Experience | PARTIAL | Experience page and Bitkraft entry are implemented from repository data. | Verify responsibilities, technical context and evidence. |
+| P0 / Phase 6 — Experience | PARTIAL | Experience page and Bitkraft entry are implemented from repository data; the role label now reflects the user's latest stated title, Software Developer Intern. | Confirm the official HR/offer-letter title before final publication; verify responsibilities, technical context and evidence. |
 | P0 / Phase 7 — About | DONE* | About page, education, technical direction, research trajectory and leadership data are implemented. | Final content truth/conciseness review. |
 | P0 / Phase 8 — Contact | PARTIAL | Contact page, LinkedIn and GitHub links, CTA structure. | Verified email and resume when supplied; final external-link verification. |
 | P0 / Phase 9 — Performance | PARTIAL | Route chunks and homepage visual effects are lazy-loaded; unused Spline dependency removed; GitHub Actions production build now passes. | Production build log recorded the main chunks at 210.26 kB / 65.93 kB gzip and 155.37 kB / 50.01 kB gzip; route chunks remain small and homepage visual effects are separate. Next: mobile/low-power runtime testing and third-party loading review. |
@@ -40,6 +40,14 @@ Last updated: 2026-10-11 (Sprint N — research content density and evidence cla
 - Route metadata was also checked directly on the deployed branch: every public route has the expected title and canonical URL, and the five project detail routes resolve to their project-specific metadata.
 - The live-site browser checker could not access GitHub Pages from this environment, so external browser verification remains explicitly unconfirmed.
 - The remaining content/evidence gap is intentional: the repository still lacks verified architecture, metrics, detailed personal contribution, trade-offs, learning narratives, and public project URLs for most projects. These must be supplied or independently verified before those sections are marked complete.
+
+## Sprint O — Profile accuracy and personal voice (2026-10-11)
+
+- Updated the Bitkraft role label to **Software Developer Intern**, matching the latest direct statement in `docs/ABOUT-ME.md`; the official HR/offer-letter title still needs confirmation before final publication.
+- Reworked the About page JSX into readable, maintainable component structure without changing its information architecture.
+- Added the user's stated learning philosophy as a single restrained quote on About, giving the page a personal signal without turning it into repeated homepage slogan copy.
+- Added responsive-friendly quote styling using existing design tokens; no new dependencies or unsupported achievement claims were introduced.
+- Validation: production build/deployment workflow pending. Browser and assistive-technology review remain outstanding.
 
 ## Completed implementation increments
 
