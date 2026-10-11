@@ -1956,3 +1956,79 @@ a:hover { text-decoration-thickness: .12em; }
 @media (prefers-reduced-motion: reduce) {
   .guided-tour-cursor-ring { animation: none; }
 }
+
+
+/* Replay remains available after a stop or after the tour reaches its last route. */
+.guided-tour-idle { pointer-events: none; }
+.guided-tour-replay {
+  pointer-events: auto;
+  min-height: 42px;
+  padding: 0 14px;
+  border: 1px solid rgba(125,211,252,.52);
+  background: rgba(8,16,27,.96);
+  color: #dceef8;
+  font: 500 .72rem var(--mono);
+  cursor: pointer;
+  box-shadow: 0 8px 28px rgba(0,0,0,.22);
+  transition: color .18s ease, border-color .18s ease, background-color .18s ease, transform .18s ease;
+}
+.guided-tour-replay:hover,
+.guided-tour-replay:focus-visible {
+  color: #fff;
+  border-color: var(--cyan);
+  background: rgba(12,29,44,.98);
+}
+.guided-tour-replay:hover { transform: translateY(-2px); }
+.guided-tour-replay:active { transform: translateY(0); }
+.guided-tour-replay:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
+.guided-tour-replay span { padding-left: 5px; font-size: 1rem; }
+.guided-tour-cursor-dot { box-shadow: 0 0 0 1px rgba(125,211,252,.92); }
+.guided-tour-cursor-ring { width: 23px; height: 23px; top: -11px; left: -11px; }
+
+/* Quiet page-entry motion and tactile interaction states; no scroll-jacking or layout shift. */
+@keyframes portfolio-page-arrive {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.app main > .section-shell {
+  animation: portfolio-page-arrive .42s cubic-bezier(.22,1,.36,1) both;
+}
+.polished-project-card,
+.polished-research-card,
+.experience-timeline-main,
+.overview-card,
+.home-project-card,
+.home-research-card,
+.credential-card,
+.polished-contact-link {
+  transition: transform .24s cubic-bezier(.22,1,.36,1), border-color .24s ease, background-color .24s ease, box-shadow .24s ease;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .polished-project-card:hover,
+  .polished-research-card:hover,
+  .overview-card:hover,
+  .home-project-card:hover,
+  .home-research-card:hover,
+  .credential-card:hover,
+  .polished-contact-link:hover {
+    transform: translateY(-3px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .app main > .section-shell { animation: none !important; }
+  .guided-tour-replay,
+  .polished-project-card,
+  .polished-research-card,
+  .experience-timeline-main,
+  .overview-card,
+  .home-project-card,
+  .home-research-card,
+  .credential-card,
+  .polished-contact-link {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+@media (forced-colors: active) {
+  .guided-tour-replay { border: 1px solid ButtonText; color: ButtonText; }
+}
