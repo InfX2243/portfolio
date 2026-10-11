@@ -1,6 +1,6 @@
 # Portfolio Implementation Status
 
-Last updated: 2026-10-11 (Sprint P — profile consistency and content truth audit)
+Last updated: 2026-10-11 (Sprint S — supplied asset integration and v1 release hardening)
 > Branch: `portfolio-v1`  
 > Source of truth: `docs/AI-PORTFOLIO-EXECUTION.md`
 
@@ -18,12 +18,12 @@ Last updated: 2026-10-11 (Sprint P — profile consistency and content truth aud
 | P0 / Phase 0 — Repository Audit | DONE | Repository, dependencies, routes, data, deployment workflow and visual components inspected; Sprint D re-audited routing/navigation and Sprint E re-audited shared path handling and obsolete visual CSS. | Re-run audit after major architectural changes; Sprint F completed a route/metadata/link consistency pass. |
 | P0 / Phase 1 — Information Architecture | PARTIAL | Lightweight multi-page router, shared layout/navigation/footer, 404 handling, GitHub Pages fallback strategy, centralized Vite-base-aware navigation, and static route entry-point generation for every public route. GitHub Pages `gh-pages` contains route-specific `index.html` files for direct nested loads. | External browser verification remains open because the live-site checker in this environment cannot access GitHub Pages; repository/deployment output verifies the required static route files. |
 | P0 / Phase 2 — Landing Page | PARTIAL | Sprint A editorial hierarchy is implemented and the homepage deployment has repeatedly passed production build/deploy validation. | Final browser/device, accessibility and content-truth review; route metadata is now shared between runtime and static generation. |
-| P0 / Phase 3 — Projects | PARTIAL | Projects index, project cards, dynamic project routes, normalized evidence-aware case-study schema, featured three projects, centralized base-path links, and case-study navigation with verified-resource/related-work slots. | Populate only verified problem/context/architecture/decision/trade-off/learning fields; add verified visuals and links.
+| P0 / Phase 3 — Projects | PARTIAL | Projects index and case-study routes now consume supplied screenshots for Ascend APEX, Cognitrace, Green Passport and the AWS Web Application Builder; Ascend APEX has a selected role-based product walkthrough and national recognition leads featured work. | Add verified source links and individual contribution details; keep infrastructure/architecture claims limited to reviewed source material.
 | P0 / Phase 4 — Research | PARTIAL | Research page is an editorial evidence archive; unsupported award/publication claims are withheld, and Cognitrace no longer repeats unverified recognition status across its metadata fields; the research visual hides absent recognition instead of rendering a pending-verification placeholder. | Verify links, publication/venue metadata, methodology/contribution evidence; optional evidence fields remain hidden until verified. |
 | P0 / Phase 5 — Achievements | PARTIAL | Achievements is now an editorial evidence archive with separated recognition, selected certifications, Credly embeds and credential inventory. Credly remains near-viewport lazy-loaded; seven certification IDs and issue months remain repository-verified. | Add public verification URLs where available and complete browser/third-party embed audit. |
-| P0 / Phase 6 — Experience | PARTIAL | Experience page and Bitkraft entry are implemented from repository data; the role label now reflects the user's latest stated title, Software Developer Intern. | Confirm the official HR/offer-letter title before final publication; verify responsibilities, technical context and evidence. |
-| P0 / Phase 7 — About | DONE* | About page, education, technical direction, research trajectory and leadership data are implemented. | Final content truth/conciseness review. |
-| P0 / Phase 8 — Contact | PARTIAL | Contact page, LinkedIn and GitHub links, CTA structure. | Verified email and resume when supplied; final external-link verification. |
+| P0 / Phase 6 — Experience | PARTIAL | Experience page now includes the supplied Bitkraft logo; the role label reflects the latest user-stated title, Software Developer Intern. | Confirm the official HR/offer-letter title before final publication; verify responsibilities, technical context and evidence. |
+| P0 / Phase 7 — About | DONE* | About page, education, technical direction, research trajectory, supplied portrait, and AWS Student Builder Group / ACM marks are integrated. | Final content truth/conciseness review. |
+| P0 / Phase 8 — Contact | PARTIAL | Contact page, LinkedIn and GitHub links, and supplied résumé PDF link are integrated. | Verify the résumé is current before release; verify public links and decide whether to add an email address. |
 | P0 / Phase 9 — Performance | PARTIAL | Route chunks and homepage visual effects are lazy-loaded; unused Spline dependency removed; GitHub Actions production build now passes. | Production build log recorded the main chunks at 210.26 kB / 65.93 kB gzip and 155.37 kB / 50.01 kB gzip; route chunks remain small and homepage visual effects are separate. Next: mobile/low-power runtime testing and third-party loading review. |
 | P0 / Phase 10 — Accessibility | PARTIAL | Skip link, focus-visible styles, reduced-motion rules, semantic nav labels, Escape handling, active-page semantics, focus restoration, inert closed mobile nav, main landmark, 44px mobile nav controls, single-h1 homepage hierarchy. | Full keyboard/focus/contrast/link audit and browser verification. |
 | P1 / Phase 11 — SEO / Sharing | PARTIAL | Route-specific titles/descriptions, static route-specific Open Graph/Twitter metadata generated at build time, canonical URLs, favicon, `robots.txt`, `sitemap.xml`, and a dedicated `og-image.svg` social preview are implemented. | Validate the generated image metadata after deployment and perform final search/social crawler verification. |
@@ -543,3 +543,22 @@ The portfolio visual strategy has been reset around a polished, editorial engine
 ### Visual assets to collect next
 - Add real project screenshots, architecture diagrams, research artifacts, official issuer marks, and an optional professional portrait only when the source assets are available and usage is appropriate.
 - Added `docs/VISUAL-ASSET-CHECKLIST.md` with prioritized asset suggestions, exact repository paths, and the React source files that should consume each asset. Do not create placeholder logos or synthetic screenshots that could be mistaken for real evidence.
+
+
+## Sprint S — supplied visual assets and flagship case study (2026-10-11)
+
+### Completed
+- Confirmed that the uploaded files are committed under `public/assets/` on `portfolio-v1`, including the résumé PDF, portrait, Bitkraft logo, AWS/Oracle issuer marks, AWS Student Builder Group and ACM marks, and project screenshots.
+- Wired the résumé to the Home and Contact pages; wired the portrait and community marks to About; wired the Bitkraft logo to Experience; wired issuer marks into certification cards.
+- Replaced the generic project-summary panel with a real screenshot when an image is available, while preserving a restrained fallback for projects without a visual.
+- Added supplied visuals for Cognitrace, Green Passport and the AWS Web Application Builder.
+- Expanded Ascend APEX into a screenshot-led case study with selected Student, Faculty, Recruiter and Admin screens plus the skill-validation workflow visual. National first-place recognition now leads the featured project order.
+- Kept architecture, individual contribution, metrics, and external source links absent where the supplied assets do not independently establish them.
+- Added responsive gallery styling and corrected certificate URL validation after the first build caught a regex escaping error.
+
+### Validation boundary / next actions
+- Latest source commit should be validated through the newest GitHub Actions build/deployment run; earlier intermediate runs failed while the certificate URL regex was malformed, and those intermediate failures are not considered successful validation.
+- Check the deployed site on mobile and desktop for image loading, crop, gallery density, résumé download, and third-party Credly embeds.
+- Confirm the résumé PDF is the final, current version before treating its public link as release-ready.
+- Confirm official job-title wording, and supply an individual contribution summary and public event/repository source for Ascend APEX if available.
+- The site is not marked fully released until the remaining manual browser/accessibility checks and final content verification are complete.
