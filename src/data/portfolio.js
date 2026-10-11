@@ -15,7 +15,7 @@ export const experience = [
   {
     period: "2026 — present",
     org: "Bitkraft Technologies LLP",
-    role: "Software Engineer Intern",
+    role: "Software Developer Intern",
     focus: ["AR & Game Engineering", "Backend Platform Engineering", "AI Pipeline Engineering"],
     note: "Working across interactive systems, backend platforms, and AI-oriented engineering.",
   },
