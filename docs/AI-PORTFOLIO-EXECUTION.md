@@ -169,9 +169,7 @@ Order:
 10. Contact CTA
 11. Footer
 
-The homepage should NOT contain every project, every credential, every certificate, or every paragraph.
-
-Use "View all" links to dedicated pages.
+The homepage should not reproduce every case-study detail or the entire credential inventory. It must, however, surface a complete profile snapshot: personal story, education, current experience, selected projects, research, verified recognition, technical direction, community, and a representative set of certifications. Use "View all" links for exhaustive inventories and deep dives.
 
 ---
 
@@ -195,8 +193,8 @@ Initial priority:
 
 ### Featured
 
-1. Cognitrace
-2. Ascend APEX
+1. Ascend APEX (verified team recognition leads the project grid)
+2. Cognitrace
 3. Green Passport
 
 ### Secondary
