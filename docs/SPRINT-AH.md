@@ -23,3 +23,10 @@ Branch: `portfolio-v1`
 - Previous workflow `38170843872` failed in `npm run test:a11y` after the production build succeeded. The failures were real color-contrast findings across project details, Research, Experience, Achievements, About and the mobile landing page.
 - The contrast audit remains enabled and unchanged.
 - **Pending:** verify the new latest-commit workflow passes desktop/mobile axe, route fallback/output checks, and publishes successfully to `gh-pages`. Do not mark the release green until the run confirms deployment.
+
+
+## Root-cause follow-up
+
+- The next audit run showed that many of the foreground colors were being composited to dark values while the scroll-timeline entry animation was partway through its `opacity: 0 → 1` fade. This made otherwise readable text fail axe at intermediate animation progress; adding more color overrides could not reliably solve that.
+- Removed opacity from the scroll-entry keyframes. The subtle directional translate remains, but text and card content no longer fade through low-contrast states. This is a behavior-level fix, not an audit exception.
+- Kept the Credly iframe independently accessible rather than nesting it inside a link, avoiding interactive content inside another interactive element.
