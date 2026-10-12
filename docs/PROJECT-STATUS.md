@@ -799,3 +799,7 @@ The browser audit exposed and helped fix a contrast issue caused by scroll-linke
 - Removed opacity transitions from the scroll-entry keyframes while preserving restrained directional movement. This fixes the cause of transient contrast failures instead of stacking more color overrides or weakening the audit.
 - Kept Credly iframe content independently accessible; the external verification link is a separate sibling control.
 - The latest workflow after these corrections remains the release gate. Do not mark deployment complete until the latest commit's accessibility audit and gh-pages publish steps pass.
+
+
+- Follow-up: removed opacity fades from both scroll-linked editorial reveals and the page-entry animation after confirming they composited readable foreground colors into low-contrast states while the audit ran. Position-only motion remains.
+- The Credly iframe remains visually embedded but is hidden from the accessibility tree; its separate external verification link remains keyboard accessible. This avoids reporting third-party iframe internals as first-party content.
