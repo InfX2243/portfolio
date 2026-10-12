@@ -791,3 +791,11 @@ The browser audit exposed and helped fix a contrast issue caused by scroll-linke
 - Simplified Credly presentation by removing the extra outer card, header strip and nested fallback panel. Badges now sit on an unboxed layout with a direct Credly verification link, informed by Credly's official embed guidance.
 - Added Sprint AH notes in `docs/SPRINT-AH.md`.
 - **Validation status: PARTIAL / pending.** The latest commit's GitHub Actions run must pass the axe audit and complete the `gh-pages` deployment before the branch can be called release-ready.
+
+
+### Sprint AH follow-up — animation contrast root cause
+
+- The first Sprint AH verification still failed axe because scroll-timeline card-entry animations were fading text and content through partially transparent states; the resulting composited foreground colors fell below WCAG contrast thresholds.
+- Removed opacity transitions from the scroll-entry keyframes while preserving restrained directional movement. This fixes the cause of transient contrast failures instead of stacking more color overrides or weakening the audit.
+- Kept Credly iframe content independently accessible; the external verification link is a separate sibling control.
+- The latest workflow after these corrections remains the release gate. Do not mark deployment complete until the latest commit's accessibility audit and gh-pages publish steps pass.
