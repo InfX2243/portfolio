@@ -64,13 +64,13 @@
     }
 
     @keyframes portfolio-card-entry-left {
-      from { opacity: 0; translate: -1.25rem .65rem; }
-      to { opacity: 1; translate: 0 0; }
+      from { translate: -1.25rem .65rem; }
+      to { translate: 0 0; }
     }
 
     @keyframes portfolio-card-entry-right {
-      from { opacity: 0; translate: 1.25rem .65rem; }
-      to { opacity: 1; translate: 0 0; }
+      from { translate: 1.25rem .65rem; }
+      to { translate: 0 0; }
     }
   }
 }
