@@ -9,13 +9,7 @@ export function CredlyBadge({ badge }) {
 
   return (
     <article className="credly-badge-item">
-      <a
-        className="credly-badge-embed"
-        href={badgeUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={badge.title ? `View ${badge.title} on Credly` : "View this verified digital badge on Credly"}
-      >
+      <div className="credly-badge-embed">
         <iframe
           src={embedUrl}
           title={badge.title ? `${badge.title} badge` : `Credly badge ${badge.credlyBadgeId}`}
@@ -23,10 +17,8 @@ export function CredlyBadge({ badge }) {
           height={badge.embedHeight || 270}
           loading="lazy"
           referrerPolicy="strict-origin-when-cross-origin"
-          tabIndex={-1}
-          aria-hidden="true"
         />
-      </a>
+      </div>
       <a className="credly-badge-link" href={badgeUrl} target="_blank" rel="noopener noreferrer">
         View credential <span aria-hidden="true">↗</span>
       </a>
