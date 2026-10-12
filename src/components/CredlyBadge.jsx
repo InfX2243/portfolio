@@ -21,7 +21,7 @@ export function CredlyBadge({ badge }) {
           aria-hidden="true"
         />
       </div>
-      <a className="credly-badge-link" href={badgeUrl} target="_blank" rel="noopener noreferrer">
+      <a className="credly-badge-link" href={badgeUrl} target="_blank" rel="noopener noreferrer" aria-label={`View Credly credential ${badge.title || badge.credlyBadgeId}`}>
         View credential <span aria-hidden="true">↗</span>
       </a>
     </article>
