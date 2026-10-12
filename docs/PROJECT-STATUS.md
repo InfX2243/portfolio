@@ -803,3 +803,14 @@ The browser audit exposed and helped fix a contrast issue caused by scroll-linke
 
 - Follow-up: removed opacity fades from both scroll-linked editorial reveals and the page-entry animation after confirming they composited readable foreground colors into low-contrast states while the audit ran. Position-only motion remains.
 - The Credly iframe remains visually embedded but is hidden from the accessibility tree; its separate external verification link remains keyboard accessible. This avoids reporting third-party iframe internals as first-party content.
+
+
+## Sprint AH validation result — 2026-10-12
+
+- **PASS:** workflow [38191923251](https://github.com/InfX2243/portfolio/actions/runs/38191923251) succeeded on commit `6116014d5d8249838ff87409333bb8e91981d948`.
+- Production build, automated desktop/mobile accessibility smoke audit, route fallback preparation, build-output verification, and `gh-pages` deployment all passed.
+- Root cause fixed: opacity fades on scroll-linked editorial cards and page-entry motion were temporarily reducing text contrast during the axe audit. Those fades were removed; restrained positional motion remains.
+- Work / Projects previews rotate through supplied project gallery images, with Pause/Play and Next controls, hover/focus pause behavior, and reduced-motion support.
+- Credly badges no longer use an extra outer card; badge embeds are visually unboxed and have a separate accessible verification link.
+- Sprint notes: `docs/SPRINT-AH.md`.
+- This validation applies to commit `6116014d5d8249838ff87409333bb8e91981d948`. Documentation updates after this commit trigger their own workflow and must be checked separately before declaring the newest branch head green.
