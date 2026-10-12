@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { PortfolioLayout } from "../components/layout/PortfolioLayout";
 import { PageHeader } from "../components/layout/PageHeader";
 import { withBasePath } from "../app/basePath";
@@ -11,6 +11,8 @@ function ProjectSlideshow({ project }) {
     return project.visual ? [project.visual] : [];
   }, [project.gallery, project.visual]);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [previousIndex, setPreviousIndex] = useState(null);
+  const transitionTimer = useRef(null);
   const [paused, setPaused] = useState(false);
   const [hovered, setHovered] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
@@ -23,16 +25,27 @@ function ProjectSlideshow({ project }) {
     return () => preference.removeEventListener?.("change", syncPreference);
   }, []);
 
+  const changeImage = (nextIndex) => {
+    if (nextIndex === activeIndex) return;
+    setPreviousIndex(activeIndex);
+    setActiveIndex(nextIndex);
+    window.clearTimeout(transitionTimer.current);
+    transitionTimer.current = window.setTimeout(() => setPreviousIndex(null), 900);
+  };
+
   useEffect(() => {
     if (images.length < 2 || paused || hovered || reducedMotion) return undefined;
     const timer = window.setInterval(() => {
-      setActiveIndex((index) => (index + 1) % images.length);
+      changeImage((activeIndex + 1) % images.length);
     }, 4200);
     return () => window.clearInterval(timer);
-  }, [images.length, paused, hovered, reducedMotion]);
+  }, [images.length, paused, hovered, reducedMotion, activeIndex]);
 
   useEffect(() => {
     setActiveIndex(0);
+    setPreviousIndex(null);
+    window.clearTimeout(transitionTimer.current);
+    return () => window.clearTimeout(transitionTimer.current);
   }, [project.id]);
 
   if (!images.length) {
@@ -53,13 +66,26 @@ function ProjectSlideshow({ project }) {
         if (!event.currentTarget.contains(event.relatedTarget)) setHovered(false);
       }}
     >
-      <img
-        className="polished-project-image"
-        src={withBasePath(currentImage.src)}
-        alt={currentImage.alt || `${project.title} project screenshot`}
-        loading="lazy"
-        decoding="async"
-      />
+      <div className="project-slideshow-stage">
+        {previousIndex !== null && previousIndex !== activeIndex && images[previousIndex] && (
+          <img
+            key={`${project.id}-exit-${previousIndex}`}
+            className="polished-project-image project-slide-exit"
+            src={withBasePath(images[previousIndex].src)}
+            alt=""
+            aria-hidden="true"
+            decoding="async"
+          />
+        )}
+        <img
+          key={`${project.id}-enter-${activeIndex}`}
+          className="polished-project-image project-slide-enter"
+          src={withBasePath(currentImage.src)}
+          alt={currentImage.alt || `${project.title} project screenshot`}
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
       {showControls && (
         <div className="project-slideshow-controls">
           <span className="project-slideshow-count" aria-label={`Image ${activeIndex + 1} of ${images.length}`}>
@@ -78,7 +104,7 @@ function ProjectSlideshow({ project }) {
               type="button"
               className="project-slideshow-button"
               aria-label={`Show next ${project.title} image`}
-              onClick={() => setActiveIndex((index) => (index + 1) % images.length)}
+              onClick={() => changeImage((activeIndex + 1) % images.length)}
             >
               Next <span aria-hidden="true">→</span>
             </button>
