@@ -781,3 +781,13 @@ The browser audit exposed and helped fix a contrast issue caused by scroll-linke
 1. Latest GitHub Actions workflow succeeds on the current branch head.
 2. Verify the guided transition uses the visible menu control rather than a direct route mutation.
 3. If any contrast findings remain, fix the specific selectors and rerun the full audit before calling the release ready.
+
+
+## Sprint AH — CI contrast fixes, Credly presentation and work slideshows (2026-10-12)
+
+- Confirmed workflow `38170843872` failed specifically at the desktop/mobile axe accessibility smoke audit; production build and Chromium installation passed. Deployment steps were skipped because the audit found color-contrast failures.
+- Added targeted high-contrast foreground rules for the exact text surfaces reported by axe. The accessibility gate has not been disabled, skipped, or weakened.
+- Reworked the Work / Projects index cards to rotate through each project's supplied gallery images automatically. Added Pause/Play and Next controls; hovering and keyboard focus pause autoplay, and reduced-motion preference disables autoplay.
+- Simplified Credly presentation by removing the extra outer card, header strip and nested fallback panel. Badges now sit on an unboxed layout with a direct Credly verification link, informed by Credly's official embed guidance.
+- Added Sprint AH notes in `docs/SPRINT-AH.md`.
+- **Validation status: PARTIAL / pending.** The latest commit's GitHub Actions run must pass the axe audit and complete the `gh-pages` deployment before the branch can be called release-ready.
