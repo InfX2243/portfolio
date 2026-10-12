@@ -302,3 +302,141 @@ html body ol > li > span,
 html body ol > li > strong {
   color: #c2ced8 !important;
 }
+
+
+/* Sprint AH — audited foreground tokens. These selectors intentionally target the actual
+   muted text surfaces reported by axe; do not disable or soften the CI audit. */
+html body .polished-project-award,
+html body .project-signal-strip > span,
+html body .archive-section-heading > .eyebrow,
+html body .archive-section-heading > p,
+html body .case-study-intro .eyebrow,
+html body .plain-tags > span,
+html body .polished-research-copy > h2,
+html body .polished-research-copy > p,
+html body .polished-research-footer > span,
+html body .polished-research-footer > a,
+html body .experience-timeline-rail > span,
+html body .polished-page-footnote,
+html body .certificate-card .certificate-meta > small,
+html body .certificate-card .certificate-meta > p,
+html body .polished-domain-card > h3,
+html body .polished-domain-card > p,
+html body .about-principles > article > h2,
+html body .about-principles > article > p,
+html body .about-domain-section .polished-section-heading .eyebrow,
+html body .polished-section-heading > p,
+html body #project-gallery-title,
+html body #research-principle-title,
+html body aside .eyebrow,
+html body ol > li > span,
+html body ol > li > strong {
+  color: #c2ced8 !important;
+}
+
+/* Credly embeds are the credential artwork, not a card to be nested inside another card. */
+.credly-badge-grid {
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  align-items: start;
+  gap: clamp(18px, 2.5vw, 32px);
+}
+.credly-badge-item {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.credly-badge-embed {
+  display: grid;
+  width: 100%;
+  min-height: 240px;
+  place-items: start center;
+  overflow: hidden;
+  border: 0;
+  background: transparent;
+}
+.credly-badge-embed iframe {
+  display: block;
+  width: 150px;
+  max-width: 100%;
+  height: 240px;
+  border: 0;
+  background: transparent;
+}
+.credly-badge-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 8px 2px;
+  color: #b8eaff;
+  font: 500 .72rem var(--mono);
+  text-underline-offset: 4px;
+}
+.credly-badge-link:hover,
+.credly-badge-link:focus-visible {
+  color: #eef9ff;
+  text-decoration: underline;
+}
+.credly-badge-link:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
+@media (max-width: 520px) {
+  .credly-badge-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .credly-badge-embed { min-height: 225px; }
+  .credly-badge-embed iframe { height: 225px; }
+}
+
+/* Project previews auto-advance without hiding the pause/next controls from keyboard users. */
+.project-slideshow {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+.project-slideshow > .polished-project-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: contain;
+  background: #080e16;
+}
+.project-slideshow-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 2px 0;
+  color: #c2ced8;
+  font: 500 .62rem var(--mono);
+}
+.project-slideshow-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.project-slideshow-button {
+  min-height: 36px;
+  padding: 6px 9px;
+  border: 1px solid rgba(155, 184, 207, .28);
+  border-radius: 5px;
+  background: rgba(3, 7, 13, .82);
+  color: #d9e7f0;
+  font: 500 .62rem var(--mono);
+  cursor: pointer;
+}
+.project-slideshow-button:hover { border-color: var(--cyan); color: #fff; }
+.project-slideshow-button:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
+@media (max-width: 850px) {
+  .polished-project-art { display: block; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-slideshow-controls { transition: none; }
+}
