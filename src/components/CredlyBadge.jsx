@@ -4,40 +4,32 @@ export function CredlyBadge({ badge }) {
   const badgeUrl =
     badge.publicUrl ||
     `https://www.credly.com/badges/${badge.credlyBadgeId}/public_url`;
-  const embedUrl = `https://www.credly.com/embedded_badge/${badge.credlyBadgeId}`;
-  const width = badge.embedWidth || 150;
-  const height = badge.embedHeight || 270;
+  const embedHost = badge.embedHost || "https://www.credly.com";
+  const embedUrl = `${embedHost}/embedded_badge/${badge.credlyBadgeId}`;
 
   return (
-    <article className="credential-visual-card credly-card">
-      <div className="credential-visual-top">
-        <span>Credly badge</span>
-        <span>Credly-hosted</span>
-      </div>
-
-      <div className="credly-embed">
+    <article className="credly-badge-item">
+      <a
+        className="credly-badge-embed"
+        href={badgeUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={badge.title ? `View ${badge.title} on Credly` : "View this verified digital badge on Credly"}
+      >
         <iframe
           src={embedUrl}
           title={badge.title ? `${badge.title} badge` : `Credly badge ${badge.credlyBadgeId}`}
-          width={width}
-          height={height}
+          width={badge.embedWidth || 150}
+          height={badge.embedHeight || 270}
           loading="lazy"
           referrerPolicy="strict-origin-when-cross-origin"
+          tabIndex={-1}
+          aria-hidden="true"
         />
-      </div>
-
-      <div className="credential-fallback">
-        <span>{badge.title || "Credential details on Credly"}</span>
-        <small>Badge artwork and verification details are hosted by Credly.</small>
-        <a
-          className="text-link"
-          href={badgeUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Open badge on Credly ↗
-        </a>
-      </div>
+      </a>
+      <a className="credly-badge-link" href={badgeUrl} target="_blank" rel="noopener noreferrer">
+        View credential <span aria-hidden="true">↗</span>
+      </a>
     </article>
   );
 }
