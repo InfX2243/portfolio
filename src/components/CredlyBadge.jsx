@@ -17,6 +17,8 @@ export function CredlyBadge({ badge }) {
           height={badge.embedHeight || 270}
           loading="lazy"
           referrerPolicy="strict-origin-when-cross-origin"
+          tabIndex={-1}
+          aria-hidden="true"
         />
       </div>
       <a className="credly-badge-link" href={badgeUrl} target="_blank" rel="noopener noreferrer">
