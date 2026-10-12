@@ -814,3 +814,11 @@ The browser audit exposed and helped fix a contrast issue caused by scroll-linke
 - Credly badges no longer use an extra outer card; badge embeds are visually unboxed and have a separate accessible verification link.
 - Sprint notes: `docs/SPRINT-AH.md`.
 - This validation applies to commit `6116014d5d8249838ff87409333bb8e91981d948`. Documentation updates after this commit trigger their own workflow and must be checked separately before declaring the newest branch head green.
+
+
+## Sprint AI — guided-tour focus, credentials accessibility and slideshow motion (2026-10-12)
+
+- Fixed the blue outline appearing around the shared `main` landmark after guided-tour route changes. Only the programmatically focused, non-interactive main landmark loses the browser-default outline; visible keyboard focus styling for links and buttons remains intact.
+- Reworked Work-page image changes into a layered slide/zoom transition: the incoming screenshot glides in from a slight zoom while the outgoing screenshot drifts and scales away. The slideshow retains manual Next/Pause controls, pauses on hover/focus, and disables these transition animations under `prefers-reduced-motion`.
+- Credly verification links now have unique accessible names based on the supplied credential title or badge ID. The third-party embed remains decorative in the accessibility tree, with the keyboard-accessible verification link as the actionable credential route.
+- CI validation is pending for this increment; do not mark the sprint green until the newest `portfolio-v1` workflow and `gh-pages` deployment have completed successfully.
