@@ -821,4 +821,11 @@ The browser audit exposed and helped fix a contrast issue caused by scroll-linke
 - Fixed the blue outline appearing around the shared `main` landmark after guided-tour route changes. Only the programmatically focused, non-interactive main landmark loses the browser-default outline; visible keyboard focus styling for links and buttons remains intact.
 - Reworked Work-page image changes into a layered slide/zoom transition: the incoming screenshot glides in from a slight zoom while the outgoing screenshot drifts and scales away. The slideshow retains manual Next/Pause controls, pauses on hover/focus, and disables these transition animations under `prefers-reduced-motion`.
 - Credly verification links now have unique accessible names based on the supplied credential title or badge ID. The third-party embed remains decorative in the accessibility tree, with the keyboard-accessible verification link as the actionable credential route.
-- CI validation is pending for this increment; do not mark the sprint green until the newest `portfolio-v1` workflow and `gh-pages` deployment have completed successfully.
+- **PASS:** workflow [38192979156](https://github.com/InfX2243/portfolio/actions/runs/38192979156) completed successfully for code commit `bbc6b6c6eb090042c8a99ca307f53c3e683e8f61`. Production build, automated desktop/mobile axe smoke audit, route fallback, output verification, and `gh-pages` deployment passed.
+
+
+### Sprint AI CI / deployment confirmation
+
+- Workflow [38192979156](https://github.com/InfX2243/portfolio/actions/runs/38192979156) passed after the guided-tour focus outline fix, layered slideshow transitions, and unique accessible Credly link names were integrated.
+- The deployed `gh-pages` head is `cfb125434ca16e1b468f4a713c5bd61a7f9b01a1`, published from code commit `bbc6b6c6eb090042c8a99ca307f53c3e683e8f61`.
+- A follow-up workflow runs for this documentation-only update; the newest branch head must also remain green before calling the latest commit fully validated.
