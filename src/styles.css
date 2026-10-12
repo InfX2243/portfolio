@@ -1358,7 +1358,7 @@ body { min-width: 320px; background: var(--bg); color: var(--text); }
 .footer-links { display: flex; flex-wrap: wrap; gap: 18px; justify-content: center; font: 500 .62rem var(--mono); letter-spacing: .035em; text-transform: uppercase; }
 @keyframes hero-drift { 0%,100% { transform: perspective(1100px) rotateX(1deg) rotateY(-2deg) translateY(0); } 50% { transform: perspective(1100px) rotateX(-1deg) rotateY(1deg) translateY(-7px); } }
 @keyframes orbit-breathe { from { opacity: .48; } to { opacity: .95; } }
-@keyframes editorial-rise { from { opacity: .25; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes editorial-rise { from { transform: translateY(22px); } to { transform: translateY(0); } }
 @supports (animation-timeline: view()) {
   .editorial-section, .page-section > section, .secondary-projects { animation: editorial-rise linear both; animation-timeline: view(); animation-range: entry 0% entry 24%; }
 }
@@ -1987,8 +1987,8 @@ a:hover { text-decoration-thickness: .12em; }
 
 /* Quiet page-entry motion and tactile interaction states; no scroll-jacking or layout shift. */
 @keyframes portfolio-page-arrive {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { transform: translateY(6px); }
+  to { transform: translateY(0); }
 }
 .app main > .section-shell {
   animation: portfolio-page-arrive .42s cubic-bezier(.22,1,.36,1) both;
