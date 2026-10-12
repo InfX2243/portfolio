@@ -440,3 +440,55 @@ html body ol > li > strong {
 @media (prefers-reduced-motion: reduce) {
   .project-slideshow-controls { transition: none; }
 }
+
+
+/* Sprint AI — the router focuses main programmatically after a guided-tour route change.
+   That landmark is not an interactive control; suppress only its browser-default outline.
+   Real keyboard focus indicators for links, buttons and form controls remain untouched. */
+#main-content:focus {
+  outline: none;
+}
+
+/* Editorial slideshow transition: the incoming frame glides in and settles from a gentle
+   zoom while the outgoing frame drifts away. Both layers share one clipped 16:10 stage. */
+.project-slideshow-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  isolation: isolate;
+  background: #080e16;
+}
+.project-slideshow-stage > .polished-project-image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  object-fit: contain;
+}
+.project-slideshow-stage > .project-slide-enter {
+  z-index: 2;
+  animation: project-slide-in 820ms cubic-bezier(.22, .75, .22, 1) both;
+}
+.project-slideshow-stage > .project-slide-exit {
+  z-index: 1;
+  animation: project-slide-out 820ms cubic-bezier(.4, 0, .8, .25) both;
+  pointer-events: none;
+}
+@keyframes project-slide-in {
+  from { opacity: .45; transform: translate3d(3.5%, 0, 0) scale(1.075); }
+  65% { opacity: 1; }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+@keyframes project-slide-out {
+  from { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+  to { opacity: 0; transform: translate3d(-2.5%, 0, 0) scale(.965); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-slideshow-stage > .project-slide-enter,
+  .project-slideshow-stage > .project-slide-exit {
+    animation: none;
+  }
+}
