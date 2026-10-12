@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+<title id="title">Abid Ahmed Shaikh — Systems, AI, Cloud &amp; Research</title>
+<desc id="desc">Technical portfolio focused on cloud-native software engineering, AI-enabled systems, backend engineering and applied research.</desc>
+<rect width="1200" height="630" fill="#03070d"/>
+<g opacity=".16" stroke="#9bb8cf"><path d="M0 90h1200M0 180h1200M0 270h1200M0 360h1200M0 450h1200M0 540h1200"/><path d="M90 0v630M180 0v630M270 0v630M360 0v630M450 0v630M540 0v630M630 0v630M720 0v630M810 0v630M900 0v630M990 0v630M1080 0v630"/></g>
+<rect x="72" y="70" width="1056" height="490" rx="28" fill="#08101b" fill-opacity=".82" stroke="#9bb8cf" stroke-opacity=".18"/>
+<text x="112" y="138" fill="#7dd3fc" font-family="monospace" font-size="22" letter-spacing="5">AA / 01</text>
+<text x="112" y="250" fill="#eef6ff" font-family="Arial, sans-serif" font-size="68" font-weight="700">Abid Ahmed Shaikh</text>
+<text x="112" y="316" fill="#c8d6e2" font-family="Arial, sans-serif" font-size="30">Systems · AI · Cloud · Research</text>
+<text x="112" y="390" fill="#91a2b3" font-family="monospace" font-size="20">software engineering · backend systems · applied research</text>
+<line x1="112" y1="454" x2="1088" y2="454" stroke="#7dd3fc" stroke-opacity=".35"/>
+<text x="112" y="500" fill="#65788a" font-family="monospace" font-size="17" letter-spacing="2">TECHNICAL PORTFOLIO</text>
+<circle cx="1055" cy="500" r="7" fill="#7dd3fc"/>
+</svg>
