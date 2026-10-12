@@ -1,13 +1,99 @@
+import { useEffect, useMemo, useState } from "react";
 import { PortfolioLayout } from "../components/layout/PortfolioLayout";
 import { PageHeader } from "../components/layout/PageHeader";
 import { withBasePath } from "../app/basePath";
 import { projects } from "../data/portfolio";
 
+function ProjectSlideshow({ project }) {
+  const images = useMemo(() => {
+    const gallery = Array.isArray(project.gallery) ? project.gallery : [];
+    if (gallery.length) return gallery;
+    return project.visual ? [project.visual] : [];
+  }, [project.gallery, project.visual]);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const syncPreference = () => setReducedMotion(preference.matches);
+    syncPreference();
+    preference.addEventListener?.("change", syncPreference);
+    return () => preference.removeEventListener?.("change", syncPreference);
+  }, []);
+
+  useEffect(() => {
+    if (images.length < 2 || paused || hovered || reducedMotion) return undefined;
+    const timer = window.setInterval(() => {
+      setActiveIndex((index) => (index + 1) % images.length);
+    }, 4200);
+    return () => window.clearInterval(timer);
+  }, [images.length, paused, hovered, reducedMotion]);
+
+  useEffect(() => {
+    setActiveIndex(0);
+  }, [project.id]);
+
+  if (!images.length) {
+    return <div className="polished-project-art-placeholder" aria-hidden="true"><span>{project.number}</span><strong>{project.type}</strong><i>Engineering archive</i></div>;
+  }
+
+  const currentImage = images[activeIndex % images.length];
+  const showControls = images.length > 1;
+
+  return (
+    <div
+      className="project-slideshow"
+      aria-label={`${project.title} project image slideshow`}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onFocus={() => setHovered(true)}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) setHovered(false);
+      }}
+    >
+      <img
+        className="polished-project-image"
+        src={withBasePath(currentImage.src)}
+        alt={currentImage.alt || `${project.title} project screenshot`}
+        loading="lazy"
+        decoding="async"
+      />
+      {showControls && (
+        <div className="project-slideshow-controls">
+          <span className="project-slideshow-count" aria-label={`Image ${activeIndex + 1} of ${images.length}`}>
+            {String(activeIndex + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
+          </span>
+          <div className="project-slideshow-actions">
+            <button
+              type="button"
+              className="project-slideshow-button"
+              aria-label={paused ? `Play ${project.title} slideshow` : `Pause ${project.title} slideshow`}
+              onClick={() => setPaused((value) => !value)}
+            >
+              {paused ? "Play" : "Pause"}
+            </button>
+            <button
+              type="button"
+              className="project-slideshow-button"
+              aria-label={`Show next ${project.title} image`}
+              onClick={() => setActiveIndex((index) => (index + 1) % images.length)}
+            >
+              Next <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function ProjectCard({ project }) {
   return (
     <article className="polished-project-card">
       <div className="polished-project-art">
-        {project.visual ? <img className="polished-project-image" src={withBasePath(project.visual.src)} alt={project.visual.alt} loading="lazy" /> : <div className="polished-project-art-placeholder" aria-hidden="true"><span>{project.number}</span><strong>{project.type}</strong><i>Engineering archive</i></div>}
+        <ProjectSlideshow project={project} />
       </div>
       <div className="polished-project-body">
         <div className="polished-project-kicker"><span>{project.number} / {project.type}</span>{project.award && <span className="polished-award">Award-winning team project</span>}</div>
@@ -25,7 +111,7 @@ export function ProjectsPage() {
   return (
     <PortfolioLayout>
       <section className="section-shell page-section polished-page projects-polished">
-        <PageHeader index="01" eyebrow="Selected work" title="Built to solve something." intro="A project archive spanning applied engineering, cloud platforms and research-oriented builds. Each card gives the essentials; open a case study for the available screenshots and technical context." />
+        <PageHeader index="01" eyebrow="Selected work" title="Built to solve something." intro="A project archive spanning applied engineering, cloud platforms and research-oriented builds. Each project preview rotates through its supplied screenshots; open a case study for the full gallery and technical context." />
         <div className="polished-page-meta"><span>{String(orderedProjects.length).padStart(2, "0")} projects</span><span>Sorted by verified recognition, then project order</span></div>
         <div className="polished-project-grid">
           {orderedProjects.map((project) => <ProjectCard key={project.id} project={project} />)}
