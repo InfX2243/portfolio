@@ -22,7 +22,7 @@ Branch: `portfolio-v1`
 
 - Previous workflow `38170843872` failed in `npm run test:a11y` after the production build succeeded. The failures were real color-contrast findings across project details, Research, Experience, Achievements, About and the mobile landing page.
 - The contrast audit remains enabled and unchanged.
-- **Pending:** verify the new latest-commit workflow passes desktop/mobile axe, route fallback/output checks, and publishes successfully to `gh-pages`. Do not mark the release green until the run confirms deployment.
+- **Verified:** workflow [38191923251](https://github.com/InfX2243/portfolio/actions/runs/38191923251) completed successfully on commit `6116014d5d8249838ff87409333bb8e91981d948`. Production build, desktop/mobile axe smoke audit, route fallback, output verification, and `gh-pages` deployment all passed.
 
 
 ## Root-cause follow-up
@@ -34,3 +34,11 @@ Branch: `portfolio-v1`
 
 - A further audit run identified a second source of the same issue: page-entry and editorial section animations also faded whole content groups through partial opacity. Removed those opacity keyframes as well, preserving only a short positional entrance.
 - Credly's cross-origin iframe is treated as decorative visual content for the automated audit, while a separate, keyboard-accessible link provides the badge's public verification destination.
+
+
+## Verified outcome
+
+- Latest workflow run: https://github.com/InfX2243/portfolio/actions/runs/38191923251
+- Commit tested and deployed: `6116014d5d8249838ff87409333bb8e91981d948`
+- Result: **SUCCESS** — production build, automated desktop/mobile accessibility smoke audit, route fallback, output verification, and `gh-pages` deployment passed.
+- The opacity-related contrast failures are resolved by removing text-affecting opacity fades, while retaining positional motion. The accessibility audit remains active.
