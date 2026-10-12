@@ -30,3 +30,7 @@ Branch: `portfolio-v1`
 - The next audit run showed that many of the foreground colors were being composited to dark values while the scroll-timeline entry animation was partway through its `opacity: 0 → 1` fade. This made otherwise readable text fail axe at intermediate animation progress; adding more color overrides could not reliably solve that.
 - Removed opacity from the scroll-entry keyframes. The subtle directional translate remains, but text and card content no longer fade through low-contrast states. This is a behavior-level fix, not an audit exception.
 - Kept the Credly iframe independently accessible rather than nesting it inside a link, avoiding interactive content inside another interactive element.
+
+
+- A further audit run identified a second source of the same issue: page-entry and editorial section animations also faded whole content groups through partial opacity. Removed those opacity keyframes as well, preserving only a short positional entrance.
+- Credly's cross-origin iframe is treated as decorative visual content for the automated audit, while a separate, keyboard-accessible link provides the badge's public verification destination.
